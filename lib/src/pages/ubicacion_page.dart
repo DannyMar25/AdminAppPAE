@@ -37,7 +37,7 @@ class _UbicacionPageState extends State<UbicacionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ubicacion'),
+        title: Text('Ubicacion Page'),
       ),
       drawer: MenuWidget(),
       body: GoogleMap(
