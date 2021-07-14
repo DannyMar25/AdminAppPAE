@@ -31,6 +31,19 @@ class AnimalesProvider {
     return true;
   }
 
+  Future<bool> setCoordenada(int n, String id) async {
+    //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
+    final url = '$_url/gps/Test/.json';
+    final values = {"GetDataGPS": n, "id": id};
+
+    final resp = await http.put(Uri.parse(url), body: values);
+    final decodedData = json.decode(resp.body);
+
+    print(decodedData);
+
+    return true;
+  }
+
   Future<bool> editarAnimal(AnimalModel animal) async {
     //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
     final url = '$_url/animales/${animal.id}.json';

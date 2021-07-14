@@ -1,5 +1,7 @@
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
+import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class BienvenidaPage extends StatelessWidget {
@@ -7,6 +9,16 @@ class BienvenidaPage extends StatelessWidget {
 
   //static final String routeName = 'home';
   final prefs = new PreferenciasUsuario();
+  //late AnimalesProvider animal = new AnimalesProvider();
+  //final databaseRef = FirebaseDatabase._instance_.reference();
+
+  void setGPS(int getData, String id) {
+    //ProductoModel producto;
+    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    DatabaseReference prodRef = ref.child("gps");
+    DatabaseReference urlRef = prodRef.child("Test");
+    urlRef.update({"GetDataGPS": getData, "id": id});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +32,15 @@ class BienvenidaPage extends StatelessWidget {
       body: Center(
         child: Text('BIENVENID@'),
       ),
+      floatingActionButton: _crearBoton(context),
+    );
+  }
+
+  _crearBoton(BuildContext context) {
+    return FloatingActionButton(
+      child: Icon(Icons.add),
+      backgroundColor: Colors.deepPurple,
+      onPressed: () => setGPS(1, "65iRhtvZxeKT9DUb8aUu"),
     );
   }
 }

@@ -100,17 +100,17 @@ class _UbicacionPageState extends State<UbicacionPage> {
   void leerUbicacion() {
     var data;
     FirebaseFirestore.instance
-        .collection('locations')
-        .doc('DPZPhaU2IMdAeLgF5l96')
+        .collection('clients')
+        .doc('65iRhtvZxeKT9DUb8aUu')
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         print('Document exists on the database');
         print('Document data: ${documentSnapshot.data()}');
         data = documentSnapshot.data();
-        print(data['long']);
-        print(data['lat']);
-        var lat_long = LatLng(data['lat'], data['long']);
+        print(data['posicionActual']);
+        var posicion = data['posicionActual'];
+        var lat_long = LatLng(posicion['lat'], posicion['long']);
         _handleTap(lat_long);
       }
     });
