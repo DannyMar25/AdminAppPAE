@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UbicacionPage extends StatefulWidget {
   // const UbicacionPage({Key? key}) : super(key: key);
+  var data;
+  final firestoreInstance = FirebaseFirestore.instance;
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(-0.29732374301539083, -78.48033408388217),
@@ -97,8 +100,10 @@ class _UbicacionPageState extends State<UbicacionPage> {
     );
   }
 
-  void leerUbicacion() {
+  void leerUbicacion() async {
+    final GoogleMapController controller = await _controller.future;
     var data;
+
     FirebaseFirestore.instance
         .collection('clients')
         .doc('65iRhtvZxeKT9DUb8aUu')
@@ -112,6 +117,13 @@ class _UbicacionPageState extends State<UbicacionPage> {
         var posicion = data['posicionActual'];
         var lat_long = LatLng(posicion['lat'], posicion['long']);
         _handleTap(lat_long);
+        controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+            bearing: 0,
+            target: LatLng(posicion['lat'], posicion['long']),
+            zoom: 17.0,
+          ),
+        ));
       }
     });
   }
