@@ -29,6 +29,7 @@ class _AnimalPageState extends State<AnimalPage> {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
     if (animData != null) {
       animal = animData as AnimalModel;
+      print(animal.id);
     }
 
     return Scaffold(
@@ -266,23 +267,25 @@ class _AnimalPageState extends State<AnimalPage> {
       _guardando = true;
     });
 
-    //Aqui se debe cargar la foto a la base
-    if (foto != null) {
-      await animalProvider.uploadPic(foto!, animal);
-    }
-
-    if (animal.id == '') {
-      animalProvider.crearAnimal(animal);
+    if (animal.id == "") {
+      animalProvider.crearAnimal1(animal, foto!);
     } else {
-      animalProvider.editarAnimal(animal);
+      animalProvider.editarAnimal(animal, foto!);
     }
-
-    // setState(() {
-    //   _guardando = false;
+    //setState(() {
+    //  _guardando = false;
     // });
+
     mostrarSnackbar('Registro guardado');
 
     Navigator.pushNamed(context, 'home');
+    // if (animal.id == null) {
+    //   print("ssssss");
+    // }
+    // if (animal.id == "") {
+    //   print("aaaaaa");
+    // }
+    // print(animal.id);
   }
 
   void mostrarSnackbar(String mensaje) {

@@ -37,9 +37,16 @@ class BienvenidaPage extends StatelessWidget {
   }
 
   _crearBoton(BuildContext context) {
-    return FloatingActionButton(
-      child: Icon(Icons.add),
-      backgroundColor: Colors.deepPurple,
+    return ElevatedButton.icon(
+      style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+          return Colors.deepPurple;
+        }),
+      ),
+      label: Text('Activar ubicacion'),
+      icon: Icon(Icons.save),
+      autofocus: true,
       onPressed: () => setGPS(1, "65iRhtvZxeKT9DUb8aUu"),
     );
   }

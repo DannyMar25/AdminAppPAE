@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
 
   Widget _crearListado() {
     return FutureBuilder(
-        future: animalesProvider.cargarAnimal(),
+        future: animalesProvider.cargarAnimal1(),
         builder:
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
           if (snapshot.hasData) {
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
       ),
       onDismissed: (direccion) {
         mostrarAlertaBorrar(context, 'hola');
-        animalesProvider.borrarAnimal(animal.id);
+        animalesProvider.borrarAnimal(animal.id!);
       },
       child: ListTile(
         title: Text('${animal.nombre} - ${animal.edad}'),

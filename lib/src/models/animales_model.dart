@@ -23,7 +23,7 @@ class AnimalModel {
     this.fotoUrl = '',
   });
 
-  String id;
+  String? id;
   String nombre;
   int edad;
   String temperamento;
