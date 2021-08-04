@@ -27,22 +27,78 @@ class MenuWidget extends StatelessWidget {
             title: Text('Ver mascotas registradas'),
             onTap: () => Navigator.pushReplacementNamed(context, 'home'),
           ),
-          ListTile(
+          Divider(),
+          //Creacion de un submenu dentro
+          ExpansionTile(
+            title: Text('Citas'),
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.add,
+                  color: Colors.blue,
+                ),
+                title: Text('Agregar horarios para visitas'),
+                onTap: () =>
+                    Navigator.pushReplacementNamed(context, 'citasAdd'),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.list_alt,
+                  color: Colors.blue,
+                ),
+                title: Text('Ver citas agendadas'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.check,
+                  color: Colors.blue,
+                ),
+                title: Text('Ver citas atendidas'),
+                onTap: () {},
+              ),
+            ],
             leading: Icon(
               Icons.meeting_room,
               color: Colors.blue,
             ),
-            title: Text('Ver citas'),
-            onTap: () {},
           ),
-          ListTile(
+          //aqui termina el nuevo codigo
+          Divider(),
+          ExpansionTile(
+            title: Text('Solicitudes de adopcion'),
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.inventory,
+                  color: Colors.blue,
+                ),
+                title: Text('Solicitudes Pendientes'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.check,
+                  color: Colors.blue,
+                ),
+                title: Text('Solicitudes Aprobadas'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.clear,
+                  color: Colors.blue,
+                ),
+                title: Text('Solicitudes Rechazadas'),
+                onTap: () {},
+              ),
+            ],
             leading: Icon(
               Icons.assignment,
               color: Colors.blue,
             ),
-            title: Text('Ver solicitudes de adopcion'),
-            onTap: () {},
           ),
+          Divider(),
           ListTile(
             leading: Icon(
               Icons.app_registration,
@@ -54,6 +110,7 @@ class MenuWidget extends StatelessWidget {
               Navigator.pushReplacementNamed(context, 'animal');
             },
           ),
+          Divider(),
           ListTile(
             leading: Icon(
               Icons.room,
@@ -65,6 +122,7 @@ class MenuWidget extends StatelessWidget {
               Navigator.pushReplacementNamed(context, 'ubicacion');
             },
           ),
+          Divider(),
           ListTile(
             leading: Icon(
               Icons.app_registration,
