@@ -1,7 +1,8 @@
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/pages/animal_page.dart';
 import 'package:aministrador_app_v1/src/pages/bienvenida_page.dart';
-import 'package:aministrador_app_v1/src/pages/citas_page.dart';
+import 'package:aministrador_app_v1/src/pages/horariosR_page.dart';
+import 'package:aministrador_app_v1/src/pages/horarios_page.dart';
 import 'package:aministrador_app_v1/src/pages/home_page.dart';
 import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/pages/registro_page.dart';
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
             'animal': (_) => AnimalPage(),
             'bienvenida': (_) => BienvenidaPage(),
             'ubicacion': (_) => UbicacionPage(),
-            'citasAdd': (_) => CitasPage(),
+            'citasAdd': (_) => HorariosPage(),
+            'horariosAdd': (_) => HorariosAgregados()
           },
           theme: ThemeData(primaryColor: Colors.deepPurple)),
     );

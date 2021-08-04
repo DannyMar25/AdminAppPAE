@@ -34,6 +34,17 @@ class MenuWidget extends StatelessWidget {
             children: [
               ListTile(
                 leading: Icon(
+                  Icons.app_registration,
+                  color: Colors.blue,
+                ),
+                title: Text('Horarios registrados'),
+                onTap: () {
+                  //Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context, 'horariosAdd');
+                },
+              ),
+              ListTile(
+                leading: Icon(
                   Icons.add,
                   color: Colors.blue,
                 ),
@@ -123,6 +134,7 @@ class MenuWidget extends StatelessWidget {
             },
           ),
           Divider(),
+
           ListTile(
             leading: Icon(
               Icons.app_registration,
