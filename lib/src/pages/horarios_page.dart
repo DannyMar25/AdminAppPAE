@@ -1,10 +1,11 @@
 import 'package:aministrador_app_v1/src/models/horarios_model.dart';
 import 'package:aministrador_app_v1/src/providers/horarios_provider.dart';
+import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class HorariosPage extends StatefulWidget {
-  //const CitasPage({Key? key}) : super(key: key);
+  const HorariosPage({Key? key}) : super(key: key);
 
   @override
   _HorariosPageState createState() => _HorariosPageState();
@@ -13,14 +14,35 @@ class HorariosPage extends StatefulWidget {
 class _HorariosPageState extends State<HorariosPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  bool _guardando = false;
   final horariosProvider = new HorariosProvider();
+  final userProvider = new UsuarioProvider();
   HorariosModel horarios = new HorariosModel();
-  String _fecha = '';
-  String _hora = '';
-  TextEditingController _inputFieldDateController = new TextEditingController();
-  TextEditingController _inputFieldTimeController = new TextEditingController();
   bool _disponible = false;
+  //lista dias
+  final List<String> _items =
+      ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'].toList();
+  final List<String> _items1 = [
+    '9:00 - 9:30',
+    '9:30 - 10:00',
+    '10:00 - 10:30',
+    '10:30 - 11:00',
+    '11:00 - 11:30',
+    '11:30 - 12:00',
+    '12:00 - 12:30',
+    '12:30 - 13:00',
+    '14:00 - 14:30',
+    '14:30 - 15:00'
+  ].toList();
+  String? _selection;
+  String? _selection1;
+  @override
+  void initState() {
+    // _selection = _items.last;
+    super.initState();
+  }
+
+  //bool _guardando = false;
+
   @override
   Widget build(BuildContext context) {
     final Object? horarioData = ModalRoute.of(context)!.settings.arguments;
@@ -31,6 +53,37 @@ class _HorariosPageState extends State<HorariosPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Creacion de horarios de visita"),
+        actions: [
+          PopupMenuButton<int>(
+              onSelected: (item) => onSelected(context, item),
+              icon: Icon(Icons.manage_accounts),
+              itemBuilder: (context) => [
+                    PopupMenuItem<int>(
+                      child: Text("Informacion"),
+                      value: 0,
+                    ),
+                    PopupMenuItem<int>(
+                      child: Text("Ayuda"),
+                      value: 1,
+                    ),
+                    PopupMenuItem<int>(
+                      child: Text("Cerrar Sesion"),
+                      value: 2,
+                    )
+                  ]),
+          // Builder(builder: (BuildContext context) {
+          //   return TextButton(
+          //     style: ButtonStyle(
+          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+          //     ),
+          //     onPressed: () async {
+          //       userProvider.signOut();
+          //       Navigator.pushNamed(context, 'login');
+          //     },
+          //     child: Text('Sign Out'),
+          //   );
+          // }),
+        ],
       ),
       drawer: MenuWidget(),
       body: Container(
@@ -38,18 +91,14 @@ class _HorariosPageState extends State<HorariosPage> {
         child: Form(
           child: Column(
             children: [
-              //ListView(
-              //children: [
-              _crearFecha(context),
+              _crearDia(),
               Divider(),
-              _crearHora(context),
+              _crearHoraDia(),
               Divider(),
               _crearDisponible(),
               Divider(),
               _crearBoton(),
               Divider(),
-              //],
-              //),
             ],
           ),
         ),
@@ -57,91 +106,80 @@ class _HorariosPageState extends State<HorariosPage> {
     );
   }
 
-  Widget _crearFecha(BuildContext context) {
-    return TextFormField(
-      //textCapitalization: TextCapitalization.sentences,
-      //initialValue: horarios.dia,
-      //enableInteractiveSelection: true,
-      controller: _inputFieldDateController,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-        //counter: Text('Letras ${_nombre.length}'),
-        hintText: 'Ingrese fecha de agendamiento de cita',
-        labelText: 'Fecha de la cita',
-        //helperText: 'Solo es el nombre',
-        suffixIcon: Icon(Icons.perm_contact_calendar),
-        icon: Icon(Icons.calendar_today),
-      ),
-      onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-        _selectDate(context);
-      },
-      //onSaved: (value) => horarios.dia = _inputFieldDateController.toString(),
-    );
-  }
-
-  Widget _crearHora(BuildContext context) {
-    return TextFormField(
-      //initialValue: horarios.hora,
-      //textCapitalization: TextCapitalization.sentences,
-      //enableInteractiveSelection: true,
-      controller: _inputFieldTimeController,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-        //counter: Text('Letras ${_nombre.length}'),
-        hintText: 'Ingrese hora de agendamiento de cita',
-        labelText: 'Hora de la cita',
-        //helperText: 'Solo es el nombre',
-        suffixIcon: Icon(Icons.perm_contact_calendar),
-        icon: Icon(Icons.calendar_today),
-      ),
-      onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-        _selectTime(context);
-      },
-      //onSaved: (value) => horarios.hora = _inputFieldTimeController.toString(),
-    );
-  }
-
-  _selectDate(BuildContext context) async {
-    DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime(2018),
-      lastDate: new DateTime(2025),
-      locale: Locale('es', 'ES'),
-    );
-
-    if (picked != null) {
-      setState(() {
-        _fecha = picked.year.toString() +
-            '-' +
-            picked.month.toString() +
-            '-' +
-            picked.day.toString();
-        //_fecha = picked.toString();
-        _inputFieldDateController.text = _fecha;
-        horarios.dia = picked.toString();
-      });
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
     }
   }
 
-  _selectTime(BuildContext context) async {
-    TimeOfDay? picked1 = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
+  Widget _crearDia() {
+    final dropdownMenuOptions = _items
+        .map((String item) =>
+            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+            new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        .toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(
+          'Seleccione el dia:         ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(horarios.dia.toString()),
+            value: _selection,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection = s;
+                horarios.dia = s!;
+              });
+            }),
+      ],
     );
+  }
 
-    if (picked1 != null) {
-      setState(() {
-        _hora = picked1.hour.toString() + ':' + picked1.minute.toString();
-        _inputFieldTimeController.text = _hora;
-        horarios.hora = picked1.toString();
-      });
-    }
+  Widget _crearHoraDia() {
+    final dropdownMenuOptions = _items1
+        .map((String item) =>
+            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+            new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        .toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(
+          'Seleccione el dia:         ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(horarios.hora.toString()),
+            value: _selection1,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection1 = s;
+                horarios.hora = s!;
+              });
+            }),
+      ],
+    );
   }
 
   Widget _crearDisponible() {
+    if (horarios.disponible == 'No disponible') {
+      _disponible = false;
+    } else {
+      _disponible = true;
+    }
     return SwitchListTile(
       value: _disponible,
       title: Text('Horario disponible:'),
@@ -181,9 +219,9 @@ class _HorariosPageState extends State<HorariosPage> {
   void _submit() async {
     if (horarios.id == "") {
       horariosProvider.crearHorario(horarios);
-    } //else {
-    //animalProvider.editarAnimal(animal, foto!);
-    //}
+    } else {
+      horariosProvider.editarHorarios(horarios);
+    }
     //mostrarSnackbar('Registro guardado');
     Navigator.pushNamed(context, 'horariosAdd');
   }

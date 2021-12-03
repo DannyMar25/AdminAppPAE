@@ -13,7 +13,6 @@ class HorariosModel {
   String id;
   String dia;
   String hora;
-  //bool disponible;
   String disponible;
 
   HorariosModel({

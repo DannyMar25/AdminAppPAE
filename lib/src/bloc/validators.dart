@@ -21,4 +21,13 @@ class Validators {
       sink.addError('Mas de 6 caracteres por favor');
     }
   });
+
+  final validarNombre = StreamTransformer<String, String>.fromHandlers(
+      handleData: (nombre, sink) {
+    if (nombre.length >= 5) {
+      sink.add(nombre);
+    } else {
+      sink.addError('Mas de 5 caracteres por favor');
+    }
+  });
 }

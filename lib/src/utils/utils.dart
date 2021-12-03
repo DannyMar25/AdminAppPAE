@@ -25,6 +25,23 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       });
 }
 
+void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Informacion correcta'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
+          ],
+        );
+      });
+}
+
 void mostrarAlertaBorrar(BuildContext context, String mensaje) {
   showDialog(
       context: context,

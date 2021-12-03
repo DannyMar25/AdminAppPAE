@@ -28,21 +28,23 @@ class MenuWidget extends StatelessWidget {
             onTap: () => Navigator.pushReplacementNamed(context, 'home'),
           ),
           Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.app_registration,
+              color: Colors.blue,
+            ),
+            title: Text('Registrar nueva mascota'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, 'animal');
+            },
+          ),
+
+          Divider(),
           //Creacion de un submenu dentro
           ExpansionTile(
             title: Text('Citas'),
             children: [
-              ListTile(
-                leading: Icon(
-                  Icons.app_registration,
-                  color: Colors.blue,
-                ),
-                title: Text('Horarios registrados'),
-                onTap: () {
-                  //Navigator.pop(context);
-                  Navigator.pushReplacementNamed(context, 'horariosAdd');
-                },
-              ),
               ListTile(
                 leading: Icon(
                   Icons.add,
@@ -54,11 +56,34 @@ class MenuWidget extends StatelessWidget {
               ),
               ListTile(
                 leading: Icon(
+                  Icons.app_registration,
+                  color: Colors.blue,
+                ),
+                title: Text('Ver Horarios registrados'),
+                onTap: () {
+                  //Navigator.pop(context);
+                  Navigator.pushReplacementNamed(context, 'horariosAdd');
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.list_alt,
+                  color: Colors.blue,
+                ),
+                title: Text('Agendar nueva cita'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'agendarCita');
+                },
+              ),
+              ListTile(
+                leading: Icon(
                   Icons.list_alt,
                   color: Colors.blue,
                 ),
                 title: Text('Ver citas agendadas'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'verCitasAg');
+                },
               ),
               ListTile(
                 leading: Icon(
@@ -66,7 +91,9 @@ class MenuWidget extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 title: Text('Ver citas atendidas'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'verCitasAt');
+                },
               ),
             ],
             leading: Icon(
@@ -85,7 +112,9 @@ class MenuWidget extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 title: Text('Solicitudes Pendientes'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'enviarMail');
+                },
               ),
               ListTile(
                 leading: Icon(
@@ -110,18 +139,55 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
           Divider(),
-          ListTile(
+          ExpansionTile(
+            title: Text('Donaciones'),
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.add,
+                  color: Colors.blue,
+                ),
+                title: Text('Registrar donaciones recibidas'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'donacionesInAdd');
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.check,
+                  color: Colors.blue,
+                ),
+                title: Text('Ver donaciones recibidas'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'verDonacionesInAdd');
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.add,
+                  color: Colors.blue,
+                ),
+                title: Text('Registrar donaciones salientes'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, 'donacionesOutAdd');
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.check,
+                  color: Colors.blue,
+                ),
+                title: Text('Ver donaciones salientes'),
+                onTap: () {},
+              ),
+            ],
             leading: Icon(
-              Icons.app_registration,
+              Icons.assignment,
               color: Colors.blue,
             ),
-            title: Text('Registrar nueva mascota'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'animal');
-            },
           ),
           Divider(),
+
           ListTile(
             leading: Icon(
               Icons.room,
@@ -134,13 +200,23 @@ class MenuWidget extends StatelessWidget {
             },
           ),
           Divider(),
-
           ListTile(
             leading: Icon(
               Icons.app_registration,
               color: Colors.blue,
             ),
-            title: Text('Regresar'),
+            title: Text('Registrar administrador'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, 'registro');
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.app_registration,
+              color: Colors.blue,
+            ),
+            title: Text('Inicio'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'bienvenida');

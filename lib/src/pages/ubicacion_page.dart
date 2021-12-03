@@ -18,11 +18,11 @@ class UbicacionPage extends StatefulWidget {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  // static final CameraPosition _kLake = CameraPosition(
+  //     bearing: 192.8334901395799,
+  //     target: LatLng(37.43296265331129, -122.08832357078792),
+  //     tilt: 59.440717697143555,
+  //     zoom: 19.151926040649414);
 
   @override
   _UbicacionPageState createState() => _UbicacionPageState();
@@ -78,11 +78,11 @@ class _UbicacionPageState extends State<UbicacionPage> {
     //}
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller
-        .animateCamera(CameraUpdate.newCameraPosition(UbicacionPage._kLake));
-  }
+  // Future<void> _goToTheLake() async {
+  //   final GoogleMapController controller = await _controller.future;
+  //   controller
+  //       .animateCamera(CameraUpdate.newCameraPosition(UbicacionPage._kLake));
+  // }
 
   Widget _crearBoton() {
     return ElevatedButton.icon(
@@ -125,8 +125,8 @@ class _UbicacionPageState extends State<UbicacionPage> {
         data = documentSnapshot.data();
         print(data['posicionActual']);
         var posicion = data['posicionActual'];
-        var lat_long = LatLng(posicion['lat'], posicion['long']);
-        _handleTap(lat_long);
+        var latlong = LatLng(posicion['lat'], posicion['long']);
+        _handleTap(latlong);
         controller.animateCamera(CameraUpdate.newCameraPosition(
           CameraPosition(
             bearing: 0,
@@ -138,27 +138,27 @@ class _UbicacionPageState extends State<UbicacionPage> {
     });
   }
 
-  CameraPosition _verUbicacionR() {
-    //final GoogleMapController controller = await _controller.future;
-    var data;
-    var posicion;
+  // CameraPosition _verUbicacionR() {
+  //   //final GoogleMapController controller = await _controller.future;
+  //   var data;
+  //   var posicion;
 
-    FirebaseFirestore.instance
-        .collection('clients')
-        .doc('65iRhtvZxeKT9DUb8aUu')
-        .get()
-        .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        print('Document exists on the database');
-        print('Document data: ${documentSnapshot.data()}');
-        data = documentSnapshot.data();
-        print(data['posicionRegistrada']);
-        posicion = data['posicionRegistrada'];
-      }
-    });
-    return CameraPosition(
-      target: LatLng(posicion['lat'], posicion['long']),
-      zoom: 14.4746,
-    );
-  }
+  //   FirebaseFirestore.instance
+  //       .collection('clients')
+  //       .doc('65iRhtvZxeKT9DUb8aUu')
+  //       .get()
+  //       .then((DocumentSnapshot documentSnapshot) {
+  //     if (documentSnapshot.exists) {
+  //       print('Document exists on the database');
+  //       print('Document data: ${documentSnapshot.data()}');
+  //       data = documentSnapshot.data();
+  //       print(data['posicionRegistrada']);
+  //       posicion = data['posicionRegistrada'];
+  //     }
+  // //   });
+  //   return CameraPosition(
+  //     target: LatLng(posicion['lat'], posicion['long']),
+  //     zoom: 14.4746,
+  //   );
+  // }
 }

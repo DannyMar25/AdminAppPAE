@@ -1,12 +1,22 @@
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
+import 'package:aministrador_app_v1/src/pages/agendarCitas_page.dart';
 import 'package:aministrador_app_v1/src/pages/animal_page.dart';
 import 'package:aministrador_app_v1/src/pages/bienvenida_page.dart';
+import 'package:aministrador_app_v1/src/pages/donacionesIn_page.dart';
+import 'package:aministrador_app_v1/src/pages/donacionesOut_page.dart';
+import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
 import 'package:aministrador_app_v1/src/pages/horariosR_page.dart';
 import 'package:aministrador_app_v1/src/pages/horarios_page.dart';
 import 'package:aministrador_app_v1/src/pages/home_page.dart';
 import 'package:aministrador_app_v1/src/pages/login_page.dart';
+import 'package:aministrador_app_v1/src/pages/perfilUsuario_page.dart';
 import 'package:aministrador_app_v1/src/pages/registro_page.dart';
+import 'package:aministrador_app_v1/src/pages/soporte_page.dart';
 import 'package:aministrador_app_v1/src/pages/ubicacion_page.dart';
+import 'package:aministrador_app_v1/src/pages/verCitasAt_page.dart';
+import 'package:aministrador_app_v1/src/pages/verCitasR.dart';
+import 'package:aministrador_app_v1/src/pages/verCitas_page.dart';
+import 'package:aministrador_app_v1/src/pages/verDonacionesIn_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 //import 'package:formvalidation/src/pages/producto_page.dart';
@@ -49,7 +59,18 @@ class MyApp extends StatelessWidget {
             'bienvenida': (_) => BienvenidaPage(),
             'ubicacion': (_) => UbicacionPage(),
             'citasAdd': (_) => HorariosPage(),
-            'horariosAdd': (_) => HorariosAgregados()
+            'horariosAdd': (_) => HorariosAgregados(),
+            'verCitasAg': (_) => VerCitasPage(),
+            'verCitasR': (_) => VerCitasRegistradas(),
+            'agendarCita': (_) => AgendarCitasPage(),
+            'verCitasAt': (_) => VerCitasAtendidasPage(),
+            'donacionesInAdd': (_) => IngresoDonacionesInPage(),
+            'verDonacionesInAdd': (_) => VerDonacionesInAddPage(),
+            ForgotPassword.id: (context) => ForgotPassword(),
+            'donacionesOutAdd': (_) => IngresoDonacionesOutPage(),
+            //'enviarMail': (_) => EmailSender(),
+            'enviarMail': (_) => SoportePage(),
+            'perfilUser': (_) => PerfilUsuarioPage(),
           },
           theme: ThemeData(primaryColor: Colors.deepPurple)),
     );

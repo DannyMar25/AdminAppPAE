@@ -1,21 +1,22 @@
-import 'package:aministrador_app_v1/src/models/horarios_model.dart';
-import 'package:aministrador_app_v1/src/providers/horarios_provider.dart';
+import 'package:aministrador_app_v1/src/models/donaciones_model.dart';
+import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
-class HorariosAgregados extends StatefulWidget {
-  const HorariosAgregados({Key? key}) : super(key: key);
+class VerDonacionesInAddPage extends StatefulWidget {
+  const VerDonacionesInAddPage({Key? key}) : super(key: key);
 
   @override
-  _HorariosAgregadosState createState() => _HorariosAgregadosState();
+  _VerDonacionesInAddPageState createState() => _VerDonacionesInAddPageState();
 }
 
-class _HorariosAgregadosState extends State<HorariosAgregados> {
-  final horariosProvider = new HorariosProvider();
+class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
+  final donacionesProvider = new DonacionesProvider();
   final userProvider = new UsuarioProvider();
+  DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
-      ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Horarios agregados'),
+        title: Text('Donaciones registradas'),
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
@@ -65,43 +66,16 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
         child: Form(
           child: Column(
             children: [
-              _crearDia(),
+              _crearTipoDonacion(),
               Divider(),
-              _verListado(),
+              _verListadoAlimentos(),
               Divider(),
+              //_mostrarTotal()
             ],
           ),
         ),
       ),
       drawer: MenuWidget(),
-    );
-  }
-
-  Widget _crearDia() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
-      children: [
-        Text(
-          'Seleccione el dia:         ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
-        ),
-        DropdownButton<String>(
-            //hint: Text(horarios.dia.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
-                // horarios.dia = s!;
-              });
-            }),
-      ],
     );
   }
 
@@ -117,37 +91,85 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
     }
   }
 
-  Widget _verListado() {
+  Widget _crearTipoDonacion() {
+    final dropdownMenuOptions = _items
+        .map((String item) =>
+            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+            new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        .toList();
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      //mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(
+          'Seleccione el tipo de donacion:  ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(donaciones.tipo.toString()),
+            value: _selection,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection = s;
+                // horarios.dia = s!;
+              });
+            }),
+      ],
+    );
+  }
+
+  Widget _verListadoAlimentos() {
     return FutureBuilder(
-        future: horariosProvider.cargarHorariosDia(_selection.toString()),
+        future: donacionesProvider.verDonaciones1(_selection.toString()),
         builder: (BuildContext context,
-            AsyncSnapshot<List<HorariosModel>> snapshot) {
+            AsyncSnapshot<List<DonacionesModel>> snapshot) {
           if (snapshot.hasData) {
-            final horarios = snapshot.data;
-            return SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  itemCount: horarios!.length,
-                  itemBuilder: (context, i) => _crearItem(context, horarios[i]),
-                ));
+            final donaciones = snapshot.data;
+            return Column(
+              children: [
+                SizedBox(
+                    height: 300,
+                    child: ListView.builder(
+                        itemCount: donaciones!.length,
+                        itemBuilder: (context, i) =>
+                            _crearItem(context, donaciones[i]))),
+                _mostrarTotal(context),
+              ],
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
         });
   }
 
-  Widget _crearItem(BuildContext context, HorariosModel horario) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      child: ListTile(
-        title: Text('${horario.dia} - ${horario.hora}'),
-        subtitle: Text('${horario.disponible}'),
-        onTap: () =>
-            Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-      ),
+  Widget _crearItem(BuildContext context, DonacionesModel donacion) {
+    //_mostrarTotal(context);
+    return Column(key: UniqueKey(),
+        // background: Container(
+        //   color: Colors.red,
+        // ),
+        children: [
+          ListTile(
+              title: Text('${donacion.tipo} - ${donacion.cantidad}'),
+              subtitle: Text('${donacion.descripcion}'),
+              onTap: () {
+                Navigator.pushNamed(context, 'donacionesInAdd',
+                    arguments: donacion);
+              }),
+          // _mostrarTotal(context),
+        ]);
+    //return _mostrarTotal(context);
+  }
+
+  Widget _mostrarTotal(BuildContext context) {
+    return TextFormField(
+      initialValue: donacionesProvider.sumarDonaciones1().toString(),
+      readOnly: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          labelText: 'Total:',
+          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
     );
   }
 }

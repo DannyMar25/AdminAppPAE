@@ -7,11 +7,14 @@ import 'package:aministrador_app_v1/src/utils/utils.dart';
 class RegistroPage extends StatelessWidget {
   //const RegistroPage({Key? key}) : super(key: key);
   final usuarioProvider = new UsuarioProvider();
+  TextEditingController _nombreUs = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //drawer: MenuWidget(),
       body: Stack(
         children: [
+          //Drawer(child: MenuWidget()),
           _crearFondo(context),
           _loginForm(context),
         ],
@@ -53,6 +56,10 @@ class RegistroPage extends StatelessWidget {
                 SizedBox(
                   height: 60.0,
                 ),
+                _crearNombreUs(bloc),
+                SizedBox(
+                  height: 60.0,
+                ),
                 _crearEmail(bloc),
                 SizedBox(
                   height: 30.0,
@@ -67,8 +74,8 @@ class RegistroPage extends StatelessWidget {
           ),
           //Text('Olvido la contrasena?'),
           TextButton(
-            onPressed: () => Navigator.pushNamed(context, 'login'),
-            child: Text('Ya tienes cuenta? Login'),
+            onPressed: () => Navigator.pushNamed(context, 'home'),
+            child: Text('Cancelar registro.'),
           ),
           SizedBox(
             height: 100.0,
@@ -97,6 +104,48 @@ class RegistroPage extends StatelessWidget {
             onChanged: bloc.changeEmail,
           ),
         );
+      },
+    );
+  }
+
+  Widget _crearNombreUs(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.nameStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            keyboardType: TextInputType.name,
+            decoration: InputDecoration(
+              icon: Icon(Icons.alternate_email, color: Colors.deepPurple),
+              hintText: 'dany',
+              labelText: 'Nombre de usuario:',
+              counterText: snapshot.data,
+              errorText:
+                  snapshot.error != null ? snapshot.error.toString() : null,
+            ),
+            onChanged: bloc.changeName,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _crearNombre() {
+    return TextFormField(
+      //initialValue: animal.nombre,
+      controller: _nombreUs,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        labelText: 'Nombre',
+      ),
+      onSaved: (value) => _nombreUs = value as TextEditingController,
+      validator: (value) {
+        if (value!.length < 3) {
+          return 'Ingrese su nombre';
+        } else {
+          return null;
+        }
       },
     );
   }
@@ -155,7 +204,11 @@ class RegistroPage extends StatelessWidget {
     //print('Password: ${bloc.password}');
     //print('=================');
 
-    final info = await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    final info = await usuarioProvider.nuevoUsuario(
+        bloc.email, bloc.password, bloc.name);
+
+    // final info = await usuarioProvider.registerWithEmailAndPassword(
+    //     bloc.email, bloc.password, bloc.name);
 
     if (info['ok']) {
       Navigator.pushReplacementNamed(context, 'bienvenida');
@@ -201,7 +254,7 @@ class RegistroPage extends StatelessWidget {
               Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
               SizedBox(height: 10.0, width: double.infinity),
               Text(
-                'Daniela Guagalango',
+                'Bienvenid@',
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
               ),
             ],

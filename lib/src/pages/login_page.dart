@@ -1,3 +1,4 @@
+import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
@@ -65,14 +66,15 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-          //Text('Olvido la contrasena?'),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, 'registro'),
-            child: Text('Crear una nueva cuenta'),
-          ),
-          SizedBox(
-            height: 100.0,
-          )
+          Text('Olvido la contrasena?'),
+          _crearBotonPass(context),
+          // TextButton(
+          //   onPressed: () => Navigator.pushNamed(context, 'registro'),
+          //   child: Text('Crear una nueva cuenta'),
+          // ),
+          // SizedBox(
+          //   height: 100.0,
+          // )
         ],
       ),
     );
@@ -164,6 +166,21 @@ class LoginPage extends StatelessWidget {
     //Navigator.pushReplacementNamed(context, 'home');
   }
 
+  Widget _crearBotonPass(BuildContext context) {
+    return FlatButton(
+      onPressed: () {
+        Navigator.pushNamed(
+          context,
+          ForgotPassword.id,
+        );
+      },
+      child: Text(
+        'Forgot Password?',
+        style: TextStyle(color: Colors.grey, fontSize: 12),
+      ),
+    );
+  }
+
   Widget _crearFondo(BuildContext context) {
     //final size = MediaQuery.of(context).size;
     final fondoMorado = Container(
@@ -199,7 +216,7 @@ class LoginPage extends StatelessWidget {
               Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
               SizedBox(height: 10.0, width: double.infinity),
               Text(
-                'Daniela Guagalango',
+                'Bienvenid@',
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
               ),
             ],

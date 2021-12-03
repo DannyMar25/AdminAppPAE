@@ -13,10 +13,11 @@ class AnimalModel {
   AnimalModel({
     this.id = '',
     this.nombre = '',
+    this.sexo = '',
     this.edad = 0,
     this.temperamento = '',
     this.peso = 0.0,
-    this.tamanio = 0.0,
+    this.tamanio = '',
     this.color = '',
     this.raza = '',
     this.caracteristicas = '',
@@ -25,10 +26,11 @@ class AnimalModel {
 
   String? id;
   String nombre;
+  String sexo;
   int edad;
   String temperamento;
   double peso;
-  double tamanio;
+  String tamanio;
   String color;
   String raza;
   String caracteristicas;
@@ -37,10 +39,11 @@ class AnimalModel {
   factory AnimalModel.fromJson(Map<String, dynamic> json) => AnimalModel(
         id: json["id"],
         nombre: json["nombre"],
+        sexo: json["sexo"],
         edad: json["edad"],
         temperamento: json["temperamento"],
         peso: json["peso"].toDouble(),
-        tamanio: json["tamanio"].toDouble(),
+        tamanio: json["tamanio"],
         color: json["color"],
         raza: json["raza"],
         caracteristicas: json["caracteristicas"],
@@ -50,6 +53,7 @@ class AnimalModel {
   Map<String, dynamic> toJson() => {
         "id": id,
         "nombre": nombre,
+        "sexo": sexo,
         "edad": edad,
         "temperamento": temperamento,
         "peso": peso,
