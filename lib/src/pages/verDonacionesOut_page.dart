@@ -4,24 +4,21 @@ import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
-class VerDonacionesInAddPage extends StatefulWidget {
-  const VerDonacionesInAddPage({Key? key}) : super(key: key);
+class VerDonacionesOutAddPage extends StatefulWidget {
+  const VerDonacionesOutAddPage({Key? key}) : super(key: key);
 
   @override
-  _VerDonacionesInAddPageState createState() => _VerDonacionesInAddPageState();
+  _VerDonacionesOutAddPageState createState() =>
+      _VerDonacionesOutAddPageState();
 }
 
-class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
-  List<DonacionesModel> donacionA = [];
-  List<Future<DonacionesModel>> listaD = [];
+class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
   final donacionesProvider = new DonacionesProvider();
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
-  int total1 = 0;
-  int totalA = 0;
   @override
   void initState() {
     // _selection = _items.last;
@@ -32,7 +29,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Donaciones registradas'),
+        title: Text('Donaciones salientes registradas'),
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
@@ -74,7 +71,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
               Divider(),
               _verListado(),
               Divider(),
-              // _mostrarTotal()
+              //_mostrarTotal()
             ],
           ),
         ),
@@ -116,7 +113,6 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
             onChanged: (s) {
               setState(() {
                 _selection = s;
-                showCitas();
                 // horarios.dia = s!;
               });
             }),
@@ -124,77 +120,28 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     );
   }
 
-  // Widget _verListado() {
-  //   return FutureBuilder(
-  //       future: donacionesProvider.verDonaciones1(_selection.toString()),
-  //       builder: (BuildContext context,
-  //           AsyncSnapshot<List<DonacionesModel>> snapshot) {
-  //         if (snapshot.hasData) {
-  //           final donaciones = snapshot.data;
-  //           return Column(
-  //             children: [
-  //               SizedBox(
-  //                   height: 300,
-  //                   child: ListView.builder(
-  //                       itemCount: donaciones!.length,
-  //                       itemBuilder: (context, i) =>
-  //                           _crearItem(context, donaciones[i]))),
-  //               _mostrarTotal(context),
-  //             ],
-  //           );
-  //         } else {
-  //           return Center(child: CircularProgressIndicator());
-  //         }
-  //       });
-  // }
-
-  // Widget _crearItem(BuildContext context, DonacionesModel donacion) {
-  //   //_mostrarTotal(context);
-  //   return Column(key: UniqueKey(),
-  //       // background: Container(
-  //       //   color: Colors.red,
-  //       // ),
-  //       children: [
-  //         ListTile(
-  //             title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-  //             subtitle: Text('${donacion.descripcion}'),
-  //             onTap: () {
-  //               Navigator.pushNamed(context, 'donacionesInAdd',
-  //                   arguments: donacion);
-  //             }),
-  //         // _mostrarTotal(context),
-  //       ]);
-  //   //return _mostrarTotal(context);
-  // }
-
-  showCitas() async {
-    donacionA.clear();
-    total1 = 0;
-    listaD =
-        await donacionesProvider.cargarDonacionesIn11(_selection.toString());
-    for (var yy in listaD) {
-      DonacionesModel don = await yy;
-
-      setState(() {
-        donacionA.add(don);
-        total1 += don.cantidad;
-      });
-    }
-    print(total1.toString());
-  }
-
   Widget _verListado() {
-    return Column(
-      children: [
-        SizedBox(
-            height: 500,
-            child: ListView.builder(
-                itemCount: donacionA.length,
-                itemBuilder: (context, i) =>
-                    _crearItem(context, donacionA[i]))),
-        //_mostrarTotal(),
-      ],
-    );
+    return FutureBuilder(
+        future: donacionesProvider.verDonacionesOut(_selection.toString()),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<DonacionesModel>> snapshot) {
+          if (snapshot.hasData) {
+            final donaciones = snapshot.data;
+            return Column(
+              children: [
+                SizedBox(
+                    height: 300,
+                    child: ListView.builder(
+                        itemCount: donaciones!.length,
+                        itemBuilder: (context, i) =>
+                            _crearItem(context, donaciones[i]))),
+                // _mostrarTotal(context),
+              ],
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        });
   }
 
   Widget _crearItem(BuildContext context, DonacionesModel donacion) {
@@ -208,27 +155,17 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
               title: Text('${donacion.tipo} - ${donacion.cantidad}'),
               subtitle: Text('${donacion.descripcion}'),
               onTap: () {
-                Navigator.pushNamed(context, 'donacionesInAdd',
+                Navigator.pushReplacementNamed(context, 'verDonacionesOutAdd1',
                     arguments: donacion);
               }),
+          // _mostrarTotal(context),
         ]);
     //return _mostrarTotal(context);
   }
 
-  // Widget _mostrarTotal(BuildContext context) {
-  //   //int total = donacionesProvider.sumarDonaciones1();
-  //   return TextFormField(
-  //     // initialValue: donacionesProvider.sumarDonaciones1().toString(),
-  //     readOnly: true,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Total:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //   );
-  // }
-  Widget _mostrarTotal() {
+  Widget _mostrarTotal(BuildContext context) {
     return TextFormField(
-      initialValue: totalA.toString(),
+      //initialValue: donacionesProvider.sumarDonaciones1().toString(),
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(

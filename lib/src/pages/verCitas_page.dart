@@ -211,17 +211,17 @@ class _VerCitasPageState extends State<VerCitasPage> {
     }
   }
 
-  Widget _buildChild() {
-    _crearFecha(context);
+  // Widget _buildChild() {
+  //   _crearFecha(context);
 
-    if (_fecha == _fecha) {
-      showCitas();
-      return _verListado();
-    } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
-    return Text('');
-  }
+  //   if (_fecha == _fecha) {
+  //     showCitas();
+  //     return _verListado();
+  //   } //else {
+  //   //   if (_selection == 'Otros') {
+  //   //     return _crearDonacion();
+  //   //   }
+  //   // }
+  //   return Text('');
+  // }
 }

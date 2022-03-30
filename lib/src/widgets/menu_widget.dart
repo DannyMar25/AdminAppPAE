@@ -113,7 +113,8 @@ class MenuWidget extends StatelessWidget {
                 ),
                 title: Text('Solicitudes Pendientes'),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, 'enviarMail');
+                  // Navigator.pushReplacementNamed(context, 'enviarMail');
+                  Navigator.pushReplacementNamed(context, 'solicitudes');
                 },
               ),
               ListTile(
@@ -122,7 +123,10 @@ class MenuWidget extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 title: Text('Solicitudes Aprobadas'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, 'solicitudesAprobadas');
+                },
               ),
               ListTile(
                 leading: Icon(
@@ -130,7 +134,10 @@ class MenuWidget extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 title: Text('Solicitudes Rechazadas'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, 'solicitudesRechazadas');
+                },
               ),
             ],
             leading: Icon(
@@ -138,6 +145,38 @@ class MenuWidget extends StatelessWidget {
               color: Colors.blue,
             ),
           ),
+          Divider(),
+          ExpansionTile(
+            title: Text('Seguimiento'),
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.add,
+                  color: Colors.blue,
+                ),
+                title: Text('Adopciones'),
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, 'seguimientoPrincipal');
+                },
+              ),
+              // ListTile(
+              //   leading: Icon(
+              //     Icons.check,
+              //     color: Colors.blue,
+              //   ),
+              //   title: Text('Verificar seguiemiento'),
+              //   onTap: () {
+              //     Navigator.pushReplacementNamed(context, 'seguimientoP2');
+              //   },
+              // ),
+            ],
+            leading: Icon(
+              Icons.assignment,
+              color: Colors.blue,
+            ),
+          ),
+
           Divider(),
           ExpansionTile(
             title: Text('Donaciones'),
@@ -178,7 +217,10 @@ class MenuWidget extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 title: Text('Ver donaciones salientes'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, 'verDonacionesOutAdd');
+                },
               ),
             ],
             leading: Icon(

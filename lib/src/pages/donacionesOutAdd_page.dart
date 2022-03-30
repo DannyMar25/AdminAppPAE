@@ -3,17 +3,19 @@ import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
+//import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
+import 'package:number_inc_dec/number_inc_dec.dart';
 
-class IngresoDonacionesOutPage extends StatefulWidget {
-  IngresoDonacionesOutPage({Key? key}) : super(key: key);
+class IngresoDonacionesOutAddPage extends StatefulWidget {
+  IngresoDonacionesOutAddPage({Key? key}) : super(key: key);
 
   @override
-  _IngresoDonacionesOutPageState createState() =>
-      _IngresoDonacionesOutPageState();
+  _IngresoDonacionesOutAddPageState createState() =>
+      _IngresoDonacionesOutAddPageState();
 }
 
-class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
+class _IngresoDonacionesOutAddPageState
+    extends State<IngresoDonacionesOutAddPage> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final donacionesProvider = new DonacionesProvider();
@@ -22,6 +24,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
   String? _selection;
+  TextEditingController cantidadOut = new TextEditingController();
   @override
   void initState() {
     // _selection = _items.last;
@@ -38,7 +41,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de donaciones salientes'),
+        title: Text('Anadir donacion saliente'),
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
@@ -83,7 +86,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones Out',
+                        'Donaciones',
                         style: TextStyle(
                           fontSize: 33,
                           foreground: Paint()
@@ -93,15 +96,19 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
+                      Divider(),
 
                       Divider(),
                       _crearTipoDonacion(),
                       Divider(),
-                      _verListado(),
+                      _crearUnidades(),
                       Divider(),
-                      //_crearDescripcion(),
-                      // Divider(),
-                      //_crearBoton(),
+                      _crearCantidadDonar(),
+                      //_buildChild(),
+                      Divider(),
+                      _crearDescripcion(),
+                      Divider(),
+                      _crearBoton(),
                       // _crearCantidad(),
                     ],
                   )),
@@ -125,39 +132,57 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   }
 
   Widget _crearTipoDonacion() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
-      children: [
-        Text(
-          'Seleccione el tipo de donacion:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
-        ),
-        DropdownButton<String>(
-          hint: Text(donaciones.tipo.toString()),
-          value: _selection,
-          items: dropdownMenuOptions,
-          onChanged: (s) {
-            setState(() {
-              _selection = s;
-
-              //donaciones.tipo = s!;
-              //animal.tamanio = s!;
-            });
-          },
-        ),
-      ],
+    return TextFormField(
+      initialValue: donaciones.tipo,
+      readOnly: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          labelText: 'Tipo de Donacion:',
+          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      onChanged: (s) {
+        s = donaciones.tipo;
+        setState(() {
+          donaciones.tipo = s;
+        });
+      },
     );
   }
+
+  // Widget _buildChild() {
+  //   if (_selection == 'Alimento') {
+  //     return _crearPeso();
+  //   } //else {
+  //   //   if (_selection == 'Otros') {
+  //   //     return _crearDonacion();
+  //   //   }
+  //   // }
+  //   return Text('');
+  // }
+
+  // Widget _crearPeso() {
+  //   //if (_selection == 'Alimento') {
+  //   return TextFormField(
+  //     initialValue: donaciones.peso.toString(),
+  //     readOnly: true,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     keyboardType: TextInputType.numberWithOptions(decimal: true),
+  //     decoration: InputDecoration(
+  //       labelText: 'Peso (Kg.):',
+  //       labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+  //     ),
+  //     onChanged: (s) {
+  //       setState(() {
+  //         donaciones.peso = double.parse(s);
+  //       });
+  //     },
+  //   );
+  //   //}
+  // }
 
   Widget _crearDescripcion() {
     return TextFormField(
       initialValue: donaciones.descripcion,
+      readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           labelText: 'Descripcion:',
@@ -167,14 +192,32 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
           donaciones.descripcion = s;
         });
       },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
+    );
+  }
+
+  Widget _crearUnidades() {
+    return TextFormField(
+      initialValue: donaciones.cantidad.toString(),
+      readOnly: true,
+      textCapitalization: TextCapitalization.sentences,
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      decoration: InputDecoration(
+          labelText: 'Cantidad:',
+          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      onChanged: (s) {
+        setState(() {
+          //donaciones.cantidad = int.parse(s);
+        });
+      },
+    );
+  }
+
+  Widget _crearCantidadDonar() {
+    return NumberInputPrefabbed.squaredButtons(
+      controller: cantidadOut,
+      min: 1,
+      max: donaciones.cantidad,
+      //onChanged: ,
     );
   }
 
@@ -197,47 +240,41 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   }
 
   void _submit() async {
-    if (donaciones.id == "") {
+    print(int.tryParse(cantidadOut.text));
+    int? cantidadAdd = int.tryParse(cantidadOut.text);
+    //   if (donaciones.id == "") {
+    //     donaciones.estadoDonacion = 'Saliente';
+    //     donacionesProvider.crearDonacion(donaciones);
+    //   } else {
+    //     donaciones.estadoDonacion = 'Saliente';
+    //     donacionesProvider.editarDonacion(donaciones);
+    //   }
+    //   //mostrarSnackbar('Registro guardado');
+    //   Navigator.pushNamed(context, 'verDonacionesInAdd');
+    // }
+
+    if (donaciones.cantidad == 1) {
+      donaciones.estadoDonacion = 'Saliente';
+      donaciones.cantidad = cantidadAdd!;
       donacionesProvider.crearDonacion(donaciones);
-    } else {
-      donacionesProvider.editarDonacion(donaciones);
+      donacionesProvider.borrarDonacion(donaciones.id);
+      Navigator.pushNamed(context, 'verDonacionesOutAdd');
     }
-    //mostrarSnackbar('Registro guardado');
-    //Navigator.pushNamed(context, 'verDonacionesOutAdd');
-  }
+    if (donaciones.cantidad == int.tryParse(cantidadOut.text)) {
+      donaciones.estadoDonacion = 'Saliente';
+      donaciones.cantidad = int.tryParse(cantidadOut.text)!;
+      donacionesProvider.crearDonacion(donaciones);
+      donacionesProvider.borrarDonacion(donaciones.id);
+      Navigator.pushNamed(context, 'verDonacionesOutAdd');
+    } else {
+      int cantidadAdd1 = donaciones.cantidad - int.tryParse(cantidadOut.text)!;
+      donaciones.estadoDonacion = 'Saliente';
+      donaciones.cantidad = int.tryParse(cantidadOut.text)!;
+      donacionesProvider.editarCantidad(donaciones, cantidadAdd1);
+      donacionesProvider.crearDonacion(donaciones);
+      Navigator.pushNamed(context, 'verDonacionesOutAdd');
 
-  Widget _verListado() {
-    return FutureBuilder(
-        future: donacionesProvider.cargarDonaciones(_selection.toString()),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<DonacionesModel>> snapshot) {
-          if (snapshot.hasData) {
-            final donaciones = snapshot.data;
-            return SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  itemCount: donaciones!.length,
-                  itemBuilder: (context, i) =>
-                      _crearItem(context, donaciones[i]),
-                ));
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        });
-  }
-
-  Widget _crearItem(BuildContext context, DonacionesModel donacion) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      child: ListTile(
-        title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-        subtitle: Text('${donacion.descripcion}'),
-        onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
-            arguments: donacion),
-      ),
-    );
+      //donacionesProvider.eliminar(donaciones.id);
+    }
   }
 }

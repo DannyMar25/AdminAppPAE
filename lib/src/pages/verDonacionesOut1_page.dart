@@ -5,15 +5,14 @@ import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
 
-class IngresoDonacionesOutPage extends StatefulWidget {
-  IngresoDonacionesOutPage({Key? key}) : super(key: key);
+class VerDonacionesOut1Page extends StatefulWidget {
+  VerDonacionesOut1Page({Key? key}) : super(key: key);
 
   @override
-  _IngresoDonacionesOutPageState createState() =>
-      _IngresoDonacionesOutPageState();
+  _VerDonacionesOut1PageState createState() => _VerDonacionesOut1PageState();
 }
 
-class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
+class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
   final donacionesProvider = new DonacionesProvider();
@@ -38,7 +37,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de donaciones salientes'),
+        title: Text('Registro de donaciones'),
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
@@ -83,7 +82,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones Out',
+                        'Donaciones',
                         style: TextStyle(
                           fontSize: 33,
                           foreground: Paint()
@@ -93,14 +92,17 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
+                      Divider(),
 
                       Divider(),
                       _crearTipoDonacion(),
                       Divider(),
-                      _verListado(),
+                      _crearUnidades(),
                       Divider(),
-                      //_crearDescripcion(),
-                      // Divider(),
+                      _buildChild(),
+                      Divider(),
+                      _crearDescripcion(),
+                      Divider(),
                       //_crearBoton(),
                       // _crearCantidad(),
                     ],
@@ -125,34 +127,40 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   }
 
   Widget _crearTipoDonacion() {
-    final dropdownMenuOptions = _items
-        .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(value: item, child: new Text(item)))
-        .toList();
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
-      children: [
-        Text(
-          'Seleccione el tipo de donacion:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
-        ),
-        DropdownButton<String>(
-          hint: Text(donaciones.tipo.toString()),
-          value: _selection,
-          items: dropdownMenuOptions,
-          onChanged: (s) {
-            setState(() {
-              _selection = s;
-
-              //donaciones.tipo = s!;
-              //animal.tamanio = s!;
-            });
-          },
-        ),
-      ],
+    return TextFormField(
+      initialValue: donaciones.tipo,
+      readOnly: true,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+          labelText: 'Tipo de Donacion:',
+          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
     );
+  }
+
+  Widget _buildChild() {
+    if (donaciones.tipo == 'Alimento') {
+      return _crearPeso();
+    } //else {
+    //   if (_selection == 'Otros') {
+    //     return _crearDonacion();
+    //   }
+    // }
+    return Text('');
+  }
+
+  Widget _crearPeso() {
+    //if (_selection == 'Alimento') {
+    return TextFormField(
+      initialValue: donaciones.peso.toString(),
+      readOnly: true,
+      textCapitalization: TextCapitalization.sentences,
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      decoration: InputDecoration(
+        labelText: 'Ingrese Peso (Kg.):',
+        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+      ),
+    );
+    //}
   }
 
   Widget _crearDescripcion() {
@@ -178,6 +186,23 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
     );
   }
 
+  Widget _crearUnidades() {
+    return TextFormField(
+      initialValue: donaciones.cantidad.toString(),
+      //readOnly: false,
+      textCapitalization: TextCapitalization.sentences,
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      decoration: InputDecoration(
+          labelText: 'Ingrese la cantidad:',
+          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      onChanged: (s) {
+        setState(() {
+          donaciones.cantidad = int.parse(s);
+        });
+      },
+    );
+  }
+
   Widget _crearBoton() {
     return ElevatedButton.icon(
       style: ButtonStyle(
@@ -198,46 +223,13 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
 
   void _submit() async {
     if (donaciones.id == "") {
+      donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.crearDonacion(donaciones);
     } else {
+      donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.editarDonacion(donaciones);
     }
     //mostrarSnackbar('Registro guardado');
-    //Navigator.pushNamed(context, 'verDonacionesOutAdd');
-  }
-
-  Widget _verListado() {
-    return FutureBuilder(
-        future: donacionesProvider.cargarDonaciones(_selection.toString()),
-        builder: (BuildContext context,
-            AsyncSnapshot<List<DonacionesModel>> snapshot) {
-          if (snapshot.hasData) {
-            final donaciones = snapshot.data;
-            return SizedBox(
-                height: 300,
-                child: ListView.builder(
-                  itemCount: donaciones!.length,
-                  itemBuilder: (context, i) =>
-                      _crearItem(context, donaciones[i]),
-                ));
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        });
-  }
-
-  Widget _crearItem(BuildContext context, DonacionesModel donacion) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      child: ListTile(
-        title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-        subtitle: Text('${donacion.descripcion}'),
-        onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
-            arguments: donacion),
-      ),
-    );
+    Navigator.pushNamed(context, 'verDonacionesInAdd');
   }
 }

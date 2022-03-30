@@ -46,6 +46,14 @@ dependencies:
   flutter_email_sender: ^5.0.2
   url_launcher: ^6.0.15
   mailer: ^5.0.2
+  number_inc_dec: ^0.8.0
+  photo_view: ^0.13.0
+  syncfusion_flutter_pdfviewer: ^19.4.56-beta
+  syncfusion_flutter_pdf: ^19.4.56-beta
+  pdf: ^3.7.3
+  path_provider: ^2.0.9
+  open_file: ^3.2.1
+
   
  
 

@@ -34,7 +34,10 @@ class DonacionesProvider {
 
   Future<List<DonacionesModel>> cargarDonaciones(String tipo) async {
     final List<DonacionesModel> donaciones = <DonacionesModel>[];
-    var documents = await refDon.where('tipo', isEqualTo: tipo).get();
+    var documents = await refDon
+        .where('tipo', isEqualTo: tipo)
+        .where('estadoDonacion', isEqualTo: 'Entrante')
+        .get();
     donaciones.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
@@ -83,8 +86,78 @@ class DonacionesProvider {
     return donaciones;
   }
 
-  int sumarDonaciones1() {
+  Future<List<Future<DonacionesModel>>> cargarDonacionesIn11(
+      String tipo) async {
+    final List<DonacionesModel> donaciones = <DonacionesModel>[];
+    var documents = await refDon
+        .where('estadoDonacion', isEqualTo: 'Entrante')
+        .where('tipo', isEqualTo: tipo)
+        .get();
+    //citas.addAll
+    var s = (documents.docs.map((e) async {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var donacion = DonacionesModel.fromJson({
+        "id": e.id,
+        "tipo": data["tipo"],
+        "cantidad": data["cantidad"],
+        "peso": data["peso"],
+        "descripcion": data["descripcion"],
+        "estadoDonacion": data["estadoDonacion"],
+      });
+      return donacion;
+    }));
+    return s.toList();
+  }
+
+  Future<List<DonacionesModel>> verDonacionesOut(String tipo) async {
+    donaciones.clear();
+    total1 = 0;
+    totalA = '';
+    //totalA = 0;
+    var documents = await refDon
+        .where('estadoDonacion', isEqualTo: 'Saliente')
+        .where('tipo', isEqualTo: tipo)
+        .get();
+    donaciones.addAll(documents.docs.map((e) {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var donacion = DonacionesModel.fromJson({
+        "id": e.id,
+        "tipo": data["tipo"],
+        "cantidad": data["cantidad"],
+        "peso": data["peso"],
+        "descripcion": data["descripcion"],
+        "estadoDonacion": data["estadoDonacion"],
+      });
+      return donacion;
+    }).toList());
+
+    for (var documents in donaciones) {
+      total1 += documents.cantidad;
+    }
+    print(total1);
+    return donaciones;
+  }
+
+  int sumarDonaciones1(int total) {
     //print(total1);
-    return total1;
+    return total;
+  }
+
+  Future<int> borrarDonacion(String id) async {
+    await refDon.doc(id).delete();
+
+    return 1;
+  }
+
+  Future<bool> editarCantidad(DonacionesModel donacion, int cantidad) async {
+    try {
+      //String estado = "Atendido";
+      await refDon.doc(donacion.id).update({"cantidad": cantidad});
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
