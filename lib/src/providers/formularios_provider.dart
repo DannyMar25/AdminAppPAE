@@ -284,6 +284,7 @@ class FormulariosProvider {
         "fechaRespuesta": e["fechaRespuesta"],
         "nombreClient": e["nombreClient"],
         "identificacion": e["identificacion"],
+        "emailClient": e["emailClient"],
         "estado": e["estado"],
         "observacion": e["observacion"],
         "idDatosPersonales": e["idDatosPersonales"],
