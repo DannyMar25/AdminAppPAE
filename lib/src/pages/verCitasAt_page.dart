@@ -32,6 +32,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Citas Atendidas'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

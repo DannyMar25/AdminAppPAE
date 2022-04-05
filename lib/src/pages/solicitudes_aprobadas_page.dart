@@ -38,6 +38,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('SOLICITUDES'),
+        backgroundColor: Colors.green,
       ),
       drawer: MenuWidget(),
       body: SingleChildScrollView(
@@ -45,6 +46,8 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/fondoanimales.jpg"),
+              // colorFilter: new ColorFilter.mode(
+              //   Colors.black.withOpacity(0.9), BlendMode.dstATop),
               fit: BoxFit.cover,
             ),
           ),

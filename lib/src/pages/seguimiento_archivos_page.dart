@@ -35,6 +35,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Evidencias'),
+          backgroundColor: Colors.green,
         ),
         drawer: _menuWidget(),
         body: Stack(

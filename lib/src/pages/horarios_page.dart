@@ -53,6 +53,7 @@ class _HorariosPageState extends State<HorariosPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Creacion de horarios de visita"),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

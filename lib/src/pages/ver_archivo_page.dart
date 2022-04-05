@@ -29,6 +29,7 @@ class _VerArchivoEvidenciaPageState extends State<VerArchivoEvidenciaPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Archivo"),
+        backgroundColor: Colors.green,
         actions: <Widget>[
           IconButton(
             icon: const Icon(

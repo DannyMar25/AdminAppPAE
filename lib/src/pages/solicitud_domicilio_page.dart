@@ -52,6 +52,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Solicitudes'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

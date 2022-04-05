@@ -52,6 +52,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registro de citas'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

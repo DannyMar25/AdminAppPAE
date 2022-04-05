@@ -32,6 +32,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Datos de la cita"),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

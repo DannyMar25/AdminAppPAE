@@ -42,6 +42,7 @@ class _IngresoDonacionesOutAddPageState
     return Scaffold(
       appBar: AppBar(
         title: Text('Anadir donacion saliente'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

@@ -28,6 +28,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Horarios agregados'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

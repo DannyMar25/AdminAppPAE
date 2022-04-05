@@ -38,6 +38,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('LISTA DE ADOPCIONES'),
+        backgroundColor: Colors.green,
       ),
       drawer: MenuWidget(),
       body: SingleChildScrollView(

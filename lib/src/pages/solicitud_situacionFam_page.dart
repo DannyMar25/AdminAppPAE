@@ -57,6 +57,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Solicitudes'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

@@ -28,6 +28,7 @@ class BienvenidaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pagina principal'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

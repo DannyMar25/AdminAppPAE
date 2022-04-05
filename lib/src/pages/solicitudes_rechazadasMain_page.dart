@@ -36,6 +36,7 @@ class _SolicitudRechazadaMainPageState
     return Scaffold(
         appBar: AppBar(
           title: Text('Datos de mascota y adoptante rechazado'),
+          backgroundColor: Colors.green,
         ),
         drawer: MenuWidget(),
         body: Stack(

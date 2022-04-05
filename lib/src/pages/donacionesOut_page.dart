@@ -39,6 +39,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Registro de donaciones salientes'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

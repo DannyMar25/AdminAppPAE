@@ -35,6 +35,9 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     relacionAn = arg['relacionAn'] as RelacionAnimalesModel;
     formularios = arg['formulario'] as FormulariosModel;
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+        ),
         body: Center(
             child:
                 TextButton(onPressed: _createPDF, child: Text('Crear PDF'))));
@@ -52,8 +55,8 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     PdfPage page2 = document.pages.add();
 
 //Draw image on the page in the specified location and with required size
-    page.graphics.drawImage(PdfBitmap(await _readImageData('logo-pae.png')),
-        Rect.fromLTWH(150, 30, 200, 100));
+    page.graphics.drawImage(PdfBitmap(await _readImageData('pet-care.png')),
+        Rect.fromLTWH(180, 15, 120, 100));
 
 //Load the paragraph text into PdfTextElement with standard font
     PdfTextElement textElement = PdfTextElement(

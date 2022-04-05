@@ -38,6 +38,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('SOLICITUDES'),
+        backgroundColor: Colors.green,
       ),
       drawer: MenuWidget(),
       body: SingleChildScrollView(

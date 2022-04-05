@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mascotas Registradas'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
@@ -61,6 +62,7 @@ class HomePage extends StatelessWidget {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

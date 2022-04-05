@@ -35,6 +35,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Datos de mascota adoptada'),
+          backgroundColor: Colors.green,
         ),
         drawer: MenuWidget(),
         body: Stack(

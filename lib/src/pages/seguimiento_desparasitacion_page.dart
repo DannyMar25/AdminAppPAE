@@ -32,6 +32,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Registros de desparasitacion'),
+          backgroundColor: Colors.green,
         ),
         drawer: _menuWidget(),
         body: Stack(
@@ -47,7 +48,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Registro de vacunas',
+                              'Registro de desparasitacion',
                               style: TextStyle(
                                 fontSize: 28,
                                 foreground: Paint()

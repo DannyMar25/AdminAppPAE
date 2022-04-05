@@ -34,6 +34,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Solicitudes'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),

@@ -47,6 +47,7 @@ class _AnimalPageState extends State<AnimalPage> {
       key: scaffoldKey,
       appBar: AppBar(
         title: Text('Animal'),
+        backgroundColor: Colors.green,
         actions: [
           IconButton(
             icon: Icon(Icons.photo_size_select_actual),

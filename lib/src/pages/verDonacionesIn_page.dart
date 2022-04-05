@@ -33,6 +33,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Donaciones registradas'),
+        backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
