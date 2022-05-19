@@ -21,6 +21,8 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   final horariosProvider = new HorariosProvider();
   final animalesProvider = new AnimalesProvider();
   final userProvider = new UsuarioProvider();
+  String _fecha = '';
+  TextEditingController _inputFieldDateController = new TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -73,6 +75,8 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
             key: formKey,
             child: Column(
               children: [
+                _crearFecha(context),
+                Divider(),
                 _verListado(),
                 // _crearBoton(),
               ],
@@ -96,7 +100,8 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   }
 
   showCitas() async {
-    listaC = await citasProvider.cargarCitasAtendidas();
+    listaC = await citasProvider
+        .cargarCitasAtendidas(_inputFieldDateController.text);
     for (var yy in listaC) {
       CitasModel cit = await yy;
       setState(() {
@@ -122,20 +127,75 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   Widget _crearItem(BuildContext context, CitasModel cita) {
     String fecha = cita.horario!.dia;
     String hora = cita.horario!.hora;
-
-    return ListTile(
-      title: Column(
-        children: [
-          Divider(color: Colors.purple),
-          Text("Nombre del cliente: " + '${cita.nombreClient}'),
-          // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-          Text("Fecha de la cita: " + fecha),
-          Text("Hora de la cita: " + hora),
-          Divider(color: Colors.purple)
-        ],
-      ),
-      //subtitle: Text('${horario}'),
-      //onTap: () => Navigator.pushNamed(context, 'verCitasR', arguments: cita),
+    return Card(
+      color: Colors.lightGreen[200],
+      shadowColor: Colors.green,
+      child: Column(key: UniqueKey(),
+          // background: Container(
+          //   color: Colors.red,
+          // ),
+          children: [
+            ListTile(
+              title: Column(
+                children: [
+                  Text("Nombre del cliente: " + '${cita.nombreClient}'),
+                  // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
+                  Text("Fecha de la cita: " + fecha + ' - ' + cita.fechaCita),
+                  Text("Hora de la cita: " + hora),
+                ],
+              ),
+              //subtitle: Text('${horario}'),
+              //onTap: () => Navigator.pushNamed(context, 'verCitasR', arguments: cita),
+            )
+          ]),
     );
+  }
+
+  Widget _crearFecha(BuildContext context) {
+    return TextFormField(
+        controller: _inputFieldDateController,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          //counter: Text('Letras ${_nombre.length}'),
+          //hintText: 'Ingrese fecha de agendamiento de cita',
+          labelText: 'Fecha de la cita',
+          //helperText: 'Solo es el nombre',
+          suffixIcon: Icon(Icons.perm_contact_calendar, color: Colors.green),
+          icon: Icon(
+            Icons.calendar_today,
+            color: Colors.green,
+          ),
+        ),
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+          setState(() {
+            _selectDate(context);
+          });
+        });
+  }
+
+  _selectDate(BuildContext context) async {
+    DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(2020),
+      lastDate: new DateTime(2025),
+      locale: Locale('es', 'ES'),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.year.toString() +
+            '-' +
+            picked.month.toString() +
+            '-' +
+            picked.day.toString();
+        //_fechaCompleta = picked.toString();
+
+        //_fecha = DateFormat('EEEE').format(picked);
+        _inputFieldDateController.text = _fecha;
+        showCitas();
+      });
+    }
   }
 }

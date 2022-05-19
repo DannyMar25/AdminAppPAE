@@ -3,6 +3,7 @@ import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
+import 'package:flutter/scheduler.dart';
 
 class RegistroPage extends StatelessWidget {
   //const RegistroPage({Key? key}) : super(key: key);
@@ -75,7 +76,10 @@ class RegistroPage extends StatelessWidget {
           //Text('Olvido la contrasena?'),
           TextButton(
             onPressed: () => Navigator.pushNamed(context, 'home'),
-            child: Text('Cancelar registro.'),
+            child: Text(
+              'Cancelar registro.',
+              style: TextStyle(color: Colors.green, fontSize: 20),
+            ),
           ),
           SizedBox(
             height: 100.0,
@@ -94,7 +98,7 @@ class RegistroPage extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email, color: Colors.deepPurple),
+              icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
               labelText: 'Correo electronico',
               counterText: snapshot.data,
@@ -117,7 +121,7 @@ class RegistroPage extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email, color: Colors.deepPurple),
+              icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'dany',
               labelText: 'Nombre de usuario:',
               counterText: snapshot.data,
@@ -160,7 +164,7 @@ class RegistroPage extends StatelessWidget {
             obscureText: true,
             //keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline, color: Colors.deepPurple),
+              icon: Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
               labelText: 'Contrasena',
               counterText: snapshot.data,
@@ -190,7 +194,7 @@ class RegistroPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           elevation: 0.0,
-          color: Colors.deepPurple,
+          color: Colors.green,
           textColor: Colors.white,
           onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
         );
@@ -211,6 +215,7 @@ class RegistroPage extends StatelessWidget {
     //     bloc.email, bloc.password, bloc.name);
 
     if (info['ok']) {
+      print(bloc.name);
       Navigator.pushReplacementNamed(context, 'bienvenida');
     } else {
       mostrarAlerta(context, info['mensaje']);
@@ -226,8 +231,8 @@ class RegistroPage extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: <Color>[
-          Color.fromRGBO(63, 63, 156, 1.0),
-          Color.fromRGBO(90, 70, 178, 1.0),
+          Color.fromARGB(255, 22, 182, 62),
+          Color.fromARGB(255, 25, 184, 64),
         ]),
       ),
     );

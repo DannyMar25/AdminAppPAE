@@ -122,7 +122,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
       //onSaved: (value) => animal.nombre = value!,
@@ -139,7 +139,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
           labelText: 'Telefono',
           icon: Icon(
             Icons.call,
-            color: Colors.purple,
+            color: Colors.green,
           )),
       //onSaved: (value) => animal.nombre = value!,
       //},
@@ -155,7 +155,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
           labelText: 'Nombre',
           icon: Icon(
             Icons.pets,
-            color: Colors.purple,
+            color: Colors.green,
           )),
       //onSaved: (value) => animal.nombre = value!,
       //},
@@ -202,7 +202,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-            return Colors.deepPurple;
+            return Colors.green;
           }),
         ),
         label: Text('Guardar'),

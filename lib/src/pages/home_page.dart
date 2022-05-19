@@ -130,7 +130,7 @@ class HomePage extends StatelessWidget {
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
       child: Icon(Icons.add),
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.green,
       onPressed: () => Navigator.pushNamed(context, 'animal'),
     );
   }

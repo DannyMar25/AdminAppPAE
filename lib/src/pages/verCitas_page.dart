@@ -35,7 +35,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Citas agendadas'),
+        title: Text('Citas pendientes'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -140,30 +140,29 @@ class _VerCitasPageState extends State<VerCitasPage> {
     //     "-" +
     //     fecha1.day.toString();
     String hora = cita.horario!.hora;
-
-    return ListTile(
-      title: Column(
-        children: [
-          Divider(color: Colors.purple),
-          Text("Fecha:" + '${cita.fechaCita}'),
-          Text("Nombre del cliente: " + '${cita.nombreClient}'),
-          // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-          Text("Dia de la cita: " + fecha),
-          Text("Hora de la cita: " + hora),
-
-          Divider(color: Colors.purple)
-          // IconButton(
-          //     onPressed: () async {
-          //       HorariosModel h1 = new HorariosModel();
-          //       h1 = await horariosProvider.cargarHorarioId(cita.idHorario);
-          //       print("Datos de horario");
-          //       print(h1.dia + h1.hora);
-          //     },
-          //     icon: Icon(Icons.access_alarm))
-        ],
-      ),
-      //subtitle: Text('${horario}'),
-      onTap: () => Navigator.pushNamed(context, 'verCitasR', arguments: cita),
+    return Card(
+      color: Colors.lightGreen[200],
+      shadowColor: Colors.green,
+      child: Column(key: UniqueKey(),
+          // background: Container(
+          //   color: Colors.red,
+          // ),
+          children: [
+            ListTile(
+              title: Column(
+                children: [
+                  Text("Fecha:" + '${cita.fechaCita}'),
+                  Text("Nombre del cliente: " + '${cita.nombreClient}'),
+                  // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
+                  Text("Dia de la cita: " + fecha),
+                  Text("Hora de la cita: " + hora),
+                ],
+              ),
+              //subtitle: Text('${horario}'),
+              onTap: () =>
+                  Navigator.pushNamed(context, 'verCitasR', arguments: cita),
+            )
+          ]),
     );
   }
 
@@ -176,8 +175,11 @@ class _VerCitasPageState extends State<VerCitasPage> {
           //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
-          suffixIcon: Icon(Icons.perm_contact_calendar),
-          icon: Icon(Icons.calendar_today),
+          suffixIcon: Icon(Icons.perm_contact_calendar, color: Colors.green),
+          icon: Icon(
+            Icons.calendar_today,
+            color: Colors.green,
+          ),
         ),
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
@@ -211,18 +213,4 @@ class _VerCitasPageState extends State<VerCitasPage> {
       });
     }
   }
-
-  // Widget _buildChild() {
-  //   _crearFecha(context);
-
-  //   if (_fecha == _fecha) {
-  //     showCitas();
-  //     return _verListado();
-  //   } //else {
-  //   //   if (_selection == 'Otros') {
-  //   //     return _crearDonacion();
-  //   //   }
-  //   // }
-  //   return Text('');
-  // }
 }

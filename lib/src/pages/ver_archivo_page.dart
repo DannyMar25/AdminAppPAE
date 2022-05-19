@@ -31,16 +31,16 @@ class _VerArchivoEvidenciaPageState extends State<VerArchivoEvidenciaPage> {
         title: const Text("Archivo"),
         backgroundColor: Colors.green,
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.bookmark,
-              color: Colors.white,
-              semanticLabel: 'Bookmark',
-            ),
-            onPressed: () {
-              _pdfViewerKey.currentState?.openBookmarkView();
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(
+          //     Icons.bookmark,
+          //     color: Colors.white,
+          //     semanticLabel: 'Bookmark',
+          //   ),
+          //   onPressed: () {
+          //     _pdfViewerKey.currentState?.openBookmarkView();
+          //   },
+          // ),
         ],
       ),
       body: SfPdfViewer.network(

@@ -111,4 +111,10 @@ class HorariosProvider {
       return false;
     }
   }
+
+  Future<int> borrarHorario(String id) async {
+    await refAn.doc(id).delete();
+
+    return 1;
+  }
 }

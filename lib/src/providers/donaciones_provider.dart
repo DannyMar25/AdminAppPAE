@@ -48,6 +48,8 @@ class DonacionesProvider {
         "peso": data["peso"],
         "descripcion": data["descripcion"],
         "estadoDonacion": data["estadoDonacion"],
+        "disponibilidad": data["disponibilidad"],
+        "fechaIngreso": data["fechaIngreso"],
       });
       return donacion;
     }).toList());
@@ -73,6 +75,8 @@ class DonacionesProvider {
         "peso": data["peso"],
         "descripcion": data["descripcion"],
         "estadoDonacion": data["estadoDonacion"],
+        "disponibilidad": data["disponibilidad"],
+        "fechaIngreso": data["fechaIngreso"],
       });
       return donacion;
     }).toList());
@@ -104,6 +108,8 @@ class DonacionesProvider {
         "peso": data["peso"],
         "descripcion": data["descripcion"],
         "estadoDonacion": data["estadoDonacion"],
+        "disponibilidad": data["disponibilidad"],
+        "fechaIngreso": data["fechaIngreso"],
       });
       return donacion;
     }));
@@ -129,6 +135,8 @@ class DonacionesProvider {
         "peso": data["peso"],
         "descripcion": data["descripcion"],
         "estadoDonacion": data["estadoDonacion"],
+        "disponibilidad": data["disponibilidad"],
+        "fechaIngreso": data["fechaIngreso"],
       });
       return donacion;
     }).toList());
@@ -155,6 +163,17 @@ class DonacionesProvider {
     try {
       //String estado = "Atendido";
       await refDon.doc(donacion.id).update({"cantidad": cantidad});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> editarDisponibilidad(
+      DonacionesModel donacion, String disponibilidad) async {
+    try {
+      //String disp = "";
+      await refDon.doc(donacion.id).update({"disponibilidad": disponibilidad});
       return true;
     } catch (e) {
       return false;

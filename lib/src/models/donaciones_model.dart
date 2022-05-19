@@ -10,6 +10,8 @@ DonacionesModel donacionesModelFromJson(String str) =>
 String donacionesModelToJson(DonacionesModel data) =>
     json.encode(data.toJson());
 
+//Se aumento los campos disponibilidad y fecha de ingreso
+
 class DonacionesModel {
   DonacionesModel({
     this.id = '',
@@ -18,6 +20,8 @@ class DonacionesModel {
     this.peso = 0.0,
     this.descripcion = '',
     this.estadoDonacion = '',
+    this.disponibilidad = '',
+    this.fechaIngreso = '',
   });
 
   String id;
@@ -26,6 +30,8 @@ class DonacionesModel {
   double peso;
   String descripcion;
   String estadoDonacion;
+  String disponibilidad;
+  String fechaIngreso;
 
   factory DonacionesModel.fromJson(Map<String, dynamic> json) =>
       DonacionesModel(
@@ -35,6 +41,8 @@ class DonacionesModel {
         peso: json["peso"].toDouble(),
         descripcion: json["descripcion"],
         estadoDonacion: json["estadoDonacion"],
+        disponibilidad: json["disponibilidad"],
+        fechaIngreso: json["fechaIngreso"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,5 +52,7 @@ class DonacionesModel {
         "peso": peso,
         "descripcion": descripcion,
         "estadoDonacion": estadoDonacion,
+        "disponibilidad": disponibilidad,
+        "fechaIngreso": fechaIngreso,
       };
 }

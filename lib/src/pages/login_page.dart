@@ -66,7 +66,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
           ),
-          Text('Olvido la contrasena?'),
+          //Text('Olvido la contrasena?'),
           _crearBotonPass(context),
           // TextButton(
           //   onPressed: () => Navigator.pushNamed(context, 'registro'),
@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email, color: Colors.deepPurple),
+              icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
               labelText: 'Correo electronico',
               counterText: snapshot.data,
@@ -113,7 +113,7 @@ class LoginPage extends StatelessWidget {
             obscureText: true,
             //keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              icon: Icon(Icons.lock_outline, color: Colors.deepPurple),
+              icon: Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
               labelText: 'Contrasena',
               counterText: snapshot.data,
@@ -143,7 +143,7 @@ class LoginPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           elevation: 0.0,
-          color: Colors.deepPurple,
+          color: Colors.green,
           textColor: Colors.white,
           onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
         );
@@ -175,8 +175,8 @@ class LoginPage extends StatelessWidget {
         );
       },
       child: Text(
-        'Forgot Password?',
-        style: TextStyle(color: Colors.grey, fontSize: 12),
+        'Olvido la contraseña?',
+        style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );
   }
@@ -188,8 +188,8 @@ class LoginPage extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: <Color>[
-          Color.fromRGBO(63, 63, 156, 1.0),
-          Color.fromRGBO(90, 70, 178, 1.0),
+          Color.fromARGB(255, 22, 175, 60),
+          Color.fromARGB(255, 30, 184, 63),
         ]),
       ),
     );

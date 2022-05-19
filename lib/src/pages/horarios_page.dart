@@ -52,7 +52,7 @@ class _HorariosPageState extends State<HorariosPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text("Creacion de horarios de visita"),
+        title: Text("Agregar horarios de visita"),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -97,6 +97,8 @@ class _HorariosPageState extends State<HorariosPage> {
               _crearHoraDia(),
               Divider(),
               _crearDisponible(),
+              Divider(),
+              _crearBotonEliminar(),
               Divider(),
               _crearBoton(),
               Divider(),
@@ -178,7 +180,8 @@ class _HorariosPageState extends State<HorariosPage> {
   Widget _crearDisponible() {
     if (horarios.disponible == 'No disponible') {
       _disponible = false;
-    } else {
+    }
+    if (horarios.disponible == 'Disponible') {
       _disponible = true;
     }
     return SwitchListTile(
@@ -187,7 +190,7 @@ class _HorariosPageState extends State<HorariosPage> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
           side: BorderSide(color: Colors.grey)),
-      activeColor: Colors.deepPurple,
+      activeColor: Colors.green,
       onChanged: (bool value) => setState(() {
         _disponible = value;
         if (value == false) {
@@ -204,7 +207,7 @@ class _HorariosPageState extends State<HorariosPage> {
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Guardar'),
@@ -225,5 +228,24 @@ class _HorariosPageState extends State<HorariosPage> {
     }
     //mostrarSnackbar('Registro guardado');
     Navigator.pushNamed(context, 'horariosAdd');
+  }
+
+  Widget _crearBotonEliminar() {
+    return ElevatedButton.icon(
+      style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+          return Colors.green;
+        }),
+      ),
+      label: Text('Eliminar registro'),
+      icon: Icon(Icons.delete),
+      autofocus: true,
+      //onPressed: (_guardando) ? null : _submit,
+      onPressed: () {
+        horariosProvider.borrarHorario(horarios.id);
+        Navigator.pushNamed(context, 'horariosAdd');
+      },
+    );
   }
 }

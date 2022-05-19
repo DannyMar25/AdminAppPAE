@@ -29,6 +29,15 @@ class _AnimalPageState extends State<AnimalPage> {
   String? _selection;
   final List<String> _items1 = ['Macho', 'Hembra'].toList();
   String? _selection1;
+  final List<String> _items2 = [
+    'Cachorro (0 a 6 meses)',
+    'Joven (6 meses a 2 años)',
+    'Adulto (2 a 6 años)',
+    'Anciano (7 a 11 años)',
+    'Geriátrico (mayor a 12 años)'
+  ].toList();
+  String? _selection2;
+  int? edadN;
   @override
   void initState() {
     // _selection = _items.last;
@@ -177,22 +186,28 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   Widget _crearEdad() {
-    return TextFormField(
-      initialValue: animal.edad.toString(),
-      //textCapitalization: TextCapitalization.sentences,
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
-      decoration: InputDecoration(
-        labelText: 'Edad',
-        labelStyle: TextStyle(fontSize: 21, color: Colors.black),
-      ),
-      onSaved: (value) => animal.edad = int.parse(value!),
-      validator: (value) {
-        if (utils.isNumeric(value!)) {
-          return null;
-        } else {
-          return 'Solo numeros';
-        }
-      },
+    final dropdownMenuOptions = _items2
+        .map((String item) =>
+            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
+            new DropdownMenuItem<String>(value: item, child: new Text(item)))
+        .toList();
+    return Row(
+      children: [
+        Text(
+          'Edad: ',
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+        DropdownButton<String>(
+            hint: Text(animal.edad.toString()),
+            value: _selection2,
+            items: dropdownMenuOptions,
+            onChanged: (s) {
+              setState(() {
+                _selection2 = s;
+                animal.edad = s!;
+              });
+            }),
+      ],
     );
   }
 
@@ -318,6 +333,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   Widget _crearCaracteristicas() {
     return TextFormField(
+      maxLines: 6,
       initialValue: animal.caracteristicas,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
@@ -351,7 +367,7 @@ class _AnimalPageState extends State<AnimalPage> {
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Guardar'),

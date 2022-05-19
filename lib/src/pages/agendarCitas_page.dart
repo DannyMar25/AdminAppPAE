@@ -51,7 +51,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de citas'),
+        title: Text('Agendar citas'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -131,8 +131,14 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
-          suffixIcon: Icon(Icons.perm_contact_calendar),
-          icon: Icon(Icons.calendar_today),
+          suffixIcon: Icon(
+            Icons.perm_contact_calendar,
+            color: Colors.green,
+          ),
+          icon: Icon(
+            Icons.calendar_today,
+            color: Colors.green,
+          ),
         ),
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
@@ -285,7 +291,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-            return Colors.deepPurple;
+            return Colors.green;
           }),
         ),
         label: Text('Guardar'),

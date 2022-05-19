@@ -304,6 +304,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                 formularios.id, formularios.idRelacionAn);
 
             Navigator.pushNamed(context, 'situacionFam', arguments: {
+              'datosper': datosC,
               'situacionF': situacionF,
               'domicilio': domicilio,
               'relacionAn': relacionA,

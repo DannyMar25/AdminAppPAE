@@ -228,17 +228,31 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   }
 
   Widget _crearItem(BuildContext context, DonacionesModel donacion) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      child: ListTile(
-        title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-        subtitle: Text('${donacion.descripcion}'),
-        onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
-            arguments: donacion),
-      ),
-    );
+    if (donacion.tipo == 'Alimento') {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: ListTile(
+          title:
+              Text('${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+          subtitle: Text(
+              '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+          onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
+              arguments: donacion),
+        ),
+      );
+    } else {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: ListTile(
+          title:
+              Text('${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+          subtitle: Text('${donacion.descripcion}'),
+          onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
+              arguments: donacion),
+        ),
+      );
+    }
   }
 }

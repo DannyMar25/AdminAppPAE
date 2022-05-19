@@ -35,6 +35,7 @@ import 'package:aministrador_app_v1/src/pages/ubicacion_page.dart';
 import 'package:aministrador_app_v1/src/pages/verCitasAt_page.dart';
 import 'package:aministrador_app_v1/src/pages/verCitasR.dart';
 import 'package:aministrador_app_v1/src/pages/verCitas_page.dart';
+import 'package:aministrador_app_v1/src/pages/verDonacionesIn1_page.dart';
 import 'package:aministrador_app_v1/src/pages/verDonacionesIn_page.dart';
 import 'package:aministrador_app_v1/src/pages/verDonacionesOut1_page.dart';
 import 'package:aministrador_app_v1/src/pages/verDonacionesOut_page.dart';
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
             'verCitasAt': (_) => VerCitasAtendidasPage(),
             'donacionesInAdd': (_) => IngresoDonacionesInPage(),
             'verDonacionesInAdd': (_) => VerDonacionesInAddPage(),
+            'verDonacionesIn1': (_) => VerDonacionesIn1Page(),
             ForgotPassword.id: (context) => ForgotPassword(),
             'donacionesOutAdd': (_) => IngresoDonacionesOutPage(),
             //'enviarMail': (_) => EmailSender(),

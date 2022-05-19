@@ -254,10 +254,10 @@ class _InformacionSeguimientoPageState
                   //padding: new EdgeInsets.only(top: 5),
                   backgroundColor: MaterialStateProperty.resolveWith(
                       (Set<MaterialState> states) {
-                    return Colors.deepPurple;
+                    return Colors.green;
                   }),
                 ),
-                label: Text('Ver Registro Vacunas'),
+                label: Text('Ver Vacunas'),
                 icon: Icon(Icons.fact_check),
                 autofocus: true,
                 onPressed: () {
@@ -276,7 +276,7 @@ class _InformacionSeguimientoPageState
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith(
                         (Set<MaterialState> states) {
-                      return Colors.deepPurple;
+                      return Colors.green;
                     }),
                   ),
                   label: Text('Ver Desparasitaciones'),
@@ -300,10 +300,10 @@ class _InformacionSeguimientoPageState
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith(
                       (Set<MaterialState> states) {
-                    return Colors.deepPurple;
+                    return Colors.green;
                   }),
                 ),
-                label: Text('Cargar fotos'),
+                label: Text('Ver Fotos'),
                 icon: Icon(Icons.fact_check),
                 autofocus: true,
                 onPressed: () {
@@ -321,10 +321,10 @@ class _InformacionSeguimientoPageState
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith(
                       (Set<MaterialState> states) {
-                    return Colors.deepPurple;
+                    return Colors.green;
                   }),
                 ),
-                label: Text('Cargar archivos'),
+                label: Text('Ver Archivos'),
                 icon: Icon(Icons.fact_check),
                 autofocus: true,
                 onPressed: () {
@@ -350,8 +350,8 @@ class _InformacionSeguimientoPageState
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/menu-img.jpg'),
-                  fit: BoxFit.cover,
+                  image: AssetImage('assets/pet-care.png'),
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),
@@ -359,9 +359,9 @@ class _InformacionSeguimientoPageState
           ListTile(
             leading: Icon(
               Icons.pages,
-              color: Colors.blue,
+              color: Colors.green,
             ),
-            title: Text('Seguimiento Home'),
+            title: Text('Ir a Seguimiento Principal'),
             onTap: () => Navigator.pushReplacementNamed(
                 context, 'seguimientoInfo', arguments: {
               'datosper': datosA,
@@ -372,7 +372,7 @@ class _InformacionSeguimientoPageState
           ListTile(
             leading: Icon(
               Icons.check,
-              color: Colors.blue,
+              color: Colors.green,
             ),
             title: Text('Ver Registros Vacunas'),
             onTap: () => Navigator.pushReplacementNamed(
@@ -383,7 +383,7 @@ class _InformacionSeguimientoPageState
             }),
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
+            leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Registro Desparasitacion'),
             onTap: () {
               //Navigator.pop(context);
@@ -396,8 +396,8 @@ class _InformacionSeguimientoPageState
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
-            title: Text('Cargar Evidencia Fotos'),
+            leading: Icon(Icons.check, color: Colors.green),
+            title: Text('Ver Fotos'),
             onTap: () {
               Navigator.pushReplacementNamed(context, 'verEvidenciaP1',
                   arguments: {
@@ -408,8 +408,8 @@ class _InformacionSeguimientoPageState
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
-            title: Text('Cargar Evidencia Archivos'),
+            leading: Icon(Icons.check, color: Colors.green),
+            title: Text('Ver Archivos'),
             onTap: () {
               Navigator.pushReplacementNamed(context, 'verEvidenciaP2',
                   arguments: {
@@ -422,9 +422,9 @@ class _InformacionSeguimientoPageState
           ListTile(
             leading: Icon(
               Icons.pages,
-              color: Colors.blue,
+              color: Colors.green,
             ),
-            title: Text('Lista adopciones'),
+            title: Text('Ir a Lista de Adopciones'),
             onTap: () =>
                 Navigator.pushReplacementNamed(context, 'seguimientoPrincipal'),
           ),

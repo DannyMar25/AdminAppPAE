@@ -1,3 +1,4 @@
+import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
@@ -17,6 +18,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   List<FormulariosModel> formularioA = [];
   List<Future<FormulariosModel>> formularioC = [];
   DatosPersonalesModel datosC = new DatosPersonalesModel();
+  AnimalModel animal = new AnimalModel();
   final formKey = GlobalKey<FormState>();
   final formulariosProvider = new FormulariosProvider();
   //final horariosProvider = new HorariosProvider();
@@ -112,23 +114,101 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   Widget _crearItem(BuildContext context, FormulariosModel formulario) {
     //String fecha = cita.horario!.dia;
     //String hora = cita.horario!.hora;
-
     return ListTile(
       title: Column(
         children: [
-          Divider(color: Colors.purple),
-          Text("Fecha de solicitud: " + '${formulario.fechaIngreso}'),
-          Text("Nombre del cliente: " + '${formulario.nombreClient}'),
-          Text("Identificacion: " + '${formulario.identificacion}'),
-          Text("Posible a doptante para: " '${formulario.animal!.nombre}'),
-          //Text("Fecha de la cita: " + fecha),
-          //Text("Hora de la cita: " + hora),
-          Divider(color: Colors.purple)
+          //Divider(color: Colors.purple),
+          Card(
+            child: Container(
+              height: 170,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 0.1),
+                      child: Expanded(
+                        child: Image.asset(
+                          "assets/pet.jpg",
+                          height: 130,
+                        ),
+                        flex: 5,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 20,
+                            child: ListTile(
+                              title: Text("Nombre del cliente: " +
+                                  '${formulario.nombreClient}'),
+                              subtitle: Column(
+                                children: [
+                                  Text("Fecha de solicitud:" +
+                                      '${formulario.fechaIngreso}'),
+
+                                  // Text("Identificacion: " +
+                                  //     '${formulario.identificacion}'),
+                                  Text("Posible adoptante para: " +
+                                      '${formulario.animal!.nombre}'),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 5,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  child: Text("VER INFO"),
+                                  onPressed: () => Navigator.pushNamed(
+                                      context, 'verSolicitudesMain',
+                                      arguments: formulario),
+                                  //
+                                ),
+                                SizedBox(
+                                  width: 5, //8
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    flex: 8,
+                  ),
+                ],
+              ),
+            ),
+            elevation: 8,
+            margin: EdgeInsets.all(10),
+          ),
+          // Divider(color: Colors.purple)
         ],
       ),
-      //subtitle: Text('${horario}'),
-      onTap: () => Navigator.pushNamed(context, 'verSolicitudesMain',
-          arguments: formulario),
     );
+
+    // return ListTile(
+    //   title: Column(
+    //     children: [
+    //       Divider(color: Colors.purple),
+    //       Text("Fecha de solicitud: " + '${formulario.fechaIngreso}'),
+    //       Text("Nombre del cliente: " + '${formulario.nombreClient}'),
+    //       Text("Identificacion: " + '${formulario.identificacion}'),
+    //       Text("Posible a doptante para: " '${formulario.animal!.nombre}'),
+    //       //Text("Fecha de la cita: " + fecha),
+    //       //Text("Hora de la cita: " + hora),
+    //       Divider(color: Colors.purple)
+    //     ],
+    //   ),
+    //   //subtitle: Text('${horario}'),
+    //   onTap: () => Navigator.pushNamed(context, 'verSolicitudesMain',
+    //       arguments: formulario),
+    // );
   }
 }

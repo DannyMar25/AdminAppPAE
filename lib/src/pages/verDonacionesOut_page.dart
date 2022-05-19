@@ -147,20 +147,51 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
 
   Widget _crearItem(BuildContext context, DonacionesModel donacion) {
     //_mostrarTotal(context);
-    return Column(key: UniqueKey(),
-        // background: Container(
-        //   color: Colors.red,
-        // ),
-        children: [
-          ListTile(
-              title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-              subtitle: Text('${donacion.descripcion}'),
-              onTap: () {
-                Navigator.pushReplacementNamed(context, 'verDonacionesOutAdd1',
-                    arguments: donacion);
-              }),
-          // _mostrarTotal(context),
-        ]);
+    if (donacion.tipo == 'Alimento') {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(),
+            // background: Container(
+            //   color: Colors.red,
+            // ),
+            children: [
+              ListTile(
+                  title: Text(
+                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                  subtitle: Text(
+                      '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'verDonacionesOutAdd1',
+                        arguments: donacion);
+                  }),
+              // _mostrarTotal(context),
+            ]),
+      );
+    } else {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(),
+            // background: Container(
+            //   color: Colors.red,
+            // ),
+            children: [
+              ListTile(
+                  title: Text(
+                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                  subtitle: Text('${donacion.descripcion}'),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                        context, 'verDonacionesOutAdd1',
+                        arguments: donacion);
+                  }),
+              // _mostrarTotal(context),
+            ]),
+      );
+    }
+
     //return _mostrarTotal(context);
   }
 

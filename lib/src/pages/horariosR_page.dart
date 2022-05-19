@@ -27,7 +27,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Horarios agregados'),
+        title: Text('Horarios Registrados'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -138,17 +138,21 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   }
 
   Widget _crearItem(BuildContext context, HorariosModel horario) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
-      ),
-      child: ListTile(
-        title: Text('${horario.dia} - ${horario.hora}'),
-        subtitle: Text('${horario.disponible}'),
-        onTap: () =>
-            Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-      ),
+    return Card(
+      color: Colors.lightGreen[200],
+      shadowColor: Colors.green,
+      child: Column(key: UniqueKey(),
+          // background: Container(
+          //   color: Colors.red,
+          // ),
+          children: [
+            ListTile(
+              title: Text('${horario.dia} - ${horario.hora}'),
+              subtitle: Text('${horario.disponible}'),
+              onTap: () =>
+                  Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+            )
+          ]),
     );
   }
 }

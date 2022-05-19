@@ -120,8 +120,8 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/menu-img.jpg'),
-                  fit: BoxFit.cover,
+                  image: AssetImage('assets/pet-care.png'),
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),
@@ -129,9 +129,9 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
           ListTile(
             leading: Icon(
               Icons.pages,
-              color: Colors.blue,
+              color: Colors.green,
             ),
-            title: Text('Seguimiento Home'),
+            title: Text('Ir a Seguimiento Principal'),
             onTap: () => Navigator.pushReplacementNamed(
                 context, 'seguimientoInfo', arguments: {
               'datosper': datosA,
@@ -142,7 +142,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
           ListTile(
             leading: Icon(
               Icons.check,
-              color: Colors.blue,
+              color: Colors.green,
             ),
             title: Text('Ver Registros Vacunas'),
             onTap: () => Navigator.pushReplacementNamed(
@@ -153,7 +153,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             }),
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
+            leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Registro Desparasitacion'),
             onTap: () {
               //Navigator.pop(context);
@@ -166,8 +166,8 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
-            title: Text('Cargar Evidencia Fotos'),
+            leading: Icon(Icons.check, color: Colors.green),
+            title: Text('Ver Fotos'),
             onTap: () {
               Navigator.pushReplacementNamed(context, 'verEvidenciaP1',
                   arguments: {
@@ -178,8 +178,8 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.blue),
-            title: Text('Cargar Evidencia Archivos'),
+            leading: Icon(Icons.check, color: Colors.green),
+            title: Text('Ver Archivos'),
             onTap: () {
               Navigator.pushReplacementNamed(context, 'verEvidenciaP2',
                   arguments: {

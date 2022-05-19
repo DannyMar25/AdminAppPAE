@@ -125,49 +125,6 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     );
   }
 
-  // Widget _verListado() {
-  //   return FutureBuilder(
-  //       future: donacionesProvider.verDonaciones1(_selection.toString()),
-  //       builder: (BuildContext context,
-  //           AsyncSnapshot<List<DonacionesModel>> snapshot) {
-  //         if (snapshot.hasData) {
-  //           final donaciones = snapshot.data;
-  //           return Column(
-  //             children: [
-  //               SizedBox(
-  //                   height: 300,
-  //                   child: ListView.builder(
-  //                       itemCount: donaciones!.length,
-  //                       itemBuilder: (context, i) =>
-  //                           _crearItem(context, donaciones[i]))),
-  //               _mostrarTotal(context),
-  //             ],
-  //           );
-  //         } else {
-  //           return Center(child: CircularProgressIndicator());
-  //         }
-  //       });
-  // }
-
-  // Widget _crearItem(BuildContext context, DonacionesModel donacion) {
-  //   //_mostrarTotal(context);
-  //   return Column(key: UniqueKey(),
-  //       // background: Container(
-  //       //   color: Colors.red,
-  //       // ),
-  //       children: [
-  //         ListTile(
-  //             title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-  //             subtitle: Text('${donacion.descripcion}'),
-  //             onTap: () {
-  //               Navigator.pushNamed(context, 'donacionesInAdd',
-  //                   arguments: donacion);
-  //             }),
-  //         // _mostrarTotal(context),
-  //       ]);
-  //   //return _mostrarTotal(context);
-  // }
-
   showCitas() async {
     donacionA.clear();
     total1 = 0;
@@ -200,19 +157,47 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
 
   Widget _crearItem(BuildContext context, DonacionesModel donacion) {
     //_mostrarTotal(context);
-    return Column(key: UniqueKey(),
-        // background: Container(
-        //   color: Colors.red,
-        // ),
-        children: [
-          ListTile(
-              title: Text('${donacion.tipo} - ${donacion.cantidad}'),
-              subtitle: Text('${donacion.descripcion}'),
-              onTap: () {
-                Navigator.pushNamed(context, 'donacionesInAdd',
-                    arguments: donacion);
-              }),
-        ]);
+    if (donacion.tipo == 'Alimento') {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(),
+            // background: Container(
+            //   color: Colors.red,
+            // ),
+            children: [
+              ListTile(
+                  title: Text(
+                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                  subtitle: Text(
+                      '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'verDonacionesIn1',
+                        arguments: donacion);
+                  }),
+            ]),
+      );
+    } else {
+      return Card(
+        color: Colors.lightGreen[200],
+        shadowColor: Colors.green,
+        child: Column(key: UniqueKey(),
+            // background: Container(
+            //   color: Colors.red,
+            // ),
+            children: [
+              ListTile(
+                  title: Text(
+                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                  subtitle: Text('${donacion.descripcion}'),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'donacionesInAdd',
+                        arguments: donacion);
+                  }),
+            ]),
+      );
+    }
+
     //return _mostrarTotal(context);
   }
 
