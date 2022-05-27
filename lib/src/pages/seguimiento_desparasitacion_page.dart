@@ -3,6 +3,7 @@ import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/registro_desparasitaciones_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
+import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
 
   List<RegistroDesparasitacionModel> desparasitaciones = [];
   List<Future<RegistroDesparasitacionModel>> listaD = [];
+  final userProvider = new UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,25 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
         appBar: AppBar(
           title: Text('Registros de desparasitacion'),
           backgroundColor: Colors.green,
+          actions: [
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      PopupMenuItem<int>(
+                        child: Text("Informacion"),
+                        value: 0,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Ayuda"),
+                        value: 1,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Cerrar Sesion"),
+                        value: 2,
+                      )
+                    ]),
+          ],
         ),
         drawer: _menuWidget(),
         body: Stack(
@@ -64,6 +85,19 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                         ))))
           ],
         ));
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _crearListado() {

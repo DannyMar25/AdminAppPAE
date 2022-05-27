@@ -3,6 +3,7 @@ import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/registro_vacunas_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
+import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
 
 class VerRegistroVacunasPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
   AnimalModel animal = new AnimalModel();
   FormulariosModel formularios = new FormulariosModel();
   DatosPersonalesModel datosA = new DatosPersonalesModel();
+  final userProvider = new UsuarioProvider();
 
   List<RegistroVacunasModel> vacunas = [];
   List<Future<RegistroVacunasModel>> listaV = [];
@@ -39,6 +41,25 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
         appBar: AppBar(
           title: Text('Registros'),
           backgroundColor: Colors.green,
+          actions: [
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      PopupMenuItem<int>(
+                        child: Text("Informacion"),
+                        value: 0,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Ayuda"),
+                        value: 1,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Cerrar Sesion"),
+                        value: 2,
+                      )
+                    ]),
+          ],
         ),
         drawer: _menuWidget(),
         body: Stack(children: [
@@ -67,6 +88,19 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                         ],
                       ))))
         ]));
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _crearListado() {

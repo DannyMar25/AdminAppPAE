@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
+import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
   File? foto;
   DatosPersonalesModel datosA = new DatosPersonalesModel();
   FormulariosModel formularios = new FormulariosModel();
+  final userProvider = new UsuarioProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,25 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
         appBar: AppBar(
           title: Text('Datos de mascota adoptada'),
           backgroundColor: Colors.green,
+          actions: [
+            PopupMenuButton<int>(
+                onSelected: (item) => onSelected(context, item),
+                icon: Icon(Icons.manage_accounts),
+                itemBuilder: (context) => [
+                      PopupMenuItem<int>(
+                        child: Text("Informacion"),
+                        value: 0,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Ayuda"),
+                        value: 1,
+                      ),
+                      PopupMenuItem<int>(
+                        child: Text("Cerrar Sesion"),
+                        value: 2,
+                      )
+                    ]),
+          ],
         ),
         drawer: MenuWidget(),
         body: Stack(
@@ -216,6 +237,19 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
             )
           ],
         ));
+  }
+
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        break;
+      case 1:
+        Navigator.pushNamed(context, 'soporte');
+        break;
+      case 2:
+        userProvider.signOut();
+        Navigator.pushNamed(context, 'login');
+    }
   }
 
   Widget _mostrarFoto() {

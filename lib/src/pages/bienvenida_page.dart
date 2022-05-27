@@ -63,26 +63,40 @@ class BienvenidaPage extends StatelessWidget {
         //backgroundColor: (prefs.colorSecundario) ? Colors.teal : Colors.blue,
       ),
       drawer: MenuWidget(),
-      body: Column(
-        children: [
-          //Text(udn.toString()),
-          // _verUsuario(),
-          Center(
-            child: Text(
-              'BIENVENID@',
-              style: TextStyle(
-                fontSize: 33,
-                foreground: Paint()
-                  ..style = PaintingStyle.stroke
-                  ..strokeWidth = 3
-                  ..color = Colors.green[200]!,
-              ),
-              textAlign: TextAlign.center,
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bienvenida.png"),
+            fit: BoxFit.fill,
           ),
-        ],
+        ),
+        child: Column(
+          children: [
+            //Text(udn.toString()),
+            // _verUsuario(),
+            Divider(
+              color: Colors.transparent,
+            ),
+            Divider(
+              color: Colors.transparent,
+            ),
+            Center(
+              child: Text(
+                'BIENVENID@',
+                style: TextStyle(
+                  fontSize: 33,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 4
+                    ..color = Color.fromARGB(204, 160, 236, 61),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
       ),
-      floatingActionButton: _crearBoton(context),
+      //floatingActionButton: _crearBoton(context),
     );
   }
 
