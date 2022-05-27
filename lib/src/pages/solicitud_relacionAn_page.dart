@@ -46,8 +46,9 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
     formularios = arg['formulario'] as FormulariosModel;
     print(formularios.id);
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('Solicitudes'),
+        title: Text('Relacion con los animales'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -72,7 +73,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       drawer: MenuWidget(),
       body: Stack(
         children: [
-          Background(),
+          //Background(),
           SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.all(15.0),
@@ -86,8 +87,8 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -126,7 +127,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 1.5
-                            ..color = Colors.white,
+                            ..color = Colors.blueGrey,
                         )),
                     //Divider(),
                     _mostrarUbicMascota(),
@@ -137,7 +138,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 1.5
-                            ..color = Colors.white,
+                            ..color = Colors.blueGrey,
                         )),
                     //Divider(),
 
@@ -149,7 +150,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 1.5
-                            ..color = Colors.white,
+                            ..color = Colors.blueGrey,
                         )),
                     _mostrarCambioDomi(),
                     Text(
@@ -159,7 +160,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 1.5
-                            ..color = Colors.white,
+                            ..color = Colors.blueGrey,
                         )),
                     _mostrarRelNuevaCasa(),
                     _mostrarViajeMasc(),
@@ -179,7 +180,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 1.5
-                            ..color = Colors.white,
+                            ..color = Colors.blueGrey,
                         )),
                     _mostrarRecursosVet(),
                     Divider(),
@@ -189,8 +190,8 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -204,8 +205,8 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -241,6 +242,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -682,10 +684,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),
@@ -709,10 +711,10 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),

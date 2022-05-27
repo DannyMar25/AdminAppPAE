@@ -104,7 +104,7 @@ class _UbicacionPageState extends State<UbicacionPage> {
 
   void setGPS(int getData, String id) {
     //ProductoModel producto;
-    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    DatabaseReference ref = FirebaseDatabase.instance.ref();
     DatabaseReference prodRef = ref.child("gps");
     DatabaseReference urlRef = prodRef.child("Test");
     urlRef.update({"GetDataGPS": getData, "id": id});

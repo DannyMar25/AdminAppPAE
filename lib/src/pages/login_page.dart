@@ -160,14 +160,15 @@ class LoginPage extends StatelessWidget {
     if (info['ok']) {
       Navigator.pushReplacementNamed(context, 'bienvenida');
     } else {
-      mostrarAlerta(context, info['mensaje']);
+      //mostrarAlerta(context, info['mensaje']);
+      mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
 
     //Navigator.pushReplacementNamed(context, 'home');
   }
 
   Widget _crearBotonPass(BuildContext context) {
-    return FlatButton(
+    return TextButton(
       onPressed: () {
         Navigator.pushNamed(
           context,
@@ -213,12 +214,14 @@ class LoginPage extends StatelessWidget {
           padding: EdgeInsets.only(top: 80.0),
           child: Column(
             children: [
-              Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
+              //Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
+              Image.asset('assets/pet-care.png', height: 190),
+
               SizedBox(height: 10.0, width: double.infinity),
-              Text(
-                'Bienvenid@',
-                style: TextStyle(color: Colors.white, fontSize: 25.0),
-              ),
+              // Text(
+              //   'Bienvenid@',
+              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
+              // ),
             ],
           ),
         ),

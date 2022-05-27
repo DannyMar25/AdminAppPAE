@@ -3,7 +3,6 @@ import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_relacionAnimal_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -50,8 +49,9 @@ class _DomicilioPageState extends State<DomicilioPage> {
     print(formularios.id);
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('Solicitudes'),
+        title: Text('Domicilio'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -76,7 +76,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
       drawer: MenuWidget(),
       body: Stack(
         children: [
-          Background(),
+          // Background(),
           SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.all(15.0),
@@ -90,8 +90,8 @@ class _DomicilioPageState extends State<DomicilioPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -107,8 +107,8 @@ class _DomicilioPageState extends State<DomicilioPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -121,8 +121,8 @@ class _DomicilioPageState extends State<DomicilioPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -135,8 +135,8 @@ class _DomicilioPageState extends State<DomicilioPage> {
                         fontSize: 22,
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
-                          ..strokeWidth = 3
-                          ..color = Colors.orange[100]!,
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -180,6 +180,7 @@ class _DomicilioPageState extends State<DomicilioPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -391,10 +392,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),
@@ -420,10 +421,10 @@ class _DomicilioPageState extends State<DomicilioPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),

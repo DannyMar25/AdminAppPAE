@@ -56,8 +56,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
 
     //var nombre1 = datosA.nombreCom;
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('Solicitudes'),
+        title: Text('Datos personales'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -82,7 +83,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       drawer: MenuWidget(),
       body: Stack(
         children: [
-          Background(),
+          //Background(),
           SingleChildScrollView(
             child: Container(
               padding: EdgeInsets.all(15.0),
@@ -95,8 +96,8 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                           fontSize: 22,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.orange[100]!,
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         )),
                     Divider(),
                     _mostrarNombreCom(),
@@ -106,13 +107,13 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     _mostrarOcupacion(),
                     _mostrarEmail(),
                     Divider(),
-                    Text('Intruccion',
+                    Text('Instruccion',
                         style: TextStyle(
                           fontSize: 22,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.orange[100]!,
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         )),
                     Divider(),
                     _mostrarNivelInstruccion(),
@@ -122,8 +123,8 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                           fontSize: 22,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.orange[100]!,
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         )),
                     Divider(),
                     _mostrarTelfCel(),
@@ -135,13 +136,16 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                           fontSize: 22,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
-                            ..color = Colors.orange[100]!,
+                            ..strokeWidth = 2
+                            ..color = Colors.blueGrey,
                         )),
                     Divider(),
                     _mostrarNombreRef(),
                     _mostrarParentesco(),
                     _mostrarTelfRef(),
+                    Divider(
+                      color: Colors.transparent,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -370,12 +374,13 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     return Ink(
         padding: EdgeInsets.only(left: 50.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            //borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            //color: Color.fromARGB(223, 221, 248, 153),
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),
@@ -404,12 +409,13 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     return Ink(
         padding: EdgeInsets.only(left: 50.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            //borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            //color: Color.fromARGB(223, 221, 248, 153),
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),

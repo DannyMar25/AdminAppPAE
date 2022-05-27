@@ -16,7 +16,7 @@ class BienvenidaPage extends StatelessWidget {
 
   void setGPS(int getData, String id) {
     //ProductoModel producto;
-    DatabaseReference ref = FirebaseDatabase.instance.reference();
+    DatabaseReference ref = FirebaseDatabase.instance.ref();
     DatabaseReference prodRef = ref.child("gps");
     DatabaseReference urlRef = prodRef.child("Test");
     urlRef.update({"GetDataGPS": getData, "id": id});
@@ -75,7 +75,7 @@ class BienvenidaPage extends StatelessWidget {
                 foreground: Paint()
                   ..style = PaintingStyle.stroke
                   ..strokeWidth = 3
-                  ..color = Colors.purple[200]!,
+                  ..color = Colors.green[200]!,
               ),
               textAlign: TextAlign.center,
             ),
@@ -89,9 +89,10 @@ class BienvenidaPage extends StatelessWidget {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        Navigator.pushReplacementNamed(context, 'perfilUser');
+        //Navigator.pushReplacementNamed(context, 'perfilUser');
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -116,7 +117,7 @@ class BienvenidaPage extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Activar ubicacion'),

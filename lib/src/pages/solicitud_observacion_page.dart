@@ -5,6 +5,7 @@ import 'package:aministrador_app_v1/src/models/formulario_domicilio_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_relacionAnimal_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_situacionFam_model.dart';
+import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
@@ -25,11 +26,13 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   DomicilioModel domicilio = new DomicilioModel();
   RelacionAnimalesModel relacionA = new RelacionAnimalesModel();
   final userProvider = new UsuarioProvider();
+  final animalProvider = new AnimalesProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
   bool isChecked = false;
   bool isChecked1 = false;
   String estado = '';
+  String estadoAn = '';
   String fechaRespuesta = '';
   String observacion = '';
   bool _guardando = false;
@@ -42,6 +45,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       print(formularios.id);
     }
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Respuesta y observaciones"),
@@ -68,12 +72,12 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/fondoanimales.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/fondoanimales.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          //),
           padding: EdgeInsets.all(20.0),
           child: Form(
             key: formKey,
@@ -87,8 +91,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
                   fontSize: 18,
                   foreground: Paint()
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 1.5
-                    ..color = Colors.orange,
+                    ..strokeWidth = 2
+                    ..color = Colors.blueGrey,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -119,6 +123,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -198,7 +203,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.red;
+      return Colors.blueGrey;
     }
 
     return Checkbox(
@@ -225,7 +230,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.red;
+      return Colors.blueGrey;
     }
 
     return Checkbox(
@@ -247,7 +252,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Guardar'),
@@ -269,6 +274,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
     formulariosProvider.editarFechaRespuesta(formularios, fechaRespuesta);
+    estadoAn = "Adoptado";
+    animalProvider.editarEstado(formularios.animal!, estadoAn);
 
     Navigator.pushReplacementNamed(context, 'solicitudes');
     // } else {

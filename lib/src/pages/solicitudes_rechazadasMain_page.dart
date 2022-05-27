@@ -34,15 +34,16 @@ class _SolicitudRechazadaMainPageState
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: Color.fromARGB(223, 221, 248, 153),
         appBar: AppBar(
-          title: Text('Datos de mascota y adoptante rechazado'),
+          title: Text('Datos adoptante rechazado'),
           backgroundColor: Colors.green,
         ),
         drawer: MenuWidget(),
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Background(),
+            //Background(),
             //_verGaleria(context),
             //Text('Hola'),
             SingleChildScrollView(
@@ -68,10 +69,10 @@ class _SolicitudRechazadaMainPageState
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Divider(),
+                          Divider(color: Colors.transparent),
                           _mostrarFoto(),
                           Divider(
-                            color: Colors.white,
+                            color: Colors.transparent,
                           ),
                           Text(
                             'Observacion: ',
@@ -149,7 +150,7 @@ class _SolicitudRechazadaMainPageState
                             color: Colors.white,
                           ),
                           Text(
-                            'Informacion del adoptante',
+                            'Informacion del posible adoptante',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()

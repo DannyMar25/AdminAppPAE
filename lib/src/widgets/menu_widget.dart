@@ -219,19 +219,6 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
           Divider(),
-
-          // ListTile(
-          //   leading: Icon(
-          //     Icons.room,
-          //     color: Colors.green,
-          //   ),
-          //   title: Text('Ver ubicacion'),
-          //   onTap: () {
-          //     //Navigator.pop(context);
-          //     Navigator.pushReplacementNamed(context, 'ubicacion');
-          //   },
-          // ),
-          // Divider(),
           ListTile(
             leading: Icon(
               Icons.app_registration,

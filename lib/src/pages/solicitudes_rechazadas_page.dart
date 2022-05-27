@@ -36,30 +36,31 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('SOLICITUDES'),
+        title: Text('SOLICITUDES RECHAZADAS'),
         backgroundColor: Colors.green,
       ),
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/fondoanimales.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/fondoanimales.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "SOLICITUDES RECHAZADAS",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 20),
-                ),
+                // Text(
+                //   "SOLICITUDES RECHAZADAS",
+                //   style: const TextStyle(
+                //       fontWeight: FontWeight.bold, fontSize: 20),
+                // ),
                 Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
               ],

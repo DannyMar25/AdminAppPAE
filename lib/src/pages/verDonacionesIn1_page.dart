@@ -150,6 +150,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

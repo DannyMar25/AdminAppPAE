@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class PerfilUsuarioPage extends StatefulWidget {

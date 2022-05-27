@@ -151,6 +151,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -321,76 +322,5 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
     }
     //mostrarSnackbar('Registro guardado');
     Navigator.pushNamed(context, 'verDonacionesInAdd');
-  }
-
-  Widget _mostrarDisponibilidad() {
-    return TextFormField(
-      readOnly: true,
-      initialValue: donaciones.disponibilidad,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Dsiponibilidad de la donacion:',
-        //labelStyle: ,
-        //border: BorderRadius(BorderRadius.circular(2.0)),
-        icon: Icon(
-          Icons.info,
-          color: Colors.purple,
-        ),
-      ),
-    );
-  }
-
-  Widget _crearCheckBox1() {
-    Color getColor(Set<MaterialState> states) {
-      const Set<MaterialState> interactiveStates = <MaterialState>{
-        MaterialState.pressed,
-        MaterialState.hovered,
-        MaterialState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.red;
-    }
-
-    return Checkbox(
-      checkColor: Colors.white,
-      fillColor: MaterialStateProperty.resolveWith(getColor),
-      value: isChecked,
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-          //domicilio.planMudanza = "Si";
-          disponibilidad = "Disponible";
-        });
-      },
-    );
-  }
-
-  Widget _crearCheckBox2() {
-    Color getColor(Set<MaterialState> states) {
-      const Set<MaterialState> interactiveStates = <MaterialState>{
-        MaterialState.pressed,
-        MaterialState.hovered,
-        MaterialState.focused,
-      };
-      if (states.any(interactiveStates.contains)) {
-        return Colors.blue;
-      }
-      return Colors.red;
-    }
-
-    return Checkbox(
-      checkColor: Colors.white,
-      fillColor: MaterialStateProperty.resolveWith(getColor),
-      value: isChecked1,
-      onChanged: (bool? value) {
-        setState(() {
-          isChecked1 = value!;
-          //domicilio.planMudanza = "No";
-          disponibilidad = "No Disponible";
-        });
-      },
-    );
   }
 }

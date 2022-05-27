@@ -92,6 +92,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -100,6 +101,8 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   }
 
   showCitas() async {
+    //se anadio un clear()
+    citasA.clear();
     listaC = await citasProvider
         .cargarCitasAtendidas(_inputFieldDateController.text);
     for (var yy in listaC) {

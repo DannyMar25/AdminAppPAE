@@ -1,4 +1,3 @@
-import 'package:aministrador_app_v1/src/models/horarios_model.dart';
 import 'package:aministrador_app_v1/src/models/soportes_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';

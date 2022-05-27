@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/models/evidencia_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.dart';
@@ -306,8 +304,11 @@ class FormulariosProvider {
 
   Future<List<RegistroVacunasModel>> cargarVacunas(String idForm) async {
     final List<RegistroVacunasModel> vacunas = <RegistroVacunasModel>[];
-    var documents =
-        await refForm.doc(idForm).collection('registroVacunas').get();
+    var documents = await refForm
+        .doc(idForm)
+        .collection('registroVacunas')
+        .orderBy('fechaConsulta')
+        .get();
     vacunas.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
@@ -328,8 +329,11 @@ class FormulariosProvider {
       String idForm) async {
     final List<RegistroDesparasitacionModel> desparasitaciones =
         <RegistroDesparasitacionModel>[];
-    var documents =
-        await refForm.doc(idForm).collection('registroDesparasitacion').get();
+    var documents = await refForm
+        .doc(idForm)
+        .collection('registroDesparasitacion')
+        .orderBy('fecha')
+        .get();
     desparasitaciones.addAll(documents.docs.map((e) {
       var data = e.data() as Map<String, dynamic>;
       var desparasitacion = RegistroDesparasitacionModel.fromJson({

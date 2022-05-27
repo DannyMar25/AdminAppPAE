@@ -89,6 +89,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -129,10 +130,9 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     donacionA.clear();
     total1 = 0;
     listaD =
-        await donacionesProvider.cargarDonacionesIn11(_selection.toString());
+        await donacionesProvider.cargarDonacionesIn11_P(_selection.toString());
     for (var yy in listaD) {
       DonacionesModel don = await yy;
-
       setState(() {
         donacionA.add(don);
         total1 += don.cantidad;
@@ -191,7 +191,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
                       '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
                   subtitle: Text('${donacion.descripcion}'),
                   onTap: () {
-                    Navigator.pushNamed(context, 'donacionesInAdd',
+                    Navigator.pushNamed(context, 'verDonacionesIn1',
                         arguments: donacion);
                   }),
             ]),

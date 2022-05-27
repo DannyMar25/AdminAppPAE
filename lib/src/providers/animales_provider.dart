@@ -98,6 +98,7 @@ class AnimalesProvider {
         "tamanio": data["tamanio"],
         "color": data["color"],
         "raza": data["raza"],
+        "estado": data["estado"],
         "caracteristicas": data["caracteristicas"],
         "fotoUrl": data["fotoUrl"]
       });
@@ -127,10 +128,21 @@ class AnimalesProvider {
       "tamanio": data["tamanio"],
       "color": data["color"],
       "raza": data["raza"],
+      "estado": data["estado"],
       "caracteristicas": data["caracteristicas"],
       "fotoUrl": data["fotoUrl"]
     });
 
     return animals;
+  }
+
+  Future<bool> editarEstado(AnimalModel animal, String estado) async {
+    try {
+      //String disp = "";
+      await refAn.doc(animal.id).update({"estado": estado});
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

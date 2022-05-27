@@ -131,6 +131,7 @@ class _AnimalPageState extends State<AnimalPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -388,6 +389,7 @@ class _AnimalPageState extends State<AnimalPage> {
     });
 
     if (animal.id == "") {
+      animal.estado = "En Adopcion";
       animalProvider.crearAnimal1(animal, foto!);
     } else {
       animalProvider.editarAnimal(animal, foto!);
@@ -447,8 +449,10 @@ class _AnimalPageState extends State<AnimalPage> {
 
   _procesarImagen(ImageSource origen) async {
     final _picker = ImagePicker();
-    final pickedFile =
-        await _picker.getImage(source: origen, maxHeight: 720, maxWidth: 720);
+    final pickedFile = await _picker.pickImage(
+        source: origen,
+        maxHeight: 720,
+        maxWidth: 720); //cambio de getImage a pickImage
     foto = File(pickedFile!.path);
     if (foto != null) {
       animal.fotoUrl = '';

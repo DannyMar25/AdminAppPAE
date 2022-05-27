@@ -80,6 +80,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -144,8 +145,8 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                           Expanded(
                             flex: 20,
                             child: ListTile(
-                              title: Text("Nombre del cliente: " +
-                                  '${formulario.nombreClient}'),
+                              title: Text(
+                                  "Cliente: " + '${formulario.nombreClient}'),
                               subtitle: Column(
                                 children: [
                                   Text("Fecha de solicitud:" +

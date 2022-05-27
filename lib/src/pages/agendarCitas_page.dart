@@ -115,6 +115,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -214,18 +215,24 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   }
 
   Widget _crearItem(BuildContext context, HorariosModel horario) {
-    return TextFormField(
-      readOnly: true,
-      onTap: () {
-        citas.idHorario = horario.id;
-        horariosProvider.editarDisponible(horario);
-      },
-      initialValue: horario.hora + '  -   ' + horario.disponible,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          labelText: 'Hora',
-          suffixIcon: Icon(Icons.add),
-          icon: Icon(Icons.calendar_today)),
+    return Column(
+      children: [
+        TextFormField(
+          readOnly: true,
+          onTap: () {
+            citas.idHorario = horario.id;
+            horariosProvider.editarDisponible(horario);
+          },
+          initialValue: horario.hora + '  -   ' + horario.disponible,
+          decoration: InputDecoration(
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+              //labelText: 'Hora',
+              suffixIcon: Icon(Icons.add),
+              icon: Icon(Icons.calendar_today)),
+        ),
+        Divider(color: Colors.white),
+      ],
     );
   }
 

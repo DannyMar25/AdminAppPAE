@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
             ListTile(
-              title: Text('${animal.nombre} - ${animal.edad} meses'),
+              title: Text('${animal.nombre} - ${animal.edad}'),
               subtitle:
                   Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
               onTap: () =>

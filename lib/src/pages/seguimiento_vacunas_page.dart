@@ -3,7 +3,6 @@ import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/registro_vacunas_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class VerRegistroVacunasPage extends StatefulWidget {
@@ -36,13 +35,14 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: Color.fromARGB(223, 211, 212, 207),
         appBar: AppBar(
           title: Text('Registros'),
           backgroundColor: Colors.green,
         ),
         drawer: _menuWidget(),
         body: Stack(children: [
-          Background(),
+          //Background(),
           SingleChildScrollView(
               child: Container(
                   //color: Colors.lightGreenAccent,
@@ -58,8 +58,8 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                               fontSize: 28,
                               foreground: Paint()
                                 ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.orange[100]!,
+                                ..strokeWidth = 2
+                                ..color = Colors.blueGrey,
                             ),
                             textAlign: TextAlign.start,
                           ),
@@ -98,8 +98,19 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     return ListTile(
         title: Column(
           children: [
-            Divider(color: Colors.purple),
+            Divider(color: Colors.transparent),
             DataTable(
+              //dataRowHeight: 30,
+              //headingRowHeight: 50,
+              headingRowColor: MaterialStateColor.resolveWith(
+                (states) => Color.fromARGB(255, 120, 110, 148),
+              ),
+              dataRowColor: MaterialStateColor.resolveWith(
+                  (states) => Color.fromARGB(255, 146, 155, 185)),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                border: Border.all(width: 1, color: Colors.white),
+              ),
               columns: [
                 DataColumn(label: Text("Fecha")),
                 DataColumn(label: Text("Peso(Kg)")),
@@ -107,25 +118,49 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(Text('${vacuna.fechaConsulta}')),
-                  DataCell(Text('${vacuna.pesoActual}')),
-                  DataCell(Text('${vacuna.fechaProximaVacuna}')),
+                  DataCell(Container(
+                    child: Text('${vacuna.fechaConsulta}'),
+                    width: 95,
+                  )),
+                  DataCell(Container(
+                    child: Text('${vacuna.pesoActual}'),
+                    width: 50,
+                  )),
+                  DataCell(Container(
+                    child: Text('${vacuna.fechaProximaVacuna}'),
+                    width: 95,
+                  )),
                 ]),
               ],
             ),
             DataTable(
+              headingRowColor: MaterialStateColor.resolveWith(
+                (states) => Color.fromARGB(255, 120, 111, 143),
+              ),
+              dataRowColor: MaterialStateColor.resolveWith(
+                  (states) => Color.fromARGB(255, 146, 155, 185)),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                border: Border.all(width: 1, color: Colors.white),
+              ),
               columns: [
                 DataColumn(label: Text("Vacuna Laboratorio")),
-                DataColumn(label: Text("Veterinario ")),
+                DataColumn(label: Text("Veterinario")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
-                  DataCell(Text('${vacuna.tipoVacuna}')),
-                  DataCell(Text('${vacuna.veterinarioResp}')),
+                  DataCell(Container(
+                    child: Text('${vacuna.tipoVacuna}'),
+                    width: 170,
+                  )),
+                  DataCell(Container(
+                    child: Text('${vacuna.veterinarioResp}'),
+                    width: 170,
+                  )),
                 ]),
               ],
             ),
-            Divider(color: Colors.purple)
+            Divider(color: Colors.transparent)
           ],
         ),
         //subtitle: Text('${horario}'),

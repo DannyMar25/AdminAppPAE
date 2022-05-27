@@ -37,6 +37,8 @@ class DonacionesProvider {
     var documents = await refDon
         .where('tipo', isEqualTo: tipo)
         .where('estadoDonacion', isEqualTo: 'Entrante')
+        .where('disponibilidad', isEqualTo: 'Disponible')
+        .orderBy('fechaIngreso')
         .get();
     donaciones.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
@@ -116,6 +118,34 @@ class DonacionesProvider {
     return s.toList();
   }
 
+  //Prueba ordenando fechas
+  Future<List<Future<DonacionesModel>>> cargarDonacionesIn11_P(
+      String tipo) async {
+    final List<DonacionesModel> donaciones = <DonacionesModel>[];
+    var documents = await refDon
+        .where('estadoDonacion', isEqualTo: 'Entrante')
+        .where('tipo', isEqualTo: tipo)
+        .orderBy('fechaIngreso')
+        .get();
+    //citas.addAll
+    var s = (documents.docs.map((e) async {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var donacion = DonacionesModel.fromJson({
+        "id": e.id,
+        "tipo": data["tipo"],
+        "cantidad": data["cantidad"],
+        "peso": data["peso"],
+        "descripcion": data["descripcion"],
+        "estadoDonacion": data["estadoDonacion"],
+        "disponibilidad": data["disponibilidad"],
+        "fechaIngreso": data["fechaIngreso"],
+      });
+      return donacion;
+    }));
+    return s.toList();
+  }
+
   Future<List<DonacionesModel>> verDonacionesOut(String tipo) async {
     donaciones.clear();
     total1 = 0;
@@ -124,6 +154,7 @@ class DonacionesProvider {
     var documents = await refDon
         .where('estadoDonacion', isEqualTo: 'Saliente')
         .where('tipo', isEqualTo: tipo)
+        .orderBy('fechaIngreso')
         .get();
     donaciones.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);

@@ -55,8 +55,9 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
     datosA = arg['datosper'] as DatosPersonalesModel;
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('Solicitudes'),
+        title: Text('Situacion familiar'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -80,7 +81,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
       ),
       drawer: MenuWidget(),
       body: Stack(children: [
-        Background(),
+        //Background(),
         SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(15.0),
@@ -94,8 +95,8 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                       fontSize: 22,
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.orange[100]!,
+                        ..strokeWidth = 2
+                        ..color = Colors.blueGrey,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -138,8 +139,8 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                       fontSize: 22,
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.orange[100]!,
+                        ..strokeWidth = 2
+                        ..color = Colors.blueGrey,
                     ),
                   ),
                   Divider(),
@@ -150,13 +151,15 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                       fontSize: 22,
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
-                        ..strokeWidth = 3
-                        ..color = Colors.orange[100]!,
+                        ..strokeWidth = 2
+                        ..color = Colors.blueGrey,
                     ),
                   ),
                   Divider(),
                   _mostrarAlergia(),
-                  Divider(),
+                  Divider(
+                    color: Colors.transparent,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -178,6 +181,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -317,10 +321,10 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),
@@ -347,10 +351,10 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.lightBlue[300],
+            color: Colors.transparent,
             boxShadow: [
               BoxShadow(
-                  color: Colors.white,
+                  color: Colors.transparent,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),

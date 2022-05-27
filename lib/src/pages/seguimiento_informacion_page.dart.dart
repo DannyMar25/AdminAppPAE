@@ -33,15 +33,16 @@ class _InformacionSeguimientoPageState
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
-          title: Text('Segimiento de mascota adoptada'),
+          title: Text('Seguimiento de mascota adoptada'),
           backgroundColor: Colors.green,
         ),
         drawer: _menuWidget(),
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Background(),
+            // Background(),
             //_verGaleria(context),
             //Text('Hola'),
             SingleChildScrollView(

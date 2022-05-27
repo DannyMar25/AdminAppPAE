@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +32,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
+        backgroundColor: Color.fromARGB(223, 221, 248, 153),
         appBar: AppBar(
           title: Text('Datos de mascota adoptada'),
           backgroundColor: Colors.green,
@@ -41,7 +41,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
         body: Stack(
           alignment: Alignment.center,
           children: [
-            Background(),
+            //Background(),
             //_verGaleria(context),
             //Text('Hola'),
             SingleChildScrollView(
@@ -67,7 +67,9 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          Divider(),
+                          Divider(
+                            color: Colors.transparent,
+                          ),
                           _mostrarFoto(),
                           Divider(
                             color: Colors.white,
@@ -100,7 +102,9 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                               ),
                             ],
                           ),
-                          Divider(),
+                          Divider(
+                            color: Colors.transparent,
+                          ),
                           Row(
                             //crossAxisAlignment: CrossAxisAlignment.end,
                             //mainAxisAlignment: MainAxisAlignment.spaceAround,

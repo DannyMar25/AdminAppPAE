@@ -3,7 +3,6 @@ import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
 
 class IngresoDonacionesOutPage extends StatefulWidget {
   IngresoDonacionesOutPage({Key? key}) : super(key: key);
@@ -118,6 +117,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

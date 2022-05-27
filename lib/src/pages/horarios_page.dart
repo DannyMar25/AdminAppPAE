@@ -22,8 +22,8 @@ class _HorariosPageState extends State<HorariosPage> {
   final List<String> _items =
       ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'].toList();
   final List<String> _items1 = [
-    '9:00 - 9:30',
-    '9:30 - 10:00',
+    '09:00 - 09:30',
+    '09:30 - 10:00',
     '10:00 - 10:30',
     '10:30 - 11:00',
     '11:00 - 11:30',
@@ -114,6 +114,7 @@ class _HorariosPageState extends State<HorariosPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();

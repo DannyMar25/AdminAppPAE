@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:aministrador_app_v1/src/models/citas_model.dart';
 import 'package:aministrador_app_v1/src/providers/citas_provider.dart';
+import 'package:aministrador_app_v1/src/providers/horarios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
   CitasModel citas = new CitasModel();
 
   final citasProvider = new CitasProvider();
+  final horariosProvider = new HorariosProvider();
   final userProvider = new UsuarioProvider();
   File? foto;
   final formKey = GlobalKey<FormState>();
@@ -104,6 +106,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -209,6 +212,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         icon: Icon(Icons.save),
         autofocus: true,
         onPressed: () {
+          horariosProvider.editarDisponibleCita(citas.horario!);
           Navigator.pushNamed(context, 'bienvenida');
         }
         // onPressed: () {

@@ -49,6 +49,7 @@ class HorariosProvider {
     final List<HorariosModel> horarios = <HorariosModel>[];
     var documents = await refAn
         .where('dia', isEqualTo: dia)
+        .orderBy('hora')
         //.where('disponible', isEqualTo: 'Disponible')
         .get();
     horarios.addAll(documents.docs.map((e) {
@@ -70,6 +71,7 @@ class HorariosProvider {
     var documents = await refAn
         .where('dia', isEqualTo: dia)
         .where('disponible', isEqualTo: 'Disponible')
+        .orderBy('hora')
         .get();
     horarios.addAll(documents.docs.map((e) {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
@@ -105,6 +107,16 @@ class HorariosProvider {
   Future<bool> editarDisponible(HorariosModel horario) async {
     try {
       String disp = "No disponible";
+      await refAn.doc(horario.id).update({"disponible": disp});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> editarDisponibleCita(HorariosModel horario) async {
+    try {
+      String disp = "Disponible";
       await refAn.doc(horario.id).update({"disponible": disp});
       return true;
     } catch (e) {

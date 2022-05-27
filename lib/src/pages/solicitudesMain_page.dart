@@ -36,6 +36,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       print(formularios.id);
     }
     return Scaffold(
+      backgroundColor: Color.fromARGB(248, 234, 235, 233),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Datos de la solicitud"),
@@ -62,12 +63,12 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/fondoanimales.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/fondoanimales.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          //),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -84,10 +85,14 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                 _mostrarFoto(),
                 // Divider(),
                 _mostrarNombreAn(),
-                Divider(),
+                Divider(
+                  color: Colors.transparent,
+                ),
 
                 _mostrarFecha(),
-                Divider(),
+                Divider(
+                  color: Colors.transparent,
+                ),
                 // _crearEstadoCita(),
                 //Text("Cita Atendida"),
                 Column(
@@ -95,32 +100,63 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(12.0),
-                          child: _botonDatosPer(),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0),
+                              child: _botonDatosPer(),
+                            ),
+                            Text('Datos personales'),
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.all(18.0),
-                          child: _botonSituacionFam(),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0),
+                              child: _botonSituacionFam(),
+                            ),
+                            Text('Situacion familiar')
+                          ],
                         )
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(12.0),
-                          child: _botonDomicilio(),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0),
+                              child: _botonDomicilio(),
+                            ),
+                            Text('Domicilio')
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.all(18.0),
-                          child: _botonRelacionAnim(),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(12.0),
+                              child: _botonRelacionAnim(),
+                            ),
+                            Text('Relacion con animales')
+                          ],
                         )
                       ],
                     ),
                   ],
                 ),
-                _botonPDF(),
+                //_botonPDF(),
+                Divider(
+                  color: Colors.transparent,
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 12.0)),
+
+                _crearBotonPDF(),
+                Divider(
+                  color: Colors.transparent,
+                ),
+                Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                _crearBotonObservaciones()
                 //_crearBoton(),
 
                 // _crearDisponible(),
@@ -137,6 +173,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -232,9 +269,9 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
   }
 
   Widget _botonDatosPer() {
-    var idForm = formularios.id;
-    var idD = formularios.idDatosPersonales;
-    FormulariosModel form1 = formularios;
+    //var idForm = formularios.id;
+    //var idD = formularios.idDatosPersonales;
+    //FormulariosModel form1 = formularios;
     return Ink(
         decoration: BoxDecoration(
             //backgroundBlendMode: ,
@@ -243,7 +280,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
             color: Colors.purple[600],
             boxShadow: [
               BoxShadow(
-                  color: Colors.purple,
+                  color: Colors.white,
                   offset: Offset(-4, -4),
                   blurRadius: 5,
                   spreadRadius: 2),
@@ -281,7 +318,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(8)),
             shape: BoxShape.rectangle,
-            color: Colors.green[300],
+            color: Color.fromARGB(255, 92, 216, 97),
             boxShadow: [
               BoxShadow(
                   color: Colors.white,
@@ -366,7 +403,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
             Icons.pets,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.blueAccent,
           onPressed: () async {
             relacionA = await formulariosProvider.cargarRAId(
                 formularios.id, formularios.idRelacionAn);
@@ -380,9 +417,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
   }
 
   Widget _botonPDF() {
-    var idForm = formularios.id;
-    var idD = formularios.idDatosPersonales;
-    FormulariosModel form1 = formularios;
     return Ink(
         decoration: BoxDecoration(
             //backgroundBlendMode: ,
@@ -422,6 +456,79 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
             });
           },
         ));
+  }
+
+  Widget _crearBotonPDF() {
+    return ElevatedButton.icon(
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+            return Colors.green;
+          }),
+        ),
+        label: Text(
+          'Generar PDF',
+          style: TextStyle(fontSize: 17),
+        ),
+        icon: Icon(
+          Icons.picture_as_pdf,
+          size: 40,
+        ),
+        autofocus: true,
+        onPressed: () async {
+          datosC = await formulariosProvider.cargarDPId(
+              formularios.id, formularios.idDatosPersonales);
+          situacionF = await formulariosProvider.cargarSFId(
+              formularios.id, formularios.idSituacionFam);
+          domicilio = await formulariosProvider.cargarDomId(
+              formularios.id, formularios.idDomicilio);
+          relacionA = await formulariosProvider.cargarRAId(
+              formularios.id, formularios.idRelacionAn);
+          Navigator.pushNamed(context, 'crearPDF', arguments: {
+            'datosper': datosC,
+            'sitfam': situacionF,
+            'domicilio': domicilio,
+            'formulario': formularios,
+            'relacionAn': relacionA
+          });
+        });
+  }
+
+  Widget _crearBotonObservaciones() {
+    return ElevatedButton.icon(
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+            return Colors.green;
+          }),
+        ),
+        label: Text(
+          'Respuesta y observaciones',
+          style: TextStyle(fontSize: 17),
+        ),
+        icon: Icon(
+          Icons.question_answer,
+          size: 40,
+        ),
+        autofocus: true,
+        onPressed: () async {
+          // datosC = await formulariosProvider.cargarDPId(
+          //     formularios.id, formularios.idDatosPersonales);
+          // situacionF = await formulariosProvider.cargarSFId(
+          //     formularios.id, formularios.idSituacionFam);
+          // domicilio = await formulariosProvider.cargarDomId(
+          //     formularios.id, formularios.idDomicilio);
+          // relacionA = await formulariosProvider.cargarRAId(
+          //     formularios.id, formularios.idRelacionAn);
+          Navigator.pushNamed(context, 'observacionSolicitud',
+              arguments: formularios
+              //'datosper': datosC,
+              // 'sitfam': situacionF,
+              //'domicilio': domicilio,
+              //'formulario': formularios,
+              //'relacionAn': relacionA
+              );
+        });
   }
 
   Widget _crearBoton() {

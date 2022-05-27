@@ -19,6 +19,7 @@ class _SoportePageState extends State<SoportePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Soporte"),
@@ -45,12 +46,12 @@ class _SoportePageState extends State<SoportePage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/fondoanimales.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage("assets/fondoanimales.jpg"),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -66,6 +67,9 @@ class _SoportePageState extends State<SoportePage> {
                 _crearCorreo(),
                 _crearAsunto(),
                 _crearMensaje(),
+                Divider(
+                  color: Colors.transparent,
+                ),
                 _crearBoton(),
                 Padding(padding: EdgeInsets.only(bottom: 210.0))
                 // buildAbout(),
@@ -95,6 +99,10 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
+          icon: Icon(
+            Icons.person,
+            //color: Colors.green,
+          ),
           labelText: 'Nombre:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -111,6 +119,7 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
+          icon: Icon(Icons.mail),
           labelText: 'Correo:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -127,6 +136,7 @@ class _SoportePageState extends State<SoportePage> {
       readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
+          icon: Icon(Icons.edit),
           labelText: 'Asunto:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -144,6 +154,7 @@ class _SoportePageState extends State<SoportePage> {
       maxLines: 10,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
+          icon: Icon(Icons.edit_note),
           labelText: 'Mensaje:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
@@ -164,7 +175,10 @@ class _SoportePageState extends State<SoportePage> {
               return Colors.green[500];
             }),
           ),
-          label: Text('Guardar'),
+          label: Text(
+            'Enviar',
+            style: TextStyle(fontSize: 16),
+          ),
           icon: Icon(Icons.save),
           autofocus: true,
           onPressed: () {

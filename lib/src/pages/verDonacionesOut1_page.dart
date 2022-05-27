@@ -3,7 +3,6 @@ import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
 
 class VerDonacionesOut1Page extends StatefulWidget {
   VerDonacionesOut1Page({Key? key}) : super(key: key);
@@ -120,6 +119,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       case 0:
         break;
       case 1:
+        Navigator.pushNamed(context, 'soporte');
         break;
       case 2:
         userProvider.signOut();
@@ -209,7 +209,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Guardar'),
