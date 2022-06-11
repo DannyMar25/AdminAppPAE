@@ -46,12 +46,15 @@ import 'package:flutter/material.dart';
 //import 'package:formvalidation/src/pages/producto_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  //Antes
   final prefs = new PreferenciasUsuario();
   await prefs.initPrefs();
+
   runApp(MyApp());
 }
 
@@ -60,6 +63,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final prefs = new PreferenciasUsuario();
     print(prefs.token);
+    final email = prefs.email;
+    final rol = prefs.rol;
 
     return Provider(
       child: MaterialApp(
@@ -71,10 +76,10 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: [
-            Locale('en', 'US'), // English, no country code
-            Locale('es', 'ES'), // Spanish, no country code
+            Locale('en', 'US'),
+            Locale('es', 'ES'),
           ],
-          initialRoute: 'login',
+          initialRoute: email == '' ? 'login' : 'home',
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => RegistroPage(),

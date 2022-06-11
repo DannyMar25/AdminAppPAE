@@ -1,3 +1,5 @@
+import 'package:aministrador_app_v1/src/models/usuarios_model.dart';
+import 'package:aministrador_app_v1/src/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
@@ -7,6 +9,7 @@ import 'package:aministrador_app_v1/src/utils/utils.dart';
 class RegistroPage extends StatelessWidget {
   //const RegistroPage({Key? key}) : super(key: key);
   final usuarioProvider = new UsuarioProvider();
+  final usuario = new UsuariosModel();
   TextEditingController _nombreUs = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -242,6 +245,11 @@ class RegistroPage extends StatelessWidget {
 
     if (info['ok']) {
       print(bloc.name);
+      usuario.id = info['uid'];
+      usuario.nombre = bloc.name;
+      usuario.email = bloc.email;
+      usuario.rol = Roles.administrador;
+      usuarioProvider.crearUsuario(usuario);
       Navigator.pushReplacementNamed(context, 'bienvenida');
     } else {
       mostrarAlerta(context, info['mensaje']);

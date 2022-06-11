@@ -1,9 +1,13 @@
+import 'package:aministrador_app_v1/src/models/usuarios_model.dart';
 import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
+import 'package:aministrador_app_v1/src/pages/home_page.dart';
+import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key? key}) : super(key: key);
@@ -146,21 +150,32 @@ class LoginPage extends StatelessWidget {
           color: Colors.green,
           textColor: Colors.white,
           onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+          // onPressed: () async {
+          //   SharedPreferences prefs = await SharedPreferences.getInstance();
+          //   prefs.setString('email', '');
+          //   prefs.setString('rol', '');
+          //   Navigator.pushReplacement(context,
+          //       MaterialPageRoute(builder: (BuildContext ctx) => HomePage()));
+          // },
         );
       },
     );
   }
 
   _login(LoginBloc bloc, BuildContext context) async {
-    //print('=================');
-    //print('Email:${bloc.email}');
-    //print('Password: ${bloc.password}');
-    //print('=================');
+    final prefs = new PreferenciasUsuario();
+    final usuario = new UsuariosModel();
+
+    // prefs.initPrefs();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+
     Map info = await usuarioProvider.login(bloc.email, bloc.password);
     if (info['ok']) {
+      final user = await usuarioProvider.obtenerUsuario(info['uid']);
+      prefs.setEmail(bloc.email);
+      prefs.setRol(user['rol']);
       Navigator.pushReplacementNamed(context, 'bienvenida');
     } else {
-      //mostrarAlerta(context, info['mensaje']);
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
 

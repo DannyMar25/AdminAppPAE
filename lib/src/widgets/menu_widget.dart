@@ -46,15 +46,6 @@ class MenuWidget extends StatelessWidget {
             //textColor: Colors.green,
             title: Text('Citas'),
             children: [
-              // ListTile(
-              //   leading: Icon(
-              //     Icons.add,
-              //     color: Colors.green,
-              //   ),
-              //   title: Text('Agregar horarios de visitas'),
-              //   onTap: () =>
-              //       Navigator.pushReplacementNamed(context, 'citasAdd'),
-              // ),
               ListTile(
                 leading: Icon(
                   Icons.app_registration,
