@@ -1,6 +1,7 @@
 import 'package:aministrador_app_v1/src/models/donaciones_model.dart';
 import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
+import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -106,34 +107,6 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
                       _buildChild(),
                       Divider(),
                       _crearDescripcion(),
-                      // Divider(),
-                      // _mostrarDisponibilidad(),
-                      // Divider(),
-                      // Text(
-                      //   'Cambiar disponibilidad de la donacion',
-                      //   style: TextStyle(
-                      //     fontSize: 18,
-                      //     foreground: Paint()
-                      //       ..style = PaintingStyle.stroke
-                      //       ..strokeWidth = 1.5
-                      //       ..color = Colors.orange,
-                      //   ),
-                      //   textAlign: TextAlign.center,
-                      // ),
-                      // Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Row(
-                      //         children: [Text('Disponible'), _crearCheckBox1()],
-                      //       ),
-                      //       Row(
-                      //         children: [
-                      //           Text('No Disponible'),
-                      //           _crearCheckBox2()
-                      //         ],
-                      //       ),
-                      //     ]),
-                      // Padding(padding: EdgeInsets.only(bottom: 15.0)),
                       Divider(),
                       _crearBoton(),
                       // _crearCantidad(),
@@ -315,12 +288,16 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           '-' +
           DateTime.now().day.toString();
       donacionesProvider.crearDonacion(donaciones);
+      mostrarAlertaOk(
+          context, 'Registro guardado con exito', 'verDonacionesInAdd');
     } else {
       donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
       donacionesProvider.editarDonacion(donaciones);
+      mostrarAlertaOk(
+          context, 'Registro actualizado con exito', 'verDonacionesInAdd');
     }
     //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'verDonacionesInAdd');
+    // Navigator.pushNamed(context, 'verDonacionesInAdd');
   }
 }

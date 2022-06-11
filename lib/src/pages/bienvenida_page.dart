@@ -126,18 +126,18 @@ class BienvenidaPage extends StatelessWidget {
     return Text(nom.toString());
   }
 
-  _crearBoton(BuildContext context) {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: Text('Activar ubicacion'),
-      icon: Icon(Icons.save),
-      autofocus: true,
-      onPressed: () => setGPS(1, "65iRhtvZxeKT9DUb8aUu"),
-    );
-  }
+  // _crearBoton(BuildContext context) {
+  //   return ElevatedButton.icon(
+  //     style: ButtonStyle(
+  //       backgroundColor:
+  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+  //         return Colors.green;
+  //       }),
+  //     ),
+  //     label: Text('Activar ubicacion'),
+  //     icon: Icon(Icons.save),
+  //     autofocus: true,
+  //     onPressed: () => setGPS(1, "65iRhtvZxeKT9DUb8aUu"),
+  //   );
+  // }
 }

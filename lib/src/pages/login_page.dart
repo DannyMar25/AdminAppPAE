@@ -132,7 +132,7 @@ class LoginPage extends StatelessWidget {
     //snapshot.hasData
     //true ? algo asi si true: algo asi si false
     return StreamBuilder(
-      stream: bloc.formValidStream,
+      stream: bloc.formValidStreamL,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return RaisedButton(
           child: Container(

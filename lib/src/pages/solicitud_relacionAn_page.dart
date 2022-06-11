@@ -2,7 +2,6 @@ import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_relacionAnimal_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 

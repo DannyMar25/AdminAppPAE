@@ -14,8 +14,15 @@ class HorariosAgregados extends StatefulWidget {
 class _HorariosAgregadosState extends State<HorariosAgregados> {
   final horariosProvider = new HorariosProvider();
   final userProvider = new UsuarioProvider();
-  final List<String> _items =
-      ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'].toList();
+  final List<String> _items = [
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+    'Domingo'
+  ].toList();
   String? _selection;
   @override
   void initState() {
@@ -61,16 +68,19 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
           // }),
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.all(15.0),
-        child: Form(
-          child: Column(
-            children: [
-              _crearDia(),
-              Divider(),
-              _verListado(),
-              Divider(),
-            ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(15.0),
+          child: Form(
+            //key: formKey,
+            child: Column(
+              children: [
+                _crearDia(),
+                Divider(),
+                _verListado(),
+                Divider(),
+              ],
+            ),
           ),
         ),
       ),
@@ -127,7 +137,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
           if (snapshot.hasData) {
             final horarios = snapshot.data;
             return SizedBox(
-                height: 300,
+                height: 600,
                 child: ListView.builder(
                   itemCount: horarios!.length,
                   itemBuilder: (context, i) => _crearItem(context, horarios[i]),
@@ -142,18 +152,14 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
     return Card(
       color: Colors.lightGreen[200],
       shadowColor: Colors.green,
-      child: Column(key: UniqueKey(),
-          // background: Container(
-          //   color: Colors.red,
-          // ),
-          children: [
-            ListTile(
-              title: Text('${horario.dia} - ${horario.hora}'),
-              subtitle: Text('${horario.disponible}'),
-              onTap: () =>
-                  Navigator.pushNamed(context, 'citasAdd', arguments: horario),
-            )
-          ]),
+      child: Column(key: UniqueKey(), children: [
+        ListTile(
+          title: Text('${horario.dia} - ${horario.hora}'),
+          subtitle: Text('${horario.disponible}'),
+          onTap: () =>
+              Navigator.pushNamed(context, 'citasAdd', arguments: horario),
+        )
+      ]),
     );
   }
 }

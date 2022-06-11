@@ -228,7 +228,7 @@ class _IngresoDonacionesOutAddPageState
       style: ButtonStyle(
         backgroundColor:
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
+          return Colors.green;
         }),
       ),
       label: Text('Guardar'),
@@ -256,6 +256,11 @@ class _IngresoDonacionesOutAddPageState
     // }
 
     if (donaciones.cantidad == 1) {
+      donaciones.fechaIngreso = DateTime.now().year.toString() +
+          '-' +
+          DateTime.now().month.toString() +
+          '-' +
+          DateTime.now().day.toString();
       donaciones.estadoDonacion = 'Saliente';
       donaciones.cantidad = cantidadAdd!;
       donacionesProvider.crearDonacion(donaciones);
@@ -263,6 +268,11 @@ class _IngresoDonacionesOutAddPageState
       Navigator.pushNamed(context, 'verDonacionesOutAdd');
     }
     if (donaciones.cantidad == int.tryParse(cantidadOut.text)) {
+      donaciones.fechaIngreso = DateTime.now().year.toString() +
+          '-' +
+          DateTime.now().month.toString() +
+          '-' +
+          DateTime.now().day.toString();
       donaciones.estadoDonacion = 'Saliente';
       donaciones.cantidad = int.tryParse(cantidadOut.text)!;
       donacionesProvider.crearDonacion(donaciones);
@@ -270,6 +280,11 @@ class _IngresoDonacionesOutAddPageState
       Navigator.pushNamed(context, 'verDonacionesOutAdd');
     } else {
       int cantidadAdd1 = donaciones.cantidad - int.tryParse(cantidadOut.text)!;
+      donaciones.fechaIngreso = DateTime.now().year.toString() +
+          '-' +
+          DateTime.now().month.toString() +
+          '-' +
+          DateTime.now().day.toString();
       donaciones.estadoDonacion = 'Saliente';
       donaciones.cantidad = int.tryParse(cantidadOut.text)!;
       donacionesProvider.editarCantidad(donaciones, cantidadAdd1);

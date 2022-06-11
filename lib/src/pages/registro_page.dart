@@ -68,6 +68,10 @@ class RegistroPage extends StatelessWidget {
                 SizedBox(
                   height: 30.0,
                 ),
+                create_password_confirm(bloc),
+                SizedBox(
+                  height: 30.0,
+                ),
                 _crearBoton(bloc),
               ],
             ),
@@ -177,12 +181,35 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
+  //Crear nuevo text para confirmar la contasena
+  Widget create_password_confirm(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.passwordConfirmStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              icon: Icon(Icons.lock, color: Colors.green),
+              labelText: 'Confirmar contraseña',
+              counterText: snapshot.data,
+              errorText:
+                  snapshot.error != null ? snapshot.error.toString() : null,
+            ),
+            onChanged: (value) => bloc.changePasswordConfirm(value),
+          ),
+        );
+      },
+    );
+  }
+
   Widget _crearBoton(LoginBloc bloc) {
     //formValidStream
     //snapshot.hasData
     //true ? algo asi si true: algo asi si false
     return StreamBuilder(
-      stream: bloc.formValidStream,
+      stream: bloc.formValidStream1,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return RaisedButton(
           child: Container(

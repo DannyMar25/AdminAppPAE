@@ -88,43 +88,34 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
-    return Dismissible(
-      key: UniqueKey(),
-      background: Container(
-        color: Colors.red,
+    return Card(
+      child: Column(
+        children: [
+          (animal.fotoUrl == "")
+              ? Image(image: AssetImage('assets/no-image.png'))
+              : FadeInImage(
+                  image: NetworkImage(animal.fotoUrl),
+                  placeholder: AssetImage('assets/jar-loading.gif'),
+                  height: 300.0,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+          ListTile(
+            title: Text('${animal.nombre} - ${animal.edad}'),
+            subtitle:
+                Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
+            onTap: () =>
+                Navigator.pushNamed(context, 'animal', arguments: animal),
+          ),
+        ],
       ),
-      onDismissed: (direccion) {
-        mostrarAlertaBorrar(context, 'hola');
-        animalesProvider.borrarAnimal(animal.id!);
-      },
-      child: Card(
-        child: Column(
-          children: [
-            (animal.fotoUrl == "")
-                ? Image(image: AssetImage('assets/no-image.png'))
-                : FadeInImage(
-                    image: NetworkImage(animal.fotoUrl),
-                    placeholder: AssetImage('assets/jar-loading.gif'),
-                    height: 300.0,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-            ListTile(
-              title: Text('${animal.nombre} - ${animal.edad}'),
-              subtitle:
-                  Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
-              onTap: () =>
-                  Navigator.pushNamed(context, 'animal', arguments: animal),
-            ),
-          ],
-        ),
-      ),
-      // child: ListTile(
-      //   title: Text('${animal.nombre} - ${animal.edad} meses'),
-      //   subtitle: Text('${animal.color} - ${animal.id}'),
-      //   onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
-      // ),
     );
+
+    // child: ListTile(
+    //   title: Text('${animal.nombre} - ${animal.edad} meses'),
+    //   subtitle: Text('${animal.color} - ${animal.id}'),
+    //   onTap: () => Navigator.pushNamed(context, 'animal', arguments: animal),
+    // ),
   }
 
   _crearBoton(BuildContext context) {

@@ -5,7 +5,6 @@ import 'package:aministrador_app_v1/src/models/formulario_relacionAnimal_model.d
 import 'package:aministrador_app_v1/src/models/formulario_situacionFam_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -102,11 +101,11 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                   ),
                   Divider(),
                   DataTable(
-                    sortColumnIndex: 2,
-                    sortAscending: false,
+                    //sortColumnIndex: 2,
+                    //sortAscending: false,
                     columns: [
                       DataColumn(label: Text("Nombre")),
-                      DataColumn(label: Text("Edad "), numeric: true),
+                      DataColumn(label: Text("Edad ")),
                       DataColumn(label: Text("Parentesco")),
                     ],
                     rows: [

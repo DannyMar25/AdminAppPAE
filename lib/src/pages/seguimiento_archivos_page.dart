@@ -5,7 +5,6 @@ import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/models/registro_desparasitaciones_model.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class VerEvidenciaArchivosPage extends StatefulWidget {

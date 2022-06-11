@@ -1,6 +1,7 @@
 import 'package:aministrador_app_v1/src/models/donaciones_model.dart';
 import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
+import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -134,7 +135,15 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                           ]),
                       Padding(padding: EdgeInsets.only(bottom: 15.0)),
                       Divider(),
-                      _crearBoton(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _crearBoton(),
+                          Padding(padding: EdgeInsets.only(right: 10)),
+                          _crearBotonEliminar()
+                        ],
+                      )
+                      //_crearBoton(),
                       // _crearCantidad(),
                     ],
                   )),
@@ -380,8 +389,28 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     // donaciones.estadoDonacion = 'Entrante';
     //onacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
     donacionesProvider.editarDonacion(donaciones);
-
+    mostrarAlertaOk(
+        context, 'Registro actualizado con exito', 'verDonacionesInAdd');
     //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'verDonacionesInAdd');
+    //Navigator.pushNamed(context, 'verDonacionesInAdd');
+  }
+
+  Widget _crearBotonEliminar() {
+    return ElevatedButton.icon(
+      style: ButtonStyle(
+        backgroundColor:
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+          return Colors.green;
+        }),
+      ),
+      label: Text('Eliminar'),
+      icon: Icon(Icons.delete),
+      autofocus: true,
+      onPressed: () {
+        donacionesProvider.borrarDonacion(donaciones.id);
+        mostrarAlertaOk(
+            context, 'Registro eliminado con exito', 'verDonacionesInAdd');
+      },
+    );
   }
 }

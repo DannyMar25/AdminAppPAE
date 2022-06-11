@@ -22,6 +22,18 @@ class Validators {
     }
   });
 
+  //se anade otro validator para confirmar contrasena
+  final validarPasswordN = StreamTransformer<String, String>.fromHandlers(
+      handleData: (password, sink) {
+    if (password.length >= 6) {
+      sink.add(password);
+    } else {
+      sink.addError('Mas de 6 caracteres por favor');
+    }
+  });
+
+  //nuevo
+
   final validarNombre = StreamTransformer<String, String>.fromHandlers(
       handleData: (nombre, sink) {
     if (nombre.length >= 5) {

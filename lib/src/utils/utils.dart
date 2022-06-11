@@ -30,7 +30,50 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
       context: context,
       builder: (context) {
         return AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 50,
+              ),
+              Text('Informacion correcta'),
+            ],
+          ),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
+          ],
+        );
+      });
+}
+
+void mostrarMensaje(BuildContext context, String mensaje) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
           title: Text('Informacion correcta'),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.of(context).pop()),
+          ],
+        );
+      });
+}
+
+void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Correo invalido'),
           content: Text(mensaje),
           actions: [
             TextButton(

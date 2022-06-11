@@ -215,7 +215,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
           if (snapshot.hasData) {
             final donaciones = snapshot.data;
             return SizedBox(
-                height: 300,
+                height: 600,
                 child: ListView.builder(
                   itemCount: donaciones!.length,
                   itemBuilder: (context, i) =>
@@ -233,10 +233,17 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
         color: Colors.lightGreen[200],
         shadowColor: Colors.green,
         child: ListTile(
-          title:
-              Text('${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-          subtitle: Text(
-              '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+          title: Text(
+            '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+            textAlign: TextAlign.center,
+          ),
+          subtitle: Column(
+            children: [
+              Text(
+                  '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+              Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+            ],
+          ),
           onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
               arguments: donacion),
         ),
@@ -246,9 +253,16 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
         color: Colors.lightGreen[200],
         shadowColor: Colors.green,
         child: ListTile(
-          title:
-              Text('${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-          subtitle: Text('${donacion.descripcion}'),
+          title: Text(
+            '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+            textAlign: TextAlign.center,
+          ),
+          subtitle: Column(
+            children: [
+              Text('${donacion.descripcion}'),
+              Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+            ],
+          ),
           onTap: () => Navigator.pushNamed(context, 'DonacionesOutAdd1',
               arguments: donacion),
         ),

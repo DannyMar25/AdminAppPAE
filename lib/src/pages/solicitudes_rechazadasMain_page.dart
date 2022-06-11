@@ -4,7 +4,6 @@ import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_datosPersonales_model.dart';
 import 'package:aministrador_app_v1/src/models/formulario_principal_model.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/widgets/background.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';

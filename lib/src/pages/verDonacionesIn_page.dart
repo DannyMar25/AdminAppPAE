@@ -145,7 +145,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
     return Column(
       children: [
         SizedBox(
-            height: 500,
+            height: 600,
             child: ListView.builder(
                 itemCount: donacionA.length,
                 itemBuilder: (context, i) =>
@@ -167,10 +167,20 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
             // ),
             children: [
               ListTile(
-                  title: Text(
-                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-                  subtitle: Text(
-                      '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                  title: Column(
+                    children: [
+                      Text(
+                          '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                      //Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                    ],
+                  ),
+                  subtitle: Column(
+                    children: [
+                      Text(
+                          '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                    ],
+                  ),
                   onTap: () {
                     Navigator.pushNamed(context, 'verDonacionesIn1',
                         arguments: donacion);
@@ -188,8 +198,14 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
             children: [
               ListTile(
                   title: Text(
-                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
-                  subtitle: Text('${donacion.descripcion}'),
+                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+                      textAlign: TextAlign.center),
+                  subtitle: Column(
+                    children: [
+                      Text('${donacion.descripcion}'),
+                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                    ],
+                  ),
                   onTap: () {
                     Navigator.pushNamed(context, 'verDonacionesIn1',
                         arguments: donacion);
