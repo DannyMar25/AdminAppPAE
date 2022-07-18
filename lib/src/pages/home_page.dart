@@ -74,9 +74,18 @@ class HomePage extends StatelessWidget {
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
           if (snapshot.hasData) {
             final animales = snapshot.data;
-            return ListView.builder(
-              itemCount: animales!.length,
-              itemBuilder: (context, i) => _crearItem(context, animales[i]),
+            return GridView.count(
+              childAspectRatio: 50 / 100,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(animales!.length, (index) {
+                return _crearItem(context, animales[index]);
+              }),
+
+              /* ListView.builder(
+                itemCount: animales!.length,
+                itemBuilder: (context, i) => _crearItem(context, animales[i]),
+              ), */
             );
           } else {
             return Center(child: CircularProgressIndicator());
@@ -92,16 +101,32 @@ class HomePage extends StatelessWidget {
               ? Image(image: AssetImage('assets/no-image.png'))
               : FadeInImage(
                   image: NetworkImage(animal.fotoUrl),
+
                   //placeholder: AssetImage('assets/jar-loading.gif'),
                   placeholder: AssetImage('assets/cat_1.gif'),
                   height: 300.0,
+// =======
+//                   placeholder: AssetImage('assets/jar-loading.gif'),
+//                   height: 270.0,
+
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
           ListTile(
-            title: Text('${animal.nombre} - ${animal.etapaVida}'),
-            subtitle:
-                Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
+            title: Text(
+              '${animal.nombre} - ${animal.etapaVida}',
+              textAlign: TextAlign.center,
+            ),
+            subtitle: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'Color: ${animal.color}',
+                  textAlign: TextAlign.start,
+                ),
+                Text('Tamaño: ${animal.tamanio}'),
+              ],
+            ),
             onTap: () =>
                 Navigator.pushNamed(context, 'animal', arguments: animal),
           ),
