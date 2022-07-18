@@ -9,6 +9,8 @@ class AnimalesProvider {
 
   // final String _url =
   //     'https://flutter-varios-1637a-default-rtdb.firebaseio.com';
+  //codigo anterior
+
   FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<bool> crearAnimal1(AnimalModel animal, File _image1) async {
