@@ -120,8 +120,8 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row4.cells[0].value = 'Ocupación:';
     row4.cells[1].value = datosA.ocupacion;
     PdfGridRow row5 = grid.rows.add();
-    row5.cells[0].value = 'Edad:';
-    row5.cells[1].value = datosA.edad.toString();
+    row5.cells[0].value = 'Fecha de nacimiento:';
+    row5.cells[1].value = datosA.fechaNacimiento;
     PdfGridRow row6 = grid.rows.add();
     row6.cells[0].value = 'E-mail:';
     row6.cells[1].value = datosA.email;

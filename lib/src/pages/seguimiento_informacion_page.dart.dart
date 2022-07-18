@@ -108,7 +108,7 @@ class _InformacionSeguimientoPageState
                                 textAlign: TextAlign.left,
                               ),
                               Text(
-                                '${animal.edad}      ',
+                                '${animal.etapaVida}      ',
                                 textAlign: TextAlign.left,
                               ),
                               Text(

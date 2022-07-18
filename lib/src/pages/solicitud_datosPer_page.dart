@@ -102,7 +102,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     _mostrarNombreCom(),
                     _mostrarCI(),
                     _mostrarDireccion(),
-                    _mostrarEdad(),
+                    _mostrarFechaNacimiento(),
                     _mostrarOcupacion(),
                     _mostrarEmail(),
                     Divider(),
@@ -219,13 +219,13 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
     );
   }
 
-  Widget _mostrarEdad() {
+  Widget _mostrarFechaNacimiento() {
     return TextFormField(
       readOnly: true,
-      initialValue: datosA.edad.toString(),
+      initialValue: datosA.fechaNacimiento,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Edad",
+        labelText: "Fecha de nacimiento:",
         icon: Icon(
           Icons.person,
           color: Colors.purple,

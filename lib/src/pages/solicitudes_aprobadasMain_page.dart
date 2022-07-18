@@ -106,11 +106,11 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                                 textAlign: TextAlign.left,
                               ),
                               Text(
-                                'Edad: ',
+                                'Etapa de vida: ',
                                 textAlign: TextAlign.left,
                               ),
                               Text(
-                                '${animal.edad}      ',
+                                '${animal.etapaVida}      ',
                                 textAlign: TextAlign.left,
                               ),
                               Text(

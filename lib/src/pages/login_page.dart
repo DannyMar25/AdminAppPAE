@@ -1,13 +1,11 @@
 import 'package:aministrador_app_v1/src/models/usuarios_model.dart';
 import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
-import 'package:aministrador_app_v1/src/pages/home_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   //const LoginPage({Key? key}) : super(key: key);
@@ -72,13 +70,8 @@ class LoginPage extends StatelessWidget {
           ),
           //Text('Olvido la contrasena?'),
           _crearBotonPass(context),
-          // TextButton(
-          //   onPressed: () => Navigator.pushNamed(context, 'registro'),
-          //   child: Text('Crear una nueva cuenta'),
-          // ),
-          // SizedBox(
-          //   height: 100.0,
-          // )
+          //Padding(padding: EdgeInsets.only(bottom: .0)),
+          _crearBotonSoporte(context)
         ],
       ),
     );
@@ -150,13 +143,6 @@ class LoginPage extends StatelessWidget {
           color: Colors.green,
           textColor: Colors.white,
           onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
-          // onPressed: () async {
-          //   SharedPreferences prefs = await SharedPreferences.getInstance();
-          //   prefs.setString('email', '');
-          //   prefs.setString('rol', '');
-          //   Navigator.pushReplacement(context,
-          //       MaterialPageRoute(builder: (BuildContext ctx) => HomePage()));
-          // },
         );
       },
     );
@@ -192,6 +178,18 @@ class LoginPage extends StatelessWidget {
       },
       child: Text(
         'Olvido la contraseña?',
+        style: TextStyle(color: Colors.green, fontSize: 20),
+      ),
+    );
+  }
+
+  Widget _crearBotonSoporte(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.pushReplacementNamed(context, 'soporte');
+      },
+      child: Text(
+        'Contactarse con soporte.',
         style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );
@@ -233,10 +231,6 @@ class LoginPage extends StatelessWidget {
               Image.asset('assets/pet-care.png', height: 190),
 
               SizedBox(height: 10.0, width: double.infinity),
-              // Text(
-              //   'Bienvenid@',
-              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-              // ),
             ],
           ),
         ),

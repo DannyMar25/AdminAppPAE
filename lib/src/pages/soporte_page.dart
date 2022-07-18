@@ -1,4 +1,5 @@
 import 'package:aministrador_app_v1/src/models/soportes_model.dart';
+import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/soportes_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
@@ -16,8 +17,10 @@ class _SoportePageState extends State<SoportePage> {
   final userProvider = new UsuarioProvider();
   SoportesProvider soportesProvider = new SoportesProvider();
   SoportesModel soporte = new SoportesModel();
+  final prefs = new PreferenciasUsuario();
   @override
   Widget build(BuildContext context) {
+    final email = prefs.email;
     return Scaffold(
       backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
@@ -36,10 +39,15 @@ class _SoportePageState extends State<SoportePage> {
                       child: Text("Ayuda"),
                       value: 1,
                     ),
-                    PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
-                      value: 2,
-                    )
+                    email != ''
+                        ? PopupMenuItem<int>(
+                            child: Text("Cerrar Sesion"),
+                            value: 2,
+                          )
+                        : PopupMenuItem<int>(
+                            child: Text("Iniciar Sesion"),
+                            value: 2,
+                          ),
                   ]),
         ],
       ),

@@ -109,15 +109,7 @@ class UsuarioProvider {
 
   Future<dynamic> obtenerUsuario(String uid) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       final user = await refUser.doc(uid).get();
-      // print(user.data());
-      //print(user.id);
-      // if (user.data() == null) {
-      //   return true;
-      // } else {
-      //   return false;
-      // }
       return user.data() as dynamic;
     } catch (e) {
       return false;

@@ -16,7 +16,7 @@ class DatosPersonalesModel {
     this.nombreCom = '',
     this.cedula = '',
     this.direccion = '',
-    this.edad = 23,
+    this.fechaNacimiento = '',
     this.ocupacion = '',
     this.email = '',
     this.nivelInst = '',
@@ -32,7 +32,7 @@ class DatosPersonalesModel {
   String nombreCom;
   String cedula;
   String direccion;
-  int edad;
+  String fechaNacimiento;
   String ocupacion;
   String email;
   String nivelInst;
@@ -49,7 +49,7 @@ class DatosPersonalesModel {
         nombreCom: json["nombreCom"],
         cedula: json["cedula"],
         direccion: json["direccion"],
-        edad: json["edad"],
+        fechaNacimiento: json["fechaNacimiento"],
         ocupacion: json["ocupacion"],
         email: json["email"],
         nivelInst: json["nivelInst"],
@@ -66,7 +66,7 @@ class DatosPersonalesModel {
         "nombreCom": nombreCom,
         "cedula": cedula,
         "direccion": direccion,
-        "edad": edad,
+        "fechaNacimiento": fechaNacimiento,
         "ocupacion": ocupacion,
         "email": email,
         "nivelInst": nivelInst,

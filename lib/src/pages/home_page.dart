@@ -1,11 +1,8 @@
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
-import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-
-//import 'package:formvalidation/src/bloc/provider.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({Key? key}) : super(key: key);
@@ -95,13 +92,14 @@ class HomePage extends StatelessWidget {
               ? Image(image: AssetImage('assets/no-image.png'))
               : FadeInImage(
                   image: NetworkImage(animal.fotoUrl),
-                  placeholder: AssetImage('assets/jar-loading.gif'),
+                  //placeholder: AssetImage('assets/jar-loading.gif'),
+                  placeholder: AssetImage('assets/cat_1.gif'),
                   height: 300.0,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
           ListTile(
-            title: Text('${animal.nombre} - ${animal.edad}'),
+            title: Text('${animal.nombre} - ${animal.etapaVida}'),
             subtitle:
                 Text('Color: ${animal.color} - Tamaño: ${animal.tamanio}'),
             onTap: () =>

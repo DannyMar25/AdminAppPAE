@@ -1,10 +1,18 @@
+import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 
-class MenuWidget extends StatelessWidget {
+class MenuWidget extends StatefulWidget {
   const MenuWidget({Key? key}) : super(key: key);
 
   @override
+  State<MenuWidget> createState() => _MenuWidgetState();
+}
+
+class _MenuWidgetState extends State<MenuWidget> {
+  final prefs = new PreferenciasUsuario();
+  @override
   Widget build(BuildContext context) {
+    final rol = prefs.rol;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -210,17 +218,19 @@ class MenuWidget extends StatelessWidget {
             ),
           ),
           Divider(),
-          ListTile(
-            leading: Icon(
-              Icons.app_registration,
-              color: Colors.green,
-            ),
-            title: Text('Registrar administrador'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'registro');
-            },
-          ),
+          rol == 'SuperAdministrador'
+              ? ListTile(
+                  leading: Icon(
+                    Icons.app_registration,
+                    color: Colors.green,
+                  ),
+                  title: Text('Registrar administrador'),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, 'registro');
+                  },
+                )
+              : SizedBox(),
           ListTile(
             leading: Icon(
               Icons.app_registration,
