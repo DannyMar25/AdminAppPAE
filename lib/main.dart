@@ -43,7 +43,6 @@ import 'package:aministrador_app_v1/src/pages/ver_archivo_page.dart';
 import 'package:aministrador_app_v1/src/pages/ver_foto_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
-//import 'package:formvalidation/src/pages/producto_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
