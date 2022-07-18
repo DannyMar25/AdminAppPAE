@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:http/http.dart' as http;
 
 class AnimalesProvider {
   CollectionReference refAn = FirebaseFirestore.instance.collection('animales');
@@ -9,8 +10,6 @@ class AnimalesProvider {
 
   // final String _url =
   //     'https://flutter-varios-1637a-default-rtdb.firebaseio.com';
-  //codigo anterior
-
   FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<bool> crearAnimal1(AnimalModel animal, File _image1) async {
