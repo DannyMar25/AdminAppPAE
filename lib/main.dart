@@ -8,7 +8,7 @@ import 'package:aministrador_app_v1/src/pages/donacionesOut_page.dart';
 import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
 import 'package:aministrador_app_v1/src/pages/horariosR_page.dart';
 import 'package:aministrador_app_v1/src/pages/horarios_page.dart';
-import 'package:aministrador_app_v1/src/pages/home_page.dart';
+import 'package:aministrador_app_v1/src/pages/galeriaMascotas_page.dart';
 import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/pages/perfilUsuario_page.dart';
 import 'package:aministrador_app_v1/src/pages/registro_page.dart';
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => RegistroPage(),
-            'home': (_) => HomePage(),
+            'home': (_) => GaleriaMascotasPage(),
             'animal': (_) => AnimalPage(),
             'bienvenida': (_) => BienvenidaPage(),
             'ubicacion': (_) => UbicacionPage(),

@@ -4,7 +4,7 @@ import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class GaleriaMascotasPage extends StatelessWidget {
   //const HomePage({Key? key}) : super(key: key);
   final animalesProvider = new AnimalesProvider();
   final userProvider = new UsuarioProvider();

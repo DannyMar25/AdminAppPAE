@@ -145,12 +145,14 @@ class _DomicilioPageState extends State<DomicilioPage> {
                       sortColumnIndex: 2,
                       sortAscending: false,
                       columns: [
+                        DataColumn(label: Text("Especie")),
                         DataColumn(label: Text("Sexo")),
                         DataColumn(label: Text("Edad "), numeric: true),
                         DataColumn(label: Text("Tamaño")),
                       ],
                       rows: [
                         DataRow(selected: true, cells: [
+                          DataCell(_mostrarEspecie()),
                           DataCell(_mostrarSexo()),
                           DataCell(_mostrarEdad()),
                           DataCell(_mostrarTamano()),
@@ -359,6 +361,14 @@ class _DomicilioPageState extends State<DomicilioPage> {
           color: Colors.purple,
         ),
       ),
+    );
+  }
+
+  Widget _mostrarEspecie() {
+    return TextFormField(
+      readOnly: true,
+      initialValue: domicilios.especieAd,
+      textCapitalization: TextCapitalization.sentences,
     );
   }
 

@@ -166,11 +166,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
   Widget _buildChild() {
     if (_selection == 'Alimento') {
       return _crearPeso();
-    } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
+    } 
     return Text('');
   }
 

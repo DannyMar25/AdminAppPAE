@@ -55,18 +55,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -107,11 +95,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
         await citasProvider.cargarCitasFecha(_inputFieldDateController.text);
     for (var yy in listaC) {
       CitasModel cit = await yy;
-      // print("Datos: " + cit.id);
-      // print("Datos: " + cit.idHorario);
-      // print("Datos: " + cit.animal!.nombre);
-      // print("Datos: " + cit.horario!.dia);
-      // print("Datos: " + cit.nombreClient);
       setState(() {
         citasA.add(cit);
       });

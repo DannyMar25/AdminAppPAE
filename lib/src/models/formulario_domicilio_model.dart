@@ -21,6 +21,7 @@ class DomicilioModel {
     this.cerramiento = '',
     this.alturaC = 1.1,
     this.materialC = '',
+    this.especieAd = '',
     this.sexoAd = '',
     this.edadAd = '',
     this.tamanioAd = '',
@@ -36,6 +37,7 @@ class DomicilioModel {
   String cerramiento;
   double alturaC;
   String materialC;
+  String especieAd;
   String sexoAd;
   String edadAd;
   String tamanioAd;
@@ -51,6 +53,7 @@ class DomicilioModel {
         cerramiento: json["cerramiento"],
         alturaC: json["alturaC"].toDouble(),
         materialC: json["materialC"],
+        especieAd: json["especieAd"],
         sexoAd: json["sexoAd"],
         edadAd: json["edadAd"],
         tamanioAd: json["tamanioAd"],
@@ -67,6 +70,7 @@ class DomicilioModel {
         "cerramiento": cerramiento,
         "alturaC": alturaC,
         "materialC": materialC,
+        "especieAd": especieAd,
         "sexoAd": sexoAd,
         "edadAd": edadAd,
         "tamanioAd": tamanioAd,
