@@ -55,7 +55,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: Column(
               children: [
                 Text(
-                  'Recuperacion de contraseña',
+                  'Recuperación de contraseña',
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(
@@ -137,7 +137,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         );
       },
       child: Text(
-        'Iniciar sesion',
+        'Iniciar sesión',
         style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );

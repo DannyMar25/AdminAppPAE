@@ -54,9 +54,9 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
     datosA = arg['datosper'] as DatosPersonalesModel;
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
-        title: Text('Situacion familiar'),
+        title: Text('Situación familiar'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -64,7 +64,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -72,7 +72,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -82,91 +82,95 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
       body: Stack(children: [
         //Background(),
         SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(15.0),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: [
-                  Text(
-                    'Mencione las personas con las que vive',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+          child: Flexible(
+            fit: FlexFit.loose,
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Text(
+                      'Mencione las personas con las que vive',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Divider(),
-                  DataTable(
-                    //sortColumnIndex: 2,
-                    //sortAscending: false,
-                    columns: [
-                      DataColumn(label: Text("Nombre")),
-                      DataColumn(label: Text("Edad ")),
-                      DataColumn(label: Text("Parentesco")),
-                    ],
-                    rows: [
-                      DataRow(selected: true, cells: [
-                        DataCell(_mostrarNombreF1()),
-                        DataCell(_mostrarEdadF1()),
-                        DataCell(_mostrarParentesco1()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF2()),
-                        DataCell(_mostrarEdadF2()),
-                        DataCell(_mostrarParentesco2()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF3()),
-                        DataCell(_mostrarEdadF3()),
-                        DataCell(_mostrarParentesco3()),
-                      ]),
-                      DataRow(cells: [
-                        DataCell(_mostrarNombreF4()),
-                        DataCell(_mostrarEdadF4()),
-                        DataCell(_mostrarParentesco4()),
-                      ])
-                    ],
-                  ),
-                  Divider(),
-                  Text(
-                    'Algun familiar espera un bebe?',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+                    Divider(),
+                    DataTable(
+                      sortColumnIndex: 2,
+                      sortAscending: false,
+                      columnSpacing: 30,
+                      columns: [
+                        DataColumn(label: Text("Nombre")),
+                        DataColumn(label: Text("Edad ")),
+                        DataColumn(label: Text("Parentesco")),
+                      ],
+                      rows: [
+                        DataRow(selected: true, cells: [
+                          DataCell(_mostrarNombreF1()),
+                          DataCell(_mostrarEdadF1()),
+                          DataCell(_mostrarParentesco1()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF2()),
+                          DataCell(_mostrarEdadF2()),
+                          DataCell(_mostrarParentesco2()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF3()),
+                          DataCell(_mostrarEdadF3()),
+                          DataCell(_mostrarParentesco3()),
+                        ]),
+                        DataRow(cells: [
+                          DataCell(_mostrarNombreF4()),
+                          DataCell(_mostrarEdadF4()),
+                          DataCell(_mostrarParentesco4()),
+                        ])
+                      ],
                     ),
-                  ),
-                  Divider(),
-                  _mostrarEsperabebe(),
-                  Text(
-                    'Alguien que viva con usted es alergico a los animales o sufre de asma?',
-                    style: TextStyle(
-                      fontSize: 22,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 2
-                        ..color = Colors.blueGrey,
+                    Divider(),
+                    Text(
+                      'Algun familiar espera un bebe?',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
                     ),
-                  ),
-                  Divider(),
-                  _mostrarAlergia(),
-                  Divider(
-                    color: Colors.transparent,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _botonAtras(),
-                      _botonSiguiente(),
-                    ],
-                  )
-                ],
+                    Divider(),
+                    _mostrarEsperabebe(),
+                    Text(
+                      'Alguien que viva con usted es alérgico a los animales o sufre de asma?',
+                      style: TextStyle(
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 2
+                          ..color = Colors.blueGrey,
+                      ),
+                    ),
+                    Divider(),
+                    _mostrarAlergia(),
+                    Divider(
+                      color: Colors.transparent,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _botonAtras(),
+                        _botonSiguiente(),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -293,7 +297,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         //labelText: "Algun familiar espera un bebe?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -308,7 +312,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         //labelText: "Alguien que viva con usted es alergico a los animales ?",
         icon: Icon(
           Icons.question_answer,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -333,7 +337,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'domicilio', arguments: {
               'domicilio': domicilio,
@@ -363,7 +367,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
           //tooltip: 'Siguiente',
           icon: Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pop(context);
           },

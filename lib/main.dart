@@ -2,6 +2,7 @@ import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/pages/agendarCitas_page.dart';
 import 'package:aministrador_app_v1/src/pages/animal_page.dart';
 import 'package:aministrador_app_v1/src/pages/bienvenida_page.dart';
+import 'package:aministrador_app_v1/src/pages/busqueda_page.dart';
 import 'package:aministrador_app_v1/src/pages/donacionesIn_page.dart';
 import 'package:aministrador_app_v1/src/pages/donacionesOutAdd_page.dart';
 import 'package:aministrador_app_v1/src/pages/donacionesOut_page.dart';
@@ -12,6 +13,7 @@ import 'package:aministrador_app_v1/src/pages/galeriaMascotas_page.dart';
 import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/pages/perfilUsuario_page.dart';
 import 'package:aministrador_app_v1/src/pages/registro_page.dart';
+import 'package:aministrador_app_v1/src/pages/resultados_busqueda_page.dart';
 import 'package:aministrador_app_v1/src/pages/seguimiento_archivos_page.dart';
 import 'package:aministrador_app_v1/src/pages/seguimiento_desparasitacion_page.dart';
 import 'package:aministrador_app_v1/src/pages/seguimiento_fotos_page.dart';
@@ -45,7 +47,6 @@ import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuari
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -124,6 +125,8 @@ class MyApp extends StatelessWidget {
             'verArchivoEvidencia': (_) => VerArchivoEvidenciaPage(),
             'crearPDF': (_) => CrearSolicitudPdfPage(),
             'soporte': (_) => SoportePage(),
+            'busqueda': (_) => BusquedaPage(),
+            'resultadoBusqueda': (_) => ResultadosBusquedaPage(),
           },
           theme: ThemeData(primaryColor: Colors.deepPurple)),
     );

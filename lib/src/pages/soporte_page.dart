@@ -32,7 +32,7 @@ class _SoportePageState extends State<SoportePage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -41,11 +41,11 @@ class _SoportePageState extends State<SoportePage> {
                     ),
                     email != ''
                         ? PopupMenuItem<int>(
-                            child: Text("Cerrar Sesion"),
+                            child: Text("Cerrar Sesión"),
                             value: 2,
                           )
                         : PopupMenuItem<int>(
-                            child: Text("Iniciar Sesion"),
+                            child: Text("Iniciar Sesión"),
                             value: 2,
                           ),
                   ]),
@@ -54,12 +54,6 @@ class _SoportePageState extends State<SoportePage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -125,6 +119,7 @@ class _SoportePageState extends State<SoportePage> {
     return TextFormField(
       //initialValue: datoPersona.nombreCom,
       readOnly: false,
+      keyboardType: TextInputType.emailAddress,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           icon: Icon(Icons.mail),
@@ -160,6 +155,7 @@ class _SoportePageState extends State<SoportePage> {
       //initialValue: datoPersona.nombreCom,
       readOnly: false,
       maxLines: 10,
+      keyboardType: TextInputType.multiline,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           icon: Icon(Icons.edit_note),

@@ -18,7 +18,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -52,22 +52,10 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -133,7 +121,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Tipo de Donacion:',
+          labelText: 'Tipo de Donación:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
     );
   }
@@ -142,10 +130,6 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     if (donaciones.tipo == 'Alimento') {
       return _crearPeso();
     } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
     return Text('');
   }
 
@@ -169,21 +153,13 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       initialValue: donaciones.descripcion,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Descripcion:',
+          labelText: 'Descripción:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
         });
       },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
     );
   }
 
@@ -204,33 +180,33 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
     );
   }
 
-  Widget _crearBoton() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: Text('Guardar'),
-      icon: Icon(Icons.save),
-      autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
-      onPressed: () {
-        _submit();
-      },
-    );
-  }
+  // Widget _crearBoton() {
+  //   return ElevatedButton.icon(
+  //     style: ButtonStyle(
+  //       backgroundColor:
+  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+  //         return Colors.green;
+  //       }),
+  //     ),
+  //     label: Text('Guardar'),
+  //     icon: Icon(Icons.save),
+  //     autofocus: true,
+  //     //onPressed: (_guardando) ? null : _submit,
+  //     onPressed: () {
+  //       _submit();
+  //     },
+  //   );
+  // }
 
-  void _submit() async {
-    if (donaciones.id == "") {
-      donaciones.estadoDonacion = 'Entrante';
-      donacionesProvider.crearDonacion(donaciones);
-    } else {
-      donaciones.estadoDonacion = 'Entrante';
-      donacionesProvider.editarDonacion(donaciones);
-    }
-    //mostrarSnackbar('Registro guardado');
-    Navigator.pushNamed(context, 'verDonacionesInAdd');
-  }
+  // void _submit() async {
+  //   if (donaciones.id == "") {
+  //     donaciones.estadoDonacion = 'Entrante';
+  //     donacionesProvider.crearDonacion(donaciones);
+  //   } else {
+  //     donaciones.estadoDonacion = 'Entrante';
+  //     donacionesProvider.editarDonacion(donaciones);
+  //   }
+  //   //mostrarSnackbar('Registro guardado');
+  //   Navigator.pushNamed(context, 'verDonacionesInAdd');
+  // }
 }

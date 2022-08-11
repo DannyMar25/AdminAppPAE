@@ -17,7 +17,7 @@ class AnimalModel {
     this.sexo = '',
     this.etapaVida = '',
     this.temperamento = '',
-    this.peso = 0.0,
+    this.peso = 0,
     this.tamanio = '',
     this.color = '',
     this.raza = '',

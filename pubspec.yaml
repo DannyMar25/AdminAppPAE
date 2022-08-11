@@ -46,14 +46,14 @@ dependencies:
   url_launcher: ^6.0.15
   mailer: ^5.0.2
   number_inc_dec: ^0.8.0
-  photo_view: ^0.13.0
+  photo_view: ^0.14.0
   syncfusion_flutter_pdfviewer: ^20.1.47-beta
   syncfusion_flutter_pdf: ^20.1.47-beta.1
   pdf: ^3.7.3
   path_provider: ^2.0.9
   open_file: ^3.2.1
-  firebase_database: ^9.0.10
-
+  firebase_database: ^9.1.0
+ 
   
  
 

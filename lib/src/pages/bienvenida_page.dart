@@ -1,7 +1,6 @@
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +34,7 @@ class BienvenidaPage extends StatelessWidget {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -43,22 +42,10 @@ class BienvenidaPage extends StatelessWidget {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
         //backgroundColor: (prefs.colorSecundario) ? Colors.teal : Colors.blue,
       ),
@@ -93,6 +80,13 @@ class BienvenidaPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+
+            SizedBox(
+              child: Image(
+                image: AssetImage('assets/dog_an2.gif'),
+              ),
+              width: 200,
+            )
           ],
         ),
       ),
@@ -114,17 +108,17 @@ class BienvenidaPage extends StatelessWidget {
     }
   }
 
-  _verUsuario() {
-    //FirebaseAuth.instance.currentUser;
-    final FirebaseAuth _auth = FirebaseAuth.instance;
-    User? user = _auth.currentUser;
-    print('displayName: $user.displayName');
-    //var user = FirebaseAuth.instance.currentUser;
-    //print(user!.displayName);
-    var nom = user!.displayName;
+  // _verUsuario() {
+  //   //FirebaseAuth.instance.currentUser;
+  //   final FirebaseAuth _auth = FirebaseAuth.instance;
+  //   User? user = _auth.currentUser;
+  //   print('displayName: $user.displayName');
+  //   //var user = FirebaseAuth.instance.currentUser;
+  //   //print(user!.displayName);
+  //   var nom = user!.displayName;
 
-    return Text(nom.toString());
-  }
+  //   return Text(nom.toString());
+  // }
 
   // _crearBoton(BuildContext context) {
   //   return ElevatedButton.icon(

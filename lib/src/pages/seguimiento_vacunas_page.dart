@@ -47,7 +47,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -55,7 +55,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -148,7 +148,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               columns: [
                 DataColumn(label: Text("Fecha")),
                 DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Proxima vacuna")),
+                DataColumn(label: Text("Próxima vacuna")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
@@ -198,17 +198,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           ],
         ),
         //subtitle: Text('${horario}'),
-        onTap: () async {
-          // datosA = await formulariosProvider.cargarDPId(
-          //     formulario.id, formulario.idDatosPersonales);
-          // animal = await animalesProvider.cargarAnimalId(formulario.idAnimal);
-
-          // Navigator.pushNamed(context, 'seguimientoMain', arguments: {
-          //   'datosper': datosA,
-          //   'formulario': formulario,
-          //   'animal': animal
-          // });
-        });
+        onTap: () async {});
   }
 
   Widget _menuWidget() {
@@ -254,7 +244,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitacion'),
+            title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

@@ -45,7 +45,7 @@ class _SolicitudRechazadaMainPageState
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -53,7 +53,7 @@ class _SolicitudRechazadaMainPageState
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -63,9 +63,6 @@ class _SolicitudRechazadaMainPageState
         body: Stack(
           alignment: Alignment.center,
           children: [
-            //Background(),
-            //_verGaleria(context),
-            //Text('Hola'),
             SingleChildScrollView(
               child: Container(
                 //color: Colors.lightGreenAccent,
@@ -117,7 +114,7 @@ class _SolicitudRechazadaMainPageState
                                 textAlign: TextAlign.left,
                               ),
                               Text(
-                                'Edad: ',
+                                'Etapa de vida: ',
                                 textAlign: TextAlign.left,
                               ),
                               Text(
@@ -170,7 +167,7 @@ class _SolicitudRechazadaMainPageState
                             color: Colors.white,
                           ),
                           Text(
-                            'Informacion del posible adoptante',
+                            'Información del posible adoptante',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -200,7 +197,7 @@ class _SolicitudRechazadaMainPageState
                           Row(
                             children: [
                               Text(
-                                'Direccion: ',
+                                'Dirección: ',
                                 textAlign: TextAlign.center,
                               ),
                               Text(
@@ -213,7 +210,7 @@ class _SolicitudRechazadaMainPageState
                           Row(
                             children: [
                               Text(
-                                'Telefono: ',
+                                'Teléfono: ',
                                 textAlign: TextAlign.center,
                               ),
                               Text(

@@ -43,7 +43,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -51,7 +51,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -195,7 +195,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitacion'),
+            title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

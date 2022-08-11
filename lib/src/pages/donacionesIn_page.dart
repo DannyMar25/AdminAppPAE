@@ -20,11 +20,12 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   bool isChecked = false;
   bool isChecked1 = false;
   String disponibilidad = '';
+  String campoVacio = 'Por favor, llena este campo';
   @override
   void initState() {
     // _selection = _items.last;
@@ -49,7 +50,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -57,22 +58,10 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -143,21 +132,23 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
-          'Seleccione el tipo de donacion:  ',
+          'Tipo de donación: ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
-        DropdownButton<String>(
-          hint: Text(donaciones.tipo.toString()),
-          value: _selection,
-          items: dropdownMenuOptions,
-          onChanged: (s) {
-            setState(() {
-              _selection = s;
-
-              donaciones.tipo = s!;
-              //animal.tamanio = s!;
-            });
-          },
+        SizedBox(
+          width: 200.0,
+          child: DropdownButtonFormField<String>(
+              hint: Text(donaciones.tipo.toString()),
+              value: _selection,
+              items: dropdownMenuOptions,
+              validator: (value) =>
+                  value == null ? 'Selecciona una opción' : null,
+              onChanged: (s) {
+                setState(() {
+                  _selection = s;
+                  donaciones.tipo = s!;
+                });
+              }),
         ),
       ],
     );
@@ -166,20 +157,27 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
   Widget _buildChild() {
     if (_selection == 'Alimento') {
       return _crearPeso();
-    } 
+    }
     return Text('');
   }
 
   Widget _crearPeso() {
     //if (_selection == 'Alimento') {
     return TextFormField(
-      initialValue: donaciones.peso.toString(),
+      //initialValue: donaciones.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
+      validator: (value) {
+        if (isNumeric(value!)) {
+          return null;
+        } else {
+          return 'Solo números';
+        }
+      },
       onChanged: (s) {
         setState(() {
           donaciones.peso = double.parse(s);
@@ -202,57 +200,58 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       initialValue: donaciones.descripcion,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Descripcion:',
+          labelText: 'Descripción:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese una descripción';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
         });
       },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
     );
   }
 
-  Widget _crearDonacion() {
-    return TextFormField(
-      // initialValue: ,
-      readOnly: false,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-          labelText: 'Ingrese el tipo de donacion:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-    );
-  }
+  // Widget _crearDonacion() {
+  //   return TextFormField(
+  //     // initialValue: ,
+  //     readOnly: false,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //         labelText: 'Ingrese el tipo de donacion:',
+  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+  //   );
+  // }
 
   Widget _crearUnidades() {
     return TextFormField(
-      initialValue: donaciones.cantidad.toString(),
+      //initialValue: donaciones.cantidad.toString(),
       //readOnly: false,
       textCapitalization: TextCapitalization.sentences,
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);
         });
       },
-      // onSaved: (value) => donaciones.cantidad = int.parse(value!),
-      // validator: (value) {
-      //   if (utils.isNumeric(value!)) {
-      //     return null;
-      //   } else {
-      //     return 'Solo numeros';
-      //   }
-      // },
+      validator: (value) {
+        if (isNumeric(value!)) {
+          return null;
+        } else {
+          return 'Solo números';
+        }
+      },
     );
   }
 
@@ -269,7 +268,16 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        _submit();
+        if (formKey.currentState!.validate()) {
+          // Si el formulario es válido, queremos mostrar un Snackbar
+          SnackBar(
+            content: Text('Información ingresada correctamente'),
+          );
+          _submit();
+        } else {
+          mostrarAlerta(
+              context, 'Asegurate de que todos los campos esten llenos.');
+        }
       },
     );
   }
@@ -285,13 +293,13 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           DateTime.now().day.toString();
       donacionesProvider.crearDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro guardado con exito', 'verDonacionesInAdd');
+          context, 'Registro guardado con éxito', 'verDonacionesInAdd');
     } else {
       donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
       donacionesProvider.editarDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro actualizado con exito', 'verDonacionesInAdd');
+          context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
     }
     //mostrarSnackbar('Registro guardado');
     // Navigator.pushNamed(context, 'verDonacionesInAdd');

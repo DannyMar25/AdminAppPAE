@@ -55,7 +55,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
 
     //var nombre1 = datosA.nombreCom;
     return Scaffold(
-      backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         title: Text('Datos personales'),
         backgroundColor: Colors.green,
@@ -65,7 +65,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -73,7 +73,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -92,7 +92,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                   children: [
                     Text('Datos personales',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -106,9 +106,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     _mostrarOcupacion(),
                     _mostrarEmail(),
                     Divider(),
-                    Text('Instruccion',
+                    Text('Instrucción',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -117,9 +117,9 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     Divider(),
                     _mostrarNivelInstruccion(),
                     Divider(),
-                    Text('Telefonos de contacto',
+                    Text('Teléfonos de contacto',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -132,7 +132,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
                     Divider(),
                     Text('Referencias personales',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 33,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
                             ..strokeWidth = 2
@@ -183,7 +183,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Nombre Completo",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -195,10 +195,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.cedula,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Cedula",
+        labelText: "Cédula",
         icon: Icon(
           Icons.assignment_ind,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -210,10 +210,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.direccion,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Direccion exacta donde estara la mascota",
+        labelText: "Dirección exacta donde estará la mascota",
         icon: Icon(
           Icons.place,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -225,10 +225,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.fechaNacimiento,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Fecha de nacimiento:",
+        labelText: "Fecha de nacimiento",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -240,10 +240,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.ocupacion,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Ocupacion",
+        labelText: "Ocupación",
         icon: Icon(
           Icons.work,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -258,7 +258,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "E-mail",
         icon: Icon(
           Icons.mail,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -270,10 +270,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.nivelInst,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Nivel de instruccion",
+        labelText: "Nivel de instrucción",
         icon: Icon(
           Icons.school,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -288,7 +288,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Celular",
         icon: Icon(
           Icons.phone_android,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -303,7 +303,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Domicilio",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -318,7 +318,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Trabajo",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -333,7 +333,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Nombre",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -348,7 +348,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
         labelText: "Parentesco",
         icon: Icon(
           Icons.person,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -360,10 +360,10 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
       initialValue: datosA.telfRef,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: "Telefono",
+        labelText: "Teléfono",
         icon: Icon(
           Icons.phone,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -391,7 +391,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
             Icons.arrow_right_sharp,
           ),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'situacionFam', arguments: {
               'datosper': datosA,
@@ -424,7 +424,7 @@ class _DatosPersonalesPageState extends State<DatosPersonalesPage> {
           //tooltip: 'Siguiente',
           icon: Icon(Icons.arrow_left_sharp),
           iconSize: 100,
-          color: Colors.lightBlue[300],
+          color: Colors.green[400],
           onPressed: () async {
             Navigator.pushNamed(context, 'verSolicitudesMain',
                 arguments: formularios);

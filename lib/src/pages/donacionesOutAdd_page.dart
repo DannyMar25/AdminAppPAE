@@ -1,6 +1,7 @@
 import 'package:aministrador_app_v1/src/models/donaciones_model.dart';
 import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
+import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 //import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
@@ -21,9 +22,9 @@ class _IngresoDonacionesOutAddPageState
   final donacionesProvider = new DonacionesProvider();
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
-  final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
-  String? _selection;
+  // final List<String> _items =
+  //     ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
+  // String? _selection;
   TextEditingController cantidadOut = new TextEditingController();
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _IngresoDonacionesOutAddPageState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Anadir donacion saliente'),
+        title: Text('Anadir donación saliente'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -49,7 +50,7 @@ class _IngresoDonacionesOutAddPageState
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -57,22 +58,10 @@ class _IngresoDonacionesOutAddPageState
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -139,7 +128,7 @@ class _IngresoDonacionesOutAddPageState
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Tipo de Donacion:',
+          labelText: 'Tipo de Donación:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         s = donaciones.tipo;
@@ -150,44 +139,13 @@ class _IngresoDonacionesOutAddPageState
     );
   }
 
-  // Widget _buildChild() {
-  //   if (_selection == 'Alimento') {
-  //     return _crearPeso();
-  //   } //else {
-  //   //   if (_selection == 'Otros') {
-  //   //     return _crearDonacion();
-  //   //   }
-  //   // }
-  //   return Text('');
-  // }
-
-  // Widget _crearPeso() {
-  //   //if (_selection == 'Alimento') {
-  //   return TextFormField(
-  //     initialValue: donaciones.peso.toString(),
-  //     readOnly: true,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     keyboardType: TextInputType.numberWithOptions(decimal: true),
-  //     decoration: InputDecoration(
-  //       labelText: 'Peso (Kg.):',
-  //       labelStyle: TextStyle(fontSize: 16, color: Colors.black),
-  //     ),
-  //     onChanged: (s) {
-  //       setState(() {
-  //         donaciones.peso = double.parse(s);
-  //       });
-  //     },
-  //   );
-  //   //}
-  // }
-
   Widget _crearDescripcion() {
     return TextFormField(
       initialValue: donaciones.descripcion,
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Descripcion:',
+          labelText: 'Descripción:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
@@ -219,6 +177,17 @@ class _IngresoDonacionesOutAddPageState
       controller: cantidadOut,
       min: 1,
       max: donaciones.cantidad,
+      initialValue: 1,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Ingresa una cantidad valida';
+        } else if (int.parse(value) < 1 ||
+            int.parse(value) > donaciones.cantidad) {
+          return 'Ingrese cantidad dentro del rango';
+        } else {
+          return null;
+        }
+      },
       //onChanged: ,
     );
   }
@@ -236,7 +205,16 @@ class _IngresoDonacionesOutAddPageState
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        _submit();
+        if (formKey.currentState!.validate()) {
+          // Si el formulario es válido, queremos mostrar un Snackbar
+          SnackBar(
+            content: Text('Información ingresada correctamente'),
+          );
+          _submit();
+        } else {
+          mostrarAlerta(context,
+              'Asegurate de que todos los campos esten llenos y que los valores ingresados sean correctos.');
+        }
       },
     );
   }
@@ -244,16 +222,6 @@ class _IngresoDonacionesOutAddPageState
   void _submit() async {
     print(int.tryParse(cantidadOut.text));
     int? cantidadAdd = int.tryParse(cantidadOut.text);
-    //   if (donaciones.id == "") {
-    //     donaciones.estadoDonacion = 'Saliente';
-    //     donacionesProvider.crearDonacion(donaciones);
-    //   } else {
-    //     donaciones.estadoDonacion = 'Saliente';
-    //     donacionesProvider.editarDonacion(donaciones);
-    //   }
-    //   //mostrarSnackbar('Registro guardado');
-    //   Navigator.pushNamed(context, 'verDonacionesInAdd');
-    // }
 
     if (donaciones.cantidad == 1) {
       donaciones.fechaIngreso = DateTime.now().year.toString() +

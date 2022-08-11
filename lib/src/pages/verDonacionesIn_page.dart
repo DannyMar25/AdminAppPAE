@@ -18,7 +18,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   int total1 = 0;
   int totalA = 0;
@@ -40,7 +40,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -48,22 +48,10 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       body: Container(
@@ -108,7 +96,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
-          'Seleccione el tipo de donacion:  ',
+          'Seleccione el tipo de donación:  ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
@@ -191,36 +179,31 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       return Card(
         color: Colors.lightGreen[200],
         shadowColor: Colors.green,
-        child: Column(key: UniqueKey(),
-            // background: Container(
-            //   color: Colors.red,
-            // ),
-            children: [
-              ListTile(
-                  title: Text(
-                      '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
-                      textAlign: TextAlign.center),
-                  subtitle: Column(
-                    children: [
-                      Text('${donacion.descripcion}'),
-                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'verDonacionesIn1',
-                        arguments: donacion);
-                  }),
-            ]),
+        child: Column(key: UniqueKey(), children: [
+          ListTile(
+              title: Text(
+                  '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+                  textAlign: TextAlign.center),
+              subtitle: Column(
+                children: [
+                  Text('${donacion.descripcion}'),
+                  Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                ],
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'verDonacionesIn1',
+                    arguments: donacion);
+              }),
+        ]),
       );
     }
 
     //return _mostrarTotal(context);
   }
 
-  // Widget _mostrarTotal(BuildContext context) {
-  //   //int total = donacionesProvider.sumarDonaciones1();
+  // Widget _mostrarTotal() {
   //   return TextFormField(
-  //     // initialValue: donacionesProvider.sumarDonaciones1().toString(),
+  //     initialValue: totalA.toString(),
   //     readOnly: true,
   //     textCapitalization: TextCapitalization.sentences,
   //     decoration: InputDecoration(
@@ -228,14 +211,4 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
   //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
   //   );
   // }
-  Widget _mostrarTotal() {
-    return TextFormField(
-      initialValue: totalA.toString(),
-      readOnly: true,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-          labelText: 'Total:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-    );
-  }
 }

@@ -111,7 +111,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row1.cells[0].value = 'Nombre completo:';
     row1.cells[1].value = datosA.nombreCom;
     PdfGridRow row2 = grid.rows.add();
-    row2.cells[0].value = 'Cedula:';
+    row2.cells[0].value = 'Cédula:';
     row2.cells[1].value = datosA.cedula;
     PdfGridRow row3 = grid.rows.add();
     row3.cells[0].value = 'Dirección exacta donde estará la mascota:';
@@ -129,7 +129,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row7.cells[0].value = 'Intrucción:';
     row7.cells[1].value = datosA.nivelInst;
     PdfGridRow row8 = grid.rows.add();
-    row8.cells[0].value = 'TELEFONOS DE CONTACTO';
+    row8.cells[0].value = 'TELÉFONOS DE CONTACTO';
     row8.cells[1].value = '';
     PdfGridRow row9 = grid.rows.add();
     row9.cells[0].value = 'Celular:';
@@ -150,7 +150,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row14.cells[0].value = 'Parentesco:';
     row14.cells[1].value = datosA.parentescoRef;
     PdfGridRow row15 = grid.rows.add();
-    row15.cells[0].value = 'Telefono:';
+    row15.cells[0].value = 'Teléfono:';
     row15.cells[1].value = datosA.telfRef;
 
     //Estilo de celdas titulo
@@ -313,7 +313,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         page: page,
         bounds: Rect.fromLTWH(0, layoutResult.bounds.bottom + 5, 500, 500));
 
-    textElement.text = 'SITUACION FAMILIAR';
+    textElement.text = 'SITUACIÓN FAMILIAR';
     textElement.font =
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold);
     layoutResult = textElement.draw(
@@ -440,11 +440,11 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     );
 //Add rows to grid
     PdfGridRow row25 = grid3.rows.add();
-    row25.cells[0].value = '¿Algun familiar espera un bebe?';
+    row25.cells[0].value = '¿Algún familiar espera un bebe?';
     row25.cells[1].value = situacionF.esperaBebe;
     PdfGridRow row26 = grid3.rows.add();
     row26.cells[0].value =
-        'Si la respuesta es "SI", ingrese fecha aproximada de parto:';
+        'Si la respuesta es "SI", ingrese fecha apróximada de parto:';
     row26.cells[1].value = 'fecha';
     PdfGridRow row27 = grid3.rows.add();
     row27.cells[0].value =
@@ -536,7 +536,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row31.cells[0].value = 'El inmueble es:';
     row31.cells[1].value = domicilio.inmueble;
     PdfGridRow row32 = grid4.rows.add();
-    row32.cells[0].value = '¿Planea mudarse proximamente?';
+    row32.cells[0].value = '¿Planea mudarse próximamente?';
     row32.cells[1].value = domicilio.planMudanza;
     PdfGridRow row33 = grid4.rows.add();
     row33.cells[0].value =
@@ -551,7 +551,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     PdfGridRow row36 = grid4.rows.add();
     row36.cells[0].value = '';
     row36.cells[1].value =
-        '¿Cual piensa que es la mascota más adecuada para Ud.?';
+        '¿Cuál piensa que es la mascota más adecuada para Ud.?';
     PdfGridRow row37 = grid4.rows.add();
     row37.cells[0].value = 'Sexo:';
     row37.cells[1].value = domicilio.sexoAd;
@@ -684,13 +684,13 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         page: page1,
         bounds: Rect.fromLTWH(0, layoutResult1.bounds.bottom + 5, 0, 0));
 
-    textElement1.text = 'RELACION CON LOS ANIMALES';
+    textElement1.text = 'RELACIÓN CON LOS ANIMALES';
     textElement1.font =
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold);
     layoutResult1 = textElement1.draw(
         page: page1,
         bounds: Rect.fromLTWH(0, layoutResult1.bounds.bottom + 240, 0, 0))!;
-    textElement1.text = 'Liste sus dos ultimas mascotas:';
+    textElement1.text = 'Liste sus dos últimas mascotas:';
     textElement1.font =
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold);
     layoutResult1 = textElement1.draw(
@@ -708,7 +708,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     header4.cells[2].value = 'Sexo';
     header4.cells[3].value = 'Esterilizado';
     header4.cells[4].value =
-        '¿Donde esta ahora? Si fallecio, perdio o esta en otro lugar, indique la causa';
+        '¿Dónde esta ahora? Si fallecio, perdio o esta en otro lugar, indique la causa';
     header4.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
@@ -952,7 +952,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         bounds: Rect.fromLTWH(
             0, 5, page2.getClientSize().width, page2.getClientSize().height))!;
 
-    textElement2.text = 'RELACION CON LOS ANIMALES 2';
+    textElement2.text = 'RELACIÓN CON LOS ANIMALES 2';
     textElement2.font =
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold);
     layoutResult2 =
@@ -991,7 +991,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
     row55.cells[1].value = relacionAn.recursoVet;
     PdfGridRow row56 = grid7.rows.add();
     row56.cells[0].value =
-        '¿Esta de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?';
+        '¿Está de acuerdo en que se haga una visita periódica a su domicilio para ver como se encuentra el adoptado?';
     row56.cells[1].value = relacionAn.visitaPer;
     PdfGridRow row57 = grid7.rows.add();
     row57.cells[0].value = '¿Por qué?';
@@ -1202,7 +1202,7 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         page: page2,
         bounds: Rect.fromLTWH(0, layoutResult2.bounds.bottom + 5, 0, 0));
 
-    final List<int> bytes = document.save();
+    final List<int> bytes = document.save() as List<int>;
     //Dispose the document
     document.dispose();
 

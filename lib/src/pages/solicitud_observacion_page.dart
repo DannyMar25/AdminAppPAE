@@ -45,7 +45,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       print(formularios.id);
     }
     return Scaffold(
-      backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: Color.fromARGB(223, 248, 248, 245),
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text("Respuesta y observaciones"),
@@ -55,7 +55,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -63,7 +63,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -135,7 +135,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     return TextFormField(
         maxLines: 4,
         readOnly: false,
-        initialValue: formularios.observacion,
+        //initialValue: formularios.observacion,
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           labelText: 'Observaciones:',
@@ -143,9 +143,18 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           //border: BorderRadius(BorderRadius.circular(2.0)),
           icon: Icon(
             Icons.edit_outlined,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
+        validator: (value) {
+          if (value!.length < 3 && value.length > 0) {
+            return 'Ingrese la raza de la mascota';
+          } else if (value.isEmpty) {
+            return 'Llena este campo por favor';
+          } else {
+            return null;
+          }
+        },
         onChanged: (s) {
           setState(() {
             //formularios.observacion = s;
@@ -166,7 +175,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           //border: BorderRadius(BorderRadius.circular(2.0)),
           icon: Icon(
             Icons.date_range_outlined,
-            color: Colors.purple,
+            color: Colors.green,
           ),
         ),
         onChanged: (s) {
@@ -187,7 +196,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
           Icons.info,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -215,6 +224,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           isChecked = value!;
           //domicilio.planMudanza = "Si";
           estado = "Aprobado";
+          estadoAn = "Adoptado";
+          animalProvider.editarEstado(formularios.animal!, estadoAn);
         });
       },
     );
@@ -242,6 +253,8 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           isChecked1 = value!;
           //domicilio.planMudanza = "No";
           estado = "Negado";
+          estadoAn = "En Adopción";
+          animalProvider.editarEstado(formularios.animal!, estadoAn);
         });
       },
     );
@@ -268,20 +281,9 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     setState(() {
       _guardando = true;
     });
-//Sentencia If agregada recientemente
-    //if (idFormu != null) {
-
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
     formulariosProvider.editarFechaRespuesta(formularios, fechaRespuesta);
-    estadoAn = "Adoptado";
-    animalProvider.editarEstado(formularios.animal!, estadoAn);
-
     Navigator.pushReplacementNamed(context, 'solicitudes');
-    // } else {
-    //animalProvider.editarAnimal(animal, foto!);
-    //print(idFormu);
-    // print("Debe llenar la parte 1 para poder continuar");
-    //}
   }
 }

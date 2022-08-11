@@ -74,7 +74,7 @@ class _HorariosPageState extends State<HorariosPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -82,22 +82,10 @@ class _HorariosPageState extends State<HorariosPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -185,12 +173,6 @@ class _HorariosPageState extends State<HorariosPage> {
           value: _selection1,
           items: dropdownMenuOptions,
           onChanged: null,
-          // (s) {
-          //   setState(() {
-          //     _selection1 = s;
-          //     horarios.hora = s!;
-          //   });
-          // }
         ),
       ],
     );
@@ -242,47 +224,47 @@ class _HorariosPageState extends State<HorariosPage> {
   void _submit() async {
     if (horarios.id == "") {
       horariosProvider.crearHorario(horarios);
-      mostrarAlertaOk(context, 'Registro guardado con exito', 'horariosAdd');
+      mostrarAlertaOk(context, 'Registro guardado con éxito', 'horariosAdd');
     } else {
       horariosProvider.editarHorarios(horarios);
-      mostrarAlertaOk(context, 'Registro actualizado con exito', 'horariosAdd');
+      mostrarAlertaOk(context, 'Registro actualizado con éxito', 'horariosAdd');
     }
     //mostrarSnackbar('Registro guardado');
     //Navigator.pushNamed(context, 'horariosAdd');
   }
 
-  Widget _crearBotonEliminar() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: Text('Eliminar registro'),
-      icon: Icon(Icons.delete),
-      autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
-      onPressed: () {
-        horariosProvider.borrarHorario(horarios.id);
-        mostrarAlertaOk(context, 'Registro eliminado con exito', 'horariosAdd');
-        //Navigator.pushNamed(context, 'horariosAdd');
-      },
-    );
-  }
+  // Widget _crearBotonEliminar() {
+  //   return ElevatedButton.icon(
+  //     style: ButtonStyle(
+  //       backgroundColor:
+  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+  //         return Colors.green;
+  //       }),
+  //     ),
+  //     label: Text('Eliminar registro'),
+  //     icon: Icon(Icons.delete),
+  //     autofocus: true,
+  //     //onPressed: (_guardando) ? null : _submit,
+  //     onPressed: () {
+  //       horariosProvider.borrarHorario(horarios.id);
+  //       mostrarAlertaOk(context, 'Registro eliminado con éxito', 'horariosAdd');
+  //       //Navigator.pushNamed(context, 'horariosAdd');
+  //     },
+  //   );
+  // }
 
-  Widget _buildChild() {
-    if (horarios.id == "") {
-      return _crearBoton();
-    } else {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _crearBoton(),
-          Padding(padding: EdgeInsets.only(right: 10)),
-          _crearBotonEliminar()
-        ],
-      );
-    }
-  }
+  // Widget _buildChild() {
+  //   if (horarios.id == "") {
+  //     return _crearBoton();
+  //   } else {
+  //     return Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         _crearBoton(),
+  //         Padding(padding: EdgeInsets.only(right: 10)),
+  //         _crearBotonEliminar()
+  //       ],
+  //     );
+  //   }
+  // }
 }

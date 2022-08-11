@@ -13,7 +13,7 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Informacion'),
+          title: Text('Información'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -37,7 +37,7 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
                 color: Colors.green,
                 size: 50,
               ),
-              Text('Informacion correcta'),
+              Text('Información correcta'),
             ],
           ),
           content: Text(mensaje),
@@ -56,7 +56,7 @@ void mostrarMensaje(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Informacion correcta'),
+          title: Text('Información correcta'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -73,7 +73,7 @@ void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Correo invalido'),
+          title: Text('Correo inválido'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -104,4 +104,14 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje) {
           ],
         );
       });
+}
+
+String? validarEmail(String? value) {
+  String pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  RegExp regex = RegExp(pattern);
+  if (value == null || value.isEmpty || !regex.hasMatch(value))
+    return 'Ingrese una dirección de correo valida.';
+  else
+    return null;
 }

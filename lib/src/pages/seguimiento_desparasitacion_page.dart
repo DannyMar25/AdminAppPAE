@@ -34,7 +34,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
     return Scaffold(
         backgroundColor: Color.fromARGB(223, 211, 212, 207),
         appBar: AppBar(
-          title: Text('Registros de desparasitacion'),
+          title: Text('Registros de desparasitación'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -42,7 +42,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -50,7 +50,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -70,7 +70,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Registro de desparasitacion',
+                              'Registro de desparasitación',
                               style: TextStyle(
                                 fontSize: 28,
                                 foreground: Paint()
@@ -174,7 +174,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               columns: [
                 //DataColumn(label: Text("Peso(Kg)"), numeric: true),
                 DataColumn(label: Text("Peso(Kg)")),
-                DataColumn(label: Text("Proxima desparacitacion")),
+                DataColumn(label: Text("Proxima desparacitación")),
               ],
               rows: [
                 DataRow(selected: true, cells: [
@@ -192,18 +192,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             Divider(color: Colors.transparent)
           ],
         ),
-        //subtitle: Text('${horario}'),
-        onTap: () async {
-          // datosA = await formulariosProvider.cargarDPId(
-          //     formulario.id, formulario.idDatosPersonales);
-          // animal = await animalesProvider.cargarAnimalId(formulario.idAnimal);
-
-          // Navigator.pushNamed(context, 'seguimientoMain', arguments: {
-          //   'datosper': datosA,
-          //   'formulario': formulario,
-          //   'animal': animal
-          // });
-        });
+        onTap: () async {});
   }
 
   Widget _menuWidget() {
@@ -249,7 +238,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitacion'),
+            title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

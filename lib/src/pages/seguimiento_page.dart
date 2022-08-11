@@ -48,7 +48,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -56,7 +56,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),

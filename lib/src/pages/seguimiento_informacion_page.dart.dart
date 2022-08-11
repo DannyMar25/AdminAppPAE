@@ -44,7 +44,7 @@ class _InformacionSeguimientoPageState
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -52,7 +52,7 @@ class _InformacionSeguimientoPageState
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -62,13 +62,8 @@ class _InformacionSeguimientoPageState
         body: Stack(
           alignment: Alignment.center,
           children: [
-            // Background(),
-            //_verGaleria(context),
-            //Text('Hola'),
             SingleChildScrollView(
               child: Container(
-                //color: Colors.lightGreenAccent,
-                //padding: new EdgeInsets.only(top: 230.0),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -78,7 +73,7 @@ class _InformacionSeguimientoPageState
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            'Informacion de la mascota adoptada',
+                            'Información de la mascota adoptada',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -95,29 +90,44 @@ class _InformacionSeguimientoPageState
                           ),
                           Row(
                             children: [
-                              Text(
-                                'Nombre: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Nombre: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.nombre}                                ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.nombre}                                ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Edad: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Etapa de vida: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.etapaVida}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.etapaVida}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Raza: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Raza: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.raza}',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.raza}',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -126,29 +136,44 @@ class _InformacionSeguimientoPageState
                             //crossAxisAlignment: CrossAxisAlignment.end,
                             //mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(
-                                'Color: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Color: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.color}               ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.color}               ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Tamaño: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Tamaño: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.tamanio}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.tamanio}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Sexo: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Sexo: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.sexo}',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.sexo}',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -157,7 +182,7 @@ class _InformacionSeguimientoPageState
                             color: Colors.white,
                           ),
                           Text(
-                            'Informacion del adoptante',
+                            'Información del adoptante',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -176,6 +201,7 @@ class _InformacionSeguimientoPageState
                               Text(
                                 'Nombre: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.nombreCom}  ',
@@ -187,8 +213,9 @@ class _InformacionSeguimientoPageState
                           Row(
                             children: [
                               Text(
-                                'Direccion: ',
+                                'Dirección: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.direccion}',
@@ -200,8 +227,9 @@ class _InformacionSeguimientoPageState
                           Row(
                             children: [
                               Text(
-                                'Telefono: ',
+                                'Teléfono: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.telfCel}',
@@ -215,6 +243,7 @@ class _InformacionSeguimientoPageState
                               Text(
                                 'Correo: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.email}',
@@ -418,7 +447,7 @@ class _InformacionSeguimientoPageState
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitacion'),
+            title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushReplacementNamed(context, 'verRegistroDesp',

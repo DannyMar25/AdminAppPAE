@@ -44,7 +44,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Informacion"),
+                        child: Text("Información"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
@@ -52,7 +52,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                         value: 1,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Cerrar Sesion"),
+                        child: Text("Cerrar Sesión"),
                         value: 2,
                       )
                     ]),
@@ -78,7 +78,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            'Informacion de la mascota adoptada',
+                            'Información de la mascota adoptada',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -161,7 +161,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                             color: Colors.white,
                           ),
                           Text(
-                            'Informacion del adoptante',
+                            'Información del adoptante',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()
@@ -191,7 +191,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                           Row(
                             children: [
                               Text(
-                                'Direccion: ',
+                                'Dirección: ',
                                 textAlign: TextAlign.center,
                               ),
                               Text(
@@ -204,7 +204,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                           Row(
                             children: [
                               Text(
-                                'Telefono: ',
+                                'Teléfono: ',
                                 textAlign: TextAlign.center,
                               ),
                               Text(

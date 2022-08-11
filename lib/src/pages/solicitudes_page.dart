@@ -43,7 +43,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -51,7 +51,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -193,23 +193,5 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
         ],
       ),
     );
-
-    // return ListTile(
-    //   title: Column(
-    //     children: [
-    //       Divider(color: Colors.purple),
-    //       Text("Fecha de solicitud: " + '${formulario.fechaIngreso}'),
-    //       Text("Nombre del cliente: " + '${formulario.nombreClient}'),
-    //       Text("Identificacion: " + '${formulario.identificacion}'),
-    //       Text("Posible a doptante para: " '${formulario.animal!.nombre}'),
-    //       //Text("Fecha de la cita: " + fecha),
-    //       //Text("Hora de la cita: " + hora),
-    //       Divider(color: Colors.purple)
-    //     ],
-    //   ),
-    //   //subtitle: Text('${horario}'),
-    //   onTap: () => Navigator.pushNamed(context, 'verSolicitudesMain',
-    //       arguments: formulario),
-    // );
   }
 }

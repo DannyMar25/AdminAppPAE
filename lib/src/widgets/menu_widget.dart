@@ -104,7 +104,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           //aqui termina el nuevo codigo
           Divider(),
           ExpansionTile(
-            title: Text('Solicitudes de adopcion'),
+            title: Text('Solicitudes de adopción'),
             children: [
               ListTile(
                 leading: Icon(

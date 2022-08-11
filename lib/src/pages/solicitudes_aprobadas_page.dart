@@ -48,7 +48,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -56,7 +56,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -65,25 +65,12 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     // colorFilter: new ColorFilter.mode(
-          //     //   Colors.black.withOpacity(0.9), BlendMode.dstATop),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Text(
-                //   "SOLICITUDES APROBADAS",
-                //   style: const TextStyle(
-                //       fontWeight: FontWeight.bold, fontSize: 20),
-                // ),
                 Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _verListado()
               ],

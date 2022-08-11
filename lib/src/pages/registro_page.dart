@@ -6,11 +6,19 @@ import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
 
-class RegistroPage extends StatelessWidget {
+class RegistroPage extends StatefulWidget {
+  @override
+  State<RegistroPage> createState() => _RegistroPageState();
+}
+
+class _RegistroPageState extends State<RegistroPage> {
   //const RegistroPage({Key? key}) : super(key: key);
   final usuarioProvider = new UsuarioProvider();
+
   final usuario = new UsuariosModel();
-  TextEditingController _nombreUs = new TextEditingController();
+
+  //TextEditingController _nombreUs = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,8 +114,8 @@ class RegistroPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
-              labelText: 'Correo electronico',
-              counterText: snapshot.data,
+              labelText: 'Correo electrónico',
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -130,7 +138,7 @@ class RegistroPage extends StatelessWidget {
               icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'dany',
               labelText: 'Nombre de usuario:',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -141,24 +149,24 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
-  Widget _crearNombre() {
-    return TextFormField(
-      //initialValue: animal.nombre,
-      controller: _nombreUs,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Nombre',
-      ),
-      onSaved: (value) => _nombreUs = value as TextEditingController,
-      validator: (value) {
-        if (value!.length < 3) {
-          return 'Ingrese su nombre';
-        } else {
-          return null;
-        }
-      },
-    );
-  }
+  // Widget _crearNombre() {
+  //   return TextFormField(
+  //     //initialValue: animal.nombre,
+  //     controller: _nombreUs,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //       labelText: 'Nombre',
+  //     ),
+  //     onSaved: (value) => _nombreUs = value as TextEditingController,
+  //     validator: (value) {
+  //       if (value!.length < 3) {
+  //         return 'Ingrese su nombre';
+  //       } else {
+  //         return null;
+  //       }
+  //     },
+  //   );
+  // }
 
   Widget _crearPassword(LoginBloc bloc) {
     return StreamBuilder(
@@ -173,7 +181,7 @@ class RegistroPage extends StatelessWidget {
               icon: Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
               labelText: 'Contrasena',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -196,7 +204,7 @@ class RegistroPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: Icon(Icons.lock, color: Colors.green),
               labelText: 'Confirmar contraseña',
-              counterText: snapshot.data,
+              //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -214,17 +222,18 @@ class RegistroPage extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.formValidStream1,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
+        return ElevatedButton(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-            child: Text('Ingresar'),
+            child: Text('Registrar'),
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
-          ),
-          elevation: 0.0,
-          color: Colors.green,
-          textColor: Colors.white,
+          style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              elevation: 0.0,
+              primary: Colors.green,
+              textStyle: TextStyle(color: Colors.white)),
           onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
         );
       },
@@ -232,17 +241,8 @@ class RegistroPage extends StatelessWidget {
   }
 
   _register(LoginBloc bloc, BuildContext context) async {
-    //print('=================');
-    //print('Email:${bloc.email}');
-    //print('Password: ${bloc.password}');
-    //print('=================');
-
     final info = await usuarioProvider.nuevoUsuario(
         bloc.email, bloc.password, bloc.name);
-
-    // final info = await usuarioProvider.registerWithEmailAndPassword(
-    //     bloc.email, bloc.password, bloc.name);
-
     if (info['ok']) {
       print(bloc.name);
       usuario.id = info['uid'];

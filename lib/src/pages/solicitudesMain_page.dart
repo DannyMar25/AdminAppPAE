@@ -46,7 +46,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -54,7 +54,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -138,7 +138,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                               padding: EdgeInsets.all(12.0),
                               child: _botonRelacionAnim(),
                             ),
-                            Text('Relacion con animales')
+                            Text('Relación con animales')
                           ],
                         )
                       ],
@@ -236,14 +236,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           border: InputBorder.none,
-          //labelText: 'Nombre Mascota:',
-          //icon: Icon(
-          //  Icons.pets,
-          //  color: Colors.purple,
-          // )
         ),
-        //onSaved: (value) => animal.nombre = value!,
-        //},
       ),
     );
   }
@@ -269,9 +262,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
   }
 
   Widget _botonDatosPer() {
-    //var idForm = formularios.id;
-    //var idD = formularios.idDatosPersonales;
-    //FormulariosModel form1 = formularios;
     return Ink(
         decoration: BoxDecoration(
             //backgroundBlendMode: ,
@@ -292,8 +282,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           iconSize: 100,
           color: Colors.purple[300],
           onPressed: () async {
-            // Navigator.pushNamed(context, 'datosPersonales',
-            //     arguments: [idForm, idD]);
             datosC = await formulariosProvider.cargarDPId(
                 formularios.id, formularios.idDatosPersonales);
             situacionF = await formulariosProvider.cargarSFId(

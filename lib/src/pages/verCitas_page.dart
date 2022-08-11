@@ -43,7 +43,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -51,7 +51,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -138,7 +138,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
                   Text("Fecha:" + '${cita.fechaCita}'),
                   Text("Nombre del cliente: " + '${cita.nombreClient}'),
                   // Text("Posible a doptante para: " '${cita.animal!.nombre}'),
-                  Text("Dia de la cita: " + fecha),
+                  Text("Día de la cita: " + fecha),
                   Text("Hora de la cita: " + hora),
                 ],
               ),
@@ -155,8 +155,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
           suffixIcon: Icon(Icons.perm_contact_calendar, color: Colors.green),

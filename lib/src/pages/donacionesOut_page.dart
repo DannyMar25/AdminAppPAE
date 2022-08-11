@@ -19,7 +19,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higienicos', 'Otros'].toList();
+      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
   String? _selection;
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -53,7 +53,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -93,16 +93,11 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-
                       Divider(),
                       _crearTipoDonacion(),
                       Divider(),
                       _verListado(),
                       Divider(),
-                      //_crearDescripcion(),
-                      // Divider(),
-                      //_crearBoton(),
-                      // _crearCantidad(),
                     ],
                   )),
             ),
@@ -136,7 +131,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
       //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
-          'Seleccione el tipo de donacion:  ',
+          'Seleccione el tipo de donación:  ',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
@@ -156,56 +151,48 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
     );
   }
 
-  Widget _crearDescripcion() {
-    return TextFormField(
-      initialValue: donaciones.descripcion,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-          labelText: 'Descripcion:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-      onChanged: (s) {
-        setState(() {
-          donaciones.descripcion = s;
-        });
-      },
-      // onSaved: (value) => donaciones.descripcion = value!,
-      // validator: (value) {
-      //   if (value!.length < 3) {
-      //     return 'Ingrese la descripcion';
-      //   } else {
-      //     return null;
-      //   }
-      // },
-    );
-  }
+  // Widget _crearDescripcion() {
+  //   return TextFormField(
+  //     initialValue: donaciones.descripcion,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //         labelText: 'Descripcion:',
+  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+  //     onChanged: (s) {
+  //       setState(() {
+  //         donaciones.descripcion = s;
+  //       });
+  //     },
+  //   );
+  // }
 
-  Widget _crearBoton() {
-    return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.deepPurple;
-        }),
-      ),
-      label: Text('Guardar'),
-      icon: Icon(Icons.save),
-      autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
-      onPressed: () {
-        _submit();
-      },
-    );
-  }
+  // Widget _crearBoton() {
+  //   return ElevatedButton.icon(
+  //     style: ButtonStyle(
+  //       backgroundColor:
+  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+  //         return Colors.deepPurple;
+  //       }),
+  //     ),
+  //     label: Text('Guardar'),
+  //     icon: Icon(Icons.save),
+  //     autofocus: true,
+  //     //onPressed: (_guardando) ? null : _submit,
+  //     onPressed: () {
+  //       _submit();
+  //     },
+  //   );
+  // }
 
-  void _submit() async {
-    if (donaciones.id == "") {
-      donacionesProvider.crearDonacion(donaciones);
-    } else {
-      donacionesProvider.editarDonacion(donaciones);
-    }
-    //mostrarSnackbar('Registro guardado');
-    //Navigator.pushNamed(context, 'verDonacionesOutAdd');
-  }
+  // void _submit() async {
+  //   if (donaciones.id == "") {
+  //     donacionesProvider.crearDonacion(donaciones);
+  //   } else {
+  //     donacionesProvider.editarDonacion(donaciones);
+  //   }
+  //   //mostrarSnackbar('Registro guardado');
+  //   //Navigator.pushNamed(context, 'verDonacionesOutAdd');
+  // }
 
   Widget _verListado() {
     return FutureBuilder(

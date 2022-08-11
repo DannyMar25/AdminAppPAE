@@ -41,7 +41,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -49,22 +49,10 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
-          // Builder(builder: (BuildContext context) {
-          //   return TextButton(
-          //     style: ButtonStyle(
-          //       foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-          //     ),
-          //     onPressed: () async {
-          //       userProvider.signOut();
-          //       Navigator.pushNamed(context, 'login');
-          //     },
-          //     child: Text('Sign Out'),
-          //   );
-          // }),
         ],
       ),
       drawer: MenuWidget(),
@@ -139,7 +127,7 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
       initialValue: citas.telfClient,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Telefono',
+          labelText: 'Teléfono',
           icon: Icon(
             Icons.call,
             color: Colors.green,

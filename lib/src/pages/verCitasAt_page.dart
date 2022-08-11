@@ -41,7 +41,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Informacion"),
+                      child: Text("Información"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
@@ -49,7 +49,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                       value: 1,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Cerrar Sesion"),
+                      child: Text("Cerrar Sesión"),
                       value: 2,
                     )
                   ]),
@@ -159,8 +159,6 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
           //helperText: 'Solo es el nombre',
           suffixIcon: Icon(Icons.perm_contact_calendar, color: Colors.green),
