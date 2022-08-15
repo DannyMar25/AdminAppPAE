@@ -56,7 +56,10 @@ class CitasProvider {
 
   Future<List<Future<CitasModel>>> cargarCitasFecha(String fecha) async {
     final List<CitasModel> citas = <CitasModel>[];
-    var documents = await refCit.where('fechaCita', isEqualTo: fecha).get();
+    var documents = await refCit
+        .where('fechaCita', isEqualTo: fecha)
+        .where('estado', isEqualTo: 'Pendiente')
+        .get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
       //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);

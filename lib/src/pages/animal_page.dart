@@ -528,20 +528,19 @@ class _AnimalPageState extends State<AnimalPage> {
 
   Widget _crearBotonEliminar() {
     return ElevatedButton.icon(
-      style: ButtonStyle(
-        backgroundColor:
-            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-          return Colors.green;
-        }),
-      ),
-      label: Text('Eliminar'),
-      icon: Icon(Icons.delete),
-      autofocus: true,
-      onPressed: () {
-        animalProvider.borrarAnimal(animal.id!);
-        utils.mostrarAlertaOk(context, 'Registro eliminado con éxito', 'home');
-      },
-    );
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+            return Colors.green;
+          }),
+        ),
+        label: Text('Eliminar'),
+        icon: Icon(Icons.delete),
+        autofocus: true,
+        onPressed: () {
+          utils.mostrarAlertaBorrar(context,
+              'Estas seguro de borrar el registro', animal.id.toString());
+        });
   }
 
   void _submit() async {

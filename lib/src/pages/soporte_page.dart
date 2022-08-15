@@ -2,6 +2,7 @@ import 'package:aministrador_app_v1/src/models/soportes_model.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/soportes_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
+import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,8 @@ class _SoportePageState extends State<SoportePage> {
   SoportesProvider soportesProvider = new SoportesProvider();
   SoportesModel soporte = new SoportesModel();
   final prefs = new PreferenciasUsuario();
+  String campoVacio = 'Por favor, llena este campo';
+
   @override
   Widget build(BuildContext context) {
     final email = prefs.email;
@@ -51,7 +54,7 @@ class _SoportePageState extends State<SoportePage> {
                   ]),
         ],
       ),
-      drawer: MenuWidget(),
+      drawer: email != '' ? MenuWidget() : SizedBox(),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(15.0),
@@ -107,6 +110,15 @@ class _SoportePageState extends State<SoportePage> {
           ),
           labelText: 'Nombre:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese el nombre';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.nombre = s;
@@ -125,6 +137,7 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.mail),
           labelText: 'Correo:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) => validarEmail(value),
       onChanged: (s) {
         setState(() {
           soporte.correo = s;
@@ -142,6 +155,15 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.edit),
           labelText: 'Asunto:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese el asunto';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.asunto = s;
@@ -161,6 +183,15 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.edit_note),
           labelText: 'Mensaje:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+      validator: (value) {
+        if (value!.length < 3 && value.length > 0) {
+          return 'Ingrese un mensaje';
+        } else if (value.isEmpty) {
+          return campoVacio;
+        } else {
+          return null;
+        }
+      },
       onChanged: (s) {
         setState(() {
           soporte.mensaje = s;
@@ -170,6 +201,7 @@ class _SoportePageState extends State<SoportePage> {
   }
 
   Widget _crearBoton() {
+    final email = prefs.email;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       ElevatedButton.icon(
           style: ButtonStyle(
@@ -186,9 +218,23 @@ class _SoportePageState extends State<SoportePage> {
           icon: Icon(Icons.save),
           autofocus: true,
           onPressed: () {
-            soportesProvider.crearSoportes(soporte);
+            if (formKey.currentState!.validate()) {
+              // Si el formulario es válido, queremos mostrar un Snackbar
+              SnackBar(
+                content: Text('Información ingresada correctamente'),
+              );
+              soportesProvider.crearSoportes(soporte);
+              email != ''
+                  ? mostrarAlertaOk(
+                      context, 'Tu mensaje a sido enviado', 'home')
+                  : mostrarAlertaOk(
+                      context, 'Tu mensaje a sido enviado', 'login');
 
-            Navigator.pushReplacementNamed(context, 'home');
+              //Navigator.pushReplacementNamed(context, 'home');
+            } else {
+              mostrarAlerta(
+                  context, 'Asegurate de que todos los campos esten llenos.');
+            }
           }),
     ]);
   }

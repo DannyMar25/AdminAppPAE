@@ -1,3 +1,4 @@
+import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:flutter/material.dart';
 
 bool isNumeric(String s) {
@@ -85,7 +86,8 @@ void mostrarAlertaAuth(BuildContext context, String mensaje, String ruta) {
       });
 }
 
-void mostrarAlertaBorrar(BuildContext context, String mensaje) {
+void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
+  final animalProvider = new AnimalesProvider();
   showDialog(
       context: context,
       builder: (context) {
@@ -95,11 +97,17 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje) {
           actions: [
             TextButton(
               child: Text('Ok'),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                animalProvider.borrarAnimal(id);
+                mostrarAlertaOk(context, 'Se elimino con exito', 'home');
+                //Navigator.pushNamed(context, 'home');
+              },
+              //onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
               child: Text('Cancel'),
-              onPressed: () {},
+              //onPressed: () {},
+              onPressed: () => Navigator.of(context).pop(),
             ),
           ],
         );
