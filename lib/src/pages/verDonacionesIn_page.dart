@@ -95,21 +95,25 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
       mainAxisAlignment: MainAxisAlignment.start,
       //mainAxisSize: MainAxisSize.max,
       children: [
-        Text(
-          'Seleccione el tipo de donación:  ',
-          style: TextStyle(fontSize: 16, color: Colors.black),
+        Expanded(
+          child: Text(
+            'Seleccione el tipo de donación:',
+            style: TextStyle(fontSize: 16, color: Colors.black),
+          ),
         ),
-        DropdownButton<String>(
-            hint: Text(donaciones.tipo.toString()),
-            value: _selection,
-            items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
-                showCitas();
-                // horarios.dia = s!;
-              });
-            }),
+        Expanded(
+          child: DropdownButton<String>(
+              hint: Text(donaciones.tipo.toString()),
+              value: _selection,
+              items: dropdownMenuOptions,
+              onChanged: (s) {
+                setState(() {
+                  _selection = s;
+                  showCitas();
+                  // horarios.dia = s!;
+                });
+              }),
+        ),
       ],
     );
   }

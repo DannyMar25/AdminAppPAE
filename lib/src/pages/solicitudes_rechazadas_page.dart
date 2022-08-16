@@ -38,7 +38,8 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      //backgroundColor: Color.fromARGB(223, 221, 248, 153),
+      backgroundColor: Color.fromARGB(255, 239, 243, 243),
       appBar: AppBar(
         title: Text('SOLICITUDES RECHAZADAS'),
         backgroundColor: Colors.green,

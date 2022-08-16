@@ -110,7 +110,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 650,
                   child: ListView.builder(
                     itemCount: desp!.length,
                     itemBuilder: (context, i) => _crearItem(context, desp[i]),
@@ -131,6 +131,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           children: [
             Divider(color: Colors.transparent),
             DataTable(
+              columnSpacing: 25,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => Color.fromARGB(255, 120, 110, 148),
               ),
@@ -160,6 +161,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               ],
             ),
             DataTable(
+              //columnSpacing: 50,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => Color.fromARGB(255, 120, 111, 143),
               ),
@@ -180,7 +182,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 DataRow(selected: true, cells: [
                   DataCell(Container(
                     child: Text('${desparasitacion.pesoActual}'),
-                    width: 90,
+                    width: 85,
                   )),
                   DataCell(Container(
                     child: Text('${desparasitacion.fechaProxDesparasitacion}'),

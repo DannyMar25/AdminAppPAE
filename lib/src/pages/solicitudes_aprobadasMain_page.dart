@@ -34,7 +34,8 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
-        backgroundColor: Color.fromARGB(223, 221, 248, 153),
+        //backgroundColor: Color.fromARGB(223, 221, 248, 153),
+        backgroundColor: Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
           title: Text('Datos de mascota adoptada'),
           backgroundColor: Colors.green,
@@ -97,29 +98,44 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                           ),
                           Row(
                             children: [
-                              Text(
-                                'Nombre: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Nombre: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.nombre}                                ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.nombre}                                ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Etapa de vida: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Etapa de vida: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.etapaVida}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.etapaVida}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Raza: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Raza: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.raza}',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.raza}',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -130,29 +146,44 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                             //crossAxisAlignment: CrossAxisAlignment.end,
                             //mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(
-                                'Color: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Color: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.color}               ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.color}               ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Tamaño: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Tamaño: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.tamanio}      ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.tamanio}      ',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
-                              Text(
-                                'Sexo: ',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  'Sexo: ',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              Text(
-                                '${animal.sexo}',
-                                textAlign: TextAlign.left,
+                              Expanded(
+                                child: Text(
+                                  '${animal.sexo}',
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ],
                           ),
@@ -180,6 +211,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                               Text(
                                 'Nombre: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.nombreCom}  ',
@@ -193,6 +225,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                               Text(
                                 'Dirección: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.direccion}',
@@ -206,6 +239,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                               Text(
                                 'Teléfono: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.telfCel}',
@@ -219,6 +253,7 @@ class _SolicitudAprobadaMainPageState extends State<SolicitudAprobadaMainPage> {
                               Text(
                                 'Correo: ',
                                 textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 '${datosA.email}',

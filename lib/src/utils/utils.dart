@@ -99,7 +99,8 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
               child: Text('Ok'),
               onPressed: () {
                 animalProvider.borrarAnimal(id);
-                mostrarAlertaOk(context, 'Se elimino con exito', 'home');
+                mostrarAlertaOk(
+                    context, 'El registro a sido eliminado.', 'home');
                 //Navigator.pushNamed(context, 'home');
               },
               //onPressed: () => Navigator.of(context).pop(),

@@ -111,7 +111,7 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 660,
                   child: ListView.builder(
                     itemCount: evidF!.length,
                     itemBuilder: (context, i) => _crearItem(context, evidF[i]),

@@ -112,7 +112,7 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 660,
                   child: ListView.builder(
                     itemCount: evidF!.length,
                     itemBuilder: (context, i) => _crearItem(context, evidF[i]),
@@ -137,11 +137,15 @@ class _VerEvidenciaArchivosPageState extends State<VerEvidenciaArchivosPage> {
               }),
           elevation: 8,
           shadowColor: Colors.green,
-          margin: EdgeInsets.all(20.0));
+          margin: EdgeInsets.all(15.0));
     } else {
-      return Divider(
-        color: Colors.transparent,
+      return SizedBox(
+        height: 1.0,
+        width: 1.0,
       );
+      // return Divider(
+      //   color: Colors.transparent,
+      // );
     }
   }
 

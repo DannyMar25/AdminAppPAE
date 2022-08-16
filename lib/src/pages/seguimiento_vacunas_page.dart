@@ -113,7 +113,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
             return Column(
               children: [
                 SizedBox(
-                  height: 700,
+                  height: 650,
                   child: ListView.builder(
                     itemCount: vacunas!.length,
                     itemBuilder: (context, i) =>
@@ -136,6 +136,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
             DataTable(
               //dataRowHeight: 30,
               //headingRowHeight: 50,
+              columnSpacing: 25,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => Color.fromARGB(255, 120, 110, 148),
               ),
@@ -158,7 +159,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                   )),
                   DataCell(Container(
                     child: Text('${vacuna.pesoActual}'),
-                    width: 50,
+                    width: 60,
                   )),
                   DataCell(Container(
                     child: Text('${vacuna.fechaProximaVacuna}'),
@@ -168,6 +169,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
               ],
             ),
             DataTable(
+              columnSpacing: 22,
               headingRowColor: MaterialStateColor.resolveWith(
                 (states) => Color.fromARGB(255, 120, 111, 143),
               ),

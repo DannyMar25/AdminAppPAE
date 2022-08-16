@@ -239,7 +239,6 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad:',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);
