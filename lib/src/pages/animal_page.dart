@@ -369,22 +369,6 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
-
-    // return TextFormField(
-    //   initialValue: animal.tamanio.toString(),
-    //   textCapitalization: TextCapitalization.sentences,
-    //   decoration: InputDecoration(
-    //     labelText: 'Tamaño',
-    //   ),
-    //   onSaved: (value) => animal.tamanio = double.parse(value!),
-    //   validator: (value) {
-    //     if (utils.isNumeric(value!)) {
-    //       return null;
-    //     } else {
-    //       return 'Solo numeros';
-    //     }
-    //   },
-    // );
   }
 
   Widget _crearColor() {

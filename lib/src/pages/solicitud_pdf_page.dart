@@ -1202,7 +1202,8 @@ class _CrearSolicitudPdfPageState extends State<CrearSolicitudPdfPage> {
         page: page2,
         bounds: Rect.fromLTWH(0, layoutResult2.bounds.bottom + 5, 0, 0));
 
-    final List<int> bytes = document.save() as List<int>;
+    //final List<int> bytes = document.save() as List<int>;
+    final List<int> bytes = document.saveSync();
     //Dispose the document
     document.dispose();
 
