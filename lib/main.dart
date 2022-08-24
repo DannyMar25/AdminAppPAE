@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
             Locale('en', 'US'),
             Locale('es', 'ES'),
           ],
-          initialRoute: email == '' ? 'login' : 'home',
+          initialRoute: email == '' ? 'login' : 'bienvenida',
           routes: {
             'login': (_) => LoginPage(),
             'registro': (_) => RegistroPage(),

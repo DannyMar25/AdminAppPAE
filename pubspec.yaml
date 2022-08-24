@@ -53,6 +53,7 @@ dependencies:
   path_provider: ^2.0.9
   open_file: ^3.2.1
   firebase_database: ^9.1.0
+  accordion: ^2.5.1
  
   
  
