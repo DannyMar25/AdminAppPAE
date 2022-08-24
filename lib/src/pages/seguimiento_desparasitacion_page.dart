@@ -42,16 +42,12 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Información"),
+                        child: Text("Soporte"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Ayuda"),
-                        value: 1,
-                      ),
-                      PopupMenuItem<int>(
                         child: Text("Cerrar Sesión"),
-                        value: 2,
+                        value: 1,
                       )
                     ]),
           ],
@@ -90,11 +86,9 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -218,12 +212,12 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               color: Colors.green,
             ),
             title: Text('Ir a Seguimiento Principal'),
-            onTap: () => Navigator.pushReplacementNamed(
-                context, 'seguimientoInfo', arguments: {
-              'datosper': datosA,
-              'formulario': formularios,
-              'animal': animal
-            }),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
+                arguments: {
+                  'datosper': datosA,
+                  'formulario': formularios,
+                  'animal': animal
+                }),
           ),
           ListTile(
             leading: Icon(
@@ -231,48 +225,45 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
               color: Colors.green,
             ),
             title: Text('Ver Registros Vacunas'),
-            onTap: () => Navigator.pushReplacementNamed(
-                context, 'verRegistroVacunas', arguments: {
-              'datosper': datosA,
-              'formulario': formularios,
-              'animal': animal
-            }),
+            onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
+                arguments: {
+                  'datosper': datosA,
+                  'formulario': formularios,
+                  'animal': animal
+                }),
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'verRegistroDesp',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Fotos'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, 'verEvidenciaP1',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Archivos'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, 'verEvidenciaP2',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
         ],

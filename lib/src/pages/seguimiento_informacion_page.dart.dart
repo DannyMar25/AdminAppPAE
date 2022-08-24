@@ -44,16 +44,12 @@ class _InformacionSeguimientoPageState
                 icon: Icon(Icons.manage_accounts),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(
-                        child: Text("Información"),
+                        child: Text("Soporte"),
                         value: 0,
                       ),
                       PopupMenuItem<int>(
-                        child: Text("Ayuda"),
-                        value: 1,
-                      ),
-                      PopupMenuItem<int>(
                         child: Text("Cerrar Sesión"),
-                        value: 2,
+                        value: 1,
                       )
                     ]),
           ],
@@ -267,11 +263,9 @@ class _InformacionSeguimientoPageState
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -326,7 +320,7 @@ class _InformacionSeguimientoPageState
                 onPressed: () {
                   // Navigator.pushNamed(context, 'registroVacunas',
                   //     arguments: animal);
-                  Navigator.pushReplacementNamed(context, 'verRegistroVacunas',
+                  Navigator.pushNamed(context, 'verRegistroVacunas',
                       arguments: {
                         'datosper': datosA,
                         'formulario': formularios,
@@ -346,12 +340,11 @@ class _InformacionSeguimientoPageState
                   icon: Icon(Icons.fact_check),
                   autofocus: true,
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, 'verRegistroDesp',
-                        arguments: {
-                          'datosper': datosA,
-                          'formulario': formularios,
-                          'animal': animal
-                        });
+                    Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
+                      'datosper': datosA,
+                      'formulario': formularios,
+                      'animal': animal
+                    });
                   }),
             ),
           ],
@@ -370,12 +363,11 @@ class _InformacionSeguimientoPageState
                 icon: Icon(Icons.fact_check),
                 autofocus: true,
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'verEvidenciaP1',
-                      arguments: {
-                        'datosper': datosA,
-                        'formulario': formularios,
-                        'animal': animal
-                      });
+                  Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+                    'datosper': datosA,
+                    'formulario': formularios,
+                    'animal': animal
+                  });
                 }),
           ),
           Padding(
@@ -391,12 +383,11 @@ class _InformacionSeguimientoPageState
                 icon: Icon(Icons.fact_check),
                 autofocus: true,
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, 'verEvidenciaP2',
-                      arguments: {
-                        'datosper': datosA,
-                        'formulario': formularios,
-                        'animal': animal
-                      });
+                  Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+                    'datosper': datosA,
+                    'formulario': formularios,
+                    'animal': animal
+                  });
                 }),
           ),
         ]),
@@ -425,12 +416,12 @@ class _InformacionSeguimientoPageState
               color: Colors.green,
             ),
             title: Text('Ir a Seguimiento Principal'),
-            onTap: () => Navigator.pushReplacementNamed(
-                context, 'seguimientoInfo', arguments: {
-              'datosper': datosA,
-              'formulario': formularios,
-              'animal': animal
-            }),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
+                arguments: {
+                  'datosper': datosA,
+                  'formulario': formularios,
+                  'animal': animal
+                }),
           ),
           ListTile(
             leading: Icon(
@@ -438,48 +429,45 @@ class _InformacionSeguimientoPageState
               color: Colors.green,
             ),
             title: Text('Ver Registros Vacunas'),
-            onTap: () => Navigator.pushReplacementNamed(
-                context, 'verRegistroVacunas', arguments: {
-              'datosper': datosA,
-              'formulario': formularios,
-              'animal': animal
-            }),
+            onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
+                arguments: {
+                  'datosper': datosA,
+                  'formulario': formularios,
+                  'animal': animal
+                }),
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Registro Desparasitación'),
             onTap: () {
               //Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, 'verRegistroDesp',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Fotos'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, 'verEvidenciaP1',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
           ListTile(
             leading: Icon(Icons.check, color: Colors.green),
             title: Text('Ver Archivos'),
             onTap: () {
-              Navigator.pushReplacementNamed(context, 'verEvidenciaP2',
-                  arguments: {
-                    'datosper': datosA,
-                    'formulario': formularios,
-                    'animal': animal
-                  });
+              Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
+                'datosper': datosA,
+                'formulario': formularios,
+                'animal': animal
+              });
             },
           ),
           ListTile(
@@ -488,8 +476,7 @@ class _InformacionSeguimientoPageState
               color: Colors.green,
             ),
             title: Text('Ir a Lista de Adopciones'),
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, 'seguimientoPrincipal'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
           ),
         ],
       ),

@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
       final user = await usuarioProvider.obtenerUsuario(info['uid']);
       prefs.setEmail(bloc.email);
       prefs.setRol(user['rol']);
-      Navigator.pushReplacementNamed(context, 'bienvenida');
+      Navigator.pushNamed(context, 'bienvenida');
     } else {
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
@@ -187,7 +187,7 @@ class LoginPage extends StatelessWidget {
   Widget _crearBotonSoporte(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushReplacementNamed(context, 'soporte');
+        Navigator.pushNamed(context, 'soporte');
       },
       child: Text(
         'Contactarse con soporte.',

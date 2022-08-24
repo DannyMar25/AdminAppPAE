@@ -250,7 +250,7 @@ class _RegistroPageState extends State<RegistroPage> {
       usuario.email = bloc.email;
       usuario.rol = Roles.administrador;
       usuarioProvider.crearUsuario(usuario);
-      Navigator.pushReplacementNamed(context, 'login');
+      Navigator.pushNamed(context, 'login');
     } else {
       mostrarAlerta(context, info['mensaje']);
     }

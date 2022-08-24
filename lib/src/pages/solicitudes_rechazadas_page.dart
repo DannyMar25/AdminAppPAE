@@ -49,16 +49,12 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Información"),
+                      child: Text("Soporte"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Ayuda"),
-                      value: 1,
-                    ),
-                    PopupMenuItem<int>(
                       child: Text("Cerrar Sesión"),
-                      value: 2,
+                      value: 1,
                     )
                   ]),
         ],
@@ -85,11 +81,9 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -109,7 +103,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
     return Column(
       children: [
         SizedBox(
-          height: 800,
+          height: 680,
           child: ListView.builder(
             itemCount: formularios.length,
             itemBuilder: (context, i) => _crearItem(context, formularios[i]),
@@ -167,7 +161,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
                                     animal = await animalesProvider
                                         .cargarAnimalId(formulario.idAnimal);
 
-                                    Navigator.pushReplacementNamed(
+                                    Navigator.pushNamed(
                                         context, 'verSolicitudRechazada',
                                         arguments: {
                                           'datosper': datosC,

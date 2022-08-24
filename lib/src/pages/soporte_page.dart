@@ -34,22 +34,14 @@ class _SoportePageState extends State<SoportePage> {
               onSelected: (item) => onSelected(context, item),
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
-                    PopupMenuItem<int>(
-                      child: Text("Información"),
-                      value: 0,
-                    ),
-                    PopupMenuItem<int>(
-                      child: Text("Ayuda"),
-                      value: 1,
-                    ),
                     email != ''
                         ? PopupMenuItem<int>(
                             child: Text("Cerrar Sesión"),
-                            value: 2,
+                            value: 0,
                           )
                         : PopupMenuItem<int>(
                             child: Text("Iniciar Sesión"),
-                            value: 2,
+                            value: 0,
                           ),
                   ]),
         ],
@@ -89,10 +81,6 @@ class _SoportePageState extends State<SoportePage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
-        break;
-      case 2:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }

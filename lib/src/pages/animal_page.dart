@@ -73,16 +73,12 @@ class _AnimalPageState extends State<AnimalPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Información"),
+                      child: Text("Ayuda"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Ayuda"),
-                      value: 1,
-                    ),
-                    PopupMenuItem<int>(
                       child: Text("Cerrar Sesión"),
-                      value: 2,
+                      value: 1,
                     )
                   ]),
         ],
@@ -121,11 +117,9 @@ class _AnimalPageState extends State<AnimalPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -528,15 +522,6 @@ class _AnimalPageState extends State<AnimalPage> {
   }
 
   void _submit() async {
-    // if (!formKey.currentState!.validate()) return;
-    // formKey.currentState!.save();
-
-    // print('Todo OK!');
-
-    // setState(() {
-    //   _guardando = true;
-    // });
-
     if (animal.id == "") {
       animal.estado = "En Adopción";
       animalProvider.crearAnimal1(animal, foto!);

@@ -44,16 +44,12 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Información"),
+                      child: Text("Soporte"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Ayuda"),
-                      value: 1,
-                    ),
-                    PopupMenuItem<int>(
                       child: Text("Cerrar Sesión"),
-                      value: 2,
+                      value: 1,
                     )
                   ]),
         ],
@@ -105,11 +101,9 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }

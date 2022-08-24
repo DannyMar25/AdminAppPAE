@@ -45,16 +45,12 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
               icon: Icon(Icons.manage_accounts),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
-                      child: Text("Información"),
+                      child: Text("Soporte"),
                       value: 0,
                     ),
                     PopupMenuItem<int>(
-                      child: Text("Ayuda"),
-                      value: 1,
-                    ),
-                    PopupMenuItem<int>(
                       child: Text("Cerrar Sesión"),
-                      value: 2,
+                      value: 1,
                     )
                   ]),
           // Builder(builder: (BuildContext context) {
@@ -110,11 +106,9 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:
-        break;
-      case 1:
         Navigator.pushNamed(context, 'soporte');
         break;
-      case 2:
+      case 1:
         userProvider.signOut();
         Navigator.pushNamed(context, 'login');
     }
@@ -154,49 +148,6 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
       ],
     );
   }
-
-  // Widget _crearDescripcion() {
-  //   return TextFormField(
-  //     initialValue: donaciones.descripcion,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Descripcion:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //     onChanged: (s) {
-  //       setState(() {
-  //         donaciones.descripcion = s;
-  //       });
-  //     },
-  //   );
-  // }
-
-  // Widget _crearBoton() {
-  //   return ElevatedButton.icon(
-  //     style: ButtonStyle(
-  //       backgroundColor:
-  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-  //         return Colors.deepPurple;
-  //       }),
-  //     ),
-  //     label: Text('Guardar'),
-  //     icon: Icon(Icons.save),
-  //     autofocus: true,
-  //     //onPressed: (_guardando) ? null : _submit,
-  //     onPressed: () {
-  //       _submit();
-  //     },
-  //   );
-  // }
-
-  // void _submit() async {
-  //   if (donaciones.id == "") {
-  //     donacionesProvider.crearDonacion(donaciones);
-  //   } else {
-  //     donacionesProvider.editarDonacion(donaciones);
-  //   }
-  //   //mostrarSnackbar('Registro guardado');
-  //   //Navigator.pushNamed(context, 'verDonacionesOutAdd');
-  // }
 
   Widget _verListado() {
     return FutureBuilder(
