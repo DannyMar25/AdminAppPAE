@@ -270,6 +270,11 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   }
 
   void _submit() async {
+    var fechaResp = DateTime.now().year.toString() +
+        '-' +
+        DateTime.now().month.toString() +
+        '-' +
+        DateTime.now().day.toString();
     if (!formKey.currentState!.validate()) return;
     formKey.currentState!.save();
     setState(() {
@@ -277,7 +282,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     });
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
-    formulariosProvider.editarFechaRespuesta(formularios, fechaRespuesta);
+    formulariosProvider.editarFechaRespuesta(formularios, fechaResp);
     Navigator.pushNamed(context, 'solicitudes');
   }
 }

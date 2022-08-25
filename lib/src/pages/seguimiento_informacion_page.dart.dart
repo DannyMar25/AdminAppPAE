@@ -34,7 +34,7 @@ class _InformacionSeguimientoPageState
     formularios = arg['formulario'] as FormulariosModel;
     animal = arg['animal'] as AnimalModel;
     return Scaffold(
-        backgroundColor: Color.fromARGB(223, 245, 247, 240),
+        //backgroundColor: Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
           title: Text('Seguimiento de mascota adoptada'),
           backgroundColor: Colors.green,
@@ -71,12 +71,9 @@ class _InformacionSeguimientoPageState
                           Text(
                             'Información de la mascota adoptada',
                             style: TextStyle(
-                              fontSize: 28,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.blueAccent,
-                            ),
+                                fontSize: 28,
+                                color: Colors.blueGrey[600],
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                           Divider(),
@@ -180,12 +177,9 @@ class _InformacionSeguimientoPageState
                           Text(
                             'Información del adoptante',
                             style: TextStyle(
-                              fontSize: 28,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
-                                ..color = Colors.blueAccent,
-                            ),
+                                fontSize: 28,
+                                color: Colors.blueGrey[600],
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                           Divider(),
