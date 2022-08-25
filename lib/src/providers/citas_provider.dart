@@ -125,4 +125,27 @@ class CitasProvider {
       return false;
     }
   }
+
+  Future<List<Future<CitasModel>>> verificar(String correo) async {
+    var documents = await refCit
+        .where('estado', isEqualTo: 'Pendiente')
+        .where('correoClient', isEqualTo: correo)
+        .get();
+    //citas.addAll
+    var s = (documents.docs.map((e) async {
+      //var data = e.data() as Map<String, dynamic>;
+      var cita = CitasModel.fromJson({
+        "id": e.id,
+        "nombreClient": e["nombreClient"],
+        "telfClient": e["telfClient"],
+        "correoClient": e["correoClient"],
+        "estado": e["estado"],
+        "fechaCita": e["fechaCita"],
+        "idAnimal": e["idAnimal"],
+        "idHorario": e["idHorario"]
+      });
+      return cita;
+    }));
+    return s.toList();
+  }
 }

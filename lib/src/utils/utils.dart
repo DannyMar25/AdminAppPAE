@@ -52,6 +52,33 @@ void mostrarAlertaOk(BuildContext context, String mensaje, String ruta) {
       });
 }
 
+void mostrarAlertaOk1(
+    BuildContext context, String mensaje, String ruta, String titulo) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 50,
+              ),
+              Text(titulo),
+            ],
+          ),
+          content: Text(mensaje),
+          actions: [
+            TextButton(
+                child: Text('Ok'),
+                //onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => Navigator.pushNamed(context, ruta)),
+          ],
+        );
+      });
+}
+
 void mostrarMensaje(BuildContext context, String mensaje) {
   showDialog(
       context: context,

@@ -8,6 +8,7 @@ import 'package:aministrador_app_v1/src/models/formulario_situacionFam_model.dar
 import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/formularios_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
+import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -214,13 +215,17 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-          //domicilio.planMudanza = "Si";
-          estado = "Aprobado";
-          estadoAn = "Adoptado";
-          animalProvider.editarEstado(formularios.animal!, estadoAn);
-        });
+        if (isChecked1 == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked = value!;
+            //domicilio.planMudanza = "Si";
+            estado = "Aprobado";
+            estadoAn = "Adoptado";
+            animalProvider.editarEstado(formularios.animal!, estadoAn);
+          });
+        }
       },
     );
   }
@@ -243,13 +248,16 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked1,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked1 = value!;
-          //domicilio.planMudanza = "No";
-          estado = "Negado";
-          estadoAn = "En Adopción";
-          animalProvider.editarEstado(formularios.animal!, estadoAn);
-        });
+        if (isChecked == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked1 = value!;
+            estado = "Negado";
+            estadoAn = "En Adopción";
+            animalProvider.editarEstado(formularios.animal!, estadoAn);
+          });
+        }
       },
     );
   }
@@ -265,7 +273,18 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
       label: Text('Guardar'),
       icon: Icon(Icons.save),
       autofocus: true,
-      onPressed: (_guardando) ? null : _submit,
+      //onPressed: (_guardando) ? null : _submit,
+      onPressed: () {
+        if (isChecked == false && isChecked1 == false) {
+          mostrarAlerta(context,
+              'Debe seleccionar una de las opciones de Aprobado o Negado');
+        } else {
+          SnackBar(
+            content: Text('Información ingresada correctamente'),
+          );
+          _submit();
+        }
+      },
     );
   }
 

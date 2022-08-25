@@ -341,10 +341,25 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
     //citas.idHorario = horarios.id;
 
+    // if (citas.id == "") {
+    //   citasProvider.crearCita(citas);
+    //   mostrarAlertaOk(
+    //       context, 'La cita ha sido registrada con éxito', 'bienvenida');
+    // }
+
     if (citas.id == "") {
-      citasProvider.crearCita(citas);
-      mostrarAlertaOk(
-          context, 'La cita ha sido registrada con éxito', 'bienvenida');
+      final estadoCita = await citasProvider.verificar(correo);
+      if (estadoCita.isEmpty) {
+        print('Puede');
+        citasProvider.crearCita(citas);
+        mostrarAlertaOk1(context, 'La cita ha sido registrada con éxito.',
+            'home', 'Información correcta');
+      } else {
+        print('no puede');
+        mostrarAlerta(context, 'Al momento ya cuenta con una cita registrada.');
+      }
+      //citasProvider.crearCita(citas);
+      // mostrarAlertaOk(context, 'La cita ha sido registrada con éxito', 'home');
     }
 
     //Navigator.pushNamed(context, 'bienvenida');
