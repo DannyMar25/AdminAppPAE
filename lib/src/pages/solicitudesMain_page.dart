@@ -76,14 +76,14 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-                Padding(padding: EdgeInsets.only(bottom: 12.0)),
+                Padding(padding: EdgeInsets.only(bottom: 7.0)),
                 //Divider(),
                 _mostrarFoto(),
                 // Divider(),
                 _mostrarNombreAn(),
-                Divider(
-                  color: Colors.transparent,
-                ),
+                // Divider(
+                //   color: Colors.transparent,
+                // ),
 
                 _mostrarFecha(),
                 Divider(
@@ -102,7 +102,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                               padding: EdgeInsets.all(12.0),
                               child: _botonDatosPer(),
                             ),
-                            Text('Datos personales'),
+                            Text('Datos\nPersonales'),
                           ],
                         ),
                         Column(
@@ -111,7 +111,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                               padding: EdgeInsets.all(12.0),
                               child: _botonSituacionFam(),
                             ),
-                            Text('Situacion familiar')
+                            Text('Situación\nFamiliar')
                           ],
                         )
                       ],
@@ -125,7 +125,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                               padding: EdgeInsets.all(12.0),
                               child: _botonDomicilio(),
                             ),
-                            Text('Domicilio')
+                            Text('Domicilio\n')
                           ],
                         ),
                         Column(
@@ -134,7 +134,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                               padding: EdgeInsets.all(12.0),
                               child: _botonRelacionAnim(),
                             ),
-                            Text('Relación con animales')
+                            Text('Relación con\nlos animales')
                           ],
                         )
                       ],
@@ -240,7 +240,8 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       return FadeInImage(
         image: NetworkImage(formularios.animal!.fotoUrl),
         placeholder: AssetImage('assets/jar-loading.gif'),
-        height: 300,
+        height: 270.0, //300
+        width: 270.0,
         fit: BoxFit.contain,
       );
     } else {
@@ -248,7 +249,8 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         return Image.file(
           foto!,
           fit: BoxFit.cover,
-          height: 300.0,
+          height: 270.0,
+          width: 270.0,
         );
       }
       return Image.asset(foto?.path ?? 'assets/no-image.png');
@@ -273,7 +275,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: Icon(
             Icons.person,
           ),
-          iconSize: 100,
+          iconSize: 65,
           color: Colors.purple[300],
           onPressed: () async {
             datosC = await formulariosProvider.cargarDPId(
@@ -312,7 +314,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: Icon(
             Icons.people,
           ),
-          iconSize: 100,
+          iconSize: 65,
           color: Colors.orange[300],
           onPressed: () async {
             situacionF = await formulariosProvider.cargarSFId(
@@ -350,7 +352,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: Icon(
             Icons.house,
           ),
-          iconSize: 100,
+          iconSize: 65,
           color: Colors.blueGrey[700],
           onPressed: () async {
             domicilio = await formulariosProvider.cargarDomId(
@@ -384,7 +386,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
           icon: Icon(
             Icons.pets,
           ),
-          iconSize: 100,
+          iconSize: 65,
           color: Colors.blueAccent,
           onPressed: () async {
             relacionA = await formulariosProvider.cargarRAId(

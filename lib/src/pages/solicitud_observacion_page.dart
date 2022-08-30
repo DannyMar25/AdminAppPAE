@@ -143,7 +143,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         ),
         validator: (value) {
           if (value!.length < 3 && value.length > 0) {
-            return 'Ingrese la raza de la mascota';
+            return 'Ingrese observación';
           } else if (value.isEmpty) {
             return 'Llena este campo por favor';
           } else {

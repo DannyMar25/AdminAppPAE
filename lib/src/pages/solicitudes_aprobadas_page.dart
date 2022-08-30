@@ -40,7 +40,7 @@ class _SolicitudesAprobadasPageState extends State<SolicitudesAprobadasPage> {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 239, 243, 243),
       appBar: AppBar(
-        title: Text('SOLICITUDES APROBADAS'),
+        title: Text('Solicitudes aprobadas'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

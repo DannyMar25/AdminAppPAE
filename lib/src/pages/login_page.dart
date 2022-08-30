@@ -30,16 +30,17 @@ class LoginPage extends StatelessWidget {
         children: [
           SafeArea(
             child: Container(
-              height: 230.0,
+              height: 250.0, //230
             ),
           ),
           Container(
-            width: 390.0,
-            margin: EdgeInsets.symmetric(vertical: 30.0),
-            padding: EdgeInsets.symmetric(vertical: 80.0),
+            width: 390.0, //390
+            height: 330.0,
+            margin: EdgeInsets.symmetric(vertical: 10.0), //30
+            padding: EdgeInsets.symmetric(vertical: 20.0), //80
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(15.0),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Colors.black26,
@@ -51,18 +52,18 @@ class LoginPage extends StatelessWidget {
               children: [
                 Text(
                   'Ingreso',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 60.0,
+                  height: 10.0,
                 ),
                 _crearEmail(bloc),
                 SizedBox(
-                  height: 30.0,
+                  height: 10.0,
                 ),
                 _crearPassword(bloc),
                 SizedBox(
-                  height: 30.0,
+                  height: 15.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -88,7 +89,7 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
               icon: Icon(Icons.alternate_email, color: Colors.green),
               hintText: 'ejemplo@correo.com',
-              labelText: 'Correo electronico',
+              labelText: 'Correo electrónico',
               //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
@@ -178,7 +179,7 @@ class LoginPage extends StatelessWidget {
         );
       },
       child: Text(
-        'Olvido la contraseña?',
+        '¿Olvidó la contraseña?',
         style: TextStyle(color: Colors.green, fontSize: 20),
       ),
     );

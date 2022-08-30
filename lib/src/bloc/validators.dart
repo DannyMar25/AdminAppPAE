@@ -15,20 +15,20 @@ class Validators {
 
   final validarPassword = StreamTransformer<String, String>.fromHandlers(
       handleData: (password, sink) {
-    if (password.length >= 6) {
+    if (password.length > 8) {
       sink.add(password);
     } else {
-      sink.addError('Mas de 6 caracteres por favor');
+      sink.addError('Más de 8 caracteres por favor');
     }
   });
 
   //se anade otro validator para confirmar contrasena
   final validarPasswordN = StreamTransformer<String, String>.fromHandlers(
       handleData: (password, sink) {
-    if (password.length > 6) {
+    if (password.length > 8) {
       sink.add(password);
     } else {
-      sink.addError('Mas de 6 caracteres por favor');
+      sink.addError('Más de 8 caracteres por favor');
     }
   });
 

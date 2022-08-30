@@ -63,7 +63,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
                     )
                   ]),
         ],
-        title: Text('Busqueda de mascotas'),
+        title: Text('Búsqueda de mascotas'),
       ),
       body: Stack(
         children: [

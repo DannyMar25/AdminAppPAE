@@ -42,7 +42,7 @@ class _IngresoDonacionesOutAddPageState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Anadir donación saliente'),
+        title: Text('Añadir donación saliente'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -174,7 +174,7 @@ class _IngresoDonacionesOutAddPageState
       initialValue: 1,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'Ingresa una cantidad valida';
+          return 'Ingresa una cantidad válida';
         } else if (int.parse(value) < 1 ||
             int.parse(value) > donaciones.cantidad) {
           return 'Ingrese cantidad dentro del rango';

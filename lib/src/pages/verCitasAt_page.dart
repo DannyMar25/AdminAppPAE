@@ -33,7 +33,7 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Citas Atendidas'),
+        title: Text('Citas atendidas'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

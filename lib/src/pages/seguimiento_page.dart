@@ -40,7 +40,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
     return Scaffold(
       //backgroundColor: Color.fromARGB(223, 221, 248, 153),
       appBar: AppBar(
-        title: Text('LISTA DE ADOPCIONES'),
+        title: Text('Lista de adopciones'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

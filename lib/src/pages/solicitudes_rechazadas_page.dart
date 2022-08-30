@@ -41,7 +41,7 @@ class _SolicitudesRechazadasPageState extends State<SolicitudesRechazadasPage> {
       //backgroundColor: Color.fromARGB(223, 221, 248, 153),
       backgroundColor: Color.fromARGB(255, 239, 243, 243),
       appBar: AppBar(
-        title: Text('SOLICITUDES RECHAZADAS'),
+        title: Text('Solicitudes rechazadas'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(

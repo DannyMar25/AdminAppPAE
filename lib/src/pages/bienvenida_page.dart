@@ -37,7 +37,7 @@ class BienvenidaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pagina principal'),
+        title: Text('Página principal'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -82,7 +82,7 @@ class BienvenidaPage extends StatelessWidget {
                 //   height: 130,
                 // ),
                 SizedBox(
-                  height: 700,
+                  height: 650,
                   child: Accordion(
                     maxOpenSections: 1,
                     headerBackgroundColorOpened: Colors.black54,

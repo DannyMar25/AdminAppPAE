@@ -34,7 +34,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Horarios Registrados'),
+        title: Text('Horarios registrados'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
