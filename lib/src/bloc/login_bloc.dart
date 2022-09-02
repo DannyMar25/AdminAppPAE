@@ -27,7 +27,7 @@ class LoginBloc with Validators {
           .transform(validarPassword)
           .doOnData((String? c) {
         if (0 != _passwordController.value.compareTo(c!)) {
-          _passwordConfirmController.addError("No Match");
+          _passwordConfirmController.addError("Contraseñas no coinciden.");
         }
       });
 

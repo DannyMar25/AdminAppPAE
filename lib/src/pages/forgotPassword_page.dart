@@ -1,3 +1,4 @@
+import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,6 +12,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final _auth = FirebaseAuth.instance;
+  UsuarioProvider usuarioProvider = new UsuarioProvider();
 
   String? _email;
   @override
@@ -106,14 +108,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     style: TextStyle(fontSize: 16),
                   ),
                   onPressed: () async {
-                    try {
-                      _auth.sendPasswordResetEmail(email: _email!);
-                      mostrarAlertaOk(
-                          context, 'Se envió un correo a $_email', 'login');
-                    } on FirebaseAuthException catch (e) {
-                      //print(exception.code);
-                      print(e.message);
-                      mostrarAlertaAuth(context, 'adasdasd', 'soporte');
+                    final estadoUsuario =
+                        await usuarioProvider.verificar(_email!);
+                    if (estadoUsuario.isEmpty) {
+                      mostrarAlerta(
+                          context, 'El correo ingresado no es correcto.');
+                    } else {
+                      try {
+                        _auth.sendPasswordResetEmail(email: _email!);
+                        mostrarAlertaOk(
+                            context,
+                            'Se ha enviado a tu correo: $_email un enlace para restablecer la contraseña.',
+                            'login');
+                      } on FirebaseAuthException catch (e) {
+                        //print(exception.code);
+                        print(e.message);
+                        mostrarAlertaAuth(context, 'adasdasd', 'soporte');
+                      }
                     }
                   },
                 ),

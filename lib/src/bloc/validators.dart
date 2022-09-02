@@ -9,7 +9,7 @@ class Validators {
     if (regExp.hasMatch(email)) {
       sink.add(email);
     } else {
-      sink.addError('Email no es correcto');
+      sink.addError('Correo no es correcto');
     }
   });
 
@@ -39,7 +39,7 @@ class Validators {
     if (nombre.length >= 5) {
       sink.add(nombre);
     } else {
-      sink.addError('Mas de 5 caracteres por favor');
+      sink.addError('Más de 5 caracteres por favor');
     }
   });
 }

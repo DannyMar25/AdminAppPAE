@@ -229,12 +229,14 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       //initialValue: donaciones.cantidad.toString(),
       //readOnly: false,
       textCapitalization: TextCapitalization.sentences,
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad (Unidades):',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
+          //int unidades = int.parse(s);
+          //if(unidades)
           donaciones.cantidad = int.parse(s);
         });
       },

@@ -264,11 +264,15 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked = value!;
-          //domicilio.planMudanza = "Si";
-          donaciones.disponibilidad = "Disponible";
-        });
+        if (isChecked1 == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked = value!;
+            //domicilio.planMudanza = "Si";
+            donaciones.disponibilidad = "Disponible";
+          });
+        }
       },
     );
   }
@@ -291,12 +295,16 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       fillColor: MaterialStateProperty.resolveWith(getColor),
       value: isChecked1,
       onChanged: (bool? value) {
-        setState(() {
-          isChecked1 = value!;
-          //domicilio.planMudanza = "No";
-          donaciones.disponibilidad = "No Disponible";
-          //donaciones.cantidad = 0;
-        });
+        if (isChecked == true) {
+          return null;
+        } else {
+          setState(() {
+            isChecked1 = value!;
+            //domicilio.planMudanza = "No";
+            donaciones.disponibilidad = "No Disponible";
+            //donaciones.cantidad = 0;
+          });
+        }
       },
     );
   }

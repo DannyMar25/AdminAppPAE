@@ -156,14 +156,13 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
                   title: Column(
                     children: [
                       Text(
-                          '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}'),
+                          '${'Cantidad:'} ${donacion.cantidad} ${'  Peso:'} ${donacion.peso} ${'Kg'}'),
                       //Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
                     ],
                   ),
                   subtitle: Column(
                     children: [
-                      Text(
-                          '${donacion.descripcion} ${'- Peso:'}  ${donacion.peso} ${'Kg'}'),
+                      Text('${donacion.descripcion}'),
                       Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
                     ],
                   ),
@@ -179,8 +178,7 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
         shadowColor: Colors.green,
         child: Column(key: UniqueKey(), children: [
           ListTile(
-              title: Text(
-                  '${donacion.tipo}  ${'- Cantidad:'} ${donacion.cantidad}',
+              title: Text('${'Cantidad:'} ${donacion.cantidad}',
                   textAlign: TextAlign.center),
               subtitle: Column(
                 children: [

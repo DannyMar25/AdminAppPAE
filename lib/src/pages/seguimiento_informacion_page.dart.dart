@@ -36,7 +36,7 @@ class _InformacionSeguimientoPageState
     return Scaffold(
         //backgroundColor: Color.fromARGB(223, 245, 247, 240),
         appBar: AppBar(
-          title: Text('Seguimiento de mascota adoptada'),
+          title: Text('Información de control'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(

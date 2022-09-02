@@ -163,6 +163,11 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         maxLines: 1,
         readOnly: false,
         initialValue: DateTime.now().toString(),
+        // initialValue: DateTime.now().year.toString() +
+        //     '-' +
+        //     DateTime.now().month.toString() +
+        //     '-' +
+        //     DateTime.now().day.toString(),
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           labelText: 'Fecha de respuesta:',
@@ -282,7 +287,10 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           SnackBar(
             content: Text('Información ingresada correctamente'),
           );
+
           _submit();
+          mostrarAlertaOk(
+              context, 'Información actualizada con éxito.', 'solicitudes');
         }
       },
     );
@@ -302,6 +310,6 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
     formulariosProvider.editarEstado(formularios, estado);
     formulariosProvider.editarObservacion(formularios, observacion);
     formulariosProvider.editarFechaRespuesta(formularios, fechaResp);
-    Navigator.pushNamed(context, 'solicitudes');
+    //Navigator.pushNamed(context, 'solicitudes');
   }
 }

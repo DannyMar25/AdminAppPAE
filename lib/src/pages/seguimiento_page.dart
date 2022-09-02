@@ -74,7 +74,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "SEGUIMIENTO DE ADOPCIONES",
+                  "Seguimiento de adopciones",
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,

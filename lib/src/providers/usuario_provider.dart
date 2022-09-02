@@ -115,4 +115,20 @@ class UsuarioProvider {
       return false;
     }
   }
+
+  Future<List<Future<UsuariosModel>>> verificar(String correo) async {
+    var documents = await refUser.where('email', isEqualTo: correo).get();
+    //citas.addAll
+    var s = (documents.docs.map((e) async {
+      //var data = e.data() as Map<String, dynamic>;
+      var user = UsuariosModel.fromJson({
+        "id": e.id,
+        "email": e["email"],
+        "nombre": e["nombre"],
+        "rol": e["rol"],
+      });
+      return user;
+    }));
+    return s.toList();
+  }
 }

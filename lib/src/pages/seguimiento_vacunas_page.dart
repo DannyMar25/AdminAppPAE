@@ -70,7 +70,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Registro de vacunas',
+                            'Vacunas',
                             style: TextStyle(
                               fontSize: 28,
                               foreground: Paint()

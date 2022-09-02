@@ -45,12 +45,13 @@ class _RegistroPageState extends State<RegistroPage> {
             ),
           ),
           Container(
-            width: 390.0,
-            margin: EdgeInsets.symmetric(vertical: 30.0),
-            padding: EdgeInsets.symmetric(vertical: 80.0),
+            width: 390.0, //390
+            height: 540.0,
+            margin: EdgeInsets.symmetric(vertical: 10.0),
+            padding: EdgeInsets.symmetric(vertical: 50.0), //80
             decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(15.0),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Colors.black26,
@@ -62,26 +63,26 @@ class _RegistroPageState extends State<RegistroPage> {
               children: [
                 Text(
                   'Crear cuenta',
-                  style: TextStyle(fontSize: 20.0),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 60.0,
+                  height: 8.0, //60
                 ),
                 _crearNombreUs(bloc),
                 SizedBox(
-                  height: 60.0,
+                  height: 8.0, //60
                 ),
                 _crearEmail(bloc),
                 SizedBox(
-                  height: 30.0,
+                  height: 8.0, //30
                 ),
                 _crearPassword(bloc),
                 SizedBox(
-                  height: 30.0,
+                  height: 8.0,
                 ),
                 create_password_confirm(bloc),
                 SizedBox(
-                  height: 30.0,
+                  height: 8.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -136,8 +137,8 @@ class _RegistroPageState extends State<RegistroPage> {
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
               icon: Icon(Icons.alternate_email, color: Colors.green),
-              hintText: 'dany',
-              labelText: 'Nombre de usuario:',
+              //hintText: 'dany',
+              labelText: 'Nombre de usuario',
               //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
@@ -148,25 +149,6 @@ class _RegistroPageState extends State<RegistroPage> {
       },
     );
   }
-
-  // Widget _crearNombre() {
-  //   return TextFormField(
-  //     //initialValue: animal.nombre,
-  //     controller: _nombreUs,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //       labelText: 'Nombre',
-  //     ),
-  //     onSaved: (value) => _nombreUs = value as TextEditingController,
-  //     validator: (value) {
-  //       if (value!.length < 3) {
-  //         return 'Ingrese su nombre';
-  //       } else {
-  //         return null;
-  //       }
-  //     },
-  //   );
-  // }
 
   Widget _crearPassword(LoginBloc bloc) {
     return StreamBuilder(
@@ -180,7 +162,7 @@ class _RegistroPageState extends State<RegistroPage> {
             decoration: InputDecoration(
               icon: Icon(Icons.lock_outline, color: Colors.green),
               //hintText: 'ejemplo@correo.com',
-              labelText: 'Contrasena',
+              labelText: 'Contraseña',
               //counterText: snapshot.data,
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
@@ -293,10 +275,10 @@ class _RegistroPageState extends State<RegistroPage> {
               Image.asset('assets/pet-care.png', height: 190),
               //Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
               SizedBox(height: 10.0, width: double.infinity),
-              Text(
-                'Bienvenid@',
-                style: TextStyle(color: Colors.white, fontSize: 25.0),
-              ),
+              // Text(
+              //   'Bienvenid@',
+              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
+              // ),
             ],
           ),
         ),
