@@ -1,5 +1,4 @@
 import 'package:accordion/controllers.dart';
-import 'package:aministrador_app_v1/src/pages/animal_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
@@ -151,7 +150,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.photo_library_outlined,
+                                    Icons.app_registration_outlined,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -179,94 +178,104 @@ class BienvenidaPage extends StatelessWidget {
                             Text(
                                 "Revisa los horarios disponibles para agendamiento de citas.\nRegistra una nueva cita, revisa citas pendientes o atendidas."),
                             Padding(padding: EdgeInsets.only(bottom: 10.0)),
-                            TextButton(
-                              style: flatButtonStyle,
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'horariosAdd');
-                              },
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.date_range,
-                                    color: Colors.green,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  style: flatButtonStyle,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'horariosAdd');
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.app_registration_outlined,
+                                        color: Colors.green,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2.0),
+                                      ),
+                                      Text(
+                                        'Ver horarios registrados',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2.0),
+                                ),
+                                TextButton(
+                                  style: flatButtonStyle,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'agendarCita');
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.list_alt,
+                                        color: Colors.green,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2.0),
+                                      ),
+                                      Text(
+                                        'Registrar nueva cita',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    'Ver horarios registrados',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                            TextButton(
-                              style: flatButtonStyle,
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'agendarCita');
-                              },
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.date_range,
-                                    color: Colors.green,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                TextButton(
+                                  style: flatButtonStyle,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'verCitasAg');
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.check_outlined,
+                                        color: Colors.green,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2.0),
+                                      ),
+                                      Text(
+                                        'Ver citas pendientes',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2.0),
+                                ),
+                                TextButton(
+                                  style: flatButtonStyle,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, 'verCitasAt');
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.check,
+                                        color: Colors.green,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2.0),
+                                      ),
+                                      Text(
+                                        'Ver citas atendidas',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    'Registrar nueva cita',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            TextButton(
-                              style: flatButtonStyle,
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'verCitasR');
-                              },
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.date_range,
-                                    color: Colors.green,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2.0),
-                                  ),
-                                  Text(
-                                    'Ver citas pendientes',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            TextButton(
-                              style: flatButtonStyle,
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'verCitasAt');
-                              },
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.date_range,
-                                    color: Colors.green,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2.0),
-                                  ),
-                                  Text(
-                                    'Ver citas atendidas',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
-                              ),
-                            ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -292,7 +301,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.photo_album,
+                                    Icons.inventory,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -315,7 +324,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.photo_album,
+                                    Icons.check,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -338,7 +347,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.photo_album,
+                                    Icons.clear,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -412,7 +421,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.verified,
+                                    Icons.add,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -420,7 +429,7 @@ class BienvenidaPage extends StatelessWidget {
                                         vertical: 2.0),
                                   ),
                                   Text(
-                                    'Registrar donacion recibida',
+                                    'Registrar donación recibida',
                                     style: TextStyle(color: Colors.green),
                                   ),
                                 ],
@@ -435,7 +444,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.verified,
+                                    Icons.add,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -443,7 +452,7 @@ class BienvenidaPage extends StatelessWidget {
                                         vertical: 2.0),
                                   ),
                                   Text(
-                                    'Registrar donacion saliente',
+                                    'Registrar donación saliente',
                                     style: TextStyle(color: Colors.green),
                                   ),
                                 ],
