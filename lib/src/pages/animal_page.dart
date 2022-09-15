@@ -491,15 +491,18 @@ class _AnimalPageState extends State<AnimalPage> {
       autofocus: true,
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        if (formKey.currentState!.validate() && foto != null) {
+        //if (formKey.currentState!.validate() && foto != null) {
+        if (formKey.currentState!.validate()) {
           // Si el formulario es válido, queremos mostrar un Snackbar
           SnackBar(
             content: Text('Información ingresada correctamente'),
           );
           _submit();
         } else {
-          utils.mostrarAlerta(context,
-              'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          utils.mostrarAlerta(
+              context, 'Asegurate de que todos los campos esten llenos.');
+          // utils.mostrarAlerta(context,
+          //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
         }
       },
     );
@@ -529,9 +532,42 @@ class _AnimalPageState extends State<AnimalPage> {
       utils.mostrarAlertaOk(context, 'Registro guardado con éxito', 'home');
       //mostrarSnackbar('Registro guardado');
     } else {
-      animalProvider.editarAnimal(animal, foto!);
-      //utils.mostrarMensaje(context, 'Registro actualizado');
-      utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Row(
+                children: [
+                  Icon(
+                    Icons.check_circle,
+                    color: Colors.green,
+                    size: 50,
+                  ),
+                  Text('Información correcta'),
+                ],
+              ),
+              content: Text('Desea actualizar la foto de la mascota?'),
+              actions: [
+                TextButton(
+                    child: Text('Si'),
+                    onPressed: () {
+                      animalProvider.editarAnimal(animal, foto!);
+                      utils.mostrarAlertaOk(
+                          context, 'Registro actualizado con éxito', 'home');
+                    }),
+                TextButton(
+                    child: Text('No'),
+                    onPressed: () {
+                      animalProvider.editarAnimalSinFoto(
+                          animal, animal.fotoUrl);
+                      utils.mostrarAlertaOk(
+                          context, 'Registro actualizado con éxito', 'home');
+                    }),
+              ],
+            );
+          });
+      // animalProvider.editarAnimal(animal, foto!);
+      // utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
     }
   }
 

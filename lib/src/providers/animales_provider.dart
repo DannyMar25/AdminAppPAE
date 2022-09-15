@@ -81,6 +81,17 @@ class AnimalesProvider {
     }
   }
 
+  Future<bool> editarAnimalSinFoto(AnimalModel animal, String fotourl) async {
+    try {
+      await refAn.doc(animal.id).update(animal.toJson());
+      //var animalUp = await refAn.doc(animal.id).update(animal.toJson());
+      await refAn.doc(animal.id).update({"fotoUrl": fotourl});
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<List<AnimalModel>> cargarAnimal1() async {
     final List<AnimalModel> animales = <AnimalModel>[];
     var documents = await refAn.get();

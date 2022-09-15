@@ -162,7 +162,14 @@ class LoginPage extends StatelessWidget {
       final user = await usuarioProvider.obtenerUsuario(info['uid']);
       prefs.setEmail(bloc.email);
       prefs.setRol(user['rol']);
-      Navigator.pushNamed(context, 'bienvenida');
+      if (user['rol'] == 'Administrador' ||
+          user['rol'] == 'SuperAdministrador') {
+        //Navigator.pushNamed(context, 'intro');
+        Navigator.pushNamed(context, 'bienvenida');
+      } else {
+        mostrarAlertaOk1(context, 'No puedes ingresar', 'login', 'Advertencia');
+      }
+      //Navigator.pushNamed(context, 'bienvenida');
     } else {
       mostrarAlerta(context, 'El correo o contraseña son incorrectos.');
     }
