@@ -43,6 +43,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   String campoVacio = 'Por favor, llena este campo';
 
   AnimalModel animal = new AnimalModel();
+  bool seleccionado = false;
+
   @override
   Widget build(BuildContext context) {
     final Object? animData = ModalRoute.of(context)!.settings.arguments;
@@ -143,10 +145,27 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   _selectDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: new DateTime.now(),
-      firstDate: new DateTime.now(),
-      lastDate: new DateTime.now().add(Duration(days: 7)),
+      initialDate: new DateTime.now().add(Duration(days: 1)),
+      firstDate: new DateTime.now().add(Duration(days: 1)),
+      lastDate: new DateTime.now().add(Duration(days: 8)),
       locale: Locale('es', 'ES'),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: Colors.green, // <-- SEE HERE
+              onPrimary: Colors.white, // <-- SEE HERE
+              onSurface: Colors.green, // <-- SEE HERE
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: Colors.green, // button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null) {
@@ -211,6 +230,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         TextFormField(
           readOnly: true,
           onTap: () {
+            seleccionado = true;
             citas.idHorario = horario.id;
             horariosProvider.editarDisponible(horario);
           },
@@ -314,11 +334,18 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         autofocus: true,
         onPressed: () {
           if (formKey.currentState!.validate()) {
+            if (seleccionado == true) {
+              SnackBar(
+                content: Text('Información ingresada correctamente'),
+              );
+              seleccionado = false;
+              _submit();
+            } else {
+              mostrarAlerta(context,
+                  'Debes seleccionar un horario disponible para tu cita.');
+            }
             // Si el formulario es válido, queremos mostrar un Snackbar
-            SnackBar(
-              content: Text('Información ingresada correctamente'),
-            );
-            _submit();
+
           } else {
             mostrarAlerta(
                 context, 'Asegurate de que todos los campos esten llenos.');
@@ -352,8 +379,11 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       if (estadoCita.isEmpty) {
         print('Puede');
         citasProvider.crearCita(citas);
-        mostrarAlertaOk1(context, 'La cita ha sido registrada con éxito.',
-            'home', 'Información correcta');
+        mostrarAlertaOk1(
+            context,
+            'La cita ha sido registrada con éxito, revise su correo para verificar el día y hora agendados.',
+            'home',
+            'Información correcta');
       } else {
         print('no puede');
         mostrarAlerta(context, 'Al momento ya cuenta con una cita registrada.');

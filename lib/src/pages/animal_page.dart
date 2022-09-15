@@ -312,6 +312,7 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
+      keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: 'Peso en Kg.',
         labelStyle: TextStyle(fontSize: 21, color: Colors.black),
