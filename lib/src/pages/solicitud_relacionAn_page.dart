@@ -128,7 +128,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       Divider(color: Colors.transparent),
 
                       Text(
-                        '¿Dónde está ahora? Si fallecio, perdió o esta en otro lugar, indique la causa.',
+                        '¿Dónde está ahora? Si falleció, perdió o está en otro lugar, indique la causa.',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -139,7 +139,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       Divider(color: Colors.transparent),
 
                       Text(
-                        '¿Por qué desea adptar una mascota?',
+                        '¿Por qué desea adoptar una mascota?',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -269,7 +269,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarDineroGasto(),
                       Divider(color: Colors.transparent),
                       Text(
-                        '¿Cuenta con los recursos para cubrir los gastos veterinarios del animal de compañía?',
+                        '¿Cuenta con los recursos para cubrir los gastos veterinarios del animal de companía?',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,
@@ -292,7 +292,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarJustificacion1(),
                       Divider(),
                       Text(
-                        '¿Está de acuerdo en que la  mascota sea esterilizada?',
+                        '¿Está de acuerdo en que la mascota sea esterilizada?',
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -314,7 +314,7 @@ class _RelacionAnimalPageState extends State<RelacionAnimalPage> {
                       _mostrarBeneficios(),
                       Divider(color: Colors.transparent),
                       Text(
-                        '¿Según usted que es tenecia responsable?',
+                        '¿Según usted que es tenencia responsable?',
                         style: TextStyle(
                             fontSize: 16,
                             color: Colors.black,

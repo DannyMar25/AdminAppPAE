@@ -169,8 +169,8 @@ class _VerCitasPageState extends State<VerCitasPage> {
     DateTime? picked = await showDatePicker(
       context: context,
       initialDate: new DateTime.now(),
-      firstDate: new DateTime(2020),
-      lastDate: new DateTime(2025),
+      firstDate: new DateTime.now(),
+      lastDate: new DateTime.now().add(Duration(days: 7)),
       locale: Locale('es', 'ES'),
       builder: (context, child) {
         return Theme(

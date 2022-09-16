@@ -132,7 +132,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                     ),
                     Divider(),
                     Text(
-                      'Algun familiar espera un bebe?',
+                      '¿Algún familiar espera un bebé?',
                       style: TextStyle(
                         fontSize: 24,
                         foreground: Paint()
@@ -144,7 +144,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
                     Divider(),
                     _mostrarEsperabebe(),
                     Text(
-                      'Alguien que viva con usted es alérgico a los animales o sufre de asma?',
+                      '¿Alguien que viva con usted es alérgico a los animales o sufre de asma?',
                       style: TextStyle(
                         fontSize: 24,
                         foreground: Paint()

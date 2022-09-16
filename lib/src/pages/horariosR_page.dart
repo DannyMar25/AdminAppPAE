@@ -34,7 +34,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Horarios registrados'),
+        title: Text('Horarios'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -59,6 +59,11 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
             //key: formKey,
             child: Column(
               children: [
+                Text(
+                  'Horarios registrados esta semana',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
                 _crearDia(),
                 Divider(),
                 _verListado(),
