@@ -78,7 +78,8 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             _botonBusqueda(),
             Padding(padding: EdgeInsets.only(bottom: 10.0)),
             Expanded(
-              child: _crearListadoBusqueda(),
+              // child: _crearListadoBusqueda(),
+              child: buildChild(),
             )
             //_crearListado(),
           ],
@@ -86,6 +87,14 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
 
         //floatingActionButton: _crearBoton(context),
         );
+  }
+
+  Widget buildChild() {
+    if (tamanio == null) {
+      return _crearListadoBusqueda4();
+    } else {
+      return _crearListadoBusqueda();
+    }
   }
 
   void onSelected(BuildContext context, int item) {
@@ -155,29 +164,59 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
         });
   }
 
-  Widget _crearItem2(BuildContext context, AnimalModel animal) {
-    return Expanded(
-      child: Container(
-        height: 100.0,
-        width: 200.0,
-        child: Card(
-          color: Color.fromARGB(248, 202, 241, 170),
-          elevation: 4.0,
-          margin: EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
-          child: Flexible(
-            fit: FlexFit.loose,
-            child: InkWell(
-              onTap: () => Navigator.pushNamed(context, 'home'),
-              child: Column(
-                children: [
-                  Text('No se ha encontrado ningun resultado.....!!!!'),
-                ],
-              ),
-            ),
-          ),
+  Widget _crearListadoBusqueda4() {
+    return FutureBuilder(
+        future: animalesProvider.cargarBusqueda4(
+          especie!,
+          sexo!,
+          etapaVida!,
+          estado!,
         ),
-      ),
-    );
+        builder:
+            (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
+          if (snapshot.hasData) {
+            final animales = snapshot.data;
+            if (animales!.length == 0) {
+              return Column(children: [
+                Flexible(
+                  fit: FlexFit.loose,
+                  child: AlertDialog(
+                    title: Row(
+                      children: [
+                        Icon(
+                          Icons.check_circle,
+                          color: Colors.green,
+                          size: 45,
+                        ),
+                        Text('Resultado de busqueda!'),
+                      ],
+                    ),
+                    content: Text(
+                        'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
+                    actions: [
+                      TextButton(
+                          child: Text('Ok'),
+                          //onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'home');
+                          })
+                    ],
+                  ),
+                )
+              ]);
+            }
+            return GridView.count(
+              childAspectRatio: 50 / 100,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              children: List.generate(animales.length, (index) {
+                return _crearItem1(context, animales[index]);
+              }),
+            );
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        });
   }
 
   Widget _crearItem1(BuildContext context, AnimalModel animal) {

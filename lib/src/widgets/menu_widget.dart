@@ -248,6 +248,11 @@ class _MenuWidgetState extends State<MenuWidget> {
               Navigator.pushNamed(context, 'bienvenida');
             },
           ),
+          Padding(padding: EdgeInsets.only(top: 160.0)),
+          Text(
+            '2022 Versión: 0.0.1',
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );

@@ -183,6 +183,41 @@ class AnimalesProvider {
     return animales;
   }
 
+  Future<List<AnimalModel>> cargarBusqueda4(
+      String especie, String sexo, String etapaVida, String estado) async {
+    final List<AnimalModel> animales = <AnimalModel>[];
+    var documents = await refAn
+        .where('especie', isEqualTo: especie)
+        .where('estado', isEqualTo: estado)
+        .where('sexo', isEqualTo: sexo)
+        .where('etapaVida', isEqualTo: etapaVida)
+        .get();
+    //var s = (documents.docs.map((e) async {
+    animales.addAll(documents.docs.map((e) {
+      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
+      var data = e.data() as Map<String, dynamic>;
+      var animal = AnimalModel.fromJson({
+        "id": e.id,
+        "especie": data["especie"],
+        "nombre": data["nombre"],
+        "sexo": data["sexo"],
+        "etapaVida": data["etapaVida"],
+        "temperamento": data["temperamento"],
+        "peso": data["peso"],
+        "tamanio": data["tamanio"],
+        "color": data["color"],
+        "raza": data["raza"],
+        "esterilizado": data["esterilizado"],
+        "estado": data["estado"],
+        "caracteristicas": data["caracteristicas"],
+        "fotoUrl": data["fotoUrl"]
+      });
+      return animal;
+    }).toList());
+    //return s.toList();
+    return animales;
+  }
+
   Future<int> borrarAnimal(String id) async {
     await refAn.doc(id).delete();
 

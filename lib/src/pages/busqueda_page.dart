@@ -170,20 +170,21 @@ class _BusquedaPageState extends State<BusquedaPage> {
                         ),
                         Padding(padding: EdgeInsets.only(bottom: 15.0)),
                         _seleccionarEtapaVida(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            //Padding(padding: EdgeInsets.only(left: 150.0)),
-                            Expanded(
-                              child: SizedBox(
-                                  height: 200,
-                                  child: Image(
-                                      image: AssetImage("assets/pets_2.png"))),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     //Padding(padding: EdgeInsets.only(left: 150.0)),
+                        //     Expanded(
+                        //       child: SizedBox(
+                        //           height: 200,
+                        //           child: Image(
+                        //               image: AssetImage("assets/pets_2.png"))),
+                        //     ),
+                        //   ],
+                        // ),
                         //Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        _seleccionarTamanio(),
+                        // _seleccionarTamanio(),
+                        buildChild(),
                         Padding(padding: EdgeInsets.only(bottom: 40.0)),
                         _crearBoton()
                       ],
@@ -194,6 +195,29 @@ class _BusquedaPageState extends State<BusquedaPage> {
         ],
       ),
     );
+  }
+
+  Widget buildChild() {
+    if (_selection == 'Canina') {
+      return Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Padding(padding: EdgeInsets.only(left: 150.0)),
+              Expanded(
+                child: SizedBox(
+                    height: 200,
+                    child: Image(image: AssetImage("assets/pets_2.png"))),
+              ),
+            ],
+          ),
+          _seleccionarTamanio(),
+        ],
+      );
+    } else {
+      return Text('');
+    }
   }
 
   void onSelected(BuildContext context, int item) {
@@ -363,8 +387,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection3,
                   items: dropdownMenuOptions,
-                  validator: (value) =>
-                      value == null ? 'Selecciona una opción' : null,
+                  // validator: (value) =>
+                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
                       _selection3 = s;
@@ -438,7 +462,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
           SnackBar(
             content: Text('Por favor selecciona una opción'),
           );
-          _submit();
+          //_submit();
+          buildChild1();
         } else {
           mostrarAlerta(context,
               'Todos los campos deben ser seleccionados. Asegurate de haber completado todos');
@@ -448,12 +473,30 @@ class _BusquedaPageState extends State<BusquedaPage> {
     );
   }
 
+  buildChild1() {
+    if (_selection == 'Canina') {
+      return _submit();
+    } else {
+      return _submit4();
+    }
+  }
+
   void _submit() async {
     Navigator.pushNamed(context, 'resultadoBusqueda', arguments: {
       'especie': _selection,
       'sexo': _selection1,
       'etapaVida': _selection2,
       'tamanio': _selection3,
+      'estado': _selection4
+    });
+  }
+
+  void _submit4() async {
+    Navigator.pushNamed(context, 'resultadoBusqueda', arguments: {
+      'especie': _selection,
+      'sexo': _selection1,
+      'etapaVida': _selection2,
+      'tamanio': null,
       'estado': _selection4
     });
   }
