@@ -209,19 +209,19 @@ class _SoportePageState extends State<SoportePage> {
             if (formKey.currentState!.validate()) {
               // Si el formulario es válido, queremos mostrar un Snackbar
               SnackBar(
-                content: Text('Información ingresada correctamente'),
+                content: Text('Información ingresada correctamente.'),
               );
               soportesProvider.crearSoportes(soporte);
               email != ''
                   ? mostrarAlertaOk(
-                      context, 'Tu mensaje a sido enviado', 'home')
+                      context, 'Tu mensaje ha sido enviado.', 'home')
                   : mostrarAlertaOk(
-                      context, 'Tu mensaje a sido enviado', 'login');
+                      context, 'Tu mensaje ha sido enviado.', 'login');
 
               //Navigator.pushReplacementNamed(context, 'home');
             } else {
               mostrarAlerta(
-                  context, 'Asegurate de que todos los campos esten llenos.');
+                  context, 'Asegúrate de que todos los campos estén llenos.');
             }
           }),
     ]);

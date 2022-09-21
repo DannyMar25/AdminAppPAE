@@ -218,10 +218,11 @@ class _HorariosPageState extends State<HorariosPage> {
   void _submit() async {
     if (horarios.id == "") {
       horariosProvider.crearHorario(horarios);
-      mostrarAlertaOk(context, 'Registro guardado con éxito', 'horariosAdd');
+      mostrarAlertaOk(context, 'Registro guardado con éxito.', 'horariosAdd');
     } else {
       horariosProvider.editarHorarios(horarios);
-      mostrarAlertaOk(context, 'Registro actualizado con éxito', 'horariosAdd');
+      mostrarAlertaOk(
+          context, 'Registro actualizado con éxito.', 'horariosAdd');
     }
     //mostrarSnackbar('Registro guardado');
     //Navigator.pushNamed(context, 'horariosAdd');

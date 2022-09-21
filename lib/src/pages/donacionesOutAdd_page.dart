@@ -202,12 +202,12 @@ class _IngresoDonacionesOutAddPageState
         if (formKey.currentState!.validate()) {
           // Si el formulario es válido, queremos mostrar un Snackbar
           SnackBar(
-            content: Text('Información ingresada correctamente'),
+            content: Text('Información ingresada correctamente.'),
           );
           _submit();
         } else {
           mostrarAlerta(context,
-              'Asegurate de que todos los campos esten llenos y que los valores ingresados sean correctos.');
+              'Asegúrate de que todos los campos estén llenos y que los valores ingresados sean correctos.');
         }
       },
     );

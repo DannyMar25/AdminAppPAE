@@ -500,7 +500,7 @@ class _AnimalPageState extends State<AnimalPage> {
           _submit();
         } else {
           utils.mostrarAlerta(
-              context, 'Asegurate de que todos los campos esten llenos.');
+              context, 'Asegúrate de que todos los campos estén llenos.');
           // utils.mostrarAlerta(context,
           //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
         }
@@ -521,7 +521,7 @@ class _AnimalPageState extends State<AnimalPage> {
         autofocus: true,
         onPressed: () {
           utils.mostrarAlertaBorrar(context,
-              'Estas seguro de borrar el registro', animal.id.toString());
+              'Estas seguro de borrar el registro.', animal.id.toString());
         });
   }
 
@@ -529,7 +529,7 @@ class _AnimalPageState extends State<AnimalPage> {
     if (animal.id == "") {
       animal.estado = "En Adopción";
       animalProvider.crearAnimal1(animal, foto!);
-      utils.mostrarAlertaOk(context, 'Registro guardado con éxito', 'home');
+      utils.mostrarAlertaOk(context, 'Registro guardado con éxito.', 'home');
       //mostrarSnackbar('Registro guardado');
     } else {
       showDialog(
@@ -553,7 +553,7 @@ class _AnimalPageState extends State<AnimalPage> {
                     onPressed: () {
                       animalProvider.editarAnimal(animal, foto!);
                       utils.mostrarAlertaOk(
-                          context, 'Registro actualizado con éxito', 'home');
+                          context, 'Registro actualizado con éxito.', 'home');
                     }),
                 TextButton(
                     child: Text('No'),
@@ -561,7 +561,7 @@ class _AnimalPageState extends State<AnimalPage> {
                       animalProvider.editarAnimalSinFoto(
                           animal, animal.fotoUrl);
                       utils.mostrarAlertaOk(
-                          context, 'Registro actualizado con éxito', 'home');
+                          context, 'Registro actualizado con éxito.', 'home');
                     }),
               ],
             );

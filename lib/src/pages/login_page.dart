@@ -167,7 +167,11 @@ class LoginPage extends StatelessWidget {
         //Navigator.pushNamed(context, 'intro');
         Navigator.pushNamed(context, 'bienvenida');
       } else {
-        mostrarAlertaOk1(context, 'No puedes ingresar', 'login', 'Advertencia');
+        mostrarAlertaOk1(
+            context,
+            'Solo usuarios autorizados pueden acceder a la aplicación.',
+            'login',
+            'Advertencia');
       }
       //Navigator.pushNamed(context, 'bienvenida');
     } else {

@@ -120,21 +120,21 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Esta seguro de borrar el registro'),
+          title: Text('Esta seguro de borrar el registro.'),
           content: Text(mensaje),
           actions: [
             TextButton(
-              child: Text('Ok'),
+              child: Text('Si'),
               onPressed: () {
                 animalProvider.borrarAnimal(id);
                 mostrarAlertaOk(
-                    context, 'El registro a sido eliminado.', 'home');
+                    context, 'El registro ha sido eliminado.', 'home');
                 //Navigator.pushNamed(context, 'home');
               },
               //onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
-              child: Text('Cancel'),
+              child: Text('Cancelar'),
               //onPressed: () {},
               onPressed: () => Navigator.of(context).pop(),
             ),
@@ -150,21 +150,21 @@ void mostrarAlertaBorrarDonacion(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Esta seguro de borrar el registro'),
+          title: Text('Esta seguro de borrar el registro.'),
           content: Text(mensaje),
           actions: [
             TextButton(
-              child: Text('Ok'),
+              child: Text('Si'),
               onPressed: () {
                 donacionesProvider.borrarDonacion(id);
                 mostrarAlertaOk(
-                    context, 'El registro a sido eliminado.', 'home');
+                    context, 'El registro ha sido eliminado.', 'home');
                 //Navigator.pushNamed(context, 'home');
               },
               //onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
-              child: Text('Cancel'),
+              child: Text('Cancelar'),
               //onPressed: () {},
               onPressed: () => Navigator.of(context).pop(),
             ),

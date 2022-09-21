@@ -83,7 +83,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
               _mostrarEstado(),
               Divider(),
               Text(
-                'Cambiar estado de la solicitud revisada',
+                'Cambiar estado de la solicitud revisada.',
                 style: TextStyle(
                   fontSize: 18,
                   foreground: Paint()
@@ -283,10 +283,10 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
         if (formKey.currentState!.validate()) {
           if (isChecked == false && isChecked1 == false) {
             mostrarAlerta(context,
-                'Debe seleccionar una de las opciones de Aprobado o Negado');
+                'Debe seleccionar una de las opciones de Aprobado o Negado.');
           } else {
             SnackBar(
-              content: Text('Información ingresada correctamente'),
+              content: Text('Información ingresada correctamente.'),
             );
 
             _submit();
@@ -298,7 +298,7 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
           );
         } else {
           mostrarAlerta(
-              context, 'Asegurate de que todos los campos esten llenos.');
+              context, 'Asegúrate de que todos los campos estén llenos.');
         }
       },
     );

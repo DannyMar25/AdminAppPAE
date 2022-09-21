@@ -137,7 +137,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                       ],
                     ),
                     content: Text(
-                        'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
+                        'No se ha encotrado ninguna mascota con las características que buscabas.'),
                     actions: [
                       TextButton(
                           child: Text('Ok'),
@@ -192,7 +192,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                       ],
                     ),
                     content: Text(
-                        'No se ha encotrado ninguna mascota con las caracteristicas que buscabas.'),
+                        'No se ha encotrado ninguna mascota con las características que buscabas.'),
                     actions: [
                       TextButton(
                           child: Text('Ok'),

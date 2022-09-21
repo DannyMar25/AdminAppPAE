@@ -336,7 +336,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           if (formKey.currentState!.validate()) {
             if (seleccionado == true) {
               SnackBar(
-                content: Text('Información ingresada correctamente'),
+                content: Text('Información ingresada correctamente.'),
               );
               seleccionado = false;
               _submit();
@@ -348,7 +348,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
           } else {
             mostrarAlerta(
-                context, 'Asegurate de que todos los campos esten llenos.');
+                context, 'Asegúrate de que todos los campos estén llenos.');
           }
         });
   }

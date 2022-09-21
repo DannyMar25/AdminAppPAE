@@ -360,7 +360,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     //onacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
     donacionesProvider.editarDonacion(donaciones);
     mostrarAlertaOk(
-        context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
+        context, 'Registro actualizado con éxito.', 'verDonacionesInAdd');
     //mostrarSnackbar('Registro guardado');
     //Navigator.pushNamed(context, 'verDonacionesInAdd');
   }
@@ -378,7 +378,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       autofocus: true,
       onPressed: () {
         mostrarAlertaBorrarDonacion(context,
-            'Estas seguro de borrar el registro.', donaciones.id.toString());
+            'Estás seguro de borrar el registro.', donaciones.id.toString());
         // donacionesProvider.borrarDonacion(donaciones.id);
         // mostrarAlertaOk(
         //     context, 'Registro eliminado con éxito', 'verDonacionesInAdd');

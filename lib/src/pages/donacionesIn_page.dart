@@ -266,12 +266,12 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
         if (formKey.currentState!.validate()) {
           // Si el formulario es válido, queremos mostrar un Snackbar
           SnackBar(
-            content: Text('Información ingresada correctamente'),
+            content: Text('Información ingresada correctamente.'),
           );
           _submit();
         } else {
           mostrarAlerta(
-              context, 'Asegurate de que todos los campos esten llenos.');
+              context, 'Asegúrate de que todos los campos estén llenos.');
         }
       },
     );
@@ -288,13 +288,13 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           DateTime.now().day.toString();
       donacionesProvider.crearDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro guardado con éxito', 'verDonacionesInAdd');
+          context, 'Registro guardado con éxito.', 'verDonacionesInAdd');
     } else {
       donaciones.estadoDonacion = 'Entrante';
       donacionesProvider.editarDisponibilidad(donaciones, disponibilidad);
       donacionesProvider.editarDonacion(donaciones);
       mostrarAlertaOk(
-          context, 'Registro actualizado con éxito', 'verDonacionesInAdd');
+          context, 'Registro actualizado con éxito.', 'verDonacionesInAdd');
     }
     //mostrarSnackbar('Registro guardado');
     // Navigator.pushNamed(context, 'verDonacionesInAdd');

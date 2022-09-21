@@ -93,7 +93,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
                             )),
                         Padding(padding: EdgeInsets.only(bottom: 10.0)),
                         Text(
-                          'Selecciona la o las categorías de tu gusto y te mostraremos los resultados',
+                          'Selecciona la o las categorías de tu gusto y te mostraremos los resultados.',
                           textAlign: TextAlign.justify,
                           style: TextStyle(fontSize: 15),
                         ),
@@ -466,7 +466,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
           buildChild1();
         } else {
           mostrarAlerta(context,
-              'Todos los campos deben ser seleccionados. Asegurate de haber completado todos');
+              'Todos los campos deben ser seleccionados. Asegúrate de haber completado todos.');
         }
         //_submit();
       },
