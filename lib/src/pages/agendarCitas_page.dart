@@ -338,8 +338,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
               SnackBar(
                 content: Text('Información ingresada correctamente.'),
               );
-              seleccionado = false;
               _submit();
+              seleccionado = false;
             } else {
               mostrarAlerta(context,
                   'Debes seleccionar un horario disponible para tu cita.');

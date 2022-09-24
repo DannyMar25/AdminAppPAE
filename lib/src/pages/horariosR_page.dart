@@ -17,10 +17,10 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
   final List<String> _items = [
     'Lunes',
     'Martes',
-    'Miercoles',
+    'Miércoles',
     'Jueves',
     'Viernes',
-    'Sabado',
+    'Sábado',
     'Domingo'
   ].toList();
   String? _selection;

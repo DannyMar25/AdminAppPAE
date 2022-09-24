@@ -21,6 +21,7 @@ class FormulariosModel {
   String idAnimal;
   String fechaIngreso;
   String fechaRespuesta;
+  String idClient;
   String nombreClient;
   String identificacion;
   String emailClient;
@@ -42,6 +43,7 @@ class FormulariosModel {
     this.idAnimal = '',
     this.fechaIngreso = '',
     this.fechaRespuesta = '',
+    this.idClient = '',
     this.nombreClient = '',
     this.identificacion = '',
     this.emailClient = '',
@@ -64,6 +66,7 @@ class FormulariosModel {
         idAnimal: json["idAnimal"],
         fechaIngreso: json["fechaIngreso"],
         fechaRespuesta: json["fechaRespuesta"],
+        idClient: json["idClient"],
         nombreClient: json["nombreClient"],
         identificacion: json["identificacion"],
         emailClient: json["emailClient"],
@@ -84,6 +87,7 @@ class FormulariosModel {
         "idAnimal": idAnimal,
         "fechaIngreso": fechaIngreso,
         "fechaRespuesta": fechaRespuesta,
+        "idClient": idClient,
         "nombreClient": nombreClient,
         "identificacion": identificacion,
         "emailClient": emailClient,
