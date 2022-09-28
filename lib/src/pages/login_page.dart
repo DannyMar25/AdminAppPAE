@@ -7,9 +7,23 @@ import 'package:aministrador_app_v1/src/bloc/provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   //const LoginPage({Key? key}) : super(key: key);
   final usuarioProvider = new UsuarioProvider();
+
+  late bool _passwordVisible;
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,13 +122,24 @@ class LoginPage extends StatelessWidget {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
-            obscureText: true,
-            //keyboardType: TextInputType.emailAddress,
+            //obscureText: true,
+            obscureText: !_passwordVisible,
             decoration: InputDecoration(
               icon: Icon(Icons.lock_outline, color: Colors.green),
-              //hintText: 'ejemplo@correo.com',
               labelText: 'Contraseña',
-              //counterText: snapshot.data,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  // Based on passwordVisible state choose the icon
+                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.green,
+                ),
+                onPressed: () {
+                  // Update the state i.e. toogle the state of passwordVisible variable
+                  setState(() {
+                    _passwordVisible = !_passwordVisible;
+                  });
+                },
+              ),
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),

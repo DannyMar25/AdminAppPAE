@@ -1,4 +1,5 @@
 import 'package:aministrador_app_v1/src/models/donaciones_model.dart';
+import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/providers/donaciones_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
@@ -72,7 +73,10 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
         break;
       case 1:
         userProvider.signOut();
-        Navigator.pushNamed(context, 'login');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => LoginPage()),
+            (Route<dynamic> route) => false);
+      //Navigator.pushNamed(context, 'login');
     }
   }
 

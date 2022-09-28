@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:aministrador_app_v1/src/models/animales_model.dart';
+import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class _AnimalPageState extends State<AnimalPage> {
   String? _selection4;
   int? edadN;
   bool isDisable = false;
+  bool editFoto = false;
   String campoVacio = 'Por favor, llena este campo';
   @override
   void initState() {
@@ -121,7 +123,10 @@ class _AnimalPageState extends State<AnimalPage> {
         break;
       case 1:
         userProvider.signOut();
-        Navigator.pushNamed(context, 'login');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => LoginPage()),
+            (Route<dynamic> route) => false);
+      // Navigator.pushNamed(context, 'login');
     }
   }
 
@@ -492,17 +497,35 @@ class _AnimalPageState extends State<AnimalPage> {
       //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
         //if (formKey.currentState!.validate() && foto != null) {
-        if (formKey.currentState!.validate()) {
-          // Si el formulario es válido, queremos mostrar un Snackbar
-          SnackBar(
-            content: Text('Información ingresada correctamente'),
-          );
-          _submit();
+        print(editFoto);
+        if (editFoto == false) {
+          if (formKey.currentState!.validate()) {
+            // Si el formulario es válido, queremos mostrar un Snackbar
+            SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
+            _submit();
+          } else {
+            utils.mostrarAlerta(
+                context, 'Asegúrate de que todos los campos estén llenos.');
+            // utils.mostrarAlerta(context,
+            //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          }
         } else {
-          utils.mostrarAlerta(
-              context, 'Asegúrate de que todos los campos estén llenos.');
-          // utils.mostrarAlerta(context,
-          //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          if (formKey.currentState!.validate()) {
+            // Si el formulario es válido, queremos mostrar un Snackbar
+            SnackBar(
+              content: Text('Información ingresada correctamente'),
+            );
+            animalProvider.editarAnimal(animal, foto!);
+            utils.mostrarAlertaOk(
+                context, 'Registro actualizado con éxito.', 'home');
+          } else {
+            utils.mostrarAlerta(
+                context, 'Asegúrate de que todos los campos estén llenos.');
+            // utils.mostrarAlerta(context,
+            //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
+          }
         }
       },
     );
@@ -550,10 +573,16 @@ class _AnimalPageState extends State<AnimalPage> {
               actions: [
                 TextButton(
                     child: Text('Si'),
+                    onLongPress: () {
+                      editFoto = true;
+                    },
                     onPressed: () {
-                      animalProvider.editarAnimal(animal, foto!);
-                      utils.mostrarAlertaOk(
-                          context, 'Registro actualizado con éxito.', 'home');
+                      editFoto = true;
+                      Navigator.pop(context);
+
+                      // animalProvider.editarAnimal(animal, foto!);
+                      // utils.mostrarAlertaOk(
+                      //     context, 'Registro actualizado con éxito.', 'home');
                     }),
                 TextButton(
                     child: Text('No'),

@@ -1,4 +1,5 @@
 import 'package:accordion/controllers.dart';
+import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
@@ -51,6 +52,10 @@ class BienvenidaPage extends StatelessWidget {
                       child: Text("Cerrar sesión"),
                       value: 1,
                     ),
+                    // PopupMenuItem<int>(
+                    //   child: Text("Cambiar"),
+                    //   value: 2,
+                    // ),
                   ]),
         ],
       ),
@@ -488,7 +493,14 @@ class BienvenidaPage extends StatelessWidget {
         break;
       case 1:
         userProvider.signOut();
-        Navigator.pushNamed(context, 'login');
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => LoginPage()),
+            (Route<dynamic> route) => false);
+      //Navigator.pushNamed(context, 'login');
+      //   break;
+      // case 2:
+      //   //userProvider.signOut();
+      //   Navigator.pushNamed(context, 'perfilUser');
     }
   }
 }

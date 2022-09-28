@@ -17,7 +17,16 @@ class _RegistroPageState extends State<RegistroPage> {
 
   final usuario = new UsuariosModel();
 
+  late bool _passwordVisible;
+  late bool _passwordVisible1;
   //TextEditingController _nombreUs = new TextEditingController();
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+    _passwordVisible1 = false;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -157,13 +166,24 @@ class _RegistroPageState extends State<RegistroPage> {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
-            obscureText: true,
-            //keyboardType: TextInputType.emailAddress,
+            //obscureText: true,
+            obscureText: !_passwordVisible,
             decoration: InputDecoration(
               icon: Icon(Icons.lock_outline, color: Colors.green),
-              //hintText: 'ejemplo@correo.com',
               labelText: 'Contraseña',
-              //counterText: snapshot.data,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  // Based on passwordVisible state choose the icon
+                  _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.green,
+                ),
+                onPressed: () {
+                  // Update the state i.e. toogle the state of passwordVisible variable
+                  setState(() {
+                    _passwordVisible = !_passwordVisible;
+                  });
+                },
+              ),
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -182,11 +202,24 @@ class _RegistroPageState extends State<RegistroPage> {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
-            obscureText: true,
+            //obscureText: true,
+            obscureText: !_passwordVisible1,
             decoration: InputDecoration(
               icon: Icon(Icons.lock, color: Colors.green),
               labelText: 'Confirmar contraseña',
-              //counterText: snapshot.data,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  // Based on passwordVisible state choose the icon
+                  _passwordVisible1 ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.green,
+                ),
+                onPressed: () {
+                  // Update the state i.e. toogle the state of passwordVisible variable
+                  setState(() {
+                    _passwordVisible1 = !_passwordVisible1;
+                  });
+                },
+              ),
               errorText:
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
@@ -232,9 +265,12 @@ class _RegistroPageState extends State<RegistroPage> {
       usuario.email = bloc.email;
       usuario.rol = Roles.administrador;
       usuarioProvider.crearUsuario(usuario);
-      Navigator.pushNamed(context, 'login');
+      //Navigator.pushNamed(context, 'home');
+      mostrarAlertaOk1(context, 'Se ha registrado con éxito.', 'home',
+          'Información correcta');
     } else {
-      mostrarAlerta(context, info['mensaje']);
+      //mostrarAlerta(context, info['mensaje']);
+      mostrarAlerta(context, 'El correo electrónico ya existe.');
     }
 
     //Navigator.pushReplacementNamed(context, 'home');

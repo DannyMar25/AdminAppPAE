@@ -1,10 +1,13 @@
 import 'dart:convert';
 
 //import 'package:firebase_core/firebase_core.dart';
+import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/models/usuarios_model.dart';
+import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class UsuarioProvider {
@@ -13,6 +16,7 @@ class UsuarioProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   CollectionReference refUser =
       FirebaseFirestore.instance.collection('usuarios');
+  LoginBloc loginBloc = LoginBloc();
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     final authData = {
@@ -101,9 +105,9 @@ class UsuarioProvider {
   }
 
   //cerrar sesion
-  void signOut() async {
+  void signOut() {
     _prefs.removeEmail();
-    await _auth.signOut();
+    _auth.signOut();
     return;
   }
 

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class PerfilUsuarioPage extends StatefulWidget {
@@ -10,154 +12,88 @@ class PerfilUsuarioPage extends StatefulWidget {
 }
 
 class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
+  late String passActual;
+  late String passNew;
+  PreferenciasUsuario prefs = PreferenciasUsuario();
+  @override
+  initState() {
+    FirebaseAuth.instance.userChanges().listen((event) {
+      print(FirebaseAuth.instance.currentUser);
+
+      print(event);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    //final user = UserData.myUser;
-
     return Scaffold(
+      appBar: AppBar(
+        title: Text('CAMBIO DE CONTRASENA'),
+      ),
       body: Column(
         children: [
-          AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            toolbarHeight: 10,
-          ),
-          Center(
-              child: Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    'Edit Profile',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
-                      color: Color.fromRGBO(64, 105, 225, 1),
-                    ),
-                  ))),
-          InkWell(
-            onTap: () {
-              // navigateSecondPage(EditImagePage());
+          TextFormField(
+            //maxLines: 6,
+            //initialValue: animal.caracteristicas,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              labelText: 'Actual',
+              labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+            ),
+            //onSaved: (s) => animal.caracteristicas = s!,
+            onChanged: (s) {
+              setState(() {
+                passActual = s;
+              });
             },
-            // child: DisplayImage(
-            //   imagePath: user.image,
-            //   onPressed: () {},
-            // )),
-            // buildUserInfoDisplay(user.name, 'Name', EditNameFormPage()),
-            //buildUserInfoDisplay(user.phone, 'Phone', EditPhoneFormPage()),
-            //buildUserInfoDisplay(user.email, 'Email', EditEmailFormPage()),
-            // Expanded(
-            //   child: buildAbout(user),
-            //   flex: 4,
-          )
+          ),
+          TextFormField(
+            //maxLines: 6,
+            //initialValue: animal.caracteristicas,
+            textCapitalization: TextCapitalization.sentences,
+            decoration: InputDecoration(
+              labelText: 'Características',
+              labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+            ),
+            //onSaved: (s) => animal.caracteristicas = s!,
+            onChanged: (s) {
+              setState(() {
+                passNew = s;
+              });
+            },
+          ),
+          TextButton(
+              onPressed: () {
+                _changePassword(passActual, passNew);
+              },
+              child: Text('CAMBIAR'))
         ],
       ),
     );
   }
 
-  // Widget builds the display item with the proper formatting to display the user's info
-  Widget buildUserInfoDisplay(String getValue, String title, Widget editPage) =>
-      Padding(
-          padding: EdgeInsets.only(bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.grey,
-                ),
-              ),
-              SizedBox(
-                height: 1,
-              ),
-              Container(
-                  width: 350,
-                  height: 40,
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                    color: Colors.grey,
-                    width: 1,
-                  ))),
-                  child: Row(children: [
-                    Expanded(
-                        child: TextButton(
-                            onPressed: () {
-                              navigateSecondPage(editPage);
-                            },
-                            child: Text(
-                              getValue,
-                              style: TextStyle(fontSize: 16, height: 1.4),
-                            ))),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                      color: Colors.grey,
-                      size: 40.0,
-                    )
-                  ]))
-            ],
-          ));
+  Future<bool> _changePassword(
+      String currentPassword, String newPassword) async {
+    bool success = false;
 
-  // Widget builds the About Me Section
-  // Widget buildAbout(User user) => Padding(
-  Widget buildAbout(user) => Padding(
-      padding: EdgeInsets.only(bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Tell Us About Yourself',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey,
-            ),
-          ),
-          const SizedBox(height: 1),
-          Container(
-              width: 350,
-              height: 200,
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(
-                color: Colors.grey,
-                width: 1,
-              ))),
-              child: Row(children: [
-                Expanded(
-                    child: TextButton(
-                        onPressed: () {
-                          // navigateSecondPage(EditDescriptionFormPage());
-                        },
-                        child: Padding(
-                            padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                            child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  user.aboutMeDescription,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    height: 1.4,
-                                  ),
-                                ))))),
-                Icon(
-                  Icons.keyboard_arrow_right,
-                  color: Colors.grey,
-                  size: 40.0,
-                )
-              ]))
-        ],
-      ));
+    //Create an instance of the current user.
+    var user = FirebaseAuth.instance.currentUser;
 
-  // Refrshes the Page after updating user info.
-  FutureOr onGoBack(dynamic value) {
-    setState(() {});
-  }
+    //Must re-authenticate user before updating the password. Otherwise it may fail or user get signed out.
 
-  // Handles navigation and prompts refresh.
-  void navigateSecondPage(Widget editForm) {
-    Route route = MaterialPageRoute(builder: (context) => editForm);
-    Navigator.push(context, route).then(onGoBack);
+    final cred = EmailAuthProvider.credential(
+        email: prefs.email, password: currentPassword);
+    await user!.reauthenticateWithCredential(cred).then((value) async {
+      await user.updatePassword(newPassword).then((_) {
+        success = true;
+        //usersRef.doc(uid).update({"password": newPassword});
+      }).catchError((error) {
+        print(error);
+      });
+    }).catchError((err) {
+      print(err);
+    });
+
+    return success;
   }
 }
