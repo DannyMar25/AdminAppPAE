@@ -120,7 +120,7 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Esta seguro de borrar el registro.'),
+          title: Text('¡Atención!'),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -150,7 +150,7 @@ void mostrarAlertaBorrarDonacion(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Esta seguro de borrar el registro.'),
+          title: Text('¡Atención!'),
           content: Text(mensaje),
           actions: [
             TextButton(

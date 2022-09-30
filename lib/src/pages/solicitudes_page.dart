@@ -62,7 +62,8 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
             key: formKey,
             child: Column(
               children: [
-                _verListado(),
+                comprobarSolicitudes()
+                // _verListado(),
                 // _crearBoton(),
               ],
             ),
@@ -96,6 +97,35 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
     }
   }
 
+  comprobarSolicitudes() {
+    if (formularioA.length == 0) {
+      return Column(children: [
+        AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+                size: 45,
+              ),
+              Text('Información'),
+            ],
+          ),
+          content: Text('No se ha encotrado ninguna solicitud pendiente.'),
+          actions: [
+            TextButton(
+                child: Text('Ok'),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'home');
+                })
+          ],
+        )
+      ]);
+    } else {
+      return _verListado();
+    }
+  }
+
   Widget _verListado() {
     return Column(
       children: [
@@ -111,8 +141,6 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   }
 
   Widget _crearItem(BuildContext context, FormulariosModel formulario) {
-    //String fecha = cita.horario!.dia;
-    //String hora = cita.horario!.hora;
     return ListTile(
       title: Column(
         children: [
@@ -149,9 +177,6 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                 children: [
                                   Text("Fecha de solicitud:" +
                                       '${formulario.fechaIngreso}'),
-
-                                  // Text("Identificacion: " +
-                                  //     '${formulario.identificacion}'),
                                   Text("Posible adoptante para: " +
                                       '${formulario.animal!.nombre}'),
                                 ],

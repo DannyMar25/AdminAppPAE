@@ -104,10 +104,10 @@ class HorariosProvider {
     return horarios;
   }
 
-  Future<bool> editarDisponible(HorariosModel horario) async {
+  Future<bool> editarDisponible(String id) async {
     try {
       String disp = "No disponible";
-      await refAn.doc(horario.id).update({"disponible": disp});
+      await refAn.doc(id).update({"disponible": disp});
       return true;
     } catch (e) {
       return false;

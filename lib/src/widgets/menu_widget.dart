@@ -36,15 +36,6 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: Icon(
-                  Icons.pages,
-                  color: Colors.green,
-                ),
-                title: Text('Ver mascotas registradas'),
-                onTap: () => Navigator.pushNamed(context, 'home'),
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(
                   Icons.app_registration,
                   color: Colors.green,
                 ),
@@ -53,6 +44,15 @@ class _MenuWidgetState extends State<MenuWidget> {
                   //Navigator.pop(context);
                   Navigator.pushNamed(context, 'animal');
                 },
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(
+                  Icons.pages,
+                  color: Colors.green,
+                ),
+                title: Text('Ver mascotas registradas'),
+                onTap: () => Navigator.pushNamed(context, 'home'),
               ),
             ],
           ),

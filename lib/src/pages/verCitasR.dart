@@ -198,8 +198,23 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
         icon: Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          horariosProvider.editarDisponibleCita(citas.horario!);
-          Navigator.pushNamed(context, 'bienvenida');
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Información'),
+                  content: Text('La cita ha sido atendida.'),
+                  actions: [
+                    TextButton(
+                        child: Text('Ok'),
+                        //onPressed: () => Navigator.of(context).pop()),
+                        onPressed: () {
+                          horariosProvider.editarDisponibleCita(citas.horario!);
+                          Navigator.pushNamed(context, 'bienvenida');
+                        }),
+                  ],
+                );
+              });
         }
         // onPressed: () {
         //   print(animal.id);

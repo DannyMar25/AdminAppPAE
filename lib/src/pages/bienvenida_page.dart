@@ -127,29 +127,6 @@ class BienvenidaPage extends StatelessWidget {
                               style: flatButtonStyle,
                               onPressed: () {
                                 //cardB.currentState?.collapse();
-                                Navigator.pushNamed(context, 'home');
-                              },
-                              child: Column(
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.photo_library_outlined,
-                                    color: Colors.green,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2.0),
-                                  ),
-                                  Text(
-                                    'Galería',
-                                    style: TextStyle(color: Colors.green),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            TextButton(
-                              style: flatButtonStyle,
-                              onPressed: () {
-                                //cardB.currentState?.collapse();
                                 Navigator.pushNamed(context, 'animal');
                               },
                               child: Column(
@@ -164,6 +141,29 @@ class BienvenidaPage extends StatelessWidget {
                                   ),
                                   Text(
                                     'Registrar nueva mascota',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            TextButton(
+                              style: flatButtonStyle,
+                              onPressed: () {
+                                //cardB.currentState?.collapse();
+                                Navigator.pushNamed(context, 'home');
+                              },
+                              child: Column(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.photo_library_outlined,
+                                    color: Colors.green,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 2.0),
+                                  ),
+                                  Text(
+                                    'Galería',
                                     style: TextStyle(color: Colors.green),
                                   ),
                                 ],

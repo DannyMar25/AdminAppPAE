@@ -24,7 +24,7 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
     'Sábado',
     'Domingo'
   ].toList();
-  String? _selection;
+  String? _selection = "Lunes";
   @override
   void initState() {
     // _selection = _items.last;
@@ -93,17 +93,30 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         DropdownButton<String>(
-            //hint: Text(horarios.dia.toString()),
+            hint: Text("Lunes"),
+            //value: _selection,
             value: _selection,
             items: dropdownMenuOptions,
             onChanged: (s) {
               setState(() {
                 _selection = s;
+                // if (_selection == null) {
+                //   _selection = 'Lunes';
+                // } else {
+                //   _selection = s;
+                // }
+
                 // horarios.dia = s!;
               });
             }),
       ],
     );
+  }
+
+  void buildChild() {
+    if (_selection == '') {
+      _selection = 'Lunes';
+    }
   }
 
   void onSelected(BuildContext context, int item) {

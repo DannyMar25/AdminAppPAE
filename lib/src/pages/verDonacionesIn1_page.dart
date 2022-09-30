@@ -85,6 +85,12 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
 
                       Divider(),
                       _crearTipoDonacion(),
+                      // Row(
+                      //   children: [
+                      //     Text('Tipo de donación: '),
+                      //     Text(donaciones.tipo)
+                      //   ],
+                      // ),
                       Divider(),
                       _crearUnidades(),
                       Divider(),
@@ -153,6 +159,16 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
     }
   }
 
+  // Widget _crearTipoDonacion() {
+  //   return TextFormField(
+  //     initialValue: donaciones.tipo,
+  //     readOnly: true,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //         //labelText: 'Tipo de Donación:',
+  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+  //   );
+  // }
   Widget _crearTipoDonacion() {
     final dropdownMenuOptions = _items
         .map((String item) =>
@@ -165,42 +181,47 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       children: [
         Expanded(
           child: Text(
-            'Seleccione el tipo de donación:  ',
+            'Tipo de donación:  ',
             style: TextStyle(fontSize: 16, color: Colors.black),
           ),
         ),
         Expanded(
           child: DropdownButton<String>(
             hint: Text(donaciones.tipo.toString()),
-            value: _selection,
+            //value: _selection,
+            value: seleccionTipo(),
             items: dropdownMenuOptions,
-            onChanged: (s) {
-              setState(() {
-                _selection = s;
+            onChanged: null,
+            // onChanged: (s) {
+            //   setState(() {
+            //     _selection = s;
 
-                donaciones.tipo = s!;
-                //animal.tamanio = s!;
-              });
-            },
+            //     donaciones.tipo = s!;
+            //     //animal.tamanio = s!;
+            //   });
+            // },
           ),
         ),
       ],
     );
   }
 
+  seleccionTipo() {
+    if (donaciones.id == '') {
+      return _selection;
+    } else {
+      return donaciones.tipo.toString();
+    }
+  }
+
   Widget _buildChild() {
-    if (_selection == 'Alimento') {
+    if (donaciones.tipo == 'Alimento') {
       return _crearPeso();
-    } //else {
-    //   if (_selection == 'Otros') {
-    //     return _crearDonacion();
-    //   }
-    // }
+    }
     return Text('');
   }
 
   Widget _crearPeso() {
-    //if (_selection == 'Alimento') {
     return TextFormField(
       initialValue: donaciones.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
@@ -215,7 +236,6 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
         });
       },
     );
-    //}
   }
 
   Widget _crearDescripcion() {

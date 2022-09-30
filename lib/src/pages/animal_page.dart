@@ -148,7 +148,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.especie.toString()),
-              value: _selection3,
+              //value: _selection3,
+              value: seleccionEspecie(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -161,6 +162,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEspecie() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.especie.toString();
+    }
   }
 
   Widget _crearNombre() {
@@ -207,7 +216,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.sexo.toString()),
-              value: _selection1,
+              //value: _selection1,
+              value: seleccionSexo(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -220,6 +230,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionSexo() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.sexo.toString();
+    }
   }
 
   Widget _crearEdad() {
@@ -238,7 +256,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.etapaVida.toString()),
-              value: _selection2,
+              //value: _selection2,
+              value: seleccionEtapa(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -251,6 +270,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEtapa() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.etapaVida.toString();
+    }
   }
 
   Widget infoEtapa() {
@@ -356,7 +383,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.tamanio.toString()),
-              value: _selection,
+              //value: _selection,
+              value: seleccionTam(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -369,6 +397,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionTam() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.tamanio.toString();
+    }
   }
 
   Widget _crearColor() {
@@ -441,7 +477,8 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.esterilizado.toString()),
-              value: _selection4,
+              //value: _selection4,
+              value: seleccionEst(),
               items: dropdownMenuOptions,
               validator: (value) =>
                   value == null ? 'Selecciona una opción' : null,
@@ -454,6 +491,14 @@ class _AnimalPageState extends State<AnimalPage> {
         ),
       ],
     );
+  }
+
+  seleccionEst() {
+    if (animal.id == '') {
+      return _selection;
+    } else {
+      return animal.esterilizado.toString();
+    }
   }
 
   Widget _crearCaracteristicas() {
@@ -639,15 +684,29 @@ class _AnimalPageState extends State<AnimalPage> {
 
   _procesarImagen(ImageSource origen) async {
     final _picker = ImagePicker();
-    final pickedFile = await _picker.pickImage(
-        source: origen,
-        maxHeight: 720,
-        maxWidth: 720); //cambio de getImage a pickImage
-    foto = File(pickedFile!.path);
-    if (foto != null) {
-      animal.fotoUrl = '';
+    if (animal.id == "") {
+      editFoto = false;
+      final pickedFile = await _picker.pickImage(
+          source: origen,
+          maxHeight: 720,
+          maxWidth: 720); //cambio de getImage a pickImage
+      foto = File(pickedFile!.path);
+      if (foto != null) {
+        animal.fotoUrl = '';
+      }
+      setState(() {});
+    } else {
+      editFoto = true;
+      final pickedFile = await _picker.pickImage(
+          source: origen,
+          maxHeight: 720,
+          maxWidth: 720); //cambio de getImage a pickImage
+      foto = File(pickedFile!.path);
+      if (foto != null) {
+        animal.fotoUrl = '';
+      }
+      setState(() {});
     }
-    setState(() {});
   }
 
   Widget _buildChild() {
