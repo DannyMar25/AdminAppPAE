@@ -90,7 +90,14 @@ class _IngresoDonacionesOutAddPageState
                       Divider(),
                       _crearUnidades(),
                       Divider(),
-                      _crearCantidadDonar(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Cantidad por retirar: \n(unidades)'),
+                          _crearCantidadDonar()
+                        ],
+                      ),
+                      // _crearCantidadDonar(),
                       //_buildChild(),
                       Divider(),
                       _crearDescripcion(),
@@ -171,22 +178,27 @@ class _IngresoDonacionesOutAddPageState
   }
 
   Widget _crearCantidadDonar() {
-    return NumberInputPrefabbed.squaredButtons(
-      controller: cantidadOut,
-      min: 1,
-      max: donaciones.cantidad,
-      initialValue: 1,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return 'Ingresa una cantidad válida';
-        } else if (int.parse(value) < 1 ||
-            int.parse(value) > donaciones.cantidad) {
-          return 'Ingrese cantidad dentro del rango';
-        } else {
-          return null;
-        }
-      },
-      //onChanged: ,
+    return SizedBox(
+      width: 240,
+      child: NumberInputPrefabbed.squaredButtons(
+        //scaleWidth: 0.3,
+        style: TextStyle(fontSize: 18),
+        controller: cantidadOut,
+        min: 1,
+        max: donaciones.cantidad,
+        initialValue: 1,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Ingresa una cantidad válida';
+          } else if (int.parse(value) < 1 ||
+              int.parse(value) > donaciones.cantidad) {
+            return 'Ingrese cantidad dentro del rango';
+          } else {
+            return null;
+          }
+        },
+        //onChanged: ,
+      ),
     );
   }
 

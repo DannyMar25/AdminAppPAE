@@ -181,8 +181,9 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       children: [
         Expanded(
           child: Text(
-            'Tipo de donación:  ',
-            style: TextStyle(fontSize: 16, color: Colors.black),
+            'Tipo de donación: ',
+            style: TextStyle(
+                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
           ),
         ),
         Expanded(
@@ -228,7 +229,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
-        labelStyle: TextStyle(fontSize: 16, color: Colors.black),
+        labelStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
       ),
       onChanged: (s) {
         setState(() {
@@ -244,7 +246,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
           labelText: 'Descripción:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.descripcion = s;
@@ -260,11 +263,13 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Dsiponibilidad de la donación:',
+        labelStyle: TextStyle(
+            fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         //labelStyle: ,
         //border: BorderRadius(BorderRadius.circular(2.0)),
         icon: Icon(
           Icons.info,
-          color: Colors.purple,
+          color: Colors.green,
         ),
       ),
     );
@@ -352,7 +357,8 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad:',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(
+              fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);
