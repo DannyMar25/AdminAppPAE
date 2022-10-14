@@ -264,11 +264,15 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection,
                   items: dropdownMenuOptions,
-                  validator: (value) =>
-                      value == null ? 'Selecciona una opción' : null,
+                  // validator: (value) =>
+                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      _selection = s;
+                      if (s == null) {
+                        _selection = "vacio";
+                      } else {
+                        _selection = s;
+                      }
                       //animal.tamanio = s!;
                     });
                   }),
@@ -306,12 +310,16 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection1,
                   items: dropdownMenuOptions,
-                  validator: (value) =>
-                      value == null ? 'Selecciona una opción' : null,
+                  // validator: (value) =>
+                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      _selection1 = s;
-                      //animal.tamanio = s!;
+                      //_selection1 = s;
+                      if (s == null) {
+                        _selection1 = "vacio";
+                      } else {
+                        _selection1 = s;
+                      }
                     });
                   }),
             ),
@@ -332,7 +340,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
       children: [
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Text(
-          'Seleccione etapa:',
+          'Seleccione etapa de vida:',
           style: TextStyle(fontSize: 16, color: Colors.black),
         ),
         Padding(padding: EdgeInsets.only(top: 10.0)),
@@ -348,12 +356,16 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection2,
                   items: dropdownMenuOptions,
-                  validator: (value) =>
-                      value == null ? 'Selecciona una opción' : null,
+                  // validator: (value) =>
+                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      _selection2 = s;
-                      //animal.tamanio = s!;
+                      // _selection2 = s;
+                      if (s == null) {
+                        _selection2 = "vacio";
+                      } else {
+                        _selection2 = s;
+                      }
                     });
                   }),
             ),
@@ -395,8 +407,12 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      _selection3 = s;
-                      //animal.tamanio = s!;
+                      //_selection3 = s;
+                      if (s == null) {
+                        _selection3 = "vacio";
+                      } else {
+                        _selection3 = s;
+                      }
                     });
                   }),
             ),
@@ -434,12 +450,16 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection4,
                   items: dropdownMenuOptions,
-                  validator: (value) =>
-                      value == null ? 'Selecciona una opción' : null,
+                  // validator: (value) =>
+                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      _selection4 = s;
-                      //animal.tamanio = s!;
+                      //_selection4 = s;
+                      if (s == null) {
+                        _selection4 = "vacio";
+                      } else {
+                        _selection4 = s;
+                      }
                     });
                   }),
             ),

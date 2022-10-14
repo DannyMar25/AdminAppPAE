@@ -1,3 +1,4 @@
+import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 
@@ -234,6 +235,19 @@ class _MenuWidgetState extends State<MenuWidget> {
                   onTap: () {
                     //Navigator.pop(context);
                     Navigator.pushNamed(context, 'registro');
+                  },
+                )
+              : SizedBox(),
+          rol == 'Administrador'
+              ? ListTile(
+                  leading: Icon(
+                    Icons.app_registration,
+                    color: Colors.green,
+                  ),
+                  title: Text('Restablecer contraseña'),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    Navigator.pushNamed(context, ForgotPassword.id);
                   },
                 )
               : SizedBox(),

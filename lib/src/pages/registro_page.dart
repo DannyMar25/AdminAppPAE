@@ -50,12 +50,12 @@ class _RegistroPageState extends State<RegistroPage> {
         children: [
           SafeArea(
             child: Container(
-              height: 230.0,
+              height: 230.0, //230
             ),
           ),
           Container(
             width: 390.0, //390
-            height: 540.0,
+            height: 670.0, //540
             margin: EdgeInsets.symmetric(vertical: 10.0),
             padding: EdgeInsets.symmetric(vertical: 50.0), //80
             decoration: BoxDecoration(
@@ -78,6 +78,10 @@ class _RegistroPageState extends State<RegistroPage> {
                   height: 8.0, //60
                 ),
                 _crearNombreUs(bloc),
+                SizedBox(
+                  height: 8.0, //60
+                ),
+                _crearCedula(bloc),
                 SizedBox(
                   height: 8.0, //60
                 ),
@@ -153,6 +157,29 @@ class _RegistroPageState extends State<RegistroPage> {
                   snapshot.error != null ? snapshot.error.toString() : null,
             ),
             onChanged: bloc.changeName,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _crearCedula(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.cedulaStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              icon: Icon(Icons.numbers, color: Colors.green),
+              //hintText: 'dany',
+              labelText: 'Número de cédula',
+              //counterText: snapshot.data,
+              errorText:
+                  snapshot.error != null ? snapshot.error.toString() : null,
+            ),
+            onChanged: bloc.changeCedula,
           ),
         );
       },
@@ -235,7 +262,7 @@ class _RegistroPageState extends State<RegistroPage> {
     //snapshot.hasData
     //true ? algo asi si true: algo asi si false
     return StreamBuilder(
-      stream: bloc.formValidStream1,
+      stream: bloc.formValidStream5,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return ElevatedButton(
           child: Container(
@@ -262,6 +289,7 @@ class _RegistroPageState extends State<RegistroPage> {
       print(bloc.name);
       usuario.id = info['uid'];
       usuario.nombre = bloc.name;
+      usuario.cedula = bloc.cedula;
       usuario.email = bloc.email;
       usuario.rol = Roles.administrador;
       usuarioProvider.crearUsuario(usuario);

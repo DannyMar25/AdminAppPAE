@@ -21,11 +21,11 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   final prefs = new PreferenciasUsuario();
 
   final formKey = GlobalKey<FormState>();
-  String? especie;
-  String? sexo;
-  String? etapaVida;
-  String? tamanio;
-  String? estado;
+  String especie = '';
+  String sexo = '';
+  String etapaVida = '';
+  String tamanio = '';
+  String estado = '';
   List<AnimalModel> citasA = [];
   List<Future<AnimalModel>> listaC = [];
   bool busqueda = false;
@@ -43,7 +43,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
     //final bloc = Provider.of(context);
     //showCitas();
     final email = prefs.email;
-    final arg = ModalRoute.of(context)!.settings.arguments as Map;
+    final arg = ModalRoute.of(context)?.settings.arguments as Map;
     //if (dat == arg['datosper']) {
     especie = arg['especie'];
     //print(formularios.idDatosPersonales);
@@ -79,8 +79,8 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             _botonBusqueda(),
             Padding(padding: EdgeInsets.only(bottom: 10.0)),
             Expanded(
-              // child: _crearListadoBusqueda(),
-              child: buildChild(),
+              child: _crearListadoBusqueda(),
+              //child: buildChild(),
             )
             //_crearListado(),
           ],
@@ -115,11 +115,11 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   Widget _crearListadoBusqueda() {
     return FutureBuilder(
         future: animalesProvider.cargarBusqueda(
-          especie!,
-          sexo!,
-          etapaVida!,
-          tamanio!,
-          estado!,
+          especie,
+          sexo,
+          etapaVida,
+          tamanio,
+          estado,
         ),
         builder:
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {
@@ -171,10 +171,10 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   Widget _crearListadoBusqueda4() {
     return FutureBuilder(
         future: animalesProvider.cargarBusqueda4(
-          especie!,
-          sexo!,
-          etapaVida!,
-          estado!,
+          especie,
+          sexo,
+          etapaVida,
+          estado,
         ),
         builder:
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {

@@ -15,6 +15,7 @@ class UsuariosModel {
     //this.idUs = '',
     this.email = '',
     this.nombre = '',
+    this.cedula = '',
     this.rol = '',
   });
 
@@ -22,6 +23,7 @@ class UsuariosModel {
   //String idUs;
   String email;
   String nombre;
+  String cedula;
   String rol;
 
   factory UsuariosModel.fromJson(Map<String, dynamic> json) => UsuariosModel(
@@ -29,6 +31,7 @@ class UsuariosModel {
         //idUs: json["idUs"],
         email: json["email"],
         nombre: json["nombre"],
+        cedula: json["cedula"],
         rol: json["rol"],
       );
 
@@ -36,6 +39,7 @@ class UsuariosModel {
         "id": id,
         "email": email,
         "nombre": nombre,
+        "cedula": cedula,
         "rol": rol,
       };
 }
