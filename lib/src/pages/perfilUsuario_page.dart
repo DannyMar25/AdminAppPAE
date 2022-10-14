@@ -15,6 +15,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
   late String passActual;
   late String passNew;
   PreferenciasUsuario prefs = PreferenciasUsuario();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   initState() {
     FirebaseAuth.instance.userChanges().listen((event) {
@@ -52,7 +53,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
             //initialValue: animal.caracteristicas,
             textCapitalization: TextCapitalization.sentences,
             decoration: InputDecoration(
-              labelText: 'Características',
+              labelText: 'Nueva',
               labelStyle: TextStyle(fontSize: 16, color: Colors.black),
             ),
             //onSaved: (s) => animal.caracteristicas = s!,
@@ -77,22 +78,25 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
     bool success = false;
 
     //Create an instance of the current user.
-    var user = FirebaseAuth.instance.currentUser;
+    // var user = FirebaseAuth.instance.currentUser;
+    // User? user = _auth.currentUser;
+    // await user?.reload();
+    // user = _auth.currentUser;
 
     //Must re-authenticate user before updating the password. Otherwise it may fail or user get signed out.
 
-    final cred = EmailAuthProvider.credential(
+    final cred = await _auth.signInWithEmailAndPassword(
         email: prefs.email, password: currentPassword);
-    await user!.reauthenticateWithCredential(cred).then((value) async {
-      await user.updatePassword(newPassword).then((_) {
-        success = true;
-        //usersRef.doc(uid).update({"password": newPassword});
-      }).catchError((error) {
-        print(error);
-      });
-    }).catchError((err) {
-      print(err);
+    print(cred);
+    await cred.user!.updatePassword(newPassword).then((_) {
+      success = true;
+      //usersRef.doc(uid).update({"password": newPassword});
+    }).catchError((error) {
+      print(error);
     });
+    //}).catchError((err) {
+    //  print(err);
+    // });
 
     return success;
   }

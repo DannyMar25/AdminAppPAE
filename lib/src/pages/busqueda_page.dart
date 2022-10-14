@@ -171,20 +171,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
                         ),
                         Padding(padding: EdgeInsets.only(bottom: 15.0)),
                         _seleccionarEtapaVida(),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     //Padding(padding: EdgeInsets.only(left: 150.0)),
-                        //     Expanded(
-                        //       child: SizedBox(
-                        //           height: 200,
-                        //           child: Image(
-                        //               image: AssetImage("assets/pets_2.png"))),
-                        //     ),
-                        //   ],
-                        // ),
-                        //Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                        // _seleccionarTamanio(),
                         buildChild(),
                         Padding(padding: EdgeInsets.only(bottom: 40.0)),
                         _crearBoton()
@@ -264,15 +250,13 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   //hint: Text(animal.tamanio.toString()),
                   value: _selection,
                   items: dropdownMenuOptions,
+
                   // validator: (value) =>
                   //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      if (s == null) {
-                        _selection = "vacio";
-                      } else {
-                        _selection = s;
-                      }
+                      _selection = s;
+
                       //animal.tamanio = s!;
                     });
                   }),
@@ -315,11 +299,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   onChanged: (s) {
                     setState(() {
                       //_selection1 = s;
-                      if (s == null) {
-                        _selection1 = "vacio";
-                      } else {
-                        _selection1 = s;
-                      }
+
+                      _selection1 = s;
                     });
                   }),
             ),
@@ -361,11 +342,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   onChanged: (s) {
                     setState(() {
                       // _selection2 = s;
-                      if (s == null) {
-                        _selection2 = "vacio";
-                      } else {
-                        _selection2 = s;
-                      }
+
+                      _selection2 = s;
                     });
                   }),
             ),
@@ -408,11 +386,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   onChanged: (s) {
                     setState(() {
                       //_selection3 = s;
-                      if (s == null) {
-                        _selection3 = "vacio";
-                      } else {
-                        _selection3 = s;
-                      }
+
+                      _selection3 = s;
                     });
                   }),
             ),
@@ -455,11 +430,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
                   onChanged: (s) {
                     setState(() {
                       //_selection4 = s;
-                      if (s == null) {
-                        _selection4 = "vacio";
-                      } else {
-                        _selection4 = s;
-                      }
+
+                      _selection4 = s;
                     });
                   }),
             ),

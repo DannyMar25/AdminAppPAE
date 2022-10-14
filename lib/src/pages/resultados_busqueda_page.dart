@@ -21,11 +21,11 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   final prefs = new PreferenciasUsuario();
 
   final formKey = GlobalKey<FormState>();
-  String especie = '';
-  String sexo = '';
-  String etapaVida = '';
-  String tamanio = '';
-  String estado = '';
+  String? especie = '';
+  String? sexo = '';
+  String? etapaVida = '';
+  String? tamanio = '';
+  String? estado = '';
   List<AnimalModel> citasA = [];
   List<Future<AnimalModel>> listaC = [];
   bool busqueda = false;
@@ -171,10 +171,10 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   Widget _crearListadoBusqueda4() {
     return FutureBuilder(
         future: animalesProvider.cargarBusqueda4(
-          especie,
-          sexo,
-          etapaVida,
-          estado,
+          especie!,
+          sexo!,
+          etapaVida!,
+          estado!,
         ),
         builder:
             (BuildContext context, AsyncSnapshot<List<AnimalModel>> snapshot) {

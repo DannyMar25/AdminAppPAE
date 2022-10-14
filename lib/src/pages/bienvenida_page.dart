@@ -52,10 +52,10 @@ class BienvenidaPage extends StatelessWidget {
                       child: Text("Cerrar sesión"),
                       value: 1,
                     ),
-                    // PopupMenuItem<int>(
-                    //   child: Text("Cambiar"),
-                    //   value: 2,
-                    // ),
+                    PopupMenuItem<int>(
+                      child: Text("Cambiar"),
+                      value: 2,
+                    ),
                   ]),
         ],
       ),
@@ -496,6 +496,9 @@ class BienvenidaPage extends StatelessWidget {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => LoginPage()),
             (Route<dynamic> route) => false);
+        break;
+      case 2:
+        Navigator.pushNamed(context, 'perfilUser');
     }
   }
 }

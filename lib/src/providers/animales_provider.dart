@@ -147,8 +147,8 @@ class AnimalesProvider {
     return animales;
   }
 
-  Future<List<AnimalModel>> cargarBusqueda(String especie, String sexo,
-      String etapaVida, String tamanio, String estado) async {
+  Future<List<AnimalModel>> cargarBusqueda(String? especie, String? sexo,
+      String? etapaVida, String? tamanio, String? estado) async {
     final List<AnimalModel> animales = <AnimalModel>[];
     var documents = await refAn
         .where('especie', isEqualTo: especie)
