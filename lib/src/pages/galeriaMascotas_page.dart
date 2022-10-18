@@ -246,7 +246,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
             padding: const EdgeInsets.symmetric(vertical: 2.0),
           ),
           Text(
-            'Busqueda personalizada',
+            'Búsqueda personalizada',
             style: TextStyle(color: Colors.green),
           ),
         ],

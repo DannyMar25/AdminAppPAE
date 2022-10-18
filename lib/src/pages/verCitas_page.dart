@@ -24,6 +24,7 @@ class _VerCitasPageState extends State<VerCitasPage> {
   final animalesProvider = new AnimalesProvider();
   final userProvider = new UsuarioProvider();
   String _fecha = '';
+  //String _fechaActual = '';
   //TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
@@ -62,6 +63,13 @@ class _VerCitasPageState extends State<VerCitasPage> {
             key: formKey,
             child: Column(
               children: [
+                Text(
+                  "Seleccione el día que desea ver la cita.",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                Divider(color: Colors.transparent),
+                Divider(color: Colors.transparent),
                 _crearFecha(context),
                 Divider(),
                 _verListado(),
@@ -115,12 +123,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
 
   Widget _crearItem(BuildContext context, CitasModel cita) {
     String fecha = cita.horario!.dia;
-    // DateTime fecha1 = DateTime.parse(fecha);
-    // String fecha2 = fecha1.year.toString() +
-    //     "-" +
-    //     fecha1.month.toString() +
-    //     "-" +
-    //     fecha1.day.toString();
     String hora = cita.horario!.hora;
     return Card(
       color: Colors.lightGreen[200],
@@ -150,6 +152,11 @@ class _VerCitasPageState extends State<VerCitasPage> {
 
   Widget _crearFecha(BuildContext context) {
     return TextFormField(
+        // initialValue: DateTime.now().year.toString() +
+        //     '-' +
+        //     DateTime.now().month.toString() +
+        //     '-' +
+        //     DateTime.now().day.toString(),
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -202,9 +209,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
             picked.month.toString() +
             '-' +
             picked.day.toString();
-        //_fechaCompleta = picked.toString();
-
-        //_fecha = DateFormat('EEEE').format(picked);
         _inputFieldDateController.text = _fecha;
         showCitas();
       });

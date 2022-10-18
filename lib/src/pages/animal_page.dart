@@ -6,6 +6,7 @@ import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:firebase_core/firebase_core.dart';
 
@@ -166,7 +167,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEspecie() {
     if (animal.id == '') {
-      return _selection;
+      return _selection3;
     } else {
       return animal.especie.toString();
     }
@@ -175,6 +176,9 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearNombre() {
     return TextFormField(
       initialValue: animal.nombre,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Nombre',
@@ -234,7 +238,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionSexo() {
     if (animal.id == '') {
-      return _selection;
+      return _selection1;
     } else {
       return animal.sexo.toString();
     }
@@ -274,7 +278,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEtapa() {
     if (animal.id == '') {
-      return _selection;
+      return _selection2;
     } else {
       return animal.etapaVida.toString();
     }
@@ -495,7 +499,7 @@ class _AnimalPageState extends State<AnimalPage> {
 
   seleccionEst() {
     if (animal.id == '') {
-      return _selection;
+      return _selection4;
     } else {
       return animal.esterilizado.toString();
     }
@@ -589,7 +593,7 @@ class _AnimalPageState extends State<AnimalPage> {
         autofocus: true,
         onPressed: () {
           utils.mostrarAlertaBorrar(context,
-              'Estas seguro de borrar el registro.', animal.id.toString());
+              '¿Estás seguro de borrar el registro?', animal.id.toString());
         });
   }
 

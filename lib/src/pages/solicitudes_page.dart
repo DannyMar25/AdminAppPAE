@@ -62,8 +62,8 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
             key: formKey,
             child: Column(
               children: [
-                comprobarSolicitudes()
-                // _verListado(),
+                //comprobarSolicitudes()
+                _verListado(),
                 // _crearBoton(),
               ],
             ),
@@ -141,6 +141,12 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
   }
 
   Widget _crearItem(BuildContext context, FormulariosModel formulario) {
+    DateTime fechaIngresoT = DateTime.parse(formulario.fechaIngreso);
+    String fechaIn = fechaIngresoT.year.toString() +
+        '-' +
+        fechaIngresoT.month.toString() +
+        '-' +
+        fechaIngresoT.day.toString();
     return ListTile(
       title: Column(
         children: [
@@ -175,8 +181,7 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
                                   "Cliente: " + '${formulario.nombreClient}'),
                               subtitle: Column(
                                 children: [
-                                  Text("Fecha de solicitud:" +
-                                      '${formulario.fechaIngreso}'),
+                                  Text("Fecha de solicitud:" + '$fechaIn'),
                                   Text("Posible adoptante para: " +
                                       '${formulario.animal!.nombre}'),
                                 ],

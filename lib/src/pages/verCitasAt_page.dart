@@ -60,6 +60,13 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
             key: formKey,
             child: Column(
               children: [
+                Text(
+                  "Seleccione el día que desea ver la cita.",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                Divider(color: Colors.transparent),
+                Divider(color: Colors.transparent),
                 _crearFecha(context),
                 Divider(),
                 _verListado(),

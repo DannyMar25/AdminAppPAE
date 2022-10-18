@@ -10,6 +10,7 @@ import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AgendarCitasPage extends StatefulWidget {
@@ -214,7 +215,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   Widget _verListado() {
     return FutureBuilder(
-        future: horariosProvider.cargarHorariosDia(_fecha),
+        future: horariosProvider.cargarHorariosDia1(_fecha),
         builder: (BuildContext context,
             AsyncSnapshot<List<HorariosModel>> snapshot) {
           if (snapshot.hasData) {
@@ -261,6 +262,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     return TextFormField(
       //initialValue: animal.nombre,
       controller: nombre,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Nombre',
@@ -285,7 +289,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       keyboardType: TextInputType.phone,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        labelText: 'Teléfono',
+        labelText: 'Teléfono (Celular: 0998765432)',
       ),
       onSaved: (value) => telefono = value as TextEditingController,
       validator: (value) {
@@ -322,7 +326,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             return Colors.green[700];
           }),
         ),
-        label: Text('Guardar'),
+        label: Text('Revisar'),
         icon: Icon(Icons.save),
         autofocus: true,
         onPressed: () {
@@ -347,7 +351,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                       horaSeleccionada),
                   actions: [
                     TextButton(
-                        child: Text('Ok'),
+                        child: Text('Guardar'),
                         //onPressed: () => Navigator.of(context).pop(),
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
@@ -362,7 +366,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                           }
                         }),
                     TextButton(
-                        child: Text('Revisar información'),
+                        child: Text('Corregir información'),
                         //onPressed: () => Navigator.of(context).pop(),
                         onPressed: () => Navigator.of(context).pop()),
                   ],

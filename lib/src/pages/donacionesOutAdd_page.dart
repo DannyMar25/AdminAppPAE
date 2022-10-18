@@ -179,7 +179,7 @@ class _IngresoDonacionesOutAddPageState
 
   Widget _crearCantidadDonar() {
     return SizedBox(
-      width: 240,
+      width: 200, //240
       child: NumberInputPrefabbed.squaredButtons(
         //scaleWidth: 0.3,
         style: TextStyle(fontSize: 18),

@@ -165,13 +165,13 @@ class _ObservacionFinalPageState extends State<ObservacionFinalPage> {
   Widget _crearFechaResp() {
     return TextFormField(
         maxLines: 1,
-        readOnly: false,
-        initialValue: DateTime.now().toString(),
-        // initialValue: DateTime.now().year.toString() +
-        //     '-' +
-        //     DateTime.now().month.toString() +
-        //     '-' +
-        //     DateTime.now().day.toString(),
+        readOnly: true,
+        //initialValue: DateTime.now().toString(),
+        initialValue: DateTime.now().year.toString() +
+            '-' +
+            DateTime.now().month.toString() +
+            '-' +
+            DateTime.now().day.toString(),
         textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           labelText: 'Fecha de respuesta:',

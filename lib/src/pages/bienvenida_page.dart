@@ -224,7 +224,7 @@ class BienvenidaPage extends StatelessWidget {
                                             vertical: 2.0),
                                       ),
                                       Text(
-                                        'Registrar nueva cita',
+                                        'Agendar cita',
                                         style: TextStyle(color: Colors.green),
                                       ),
                                     ],
