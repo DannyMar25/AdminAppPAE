@@ -49,6 +49,14 @@ class PreferenciasUsuario {
     _prefs!.remove('rol');
   }
 
+  String get nombre {
+    return _prefs!.getString('nombre') ?? '';
+  }
+
+  void setNombre(String value) {
+    _prefs!.setString('nombre', value);
+  }
+
   // GET y SET de la última página
   String get ultimaPagina {
     return _prefs!.getString('ultimaPagina') ?? 'login';

@@ -187,6 +187,7 @@ class _LoginPageState extends State<LoginPage> {
       final user = await usuarioProvider.obtenerUsuario(info['uid']);
       prefs.setEmail(bloc.email);
       prefs.setRol(user['rol']);
+      prefs.setNombre(user['nombre']);
       if (user['rol'] == 'Administrador' ||
           user['rol'] == 'SuperAdministrador') {
         //Navigator.pushNamed(context, 'intro');
