@@ -50,21 +50,10 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
         key: formKey,
         child: Column(
           children: [
-            // Padding(padding: EdgeInsets.only(top: 10)),
-            // Text(
-            //   'Administrador',
-            //   textAlign: TextAlign.center,
-            //   style: TextStyle(
-            //       color: Colors.green, fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
             Padding(padding: EdgeInsets.only(top: 20)),
             CircleAvatar(
               backgroundImage: AssetImage('assets/admin.jpg'),
               radius: 50,
-              // child: Text(
-              //   'Admin',
-              //   style: TextStyle(fontWeight: FontWeight.bold),
-              // ),
               foregroundColor: Colors.black,
             ),
             Padding(padding: EdgeInsets.only(bottom: 20)),
@@ -79,7 +68,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
             Padding(padding: EdgeInsets.only(bottom: 20)),
             Center(
               child: SizedBox(
-                width: 430,
+                width: 350,
                 child: TextFormField(
                   obscureText: !_passwordVisible,
                   style: TextStyle(
@@ -146,7 +135,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
             Padding(padding: EdgeInsets.only(bottom: 20)),
             Center(
               child: SizedBox(
-                width: 430,
+                width: 350,
                 child: TextFormField(
                   controller: passNew,
                   obscureText: !_passwordVisible1,
@@ -198,7 +187,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     fillColor: Colors.green,
-                    labelText: 'Nueva Contraseña',
+                    labelText: 'Nueva contraseña',
                     //lable style
                     labelStyle: TextStyle(
                       color: Colors.black,
@@ -213,7 +202,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
             Padding(padding: EdgeInsets.only(bottom: 20)),
             Center(
               child: SizedBox(
-                width: 430,
+                width: 350,
                 child: TextFormField(
                   controller: passConfirm,
                   obscureText: !_passwordVisible2,
@@ -266,7 +255,7 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     fillColor: Colors.green,
-                    labelText: 'Confirmar Contraseña',
+                    labelText: 'Confirmar contraseña',
                     //lable style
                     labelStyle: TextStyle(
                       color: Colors.black,

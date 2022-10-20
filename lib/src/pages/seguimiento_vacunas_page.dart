@@ -40,7 +40,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
-          title: Text('Registros'),
+          title: Text('Vacunas'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -71,7 +71,7 @@ class _VerRegistroVacunasPageState extends State<VerRegistroVacunasPage> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Vacunas',
+                            'Registro de vacunas',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 28,
