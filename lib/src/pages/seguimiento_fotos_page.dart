@@ -124,30 +124,39 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
   }
 
   Widget _crearItem(BuildContext context, EvidenciasModel evidencia) {
-    return Card(
-      child: ListTile(
-          title: Column(children: [
-            (evidencia.fotoUrl == "")
-                ? Image(image: AssetImage('assets/no-image.png'))
-                : FadeInImage(
-                    image: NetworkImage(evidencia.fotoUrl),
-                    placeholder: AssetImage('assets/jar-loading.gif'),
-                    height: 300.0,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-            ListTile(
-              title: Text('${evidencia.fecha}'),
-            ),
-          ]),
-          onTap: () async {
-            Navigator.pushNamed(context, 'verFotoEvidencia',
-                arguments: evidencia);
-          }),
-      //elevation: 8,
-      shadowColor: Colors.green,
-      //margin: EdgeInsets.all(20.0)
-    );
+    DateTime fechaIngresoT = DateTime.parse(evidencia.fecha);
+    String fechaIn = fechaIngresoT.year.toString() +
+        '-' +
+        fechaIngresoT.month.toString() +
+        '-' +
+        fechaIngresoT.day.toString();
+    if (evidencia.fotoUrl != "") {
+      return Card(
+        child: ListTile(
+            title: Column(children: [
+              FadeInImage(
+                image: NetworkImage(evidencia.fotoUrl),
+                placeholder: AssetImage('assets/cat_1.gif'),
+                height: 300.0,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              ListTile(
+                title: Text(
+                  fechaIn,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ]),
+            onTap: () async {
+              Navigator.pushNamed(context, 'verFotoEvidencia',
+                  arguments: evidencia);
+            }),
+        shadowColor: Colors.green,
+      );
+    } else {
+      return SizedBox();
+    }
   }
 
   Widget _menuWidget() {
