@@ -119,7 +119,7 @@ class _BusquedaPageState extends State<BusquedaPage> {
                                       height: 80,
                                       child: Image(
                                           image: AssetImage(
-                                              "assets/cat_im2.jpg"))),
+                                              "assets/cat_im2.png"))),
                                 ),
                               ],
                             )

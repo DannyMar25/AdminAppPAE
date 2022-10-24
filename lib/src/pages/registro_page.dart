@@ -174,6 +174,10 @@ class _RegistroPageState extends State<RegistroPage> {
         return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: TextField(
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(10)
+            ],
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               icon: Icon(Icons.numbers, color: Colors.green),

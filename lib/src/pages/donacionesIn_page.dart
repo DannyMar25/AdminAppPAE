@@ -5,6 +5,7 @@ import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class IngresoDonacionesInPage extends StatefulWidget {
   IngresoDonacionesInPage({Key? key}) : super(key: key);
@@ -160,10 +161,11 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
   }
 
   Widget _crearPeso() {
-    //if (_selection == 'Alimento') {
     return TextFormField(
-      //initialValue: donaciones.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+      ],
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: 'Ingrese Peso (Kg.):',
@@ -181,14 +183,6 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
           donaciones.peso = double.parse(s);
         });
       },
-      // onSaved: (value) => donaciones.peso = double.parse(value!),
-      // validator: (value) {
-      //   if (utils.isNumeric(value!)) {
-      //     return null;
-      //   } else {
-      //     return 'Solo numeros';
-      //   }
-      // },
     );
     //}
   }
@@ -217,30 +211,18 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
     );
   }
 
-  // Widget _crearDonacion() {
-  //   return TextFormField(
-  //     // initialValue: ,
-  //     readOnly: false,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Ingrese el tipo de donacion:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //   );
-  // }
-
   Widget _crearUnidades() {
     return TextFormField(
-      //initialValue: donaciones.cantidad.toString(),
-      //readOnly: false,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad (Unidades):',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         setState(() {
-          //int unidades = int.parse(s);
-          //if(unidades)
           donaciones.cantidad = int.parse(s);
         });
       },

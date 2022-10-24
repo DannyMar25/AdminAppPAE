@@ -321,6 +321,9 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearTemperamento() {
     return TextFormField(
       initialValue: animal.temperamento,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Temperamento',
@@ -349,6 +352,9 @@ class _AnimalPageState extends State<AnimalPage> {
       initialValue: animal.peso.toString(),
       textCapitalization: TextCapitalization.sentences,
       keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+      ],
       decoration: InputDecoration(
         labelText: 'Peso en Kg.',
         labelStyle: TextStyle(fontSize: 21, color: Colors.black),
@@ -414,6 +420,9 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearColor() {
     return TextFormField(
       initialValue: animal.color,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
         labelText: 'Color',
@@ -441,6 +450,9 @@ class _AnimalPageState extends State<AnimalPage> {
     return TextFormField(
       initialValue: animal.raza,
       textCapitalization: TextCapitalization.sentences,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+      ],
       decoration: InputDecoration(
         labelText: 'Raza',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
@@ -514,7 +526,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Características',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
-      //onSaved: (s) => animal.caracteristicas = s!,
       onChanged: (s) {
         setState(() {
           animal.caracteristicas = s;
