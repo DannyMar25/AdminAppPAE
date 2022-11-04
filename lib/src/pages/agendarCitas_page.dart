@@ -263,7 +263,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
       //initialValue: animal.nombre,
       controller: nombre,
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp("[a-zA-Z ]")),
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
       ],
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(

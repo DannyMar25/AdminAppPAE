@@ -4,6 +4,7 @@ import 'package:aministrador_app_v1/src/providers/animales_provider.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GaleriaMascotasPage extends StatefulWidget {
   @override
@@ -99,6 +100,9 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
     return TextField(
       controller: _textController,
       autocorrect: false,
+      inputFormatters: [
+        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
+      ],
       onChanged: (s) {
         setState(() {
           nombre = s;
