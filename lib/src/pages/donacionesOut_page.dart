@@ -21,7 +21,7 @@ class _IngresoDonacionesOutPageState extends State<IngresoDonacionesOutPage> {
   DonacionesModel donaciones = new DonacionesModel();
   final List<String> _items =
       ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
-  String? _selection;
+  String? _selection = "Alimento";
   @override
   void initState() {
     // _selection = _items.last;
