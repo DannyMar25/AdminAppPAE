@@ -155,7 +155,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 2,
               children: List.generate(animales.length, (index) {
@@ -210,7 +210,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
               ]);
             }
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 2,
               children: List.generate(animales.length, (index) {
@@ -224,42 +224,36 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
   }
 
   Widget _crearItem1(BuildContext context, AnimalModel animal) {
-    return Expanded(
-      child: Container(
-        height: 100.0,
-        width: 200.0,
-        child: Card(
-          color: Color.fromARGB(248, 202, 241, 170),
-          elevation: 4.0,
-          margin: EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
-          child: Flexible(
-            fit: FlexFit.loose,
-            child: InkWell(
-              onTap: () =>
-                  Navigator.pushNamed(context, 'animal', arguments: animal),
-              child: Column(
-                children: [
-                  (animal.fotoUrl == "")
-                      ? Image(image: AssetImage('assets/no-image.png'))
-                      : Expanded(
-                          child: FadeInImage(
-                            image: NetworkImage(animal.fotoUrl),
-                            placeholder: AssetImage('assets/cat_1.gif'),
-                            height: 300.0,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                  //Padding(padding: EdgeInsets.only(bottom: 5.0)),
-                  ListTile(
-                    title: Text('${animal.nombre}'),
-                    subtitle: Text('${animal.especie} - ${animal.sexo}'),
-                    // onTap: () =>
-                    //     Navigator.pushNamed(context, 'animal', arguments: animal),
-                  ),
-                ],
+    return Card(
+      color: Color.fromARGB(248, 238, 250, 228),
+      elevation: 4.0,
+      //margin: EdgeInsets.only(bottom: 90.0, left: 5.0, right: 5.0),
+      child: Flexible(
+        fit: FlexFit.loose,
+        child: InkWell(
+          onTap: () =>
+              Navigator.pushNamed(context, 'animal', arguments: animal),
+          child: Column(
+            children: [
+              (animal.fotoUrl == "")
+                  ? Image(image: AssetImage('assets/no-image.png'))
+                  : Expanded(
+                      child: FadeInImage(
+                        image: NetworkImage(animal.fotoUrl),
+                        placeholder: AssetImage('assets/cat_1.gif'),
+                        height: 300.0,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+              //Padding(padding: EdgeInsets.only(bottom: 5.0)),
+              ListTile(
+                title: Text('${animal.nombre}'),
+                subtitle: Text('${animal.etapaVida} - ${animal.sexo}'),
+                // onTap: () =>
+                //     Navigator.pushNamed(context, 'animal', arguments: animal),
               ),
-            ),
+            ],
           ),
         ),
       ),
@@ -275,7 +269,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
       child: Column(
         children: <Widget>[
           Icon(
-            Icons.search,
+            Icons.arrow_back,
             color: Colors.green,
           ),
           Padding(

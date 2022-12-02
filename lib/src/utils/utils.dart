@@ -15,7 +15,16 @@ void mostrarAlerta(BuildContext context, String mensaje) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Información'),
+          title: Row(
+            children: const [
+              Icon(
+                Icons.warning_outlined,
+                color: Colors.yellow,
+                size: 50,
+              ),
+              Text('¡Atención!'),
+            ],
+          ),
           content: Text(mensaje),
           actions: [
             TextButton(
@@ -120,7 +129,16 @@ void mostrarAlertaBorrar(BuildContext context, String mensaje, String id) {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('¡Atención!'),
+          title: Row(
+            children: const [
+              Icon(
+                Icons.warning_outlined,
+                color: Colors.yellow,
+                size: 50,
+              ),
+              Text('¡Atención!'),
+            ],
+          ),
           content: Text(mensaje),
           actions: [
             TextButton(

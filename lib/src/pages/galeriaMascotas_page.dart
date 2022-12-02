@@ -66,11 +66,11 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         //body: _crearListado(),
         body: Column(
           children: [
-            Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            Padding(padding: EdgeInsets.only(bottom: 5.0)),
             _busqueda(),
-            Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            Padding(padding: EdgeInsets.only(bottom: 5.0)),
             _botonBusqueda(),
-            Padding(padding: EdgeInsets.only(bottom: 10.0)),
+            Padding(padding: EdgeInsets.only(bottom: 5.0)),
             //Expanded(child: _crearListado())
             Expanded(child: _buildChildBusqueda(context))
             //_crearListado(),
@@ -97,32 +97,37 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
 
 //Implementacion para busqueda
   Widget _busqueda() {
-    return TextField(
-      controller: _textController,
-      autocorrect: false,
-      inputFormatters: [
-        FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
-      ],
-      onChanged: (s) {
-        setState(() {
-          nombre = s;
-          nombreBusqueda = nombre![0].toUpperCase() + s.substring(1);
-          busqueda = true;
-          print(nombreBusqueda);
-        });
-      },
-      decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green, width: 2.0),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.95,
+      child: TextFormField(
+        //cursorColor: Colors.grey,
+
+        controller: _textController,
+        autocorrect: false,
+        inputFormatters: [
+          FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
+        ],
+        onChanged: (s) {
+          setState(() {
+            nombre = s;
+            nombreBusqueda = nombre![0].toUpperCase() + s.substring(1);
+            busqueda = true;
+            print(nombreBusqueda);
+          });
+        },
+        decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.green, width: 2.0),
+          ),
+          prefixIcon: Icon(Icons.search),
+          suffixIcon: GestureDetector(
+            child: Icon(Icons.clear),
+            onTap: _onClearTapped,
+          ),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
+          hintText: 'Ingresa el nombre de la mascota',
         ),
-        prefixIcon: Icon(Icons.search),
-        suffixIcon: GestureDetector(
-          child: Icon(Icons.clear),
-          onTap: _onClearTapped,
-        ),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.elliptical(10, 10))),
-        hintText: 'Ingresa el nombre de la mascota',
       ),
     );
   }
@@ -142,7 +147,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 2,
               children: List.generate(animales!.length, (index) {
@@ -172,7 +177,7 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           if (snapshot.hasData) {
             final animales = snapshot.data;
             return GridView.count(
-              childAspectRatio: 50 / 100,
+              childAspectRatio: 6 / 8,
               shrinkWrap: true,
               crossAxisCount: 2,
               children: List.generate(animales!.length, (index) {
@@ -191,34 +196,31 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
   }
 
   Widget _crearItem(BuildContext context, AnimalModel animal) {
-    return Container(
-      height: 100.0,
-      width: 200.0,
-      child: Card(
-        color: Color.fromARGB(248, 202, 241, 170),
-        elevation: 4.0,
-        margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 80.0), //90
-        child: Flexible(
-          fit: FlexFit.loose,
-          child: InkWell(
-            onTap: () =>
-                Navigator.pushNamed(context, 'animal', arguments: animal),
-            child: Column(
-              children: [
-                (animal.fotoUrl == "")
-                    ? Image(image: AssetImage('assets/no-image.png'))
-                    : Expanded(
-                        child: FadeInImage(
-                          image: NetworkImage(animal.fotoUrl),
-                          placeholder: AssetImage('assets/cat_1.gif'),
-                          height: 250.0,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      color: Color.fromARGB(248, 222, 247, 201),
+      elevation: 4.0,
+      //margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 80.0), //90
+      child: Flexible(
+        fit: FlexFit.loose,
+        child: InkWell(
+          onTap: () =>
+              Navigator.pushNamed(context, 'animal', arguments: animal),
+          child: Column(
+            children: [
+              (animal.fotoUrl == "")
+                  ? Image(image: AssetImage('assets/no-image.png'))
+                  : Expanded(
+                      child: FadeInImage(
+                        image: NetworkImage(animal.fotoUrl),
+                        placeholder: AssetImage('assets/cat_1.gif'),
+                        height: 230.0,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
                       ),
-                _buildChild(animal, context)
-              ],
-            ),
+                    ),
+              _buildChild(animal, context)
+            ],
           ),
         ),
       ),
@@ -240,7 +242,8 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         //cardB.currentState?.collapse();
         Navigator.pushNamed(context, 'busqueda');
       },
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Icon(
             Icons.search,
@@ -268,10 +271,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
             Text(
               'Tamaño: ${animal.tamanio}',
             ),
@@ -304,10 +303,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
-            Text(
               'Tamaño: ${animal.tamanio}',
             ),
             SizedBox(
@@ -338,10 +333,6 @@ class _GaleriaMascotasPageState extends State<GaleriaMascotasPage> {
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'Color: ${animal.color}',
-              textAlign: TextAlign.start,
-            ),
             Text(
               'Tamaño: ${animal.tamanio}',
             ),
