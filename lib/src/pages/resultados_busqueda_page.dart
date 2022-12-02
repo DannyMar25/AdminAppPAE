@@ -137,7 +137,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                           color: Colors.green,
                           size: 45,
                         ),
-                        Text('Resultado de busqueda!'),
+                        Text('Resultado de búsqueda'),
                       ],
                     ),
                     content: Text(
@@ -192,7 +192,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                           color: Colors.green,
                           size: 45,
                         ),
-                        Text('Resultado de busqueda!'),
+                        Text('Resultado de búsqueda'),
                       ],
                     ),
                     content: Text(
