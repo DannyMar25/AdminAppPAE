@@ -50,8 +50,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   bool seleccionado = false;
 
-  late String horaSeleccionada;
-  late String idHorario;
+  String horaSeleccionada = "";
+  String idHorario = "";
   @override
   Widget build(BuildContext context) {
     final email = prefs.email;
@@ -95,7 +95,8 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                 _crearFecha(context),
                 Divider(),
                 Divider(),
-                _verListado(),
+                // _verListado(),
+                _verListaHoras(),
                 _crearBoton(),
               ],
             ),
@@ -210,6 +211,16 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         //_fecha = DateFormat('EEEE').format(picked);
         _inputFieldDateController.text = _fecha + ' ' + _fechaCompleta;
       });
+    }
+  }
+
+  Widget _verListaHoras() {
+    if (_fecha != '') {
+      return Column(
+        children: [Text("Seleccione hora:"), _verListado()],
+      );
+    } else {
+      return SizedBox();
     }
   }
 

@@ -610,9 +610,37 @@ class _AnimalPageState extends State<AnimalPage> {
 
   void _submit() async {
     if (animal.id == "") {
-      animal.estado = "En Adopción";
-      animalProvider.crearAnimal1(animal, foto!);
-      utils.mostrarAlertaOk(context, 'Registro guardado con éxito.', 'home');
+      if (foto != null) {
+        animal.estado = "En Adopción";
+        animalProvider.crearAnimal1(animal, foto!);
+        utils.mostrarAlertaOk(context, 'Registro guardado con éxito.', 'home');
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Row(
+                  children: [
+                    Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 50,
+                    ),
+                    Text('Información incorrecta'),
+                  ],
+                ),
+                content: Text('Ingrese la foto de la mascota.'),
+                actions: [
+                  TextButton(
+                      child: Text('Aceptar'),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                ],
+              );
+            });
+      }
+
       //mostrarSnackbar('Registro guardado');
     } else {
       showDialog(
@@ -639,10 +667,6 @@ class _AnimalPageState extends State<AnimalPage> {
                     onPressed: () {
                       editFoto = true;
                       Navigator.pop(context);
-
-                      // animalProvider.editarAnimal(animal, foto!);
-                      // utils.mostrarAlertaOk(
-                      //     context, 'Registro actualizado con éxito.', 'home');
                     }),
                 TextButton(
                     child: Text('No'),
@@ -655,8 +679,6 @@ class _AnimalPageState extends State<AnimalPage> {
               ],
             );
           });
-      // animalProvider.editarAnimal(animal, foto!);
-      // utils.mostrarAlertaOk(context, 'Registro actualizado con éxito', 'home');
     }
   }
 
