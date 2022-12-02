@@ -50,8 +50,14 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   bool seleccionado = false;
 
-  String horaSeleccionada = "";
-  String idHorario = "";
+  String horaSeleccionada = '';
+  String idHorario = '';
+  @override
+  void initState() {
+    idHorario = '';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final email = prefs.email;
@@ -93,8 +99,9 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                 _crearCorreo(),
                 Divider(),
                 _crearFecha(context),
-                Divider(),
-                Divider(),
+                Divider(
+                  color: Colors.transparent,
+                ),
                 // _verListado(),
                 _verListaHoras(),
                 _crearBoton(),
@@ -148,6 +155,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
           _selectDate(context);
+          //idHorario = '';
         });
   }
 
@@ -210,6 +218,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         }
         //_fecha = DateFormat('EEEE').format(picked);
         _inputFieldDateController.text = _fecha + ' ' + _fechaCompleta;
+        idHorario = '';
       });
     }
   }
@@ -217,7 +226,14 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   Widget _verListaHoras() {
     if (_fecha != '') {
       return Column(
-        children: [Text("Seleccione hora:"), _verListado()],
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Seleccione hora:"),
+          Divider(
+            color: Colors.transparent,
+          ),
+          _verListado()
+        ],
       );
     } else {
       return SizedBox();
@@ -251,8 +267,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           onTap: () {
             idHorario = horario.id;
             horaSeleccionada = horario.hora;
-
-            print(horario.hora);
           },
           initialValue: horario.hora + '  -   ' + horario.disponible,
           decoration: InputDecoration(
@@ -260,7 +274,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
               //labelText: 'Hora',
               suffixIcon: Icon(Icons.add),
-              icon: Icon(Icons.calendar_today)),
+              icon: Icon(Icons.access_time_outlined)),
         ),
         Divider(
           color: Colors.white,
@@ -345,48 +359,53 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         icon: Icon(Icons.save),
         autofocus: true,
         onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('Información'),
-                  content: Text('Nombre: ' +
-                      nombre.text +
-                      '\n' +
-                      'Teléfono: ' +
-                      telefono.text +
-                      '\n' +
-                      'Correo: ' +
-                      correo.text +
-                      '\n' +
-                      'Fecha de la cita:' +
-                      _fechaCompleta +
-                      '\n' +
-                      'Hora:' +
-                      horaSeleccionada),
-                  actions: [
-                    TextButton(
-                        child: Text('Guardar'),
-                        //onPressed: () => Navigator.of(context).pop(),
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            SnackBar(
-                              content:
-                                  Text('Información ingresada correctamente.'),
-                            );
-                            _submit();
-                          } else {
-                            mostrarAlerta(context,
-                                'Asegúrate de que todos los campos estén llenos.');
-                          }
-                        }),
-                    TextButton(
-                        child: Text('Corregir información'),
-                        //onPressed: () => Navigator.of(context).pop(),
-                        onPressed: () => Navigator.of(context).pop()),
-                  ],
-                );
-              });
+          if (formKey.currentState!.validate() && idHorario != '') {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text('Información'),
+                    content: Text('Nombre: ' +
+                        nombre.text +
+                        '\n' +
+                        'Teléfono: ' +
+                        telefono.text +
+                        '\n' +
+                        'Correo: ' +
+                        correo.text +
+                        '\n' +
+                        'Fecha de la cita:' +
+                        _fechaCompleta +
+                        '\n' +
+                        'Hora:' +
+                        horaSeleccionada),
+                    actions: [
+                      TextButton(
+                          child: Text('Guardar'),
+                          //onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              SnackBar(
+                                content: Text(
+                                    'Información ingresada correctamente.'),
+                              );
+                              _submit();
+                            } else {
+                              mostrarAlerta(context,
+                                  'Asegúrate de que todos los campos estén llenos.');
+                            }
+                          }),
+                      TextButton(
+                          child: Text('Corregir información'),
+                          //onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () => Navigator.of(context).pop()),
+                    ],
+                  );
+                });
+          } else {
+            mostrarAlerta(context,
+                'Asegúrate de que todos los campos estén llenos. Recuerda que debes eleccionar una fecha y hora.');
+          }
         });
   }
 
