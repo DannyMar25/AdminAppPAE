@@ -197,10 +197,10 @@ class _SolicitudRechazadaMainPageState
                           Text(
                             'Información del posible adoptante',
                             style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 20,
                               foreground: Paint()
                                 ..style = PaintingStyle.stroke
-                                ..strokeWidth = 3
+                                ..strokeWidth = 2
                                 ..color = Colors.blueAccent,
                             ),
                             textAlign: TextAlign.center,
