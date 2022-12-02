@@ -202,7 +202,16 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: Text('Información'),
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.check_circle,
+                        color: Colors.green,
+                        size: 50,
+                      ),
+                      Text('Información'),
+                    ],
+                  ),
                   content: Text('La cita ha sido atendida.'),
                   actions: [
                     TextButton(
