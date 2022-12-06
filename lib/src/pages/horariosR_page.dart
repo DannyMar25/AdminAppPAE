@@ -100,13 +100,6 @@ class _HorariosAgregadosState extends State<HorariosAgregados> {
             onChanged: (s) {
               setState(() {
                 _selection = s;
-                // if (_selection == null) {
-                //   _selection = 'Lunes';
-                // } else {
-                //   _selection = s;
-                // }
-
-                // horarios.dia = s!;
               });
             }),
       ],

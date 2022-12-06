@@ -169,42 +169,24 @@ class _VerDonacionesOutAddPageState extends State<VerDonacionesOutAddPage> {
       return Card(
         color: Colors.lightGreen[200],
         shadowColor: Colors.green,
-        child: Column(key: UniqueKey(),
-            // background: Container(
-            //   color: Colors.red,
-            // ),
-            children: [
-              ListTile(
-                  title: Text(
-                    '${'Cantidad:'} ${donacion.cantidad}',
-                    textAlign: TextAlign.center,
-                  ),
-                  subtitle: Column(
-                    children: [
-                      Text('${donacion.descripcion}'),
-                      Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
-                    ],
-                  ),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'verDonacionesOutAdd1',
-                        arguments: donacion);
-                  }),
-              // _mostrarTotal(context),
-            ]),
+        child: Column(key: UniqueKey(), children: [
+          ListTile(
+              title: Text(
+                '${'Cantidad:'} ${donacion.cantidad}',
+                textAlign: TextAlign.center,
+              ),
+              subtitle: Column(
+                children: [
+                  Text('${donacion.descripcion}'),
+                  Text('${'Fecha de ingreso: '} ${donacion.fechaIngreso}'),
+                ],
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, 'verDonacionesOutAdd1',
+                    arguments: donacion);
+              }),
+        ]),
       );
     }
-
-    //return _mostrarTotal(context);
   }
-
-  // Widget _mostrarTotal(BuildContext context) {
-  //   return TextFormField(
-  //     //initialValue: donacionesProvider.sumarDonaciones1().toString(),
-  //     readOnly: true,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Total:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //   );
-  // }
 }

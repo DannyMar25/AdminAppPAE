@@ -201,15 +201,4 @@ class _VerDonacionesInAddPageState extends State<VerDonacionesInAddPage> {
 
     //return _mostrarTotal(context);
   }
-
-  // Widget _mostrarTotal() {
-  //   return TextFormField(
-  //     initialValue: totalA.toString(),
-  //     readOnly: true,
-  //     textCapitalization: TextCapitalization.sentences,
-  //     decoration: InputDecoration(
-  //         labelText: 'Total:',
-  //         labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
-  //   );
-  // }
 }

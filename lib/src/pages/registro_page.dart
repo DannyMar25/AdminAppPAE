@@ -347,10 +347,6 @@ class _RegistroPageState extends State<RegistroPage> {
               Image.asset('assets/pet-care.png', height: 190),
               //Icon(Icons.person_pin_circle, color: Colors.white, size: 100.0),
               SizedBox(height: 10.0, width: double.infinity),
-              // Text(
-              //   'Bienvenid@',
-              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-              // ),
             ],
           ),
         ),

@@ -16,7 +16,6 @@ class CitasProvider {
     CitasModel cita,
   ) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var citasAdd = await refCit.add(cita.toJson());
       await refCit.doc(citasAdd.id).update({"id": citasAdd.id});
 
@@ -27,11 +26,8 @@ class CitasProvider {
   }
 
   Future<List<Future<CitasModel>>> cargarCitas() async {
-    //final List<CitasModel> citas = <CitasModel>[];
     var documents = await refCit.where('estado', isEqualTo: 'Pendiente').get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       HorariosModel h1 = new HorariosModel();
       AnimalModel anim = new AnimalModel();
@@ -55,7 +51,6 @@ class CitasProvider {
   }
 
   Future<List<Future<CitasModel>>> cargarCitasFecha(String fecha) async {
-    //final List<CitasModel> citas = <CitasModel>[];
     var documents = await refCit
         .where('fechaCita', isEqualTo: fecha)
         .where('estado', isEqualTo: 'Pendiente')
@@ -86,14 +81,11 @@ class CitasProvider {
   }
 
   Future<List<Future<CitasModel>>> cargarCitasAtendidas(String fecha) async {
-    //final List<CitasModel> citas = <CitasModel>[];
     var documents = await refCit
         .where('estado', isEqualTo: 'Atendido')
         .where('fechaCita', isEqualTo: fecha)
         .get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       HorariosModel h1 = new HorariosModel();
       AnimalModel anim = new AnimalModel();

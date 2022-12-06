@@ -237,11 +237,8 @@ class FormulariosProvider {
     var documents = await refForm.where('estado', isEqualTo: 'Aprobado').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
-      //HorariosModel h1 = new HorariosModel();
       AnimalModel anim = new AnimalModel();
-      //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
         "id": e.id,
@@ -274,11 +271,8 @@ class FormulariosProvider {
     var documents = await refForm.where('estado', isEqualTo: 'Negado').get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
-      //HorariosModel h1 = new HorariosModel();
       AnimalModel anim = new AnimalModel();
-      //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
         "id": e.id,
@@ -314,7 +308,6 @@ class FormulariosProvider {
         .orderBy('fechaConsulta')
         .get();
     vacunas.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var vacuna = RegistroVacunasModel.fromJson({
         "id": e.id,
@@ -392,7 +385,6 @@ class FormulariosProvider {
 
   Future<bool> editarEstado(FormulariosModel formulario, String estado) async {
     try {
-      //String disp = "";
       await refForm.doc(formulario.id).update({"estado": estado});
       return true;
     } catch (e) {
@@ -403,7 +395,6 @@ class FormulariosProvider {
   Future<bool> editarFechaRespuesta(
       FormulariosModel formulario, String fecha) async {
     try {
-      //String disp = "";
       await refForm.doc(formulario.id).update({"fechaRespuesta": fecha});
       return true;
     } catch (e) {
@@ -414,7 +405,6 @@ class FormulariosProvider {
   Future<bool> editarObservacion(
       FormulariosModel formulario, String observacion) async {
     try {
-      //String disp = "";
       await refForm.doc(formulario.id).update({"observacion": observacion});
       return true;
     } catch (e) {
@@ -435,7 +425,6 @@ class FormulariosProvider {
       await refFormDP
           .doc(datosPersonalesAdd.id)
           .update({"id": datosPersonalesAdd.id});
-      //return formularioAdd.id;
 
       return true;
     } catch (e) {

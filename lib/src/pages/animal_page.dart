@@ -24,7 +24,6 @@ class _AnimalPageState extends State<AnimalPage> {
   final userProvider = new UsuarioProvider();
 
   AnimalModel animal = new AnimalModel();
-  // bool _guardando = false;
   File? foto;
   //variables usadas para desplegar opciones de tamaño
   final List<String> _items = ['Pequeño', 'Mediano', 'Grande'].toList();
@@ -134,12 +133,10 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearEspecie() {
     final dropdownMenuOptions = _items3
         .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: item, child: new Text(item)))
         .toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
           'Especie: ',
@@ -149,7 +146,6 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.especie.toString()),
-              //value: _selection3,
               value: seleccionEspecie(),
               items: dropdownMenuOptions,
               validator: (value) =>
@@ -184,7 +180,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Nombre',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
-      //onSaved: (value) => animal.nombre = value!,
       onChanged: (s) {
         setState(() {
           animal.nombre = s;
@@ -205,12 +200,10 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearSexo() {
     final dropdownMenuOptions = _items1
         .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: item, child: new Text(item)))
         .toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
           'Seleccione el sexo: ',
@@ -220,7 +213,6 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.sexo.toString()),
-              //value: _selection1,
               value: seleccionSexo(),
               items: dropdownMenuOptions,
               validator: (value) =>
@@ -247,7 +239,6 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearEdad() {
     final dropdownMenuOptions = _items2
         .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: item, child: new Text(item)))
         .toList();
     return Row(
@@ -260,7 +251,6 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.etapaVida.toString()),
-              //value: _selection2,
               value: seleccionEtapa(),
               items: dropdownMenuOptions,
               validator: (value) =>
@@ -297,10 +287,6 @@ class _AnimalPageState extends State<AnimalPage> {
           builder: (context) => AlertDialog(
             content: Text(
               'Cachorro: 0 a 6 meses\nJoven: 7 meses a 2 años\nAdulto: 2 a 6 años\nAnciano: 7 a 11 años\nGeriátrico: mayor a 12 años',
-              // style: TextStyle(
-              //   fontWeight: FontWeight.w900,
-              //   fontSize: 12.0,
-              // ),
             ),
             title: Text('Etapas de vida'),
           ),
@@ -329,7 +315,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Temperamento',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
-      //onSaved: (value) => animal.temperamento = value!,
       onChanged: (s) {
         setState(() {
           animal.temperamento = s;
@@ -359,7 +344,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Peso en Kg.',
         labelStyle: TextStyle(fontSize: 21, color: Colors.black),
       ),
-      //onSaved: (s) => animal.peso = double.parse(s!),
       onChanged: (s) {
         setState(() {
           animal.peso = double.parse(s);
@@ -378,12 +362,10 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearTamanio() {
     final dropdownMenuOptions = _items
         .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: item, child: new Text(item)))
         .toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
           'Seleccione el tamaño: ',
@@ -428,7 +410,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Color',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
-      //onSaved: (s) => animal.color = s!,
       onChanged: (s) {
         setState(() {
           animal.color = s;
@@ -457,7 +438,6 @@ class _AnimalPageState extends State<AnimalPage> {
         labelText: 'Raza',
         labelStyle: TextStyle(fontSize: 16, color: Colors.black),
       ),
-      //onSaved: (s) => animal.raza = s!,
       onChanged: (s) {
         setState(() {
           animal.raza = s;
@@ -478,12 +458,10 @@ class _AnimalPageState extends State<AnimalPage> {
   Widget _crearEsterilizado() {
     final dropdownMenuOptions = _items4
         .map((String item) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: item, child: new Text(item)))
         .toList();
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      //mainAxisSize: MainAxisSize.max,
       children: [
         Text(
           'Esterilizado: ',
@@ -493,7 +471,6 @@ class _AnimalPageState extends State<AnimalPage> {
           width: 150.0,
           child: DropdownButtonFormField<String>(
               hint: Text(animal.esterilizado.toString()),
-              //value: _selection4,
               value: seleccionEst(),
               items: dropdownMenuOptions,
               validator: (value) =>
@@ -554,9 +531,7 @@ class _AnimalPageState extends State<AnimalPage> {
       label: Text('Guardar'),
       icon: Icon(Icons.save),
       autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
-        //if (formKey.currentState!.validate() && foto != null) {
         print(editFoto);
         if (editFoto == false) {
           if (formKey.currentState!.validate()) {
@@ -568,12 +543,9 @@ class _AnimalPageState extends State<AnimalPage> {
           } else {
             utils.mostrarAlerta(
                 context, 'Asegúrate de que todos los campos estén llenos.');
-            // utils.mostrarAlerta(context,
-            //     'Asegurate de que todos los campos estan llenos y de haber escogido una foto de tu mascota.');
           }
         } else {
           if (formKey.currentState!.validate()) {
-            // Si el formulario es válido, queremos mostrar un Snackbar
             SnackBar(
               content: Text('Información ingresada correctamente'),
             );

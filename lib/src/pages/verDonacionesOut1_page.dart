@@ -204,34 +204,4 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       },
     );
   }
-
-  // Widget _crearBoton() {
-  //   return ElevatedButton.icon(
-  //     style: ButtonStyle(
-  //       backgroundColor:
-  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-  //         return Colors.green;
-  //       }),
-  //     ),
-  //     label: Text('Guardar'),
-  //     icon: Icon(Icons.save),
-  //     autofocus: true,
-  //     //onPressed: (_guardando) ? null : _submit,
-  //     onPressed: () {
-  //       _submit();
-  //     },
-  //   );
-  // }
-
-  // void _submit() async {
-  //   if (donaciones.id == "") {
-  //     donaciones.estadoDonacion = 'Entrante';
-  //     donacionesProvider.crearDonacion(donaciones);
-  //   } else {
-  //     donaciones.estadoDonacion = 'Entrante';
-  //     donacionesProvider.editarDonacion(donaciones);
-  //   }
-  //   //mostrarSnackbar('Registro guardado');
-  //   Navigator.pushNamed(context, 'verDonacionesInAdd');
-  // }
 }

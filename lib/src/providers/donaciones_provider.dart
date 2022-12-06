@@ -5,7 +5,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 class DonacionesProvider {
   CollectionReference refDon =
       FirebaseFirestore.instance.collection('donaciones');
-  //late AnimalModel animal1;
   int total1 = 0;
   String? totalA;
 
@@ -14,7 +13,6 @@ class DonacionesProvider {
 
   Future<bool> crearDonacion(DonacionesModel donacion) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var donacionAdd = await refDon.add(donacion.toJson());
       await refDon.doc(donacionAdd.id).update({"id": donacionAdd.id});
       return true;
@@ -41,7 +39,6 @@ class DonacionesProvider {
         .orderBy('fechaIngreso')
         .get();
     donaciones.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var donacion = DonacionesModel.fromJson({
         "id": e.id,
@@ -68,7 +65,6 @@ class DonacionesProvider {
         .where('tipo', isEqualTo: tipo)
         .get();
     donaciones.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var donacion = DonacionesModel.fromJson({
         "id": e.id,
@@ -101,7 +97,6 @@ class DonacionesProvider {
         .get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var donacion = DonacionesModel.fromJson({
         "id": e.id,
@@ -129,7 +124,6 @@ class DonacionesProvider {
         .get();
     //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var donacion = DonacionesModel.fromJson({
         "id": e.id,
@@ -157,7 +151,6 @@ class DonacionesProvider {
         .orderBy('fechaIngreso')
         .get();
     donaciones.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var donacion = DonacionesModel.fromJson({
         "id": e.id,
@@ -192,7 +185,6 @@ class DonacionesProvider {
 
   Future<bool> editarCantidad(DonacionesModel donacion, int cantidad) async {
     try {
-      //String estado = "Atendido";
       await refDon.doc(donacion.id).update({"cantidad": cantidad});
       return true;
     } catch (e) {
@@ -203,7 +195,6 @@ class DonacionesProvider {
   Future<bool> editarDisponibilidad(
       DonacionesModel donacion, String disponibilidad) async {
     try {
-      //String disp = "";
       await refDon.doc(donacion.id).update({"disponibilidad": disponibilidad});
       return true;
     } catch (e) {

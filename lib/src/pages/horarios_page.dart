@@ -141,12 +141,6 @@ class _HorariosPageState extends State<HorariosPage> {
           value: _selection,
           items: dropdownMenuOptions,
           onChanged: null,
-          // (s) {
-          //   setState(() {
-          //     _selection = s;
-          //     horarios.dia = s!;
-          //   });
-          // }
         ),
       ],
     );
@@ -228,42 +222,5 @@ class _HorariosPageState extends State<HorariosPage> {
       mostrarAlertaOk(
           context, 'Registro actualizado con éxito.', 'horariosAdd');
     }
-    //mostrarSnackbar('Registro guardado');
-    //Navigator.pushNamed(context, 'horariosAdd');
   }
-
-  // Widget _crearBotonEliminar() {
-  //   return ElevatedButton.icon(
-  //     style: ButtonStyle(
-  //       backgroundColor:
-  //           MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-  //         return Colors.green;
-  //       }),
-  //     ),
-  //     label: Text('Eliminar registro'),
-  //     icon: Icon(Icons.delete),
-  //     autofocus: true,
-  //     //onPressed: (_guardando) ? null : _submit,
-  //     onPressed: () {
-  //       horariosProvider.borrarHorario(horarios.id);
-  //       mostrarAlertaOk(context, 'Registro eliminado con éxito', 'horariosAdd');
-  //       //Navigator.pushNamed(context, 'horariosAdd');
-  //     },
-  //   );
-  // }
-
-  // Widget _buildChild() {
-  //   if (horarios.id == "") {
-  //     return _crearBoton();
-  //   } else {
-  //     return Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         _crearBoton(),
-  //         Padding(padding: EdgeInsets.only(right: 10)),
-  //         _crearBotonEliminar()
-  //       ],
-  //     );
-  //   }
-  // }
 }

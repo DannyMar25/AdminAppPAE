@@ -5,7 +5,6 @@ import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
 import 'package:aministrador_app_v1/src/utils/utils.dart';
 import 'package:aministrador_app_v1/src/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
-//import 'package:aministrador_app_v1/src/utils/utils.dart' as utils;
 import 'package:number_inc_dec/number_inc_dec.dart';
 
 class IngresoDonacionesOutAddPage extends StatefulWidget {
@@ -23,9 +22,6 @@ class _IngresoDonacionesOutAddPageState
   final donacionesProvider = new DonacionesProvider();
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
-  // final List<String> _items =
-  //     ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
-  // String? _selection;
   TextEditingController cantidadOut = new TextEditingController();
   @override
   void initState() {

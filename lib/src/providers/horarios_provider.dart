@@ -4,13 +4,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 class HorariosProvider {
   CollectionReference refAn = FirebaseFirestore.instance.collection('horarios');
-  //late AnimalModel animal1;
 
   FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<bool> crearHorario(HorariosModel horario) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var horarioAdd = await refAn.add(horario.toJson());
       await refAn.doc(horarioAdd.id).update({"id": horarioAdd.id});
       return true;
@@ -32,7 +30,6 @@ class HorariosProvider {
     final List<HorariosModel> horarios = <HorariosModel>[];
     var documents = await refAn.get();
     horarios.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var horario = HorariosModel.fromJson({
         "id": e.id,
@@ -47,13 +44,9 @@ class HorariosProvider {
 
   Future<List<HorariosModel>> cargarHorariosDia(String dia) async {
     final List<HorariosModel> horarios = <HorariosModel>[];
-    var documents = await refAn
-        .where('dia', isEqualTo: dia)
-        .orderBy('hora')
-        //.where('disponible', isEqualTo: 'Disponible')
-        .get();
+    var documents =
+        await refAn.where('dia', isEqualTo: dia).orderBy('hora').get();
     horarios.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var horario = HorariosModel.fromJson({
         "id": e.id,

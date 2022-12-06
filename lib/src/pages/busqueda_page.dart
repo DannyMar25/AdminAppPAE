@@ -78,7 +78,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
                     key: formKey,
                     child: Column(
                       children: [
-                        //Padding(padding: EdgeInsets.only(top: 1.0)),
                         SizedBox(
                           height: 170,
                           child: Image(
@@ -98,8 +97,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(fontSize: 15),
                         ),
-                        //Divider(),
-                        //Text('Especie:'),
                         Divider(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +124,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
                         ),
                         Padding(padding: EdgeInsets.only(bottom: 15.0)),
                         _seleccionarEspecie(),
-
                         Padding(padding: EdgeInsets.only(bottom: 30.0)),
                         _seleccionarEstadoAdopcion(),
                         Padding(padding: EdgeInsets.only(bottom: 15.0)),
@@ -191,7 +187,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //Padding(padding: EdgeInsets.only(left: 150.0)),
               Expanded(
                 child: SizedBox(
                     height: 200,
@@ -223,10 +218,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
 
   Widget _seleccionarEspecie() {
     final dropdownMenuOptions = _especie
-        .map((String especie) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(
-                value: especie, child: new Text(especie)))
+        .map((String especie) => new DropdownMenuItem<String>(
+            value: especie, child: new Text(especie)))
         .toList();
     return Column(
       //mainAxisAlignment: MainAxisAlignment.start,
@@ -247,17 +240,11 @@ class _BusquedaPageState extends State<BusquedaPage> {
             child: SizedBox(
               width: 150.0,
               child: DropdownButtonFormField<String>(
-                  //hint: Text(animal.tamanio.toString()),
                   value: _selection,
                   items: dropdownMenuOptions,
-
-                  // validator: (value) =>
-                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
                       _selection = s;
-
-                      //animal.tamanio = s!;
                     });
                   }),
             ),
@@ -270,11 +257,9 @@ class _BusquedaPageState extends State<BusquedaPage> {
   Widget _seleccionarSexo() {
     final dropdownMenuOptions = _sexo
         .map((String sexo) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: sexo, child: new Text(sexo)))
         .toList();
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Text(
@@ -291,15 +276,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
             child: SizedBox(
               width: 150.0,
               child: DropdownButtonFormField<String>(
-                  //hint: Text(animal.tamanio.toString()),
                   value: _selection1,
                   items: dropdownMenuOptions,
-                  // validator: (value) =>
-                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      //_selection1 = s;
-
                       _selection1 = s;
                     });
                   }),
@@ -313,11 +293,9 @@ class _BusquedaPageState extends State<BusquedaPage> {
   Widget _seleccionarEtapaVida() {
     final dropdownMenuOptions = _etapaVida
         .map((String edad) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
             new DropdownMenuItem<String>(value: edad, child: new Text(edad)))
         .toList();
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Text(
@@ -334,15 +312,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
             child: SizedBox(
               width: 150.0,
               child: DropdownButtonFormField<String>(
-                  //hint: Text(animal.tamanio.toString()),
                   value: _selection2,
                   items: dropdownMenuOptions,
-                  // validator: (value) =>
-                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      // _selection2 = s;
-
                       _selection2 = s;
                     });
                   }),
@@ -355,13 +328,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
 
   Widget _seleccionarTamanio() {
     final dropdownMenuOptions = _tamanio
-        .map((String tamanio) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(
-                value: tamanio, child: new Text(tamanio)))
+        .map((String tamanio) => new DropdownMenuItem<String>(
+            value: tamanio, child: new Text(tamanio)))
         .toList();
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Text(
@@ -378,15 +348,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
             child: SizedBox(
               width: 150.0,
               child: DropdownButtonFormField<String>(
-                  //hint: Text(animal.tamanio.toString()),
                   value: _selection3,
                   items: dropdownMenuOptions,
-                  // validator: (value) =>
-                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      //_selection3 = s;
-
                       _selection3 = s;
                     });
                   }),
@@ -399,13 +364,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
 
   Widget _seleccionarEstadoAdopcion() {
     final dropdownMenuOptions = _estadoAdopcion
-        .map((String estado) =>
-            //new DropdownMenuItem<String>(value: item, child: new Text(item)))
-            new DropdownMenuItem<String>(
-                value: estado, child: new Text(estado)))
+        .map((String estado) => new DropdownMenuItem<String>(
+            value: estado, child: new Text(estado)))
         .toList();
     return Column(
-      //mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(padding: EdgeInsets.only(top: 10.0)),
         Text(
@@ -422,15 +384,10 @@ class _BusquedaPageState extends State<BusquedaPage> {
             child: SizedBox(
               width: 150.0,
               child: DropdownButtonFormField<String>(
-                  //hint: Text(animal.tamanio.toString()),
                   value: _selection4,
                   items: dropdownMenuOptions,
-                  // validator: (value) =>
-                  //     value == null ? 'Selecciona una opción' : null,
                   onChanged: (s) {
                     setState(() {
-                      //_selection4 = s;
-
                       _selection4 = s;
                     });
                   }),
@@ -452,7 +409,6 @@ class _BusquedaPageState extends State<BusquedaPage> {
       label: Text('Buscar'),
       icon: Icon(Icons.search),
       autofocus: true,
-      //onPressed: (_guardando) ? null : _submit,
       onPressed: () {
         if (_selection == null &&
             _selection1 == null &&
@@ -465,10 +421,8 @@ class _BusquedaPageState extends State<BusquedaPage> {
           SnackBar(
             content: Text('Por favor selecciona una opción'),
           );
-          //_submit();
           buildChild1();
         }
-        //_submit();
       },
     );
   }

@@ -224,10 +224,6 @@ class _VerCitasRegistradasState extends State<VerCitasRegistradas> {
                   ],
                 );
               });
-        }
-        // onPressed: () {
-        //   print(animal.id);
-        // },
-        );
+        });
   }
 }

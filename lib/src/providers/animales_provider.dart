@@ -14,7 +14,6 @@ class AnimalesProvider {
 
   Future<bool> crearAnimal1(AnimalModel animal, File _image1) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       var animalAdd = await refAn.add(animal.toJson());
 
       String url;
@@ -26,8 +25,6 @@ class AnimalesProvider {
       UploadTask uploadTask = ref.putFile(_image1);
       uploadTask.whenComplete(() async {
         url = await ref.getDownloadURL();
-        //guardarBase(url);
-        //actualizarCampoUrl(url, animal);
         await refAn
             .doc(animalAdd.id)
             .update({"fotoUrl": url, "id": animalAdd.id});
@@ -41,34 +38,17 @@ class AnimalesProvider {
     }
   }
 
-  // Future<bool> setCoordenada(int n, String id) async {
-  //   //final url = '$_url/animales/${animal.id}.json?auth=${_prefs.token}';
-  //   final url = '$_url/gps/Test/.json';
-  //   final values = {"GetDataGPS": n, "id": id};
-
-  //   final resp = await http.put(Uri.parse(url), body: values);
-  //   final decodedData = json.decode(resp.body);
-
-  //   print(decodedData);
-
-  //   return true;
-  // }
-
   Future<bool> editarAnimal(AnimalModel animal, File _image1) async {
     try {
       await refAn.doc(animal.id).update(animal.toJson());
-      //var animalUp = await refAn.doc(animal.id).update(animal.toJson());
       String url;
       String path;
       String fec = DateTime.now().toString();
       path = '/animales/${animal.id}/${animal.id! + fec}.jpg';
-      //Reference ref = storage.ref().child(path + DateTime.now().toString());
       Reference ref = storage.ref().child(path);
       UploadTask uploadTask = ref.putFile(_image1);
       uploadTask.whenComplete(() async {
         url = await ref.getDownloadURL();
-        //guardarBase(url);
-        //actualizarCampoUrl(url, animal);
         await refAn.doc(animal.id).update({"fotoUrl": url});
         return url;
       }).catchError((onError) {
@@ -84,7 +64,6 @@ class AnimalesProvider {
   Future<bool> editarAnimalSinFoto(AnimalModel animal, String fotourl) async {
     try {
       await refAn.doc(animal.id).update(animal.toJson());
-      //var animalUp = await refAn.doc(animal.id).update(animal.toJson());
       await refAn.doc(animal.id).update({"fotoUrl": fotourl});
       return true;
     } catch (e) {
@@ -96,7 +75,6 @@ class AnimalesProvider {
     final List<AnimalModel> animales = <AnimalModel>[];
     var documents = await refAn.get();
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -124,7 +102,6 @@ class AnimalesProvider {
     var documents =
         await refAn.where('nombre', isGreaterThanOrEqualTo: nombre).get();
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -157,9 +134,7 @@ class AnimalesProvider {
         .where('etapaVida', isEqualTo: etapaVida)
         .where('tamanio', isEqualTo: tamanio)
         .get();
-    //var s = (documents.docs.map((e) async {
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -179,7 +154,6 @@ class AnimalesProvider {
       });
       return animal;
     }).toList());
-    //return s.toList();
     return animales;
   }
 
@@ -192,9 +166,7 @@ class AnimalesProvider {
         .where('sexo', isEqualTo: sexo)
         .where('etapaVida', isEqualTo: etapaVida)
         .get();
-    //var s = (documents.docs.map((e) async {
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -214,7 +186,6 @@ class AnimalesProvider {
       });
       return animal;
     }).toList());
-    //return s.toList();
     return animales;
   }
 
@@ -317,9 +288,7 @@ class AnimalesProvider {
         .where(datoD2, isEqualTo: dato2)
         .where(datoD3, isEqualTo: dato3)
         .get();
-    //var s = (documents.docs.map((e) async {
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -354,9 +323,7 @@ class AnimalesProvider {
         .where(datoD1, isEqualTo: dato1)
         .where(datoD2, isEqualTo: dato2)
         .get();
-    //var s = (documents.docs.map((e) async {
     animales.addAll(documents.docs.map((e) {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
       var data = e.data() as Map<String, dynamic>;
       var animal = AnimalModel.fromJson({
         "id": e.id,
@@ -376,7 +343,6 @@ class AnimalesProvider {
       });
       return animal;
     }).toList());
-    //return s.toList();
     return animales;
   }
 }

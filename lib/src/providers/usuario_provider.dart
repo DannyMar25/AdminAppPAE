@@ -84,7 +84,6 @@ class UsuarioProvider {
           email: email, password: password);
       User? user = result.user;
       user!.updateDisplayName(name); //added this line
-      //return _user(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -95,9 +94,7 @@ class UsuarioProvider {
     UsuariosModel usuario,
   ) async {
     try {
-      // print("este esadkjljdkjadkjskadjlkjsdljasdljasdj");
       await refUser.doc(usuario.id).set(usuario.toJson());
-      //await refUser.doc(usuariosAdd.id).update({"idUs": usuariosAdd.id});
       return true;
     } catch (e) {
       return false;
@@ -122,9 +119,7 @@ class UsuarioProvider {
 
   Future<List<Future<UsuariosModel>>> verificar(String correo) async {
     var documents = await refUser.where('email', isEqualTo: correo).get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var data = e.data() as Map<String, dynamic>;
       var user = UsuariosModel.fromJson({
         "id": e.id,
         "email": e["email"],

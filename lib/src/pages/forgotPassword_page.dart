@@ -192,10 +192,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Image.asset('assets/pet-care.png', height: 190),
 
               SizedBox(height: 10.0, width: double.infinity),
-              // Text(
-              //   'Bienvenid@',
-              //   style: TextStyle(color: Colors.white, fontSize: 25.0),
-              // ),
             ],
           ),
         ),

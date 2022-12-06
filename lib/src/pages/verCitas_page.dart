@@ -24,8 +24,6 @@ class _VerCitasPageState extends State<VerCitasPage> {
   final animalesProvider = new AnimalesProvider();
   final userProvider = new UsuarioProvider();
   String _fecha = '';
-  //String _fechaActual = '';
-  //TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
   void initState() {

@@ -73,8 +73,6 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                   obscureText: !_passwordVisible,
                   style: TextStyle(
                     fontSize: 20,
-                    //color: Colors.,
-                    //fontWeight: FontWeight.w600,
                   ),
                   validator: (val) {
                     if (val!.isEmpty) return 'Vacío';
@@ -208,8 +206,6 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                   obscureText: !_passwordVisible2,
                   style: TextStyle(
                     fontSize: 20,
-                    //color: Colors.blue,
-                    //fontWeight: FontWeight.w600,
                   ),
                   validator: (val) {
                     if (val!.isEmpty) return 'Vacío';

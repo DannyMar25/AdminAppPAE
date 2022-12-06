@@ -80,11 +80,6 @@ class BienvenidaPage extends StatelessWidget {
             ListView(
               shrinkWrap: true,
               children: [
-                //Padding(padding: EdgeInsets.only(bottom: 5.0)),
-                // SizedBox(
-                //   child: Image(image: AssetImage('assets/dog_an6.gif')),
-                //   height: 130,
-                // ),
                 SizedBox(
                   height: 650,
                   child: Accordion(
@@ -106,8 +101,6 @@ class BienvenidaPage extends StatelessWidget {
                         content: Text(_loremIpsum, style: _contentStyle),
                         contentHorizontalPadding: 20,
                         contentBorderWidth: 1,
-                        // onOpenSection: () => print('onOpenSection ...'),
-                        // onCloseSection: () => print('onCloseSection ...'),
                       ),
                       AccordionSection(
                         isOpen: false,
@@ -473,13 +466,6 @@ class BienvenidaPage extends StatelessWidget {
                 ),
               ],
             ),
-
-            // SizedBox(
-            //   child: Image(
-            //     image: AssetImage('assets/dog_an2.gif'),
-            //   ),
-            //   width: 200,
-            // )
           ],
         ),
       ),
@@ -496,9 +482,6 @@ class BienvenidaPage extends StatelessWidget {
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => LoginPage()),
             (Route<dynamic> route) => false);
-      //   break;
-      // case 2:
-      //   Navigator.pushNamed(context, 'perfilUser');
     }
   }
 }

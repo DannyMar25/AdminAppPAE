@@ -30,18 +30,7 @@ class _VerArchivoEvidenciaPageState extends State<VerArchivoEvidenciaPage> {
       appBar: AppBar(
         title: const Text("Archivo"),
         backgroundColor: Colors.green,
-        actions: <Widget>[
-          // IconButton(
-          //   icon: const Icon(
-          //     Icons.bookmark,
-          //     color: Colors.white,
-          //     semanticLabel: 'Bookmark',
-          //   ),
-          //   onPressed: () {
-          //     _pdfViewerKey.currentState?.openBookmarkView();
-          //   },
-          // ),
-        ],
+        actions: <Widget>[],
       ),
       body: SfPdfViewer.network(
         evidenciaA.archivoUrl,

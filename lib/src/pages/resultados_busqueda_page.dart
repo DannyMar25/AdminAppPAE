@@ -84,10 +84,7 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
             )
             //_crearListado(),
           ],
-        )
-
-        //floatingActionButton: _crearBoton(context),
-        );
+        ));
   }
 
   Widget buildChild() {
@@ -246,12 +243,9 @@ class _ResultadosBusquedaPageState extends State<ResultadosBusquedaPage> {
                         fit: BoxFit.cover,
                       ),
                     ),
-              //Padding(padding: EdgeInsets.only(bottom: 5.0)),
               ListTile(
                 title: Text('${animal.nombre}'),
                 subtitle: Text('${animal.etapaVida} - ${animal.sexo}'),
-                // onTap: () =>
-                //     Navigator.pushNamed(context, 'animal', arguments: animal),
               ),
             ],
           ),

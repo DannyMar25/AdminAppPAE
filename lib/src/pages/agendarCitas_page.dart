@@ -38,8 +38,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
   String campoVacio = 'Por favor, llena este campo';
   final prefs = new PreferenciasUsuario();
 
-  //bool _guardando = false;
-  //final formKey = GlobalKey<FormState>();
   HorariosModel horarios = new HorariosModel();
   final horariosProvider = new HorariosProvider();
   final citasProvider = new CitasProvider();
@@ -132,10 +130,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         controller: _inputFieldDateController,
         decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          //counter: Text('Letras ${_nombre.length}'),
-          //hintText: 'Ingrese fecha de agendamiento de cita',
           labelText: 'Fecha de la cita',
-          //helperText: 'Solo es el nombre',
           suffixIcon: Icon(
             Icons.perm_contact_calendar,
             color: Colors.green,
@@ -155,7 +150,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         onTap: () {
           FocusScope.of(context).requestFocus(new FocusNode());
           _selectDate(context);
-          //idHorario = '';
         });
   }
 
@@ -192,8 +186,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
             picked.month.toString() +
             '-' +
             picked.day.toString();
-
-        // _fecha = picked.toString();
         _fecha = picked.weekday.toString();
         if (_fecha == '1') {
           _fecha = 'Lunes';
@@ -216,7 +208,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
         if (_fecha == '7') {
           _fecha = 'Domingo';
         }
-        //_fecha = DateFormat('EEEE').format(picked);
         _inputFieldDateController.text = _fecha + ' ' + _fechaCompleta;
         idHorario = '';
       });
@@ -272,7 +263,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-              //labelText: 'Hora',
               suffixIcon: Icon(Icons.add),
               icon: Icon(Icons.access_time_outlined)),
         ),
@@ -285,7 +275,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   Widget _crearNombre() {
     return TextFormField(
-      //initialValue: animal.nombre,
       controller: nombre,
       inputFormatters: [
         FilteringTextInputFormatter.deny(RegExp("[0-9\-=@,\.;]")),
@@ -309,7 +298,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   Widget _crearTelefono() {
     return TextFormField(
-      //initialValue: animal.nombre,
       controller: telefono,
       keyboardType: TextInputType.phone,
       inputFormatters: <TextInputFormatter>[
@@ -335,7 +323,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
 
   Widget _crearCorreo() {
     return TextFormField(
-      //initialValue: animal.nombre,
       controller: correo,
       keyboardType: TextInputType.emailAddress,
       textCapitalization: TextCapitalization.sentences,
@@ -382,7 +369,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                     actions: [
                       TextButton(
                           child: Text('Guardar'),
-                          //onPressed: () => Navigator.of(context).pop(),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               SnackBar(
@@ -397,7 +383,6 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
                           }),
                       TextButton(
                           child: Text('Corregir información'),
-                          //onPressed: () => Navigator.of(context).pop(),
                           onPressed: () => Navigator.of(context).pop()),
                     ],
                   );

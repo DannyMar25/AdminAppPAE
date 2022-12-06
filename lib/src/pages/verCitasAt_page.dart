@@ -140,8 +140,6 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
                   Text("Hora de la cita: " + hora),
                 ],
               ),
-              //subtitle: Text('${horario}'),
-              //onTap: () => Navigator.pushNamed(context, 'verCitasR', arguments: cita),
             )
           ]),
     );
