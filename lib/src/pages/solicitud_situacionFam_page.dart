@@ -62,7 +62,7 @@ class _SituacionFamiliarPageState extends State<SituacionFamiliarPage> {
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
-              icon: Icon(Icons.manage_accounts),
+              icon: Icon(Icons.account_circle),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
                       child: Text("Soporte"),

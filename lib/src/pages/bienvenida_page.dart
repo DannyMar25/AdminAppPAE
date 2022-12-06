@@ -37,12 +37,12 @@ class BienvenidaPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Página principal'),
+        title: Text('Inicio'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
               onSelected: (item) => onSelected(context, item),
-              icon: Icon(Icons.manage_accounts),
+              icon: Icon(Icons.account_circle),
               itemBuilder: (context) => [
                     PopupMenuItem<int>(
                       child: Text("Soporte"),

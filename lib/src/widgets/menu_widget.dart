@@ -28,6 +28,17 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ),
           ),
+          ListTile(
+            leading: Icon(
+              Icons.home,
+              color: Colors.green,
+            ),
+            title: Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
           ExpansionTile(
             title: Text('Mascotas'),
             leading: Icon(
@@ -251,17 +262,7 @@ class _MenuWidgetState extends State<MenuWidget> {
                   },
                 )
               : SizedBox(),
-          ListTile(
-            leading: Icon(
-              Icons.app_registration,
-              color: Colors.green,
-            ),
-            title: Text('Inicio'),
-            onTap: () {
-              //Navigator.pop(context);
-              Navigator.pushNamed(context, 'bienvenida');
-            },
-          ),
+
           Padding(padding: EdgeInsets.only(top: 160.0)),
           Text(
             '2022 Versión: 0.0.1',
