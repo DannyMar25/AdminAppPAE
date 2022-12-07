@@ -40,7 +40,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             },
           ),
           ExpansionTile(
-            title: Text('Mascotas'),
+            title: Text('Registro de animales'),
             leading: Icon(
               Icons.pets,
               color: Colors.green,
@@ -48,10 +48,10 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: Icon(
-                  Icons.app_registration,
+                  Icons.post_add,
                   color: Colors.green,
                 ),
-                title: Text('Registrar nueva mascota'),
+                title: Text('Agregar nuevo'),
                 onTap: () {
                   //Navigator.pop(context);
                   Navigator.pushNamed(context, 'animal');
@@ -60,10 +60,10 @@ class _MenuWidgetState extends State<MenuWidget> {
               Divider(),
               ListTile(
                 leading: Icon(
-                  Icons.pages,
+                  Icons.photo_library_outlined,
                   color: Colors.green,
                 ),
-                title: Text('Ver mascotas registradas'),
+                title: Text('Galería'),
                 onTap: () => Navigator.pushNamed(context, 'home'),
               ),
             ],
@@ -77,7 +77,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: Icon(
-                  Icons.app_registration,
+                  Icons.access_time_sharp,
                   color: Colors.green,
                 ),
                 title: Text('Ver horarios registrados'),
@@ -88,7 +88,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
               ListTile(
                 leading: Icon(
-                  Icons.list_alt,
+                  Icons.edit_calendar,
                   color: Colors.green,
                 ),
                 title: Text('Agendar cita'),
@@ -118,7 +118,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ],
             leading: Icon(
-              Icons.meeting_room,
+              Icons.calendar_month,
               color: Colors.green,
             ),
           ),
@@ -129,7 +129,7 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: Icon(
-                  Icons.inventory,
+                  Icons.assignment,
                   color: Colors.green,
                 ),
                 title: Text('Solicitudes Pendientes'),
@@ -170,7 +170,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           //   children: [
           ListTile(
             leading: Icon(
-              Icons.assignment,
+              Icons.manage_search_sharp,
               color: Colors.green,
             ),
             title: Text('Seguimiento'),
@@ -231,7 +231,7 @@ class _MenuWidgetState extends State<MenuWidget> {
               ),
             ],
             leading: Icon(
-              Icons.assignment,
+              Icons.favorite,
               color: Colors.green,
             ),
           ),
@@ -239,7 +239,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           rol == 'SuperAdministrador'
               ? ListTile(
                   leading: Icon(
-                    Icons.app_registration,
+                    Icons.person_add_alt_outlined,
                     color: Colors.green,
                   ),
                   title: Text('Registrar administrador'),
