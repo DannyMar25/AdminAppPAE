@@ -44,7 +44,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de donaciones'),
+        title: Text('Agregar donación recibida'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -74,12 +74,12 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones',
+                        'Datos de donación recibida',
                         style: TextStyle(
-                          fontSize: 33,
+                          fontSize: 30,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
+                            ..strokeWidth = 2
                             ..color = Colors.blueGrey[300]!,
                         ),
                         textAlign: TextAlign.center,
@@ -220,7 +220,7 @@ class _IngresoDonacionesInPageState extends State<IngresoDonacionesInPage> {
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
           labelText: 'Ingrese la cantidad (Unidades):',
-          labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
+          labelStyle: TextStyle(fontSize: 20, color: Colors.black)),
       onChanged: (s) {
         setState(() {
           donaciones.cantidad = int.parse(s);

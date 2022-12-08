@@ -39,7 +39,7 @@ class _IngresoDonacionesOutAddPageState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Añadir donación saliente'),
+        title: Text('Agregar donación saliente'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -69,19 +69,23 @@ class _IngresoDonacionesOutAddPageState
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones',
+                        'Datos de donación saliente',
                         style: TextStyle(
-                          fontSize: 33,
+                          fontSize: 30,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
+                            ..strokeWidth = 2
                             ..color = Colors.blueGrey[300]!,
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      Divider(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
 
-                      Divider(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
                       _crearTipoDonacion(),
                       Divider(),
                       _crearUnidades(),
@@ -129,7 +133,7 @@ class _IngresoDonacionesOutAddPageState
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Tipo de Donación:',
+          labelText: 'Tipo de Donación:  ',
           labelStyle: TextStyle(fontSize: 16, color: Colors.black)),
       onChanged: (s) {
         s = donaciones.tipo;

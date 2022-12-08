@@ -191,40 +191,40 @@ class _MenuWidgetState extends State<MenuWidget> {
             children: [
               ListTile(
                 leading: Icon(
-                  Icons.add,
+                  Icons.add_circle_outline,
                   color: Colors.green,
                 ),
-                title: Text('Registrar donaciones recibidas'),
+                title: Text('Agregar donación recibida'),
                 onTap: () {
                   Navigator.pushNamed(context, 'donacionesInAdd');
                 },
               ),
               ListTile(
                 leading: Icon(
-                  Icons.check,
+                  Icons.list_alt_rounded,
                   color: Colors.green,
                 ),
-                title: Text('Ver donaciones recibidas'),
+                title: Text('Donaciones recibidas'),
                 onTap: () {
                   Navigator.pushNamed(context, 'verDonacionesInAdd');
                 },
               ),
               ListTile(
                 leading: Icon(
-                  Icons.add,
+                  Icons.add_circle_outline_sharp,
                   color: Colors.green,
                 ),
-                title: Text('Registrar donaciones salientes'),
+                title: Text('Agregar donación saliente'),
                 onTap: () {
                   Navigator.pushNamed(context, 'donacionesOutAdd');
                 },
               ),
               ListTile(
                 leading: Icon(
-                  Icons.check,
+                  Icons.list_alt_rounded,
                   color: Colors.green,
                 ),
-                title: Text('Ver donaciones salientes'),
+                title: Text('Donaciones salientes'),
                 onTap: () {
                   Navigator.pushNamed(context, 'verDonacionesOutAdd');
                 },
@@ -252,7 +252,7 @@ class _MenuWidgetState extends State<MenuWidget> {
           rol == 'Administrador'
               ? ListTile(
                   leading: Icon(
-                    Icons.app_registration,
+                    Icons.lock,
                     color: Colors.green,
                   ),
                   title: Text('Restablecer contraseña'),

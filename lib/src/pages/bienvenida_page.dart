@@ -420,7 +420,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.add,
+                                    Icons.add_circle_outline_outlined,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -428,7 +428,7 @@ class BienvenidaPage extends StatelessWidget {
                                         vertical: 2.0),
                                   ),
                                   Text(
-                                    'Registrar donación recibida',
+                                    'Agregar donación recibida',
                                     style: TextStyle(color: Colors.green),
                                   ),
                                 ],
@@ -443,7 +443,7 @@ class BienvenidaPage extends StatelessWidget {
                               child: Column(
                                 children: <Widget>[
                                   Icon(
-                                    Icons.add,
+                                    Icons.add_circle_outline_outlined,
                                     color: Colors.green,
                                   ),
                                   Padding(
@@ -451,7 +451,7 @@ class BienvenidaPage extends StatelessWidget {
                                         vertical: 2.0),
                                   ),
                                   Text(
-                                    'Registrar donación saliente',
+                                    'Agregar donación saliente',
                                     style: TextStyle(color: Colors.green),
                                   ),
                                 ],

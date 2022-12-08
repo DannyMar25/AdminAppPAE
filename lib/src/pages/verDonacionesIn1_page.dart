@@ -42,7 +42,7 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de donaciones'),
+        title: Text('Registro de donación'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -72,29 +72,29 @@ class _VerDonacionesIn1PageState extends State<VerDonacionesIn1Page> {
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones',
+                        'Datos de donación recibida',
                         style: TextStyle(
-                          fontSize: 33,
+                          fontSize: 30,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
+                            ..strokeWidth = 2
                             ..color = Colors.blueGrey[300]!,
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      Divider(),
+                      Divider(color: Colors.transparent),
 
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       _crearTipoDonacion(),
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       _crearUnidades(),
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       _buildChild(),
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       _crearDescripcion(),
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       _mostrarDisponibilidad(),
-                      Divider(),
+                      Divider(color: Colors.transparent),
                       Text(
                         'Cambiar disponibilidad de la donación',
                         style: TextStyle(

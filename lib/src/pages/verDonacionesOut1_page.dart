@@ -37,7 +37,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de donaciones'),
+        title: Text('Registro de donación'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -67,19 +67,23 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
                   child: Column(
                     children: [
                       Text(
-                        'Donaciones',
+                        'Datos de donación saliente',
                         style: TextStyle(
-                          fontSize: 33,
+                          fontSize: 30,
                           foreground: Paint()
                             ..style = PaintingStyle.stroke
-                            ..strokeWidth = 3
+                            ..strokeWidth = 2
                             ..color = Colors.blueGrey[300]!,
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      Divider(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
 
-                      Divider(),
+                      const Divider(
+                        color: Colors.transparent,
+                      ),
                       _crearTipoDonacion(),
                       Divider(),
                       _crearUnidades(),
@@ -122,7 +126,7 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
       readOnly: true,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-          labelText: 'Tipo de Donación:',
+          labelText: 'Tipo de Donación: ',
           labelStyle: TextStyle(
               fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold)),
     );
