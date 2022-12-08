@@ -25,7 +25,10 @@ void mostrarAlerta(BuildContext context, String mensaje) {
               Text('¡Atención!'),
             ],
           ),
-          content: Text(mensaje),
+          content: Text(
+            mensaje,
+            textAlign: TextAlign.justify,
+          ),
           actions: [
             TextButton(
               child: Text('Ok'),

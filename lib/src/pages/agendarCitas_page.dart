@@ -66,7 +66,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Registro de citas'),
+        title: Text('Agendar cita'),
         backgroundColor: Colors.green,
         actions: [
           PopupMenuButton<int>(
@@ -239,7 +239,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           if (snapshot.hasData) {
             final horarios = snapshot.data;
             return SizedBox(
-                height: 300,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: ListView.builder(
                   itemCount: horarios!.length,
                   itemBuilder: (context, i) => _crearItem(context, horarios[i]),
@@ -267,6 +267,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
               icon: Icon(Icons.access_time_outlined)),
         ),
         Divider(
+          height: 3,
           color: Colors.white,
         )
       ],
@@ -343,7 +344,7 @@ class _AgendarCitasPageState extends State<AgendarCitasPage> {
           }),
         ),
         label: Text('Revisar'),
-        icon: Icon(Icons.save),
+        icon: Icon(Icons.check_circle_outline),
         autofocus: true,
         onPressed: () {
           if (formKey.currentState!.validate() && idHorario != '') {

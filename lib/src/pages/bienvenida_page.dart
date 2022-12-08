@@ -167,8 +167,8 @@ class BienvenidaPage extends StatelessWidget {
                       ),
                       AccordionSection(
                         isOpen: false,
-                        leftIcon:
-                            const Icon(Icons.fact_check, color: Colors.white),
+                        leftIcon: const Icon(Icons.calendar_month_outlined,
+                            color: Colors.white),
                         header: Text('Citas', style: _headerStyle),
                         headerBackgroundColor: Colors.blue,
                         content: Column(
