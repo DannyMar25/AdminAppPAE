@@ -68,12 +68,12 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Fotos enviadas como evidencia',
+                              'Fotos recibidas',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: 25,
                                 foreground: Paint()
                                   ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 3
+                                  ..strokeWidth = 2
                                   ..color = Colors.blueGrey,
                               ),
                               textAlign: TextAlign.start,
@@ -132,14 +132,20 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
         fechaIngresoT.day.toString();
     if (evidencia.fotoUrl != "") {
       return Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        clipBehavior: Clip.antiAlias,
+        margin: EdgeInsets.all(20),
         child: ListTile(
             title: Column(children: [
               FadeInImage(
                 image: NetworkImage(evidencia.fotoUrl),
                 placeholder: AssetImage('assets/cat_1.gif'),
-                height: 300.0,
+                height: 280.0,
+                //width: 400,
                 width: double.infinity,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
               ),
               ListTile(
                 title: Text(
@@ -176,10 +182,29 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: Icon(
-              Icons.pages,
+              Icons.home,
               color: Colors.green,
             ),
-            title: Text('Ir a Seguimiento Principal'),
+            title: Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.list,
+              color: Colors.green,
+            ),
+            title: Text('Lista de adopciones'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.manage_search_rounded,
+              color: Colors.green,
+            ),
+            title: Text('Seguimiento de mascota'),
             onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
                 arguments: {
                   'datosper': datosA,
@@ -189,10 +214,10 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
           ),
           ListTile(
             leading: Icon(
-              Icons.check,
+              Icons.vaccines,
               color: Colors.green,
             ),
-            title: Text('Ver Registros Vacunas'),
+            title: Text('Vacunas'),
             onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
                 arguments: {
                   'datosper': datosA,
@@ -201,8 +226,8 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
                 }),
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitación'),
+            leading: Icon(Icons.medication_liquid_rounded, color: Colors.green),
+            title: Text('Desparasitaciones'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -213,8 +238,8 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Fotos'),
+            leading: Icon(Icons.photo, color: Colors.green),
+            title: Text('Fotos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
                 'datosper': datosA,
@@ -224,8 +249,8 @@ class _VerEvidenciaFotosPageState extends State<VerEvidenciaFotosPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Archivos'),
+            leading: Icon(Icons.picture_as_pdf_rounded, color: Colors.green),
+            title: Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,

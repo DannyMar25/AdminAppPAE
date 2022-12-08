@@ -56,7 +56,7 @@ class _RegistroPageState extends State<RegistroPage> {
           ),
           Container(
             width: 390.0, //390
-            height: 670.0, //540
+            height: 560.0, //540
             margin: EdgeInsets.symmetric(vertical: 10.0),
             padding: EdgeInsets.symmetric(vertical: 50.0), //80
             decoration: BoxDecoration(
@@ -96,7 +96,7 @@ class _RegistroPageState extends State<RegistroPage> {
                 ),
                 create_password_confirm(bloc),
                 SizedBox(
-                  height: 8.0,
+                  height: 50.0,
                 ),
                 _crearBoton(bloc),
               ],
@@ -153,7 +153,7 @@ class _RegistroPageState extends State<RegistroPage> {
             ],
             keyboardType: TextInputType.name,
             decoration: InputDecoration(
-              icon: Icon(Icons.alternate_email, color: Colors.green),
+              icon: Icon(Icons.person, color: Colors.green),
               //hintText: 'dany',
               labelText: 'Nombre de usuario',
               //counterText: snapshot.data,

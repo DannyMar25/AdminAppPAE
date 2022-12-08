@@ -36,7 +36,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
         //backgroundColor: Color.fromARGB(223, 211, 212, 207),
         backgroundColor: Color.fromARGB(255, 236, 234, 219),
         appBar: AppBar(
-          title: Text('Desparasitaciones'),
+          title: Text('Lista de desparasitaciones'),
           backgroundColor: Colors.green,
           actions: [
             PopupMenuButton<int>(
@@ -68,7 +68,7 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Registro de desparasitación',
+                              'Registros',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 28,
@@ -276,10 +276,29 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: Icon(
-              Icons.pages,
+              Icons.home,
               color: Colors.green,
             ),
-            title: Text('Ir a Seguimiento Principal'),
+            title: Text('Inicio'),
+            onTap: () {
+              //Navigator.pop(context);
+              Navigator.pushNamed(context, 'bienvenida');
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.list,
+              color: Colors.green,
+            ),
+            title: Text('Lista de adopciones'),
+            onTap: () => Navigator.pushNamed(context, 'seguimientoPrincipal'),
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.manage_search_rounded,
+              color: Colors.green,
+            ),
+            title: Text('Seguimiento de mascota'),
             onTap: () => Navigator.pushNamed(context, 'seguimientoInfo',
                 arguments: {
                   'datosper': datosA,
@@ -289,10 +308,10 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
           ),
           ListTile(
             leading: Icon(
-              Icons.check,
+              Icons.vaccines,
               color: Colors.green,
             ),
-            title: Text('Ver Registros Vacunas'),
+            title: Text('Vacunas'),
             onTap: () => Navigator.pushNamed(context, 'verRegistroVacunas',
                 arguments: {
                   'datosper': datosA,
@@ -301,8 +320,8 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
                 }),
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Registro Desparasitación'),
+            leading: Icon(Icons.medication_liquid_rounded, color: Colors.green),
+            title: Text('Desparasitaciones'),
             onTap: () {
               //Navigator.pop(context);
               Navigator.pushNamed(context, 'verRegistroDesp', arguments: {
@@ -313,8 +332,8 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Fotos'),
+            leading: Icon(Icons.photo, color: Colors.green),
+            title: Text('Fotos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP1', arguments: {
                 'datosper': datosA,
@@ -324,8 +343,8 @@ class _VerRegistroDespPageState extends State<VerRegistroDespPage> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.check, color: Colors.green),
-            title: Text('Ver Archivos'),
+            leading: Icon(Icons.picture_as_pdf, color: Colors.green),
+            title: Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,

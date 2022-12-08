@@ -177,13 +177,13 @@ class _VerCitasAtendidasPageState extends State<VerCitasAtendidasPage> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: ColorScheme.light(
-              primary: Colors.green, // <-- SEE HERE
+              primary: Color.fromARGB(255, 63, 143, 66), // <-- SEE HERE
               onPrimary: Colors.white, // <-- SEE HERE
-              onSurface: Colors.green, // <-- SEE HERE
+              onSurface: Color.fromARGB(255, 56, 131, 58), // <-- SEE HERE
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                primary: Colors.green, // button text color
+                primary: Color.fromARGB(255, 52, 128, 54), // button text color
               ),
             ),
           ),

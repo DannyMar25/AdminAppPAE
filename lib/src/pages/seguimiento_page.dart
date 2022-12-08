@@ -75,7 +75,7 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Seguimiento de adopciones",
+                  "Seguimiento",
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -135,6 +135,11 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
           children: [
             //Divider(color: Colors.purple),
             Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: const BorderSide(color: Colors.green)),
+              elevation: 4,
               child: Container(
                 height: 100,
                 color: Colors.white,
@@ -168,7 +173,10 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   TextButton(
-                                    child: Text("REALIZAR SEGUIMIENTO"),
+                                    child: Text("Realizar seguimiento",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blueGrey)),
                                     onPressed: () async {
                                       datosC =
                                           await formulariosProvider.cargarDPId(
@@ -200,7 +208,6 @@ class _SeguimientoPrincipalPageState extends State<SeguimientoPrincipalPage> {
                   ],
                 ),
               ),
-              elevation: 8,
               margin: EdgeInsets.all(10),
             ),
             // Divider(color: Colors.purple)
