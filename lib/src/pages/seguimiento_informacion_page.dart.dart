@@ -475,7 +475,7 @@ class _InformacionSeguimientoPageState
           ),
           ListTile(
             leading: Icon(Icons.picture_as_pdf, color: Colors.green),
-            title: Text('Archivos'),
+            title: Text('Documentos'),
             onTap: () {
               Navigator.pushNamed(context, 'verEvidenciaP2', arguments: {
                 'datosper': datosA,
