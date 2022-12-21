@@ -306,7 +306,7 @@ class _RegistroPageState extends State<RegistroPage> {
           'Información correcta');
     } else {
       //mostrarAlerta(context, info['mensaje']);
-      mostrarAlerta(context, 'El correo electrónico ya existe.');
+      mostrarAlerta(context, 'El usuario ya existe.');
     }
 
     //Navigator.pushReplacementNamed(context, 'home');

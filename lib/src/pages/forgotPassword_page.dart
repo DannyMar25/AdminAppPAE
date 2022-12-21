@@ -116,8 +116,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     final estadoUsuario =
                         await usuarioProvider.verificar(_email!);
                     if (estadoUsuario.isEmpty) {
-                      mostrarAlerta(
-                          context, 'El correo ingresado no es correcto.');
+                      mostrarAlerta(context,
+                          'El correo ingresado no es correcto. Contáctate con soporte');
                     } else {
                       try {
                         _auth.sendPasswordResetEmail(email: _email!);
