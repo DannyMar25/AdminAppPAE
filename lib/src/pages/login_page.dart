@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 Text(
-                  'Ingreso',
+                  'Inicio de sesión',
                   style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
