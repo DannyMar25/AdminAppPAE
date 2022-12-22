@@ -1,6 +1,6 @@
 # aministrador_app_v1
 
-A new Flutter project.
+Aplicación móvil para el usuario Administrador
 
 ## Getting Started
 
