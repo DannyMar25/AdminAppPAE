@@ -4,7 +4,7 @@ Aplicación móvil para el usuario Administrador
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Este proyecto es desarollado con Flutter.
 
 A few resources to get you started if this is your first Flutter project:
 
