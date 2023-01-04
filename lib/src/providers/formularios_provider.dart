@@ -16,9 +16,6 @@ class FormulariosProvider {
   CollectionReference refForm =
       FirebaseFirestore.instance.collection('formularios');
   final animalesProvider = new AnimalesProvider();
-
-  //late AnimalModel animal1;
-
   FirebaseStorage storage = FirebaseStorage.instance;
 
   Future<String> crearFormularioPrin(FormulariosModel formulario,
@@ -34,7 +31,6 @@ class FormulariosProvider {
       await refFormDP
           .doc(datosPersonalesAdd.id)
           .update({"id": datosPersonalesAdd.id});
-      //return formularioAdd.id;
       var idFormu = formularioAdd.id;
       Navigator.pushNamed(context, 'formularioP2', arguments: idFormu);
       print(idFormu);
@@ -45,15 +41,11 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarFormularios() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Pendiente').get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      //var animal = AnimalModel.fromJson(e.data() as Map<String, dynamic>);
-      var data = e.data() as Map<String, dynamic>;
-      //HorariosModel h1 = new HorariosModel();
+      //var data = e.data() as Map<String, dynamic>;
       AnimalModel anim = new AnimalModel();
-      //h1 = await horariosProvider.cargarHorarioId(e["idHorario"]);
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
         "id": e.id,
@@ -74,7 +66,6 @@ class FormulariosProvider {
         "idDesparasitacion": e["idDesparasitacion"],
         "idEvidencia": e["idEvidencia"],
       });
-      //cita.horario = h1;
       formulario.animal = anim;
       return formulario;
     }));
@@ -233,11 +224,10 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarInfo() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Aprobado').get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       AnimalModel anim = new AnimalModel();
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
@@ -259,7 +249,6 @@ class FormulariosProvider {
         "idDesparasitacion": e["idDesparasitacion"],
         "idEvidencia": e["idEvidencia"],
       });
-      //cita.horario = h1;
       formulario.animal = anim;
       return formulario;
     }));
@@ -267,11 +256,10 @@ class FormulariosProvider {
   }
 
   Future<List<Future<FormulariosModel>>> cargarInfoR() async {
-    final List<FormulariosModel> formularios = <FormulariosModel>[];
+    //final List<FormulariosModel> formularios = <FormulariosModel>[];
     var documents = await refForm.where('estado', isEqualTo: 'Negado').get();
-    //citas.addAll
     var s = (documents.docs.map((e) async {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       AnimalModel anim = new AnimalModel();
       anim = await animalesProvider.cargarAnimalId(e["idAnimal"]);
       var formulario = FormulariosModel.fromJson({
@@ -308,7 +296,7 @@ class FormulariosProvider {
         .orderBy('fechaConsulta')
         .get();
     vacunas.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var vacuna = RegistroVacunasModel.fromJson({
         "id": e.id,
         "fechaConsulta": e["fechaConsulta"],
@@ -332,7 +320,7 @@ class FormulariosProvider {
         .orderBy('fecha')
         .get();
     desparasitaciones.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var desparasitacion = RegistroDesparasitacionModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],
@@ -349,7 +337,7 @@ class FormulariosProvider {
     final List<EvidenciasModel> evidenciaF = <EvidenciasModel>[];
     var documents = await refForm.doc(idForm).collection('evidencias').get();
     evidenciaF.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var evidencia = EvidenciasModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],
@@ -370,7 +358,7 @@ class FormulariosProvider {
         // .where("nombreArchivo", "", )
         .get();
     evidenciaF.addAll(documents.docs.map((e) {
-      var data = e.data() as Map<String, dynamic>;
+      //var data = e.data() as Map<String, dynamic>;
       var evidencia = EvidenciasModel.fromJson({
         "id": e.id,
         "fecha": e["fecha"],

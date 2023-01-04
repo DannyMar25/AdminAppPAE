@@ -90,7 +90,7 @@ class DonacionesProvider {
 
   Future<List<Future<DonacionesModel>>> cargarDonacionesIn11(
       String tipo) async {
-    final List<DonacionesModel> donaciones = <DonacionesModel>[];
+    //final List<DonacionesModel> donaciones = <DonacionesModel>[];
     var documents = await refDon
         .where('estadoDonacion', isEqualTo: 'Entrante')
         .where('tipo', isEqualTo: tipo)
@@ -116,7 +116,7 @@ class DonacionesProvider {
   //Prueba ordenando fechas
   Future<List<Future<DonacionesModel>>> cargarDonacionesIn11_P(
       String tipo) async {
-    final List<DonacionesModel> donaciones = <DonacionesModel>[];
+    //final List<DonacionesModel> donaciones = <DonacionesModel>[];
     var documents = await refDon
         .where('estadoDonacion', isEqualTo: 'Entrante')
         .where('tipo', isEqualTo: tipo)

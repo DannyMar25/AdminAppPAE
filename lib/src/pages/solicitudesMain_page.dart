@@ -65,12 +65,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       drawer: MenuWidget(),
       body: SingleChildScrollView(
         child: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/fondoanimales.jpg"),
-          //     fit: BoxFit.cover,
-          //   ),
-          //),
           padding: EdgeInsets.all(15.0),
           child: Form(
             key: formKey,
@@ -83,20 +77,12 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                       fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 7.0)),
-                //Divider(),
                 _mostrarFoto(),
-                // Divider(),
                 _mostrarNombreAn(),
-                // Divider(
-                //   color: Colors.transparent,
-                // ),
-
                 _mostrarFecha(),
                 Divider(
                   color: Colors.transparent,
                 ),
-                // _crearEstadoCita(),
-                //Text("Cita Atendida"),
                 Column(
                   children: [
                     Row(
@@ -159,9 +145,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 12.0)),
                 _crearBotonObservaciones()
-                //_crearBoton(),
-
-                // _crearDisponible(),
               ],
             ),
           ),
@@ -231,24 +214,24 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     );
   }
 
-  Widget _crearNombreClient() {
-    return TextFormField(
-      readOnly: true,
-      initialValue: formularios.nombreClient,
-      textCapitalization: TextCapitalization.sentences,
-      decoration: InputDecoration(
-        labelText: 'Nombre',
-        //labelStyle: ,
-        //border: BorderRadius(BorderRadius.circular(2.0)),
-        icon: Icon(
-          Icons.person,
-          color: Colors.purple,
-        ),
-      ),
-      //onSaved: (value) => animal.nombre = value!,
-      //},
-    );
-  }
+  // Widget _crearNombreClient() {
+  //   return TextFormField(
+  //     readOnly: true,
+  //     initialValue: formularios.nombreClient,
+  //     textCapitalization: TextCapitalization.sentences,
+  //     decoration: InputDecoration(
+  //       labelText: 'Nombre',
+  //       //labelStyle: ,
+  //       //border: BorderRadius(BorderRadius.circular(2.0)),
+  //       icon: Icon(
+  //         Icons.person,
+  //         color: Colors.purple,
+  //       ),
+  //     ),
+  //     //onSaved: (value) => animal.nombre = value!,
+  //     //},
+  //   );
+  // }
 
   Widget _mostrarNombreAn() {
     return Container(
@@ -537,26 +520,6 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
               //'relacionAn': relacionA
               );
         });
-  }
-
-  Widget _crearBoton() {
-    return ElevatedButton.icon(
-        style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-            return Colors.deepPurple;
-          }),
-        ),
-        label: Text('Guardar'),
-        icon: Icon(Icons.save),
-        autofocus: true,
-        onPressed: () {
-          Navigator.pushNamed(context, 'bienvenida');
-        }
-        // onPressed: () {
-        //   print(animal.id);
-        // },
-        );
   }
 
   Future<void> _createPDF() async {

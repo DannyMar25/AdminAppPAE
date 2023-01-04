@@ -1,4 +1,3 @@
-import 'package:aministrador_app_v1/src/pages/forgotPassword_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:flutter/material.dart';
 

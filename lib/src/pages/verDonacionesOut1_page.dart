@@ -18,12 +18,11 @@ class _VerDonacionesOut1PageState extends State<VerDonacionesOut1Page> {
   final donacionesProvider = new DonacionesProvider();
   final userProvider = new UsuarioProvider();
   DonacionesModel donaciones = new DonacionesModel();
-  final List<String> _items =
-      ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
-  String? _selection;
+  //final List<String> _items =
+  // ['Alimento', 'Medicina', 'Insumos Higiénicos', 'Otros'].toList();
+  //String? _selection;
   @override
   void initState() {
-    // _selection = _items.last;
     super.initState();
   }
 
