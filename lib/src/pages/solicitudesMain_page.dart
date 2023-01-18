@@ -606,7 +606,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row6.cells[0].value = 'E-mail:';
     row6.cells[1].value = datosC.email;
     PdfGridRow row7 = grid.rows.add();
-    row7.cells[0].value = 'Intrucción:';
+    row7.cells[0].value = 'Instrucción:';
     row7.cells[1].value = datosC.nivelInst;
     PdfGridRow row8 = grid.rows.add();
     row8.cells[0].value = 'TELÉFONOS DE CONTACTO';
@@ -920,15 +920,15 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     );
 //Add rows to grid
     PdfGridRow row25 = grid3.rows.add();
-    row25.cells[0].value = '¿Algún familiar espera un bebe?';
+    row25.cells[0].value = '¿Algún familiar espera un bebé?';
     row25.cells[1].value = situacionF.esperaBebe;
-    PdfGridRow row26 = grid3.rows.add();
-    row26.cells[0].value =
-        'Si la respuesta es "SI", ingrese fecha apróximada de parto:';
-    row26.cells[1].value = 'fecha';
+    // PdfGridRow row26 = grid3.rows.add();
+    // row26.cells[0].value =
+    //     'Si la respuesta es "SI", ingrese fecha apróximada de parto:';
+    // row26.cells[1].value = 'fecha';
     PdfGridRow row27 = grid3.rows.add();
     row27.cells[0].value =
-        '¿Alguien que viva con usted es alérgicco a los animales o sufre de asma?';
+        '¿Alguien que viva con usted es alérgico a los animales o sufre de asma?';
     row27.cells[1].value = situacionF.alergiaAnimal;
     //Estilo celdas
     row25.cells[0].style = PdfGridCellStyle(
@@ -940,15 +940,15 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row25.cells[1].style = PdfGridCellStyle(
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
     );
-    row26.cells[0].style = PdfGridCellStyle(
-      backgroundBrush: PdfBrushes.lightSteelBlue,
-      cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
-      font: PdfStandardFont(PdfFontFamily.helvetica, 9),
-      textPen: PdfPens.black,
-    );
-    row26.cells[1].style = PdfGridCellStyle(
-      cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
-    );
+    // row26.cells[0].style = PdfGridCellStyle(
+    //   backgroundBrush: PdfBrushes.lightSteelBlue,
+    //   cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
+    //   font: PdfStandardFont(PdfFontFamily.helvetica, 9),
+    //   textPen: PdfPens.black,
+    // );
+    // row26.cells[1].style = PdfGridCellStyle(
+    //   cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
+    // );
     row27.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
@@ -1020,10 +1020,10 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row32.cells[1].value = domicilio.planMudanza;
     PdfGridRow row33 = grid4.rows.add();
     row33.cells[0].value =
-        '¿El lugar donde pasara la mascota, tiene cerramiento?';
+        '¿El lugar donde pasará la mascota, tiene cerramiento?';
     row33.cells[1].value = domicilio.cerramiento;
     PdfGridRow row34 = grid4.rows.add();
-    row34.cells[0].value = 'Altura en m2';
+    row34.cells[0].value = 'Altura en m²';
     row34.cells[1].value = domicilio.alturaC.toString();
     PdfGridRow row35 = grid4.rows.add();
     row35.cells[0].value = 'Material';
@@ -1032,6 +1032,9 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row36.cells[0].value = '';
     row36.cells[1].value =
         '¿Cuál piensa que es la mascota más adecuada para Ud.?';
+    PdfGridRow row70 = grid4.rows.add();
+    row70.cells[0].value = 'Especie:';
+    row70.cells[1].value = domicilio.especieAd;
     PdfGridRow row37 = grid4.rows.add();
     row37.cells[0].value = 'Sexo:';
     row37.cells[1].value = domicilio.sexoAd;
@@ -1119,6 +1122,12 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
       font: PdfStandardFont(PdfFontFamily.helvetica, 9),
       textPen: PdfPens.black,
     );
+    row70.cells[0].style = PdfGridCellStyle(
+      backgroundBrush: PdfBrushes.lightSteelBlue,
+      cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
+      font: PdfStandardFont(PdfFontFamily.helvetica, 9),
+      textPen: PdfPens.black,
+    );
     row28.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
@@ -1157,6 +1166,9 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row39.cells[1].style = PdfGridCellStyle(
       cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
     );
+    row70.cells[1].style = PdfGridCellStyle(
+      cellPadding: PdfPaddings(left: 3, right: 0, top: 2, bottom: 0),
+    );
 
 //Draw the grid in PDF document page
     grid4.draw(
@@ -1188,7 +1200,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     header4.cells[2].value = 'Sexo';
     header4.cells[3].value = 'Esterilizado';
     header4.cells[4].value =
-        '¿Dónde esta ahora? Si fallecio, perdio o esta en otro lugar, indique la causa';
+        '¿Dónde esta ahora? Si falleció, perdió o esta en otro lugar, indique la causa';
     header4.cells[0].style = PdfGridCellStyle(
       backgroundBrush: PdfBrushes.lightSteelBlue,
       cellPadding: PdfPaddings(left: 2, right: 0, top: 2, bottom: 0),
@@ -1298,7 +1310,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row43.cells[1].value = relacionA.cambioDomi;
     PdfGridRow row44 = grid6.rows.add();
     row44.cells[0].value =
-        'Con ralación a la anterior pregunta, ¿Qué pasaría si los dueños de la nueva casa no aceptacen mascotas?';
+        'Con relación a la anterior pregunta, ¿Qué pasaría si los dueños de la nueva casa no aceptan mascotas?';
     row44.cells[1].value = relacionA.relNuevaCasa;
     PdfGridRow row45 = grid6.rows.add();
     row45.cells[0].value =
@@ -1317,7 +1329,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row49.cells[0].value = '¿Dónde hará sus necesidades?';
     row49.cells[1].value = relacionA.necesidadMas;
     PdfGridRow row50 = grid6.rows.add();
-    row50.cells[0].value = '¿Que comerá habitualmente la mascota?';
+    row50.cells[0].value = '¿Qué comerá habitualmente la mascota?';
     row50.cells[1].value = relacionA.comidaMas;
     PdfGridRow row51 = grid6.rows.add();
     row51.cells[0].value = '¿Cuántos años cree que vive un perro promedio?';
@@ -1432,7 +1444,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
         bounds: Rect.fromLTWH(
             0, 5, page2.getClientSize().width, page2.getClientSize().height))!;
 
-    textElement2.text = 'RELACIÓN CON LOS ANIMALES 2';
+    textElement2.text = 'RELACIÓN CON LOS ANIMALES';
     textElement2.font =
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold);
     layoutResult2 =
@@ -1487,7 +1499,7 @@ class _SolicitudesMainPageState extends State<SolicitudesMainPage> {
     row60.cells[0].value = '¿Conoce usted los beneficios de la esterilización?';
     row60.cells[1].value = relacionA.benefEst;
     PdfGridRow row61 = grid7.rows.add();
-    row61.cells[0].value = 'Segun usted, ¿Qué es tenecia responsable?';
+    row61.cells[0].value = 'Según usted, ¿Qué es tenencia responsable?';
     row61.cells[1].value = relacionA.tenenciaResp;
     PdfGridRow row62 = grid7.rows.add();
     row62.cells[0].value =

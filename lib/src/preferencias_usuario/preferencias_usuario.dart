@@ -23,6 +23,10 @@ class PreferenciasUsuario {
   set token(String value) {
     _prefs!.setString('token', value);
   }
+
+  void removeToken() {
+    _prefs!.remove('token');
+  }
   //Email y rol
 
   String get email {

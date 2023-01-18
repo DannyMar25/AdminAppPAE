@@ -147,79 +147,86 @@ class _SolicitudesPageState extends State<SolicitudesPage> {
         fechaIngresoT.month.toString() +
         '-' +
         fechaIngresoT.day.toString();
-    return ListTile(
-      title: Column(
-        children: [
-          //Divider(color: Colors.purple),
-          Card(
-            child: Container(
-              height: 170,
-              color: Colors.white,
-              child: Row(
-                children: [
-                  Center(
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 0.1),
-                      child: Expanded(
-                        child: Image.asset(
-                          "assets/pet.jpg",
-                          height: 130,
+    if (formulario.idDatosPersonales == '' ||
+        formulario.idSituacionFam == '' ||
+        formulario.idDomicilio == '' ||
+        formulario.idRelacionAn == '') {
+      return SizedBox();
+    } else {
+      return ListTile(
+        title: Column(
+          children: [
+            //Divider(color: Colors.purple),
+            Card(
+              child: Container(
+                height: 170,
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 0.1),
+                        child: Expanded(
+                          child: Image.asset(
+                            "assets/pet.jpg",
+                            height: 130,
+                          ),
+                          flex: 5,
                         ),
-                        flex: 5,
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 20,
-                            child: ListTile(
-                              title: Text(
-                                  "Cliente: " + '${formulario.nombreClient}'),
-                              subtitle: Column(
-                                children: [
-                                  Text("Fecha de solicitud:" + '$fechaIn'),
-                                  Text("Posible adoptante para: " +
-                                      '${formulario.animal!.nombre}'),
-                                ],
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 20,
+                              child: ListTile(
+                                title: Text(
+                                    "Cliente: " + '${formulario.nombreClient}'),
+                                subtitle: Column(
+                                  children: [
+                                    Text("Fecha de solicitud:" + '$fechaIn'),
+                                    Text("Posible adoptante para: " +
+                                        '${formulario.animal!.nombre}'),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 5,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextButton(
-                                  child: Text("VER INFO"),
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, 'verSolicitudesMain',
-                                      arguments: formulario),
-                                  //
-                                ),
-                                SizedBox(
-                                  width: 5, //8
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+                            Expanded(
+                              flex: 5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                    child: Text("VER INFO"),
+                                    onPressed: () => Navigator.pushNamed(
+                                        context, 'verSolicitudesMain',
+                                        arguments: formulario),
+                                    //
+                                  ),
+                                  SizedBox(
+                                    width: 5, //8
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
+                      flex: 8,
                     ),
-                    flex: 8,
-                  ),
-                ],
+                  ],
+                ),
               ),
+              elevation: 8,
+              margin: EdgeInsets.all(10),
             ),
-            elevation: 8,
-            margin: EdgeInsets.all(10),
-          ),
-          // Divider(color: Colors.purple)
-        ],
-      ),
-    );
+            // Divider(color: Colors.purple)
+          ],
+        ),
+      );
+    }
   }
 }

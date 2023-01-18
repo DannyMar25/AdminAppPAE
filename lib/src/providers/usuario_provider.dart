@@ -7,6 +7,7 @@ import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuari
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
+//import {signOut} from "firebase/auth";
 
 class UsuarioProvider {
   final String _firebaseToken = 'AIzaSyCKF3vYr8Kn-6RQTrhiqc1IcEp1bC8HfWU';
@@ -101,8 +102,11 @@ class UsuarioProvider {
 
   //cerrar sesion
   void signOut() {
-    _prefs.removeEmail();
+    // _prefs.removeEmail();
+    /// _prefs.removeToken();
+
     _auth.signOut();
+
     return;
   }
 

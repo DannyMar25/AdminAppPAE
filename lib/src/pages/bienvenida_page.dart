@@ -1,4 +1,5 @@
 import 'package:accordion/controllers.dart';
+import 'package:aministrador_app_v1/src/bloc/login_bloc.dart';
 import 'package:aministrador_app_v1/src/pages/login_page.dart';
 import 'package:aministrador_app_v1/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:aministrador_app_v1/src/providers/usuario_provider.dart';
@@ -480,6 +481,7 @@ class BienvenidaPage extends StatelessWidget {
         break;
       case 1:
         userProvider.signOut();
+
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) => LoginPage()),
             (Route<dynamic> route) => false);
