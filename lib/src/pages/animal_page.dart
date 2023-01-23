@@ -629,7 +629,7 @@ class _AnimalPageState extends State<AnimalPage> {
                   Text('Información correcta'),
                 ],
               ),
-              content: Text('Desea actualizar la foto de la mascota?'),
+              content: Text('¿Desea actualizar la foto de la mascota?'),
               actions: [
                 TextButton(
                     child: Text('Si'),

@@ -56,7 +56,7 @@ class _RegistroPageState extends State<RegistroPage> {
           ),
           Container(
             width: 390.0, //390
-            height: 560.0, //540
+            height: 670.0, //560
             margin: EdgeInsets.symmetric(vertical: 10.0),
             padding: EdgeInsets.symmetric(vertical: 50.0), //80
             decoration: BoxDecoration(
