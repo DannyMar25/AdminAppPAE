@@ -50,13 +50,13 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
         key: formKey,
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 20)),
+            Padding(padding: EdgeInsets.only(top: 5)),
             CircleAvatar(
               backgroundImage: AssetImage('assets/admin.jpg'),
               radius: 50,
               foregroundColor: Colors.black,
             ),
-            Padding(padding: EdgeInsets.only(bottom: 20)),
+            Padding(padding: EdgeInsets.only(bottom: 10)),
             Text(
               'Hola ' + nombreS,
               textAlign: TextAlign.center,
