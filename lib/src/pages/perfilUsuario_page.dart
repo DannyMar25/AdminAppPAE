@@ -282,18 +282,12 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
                   );
                   mostrarAlertaOk1(context, 'Contraseña actualizada con éxito.',
                       'login', 'Información');
-                  //_changePassword(passActual, passNew.text);
                 } else {
                   mostrarAlerta(context,
                       'Asegúrate de haber ingresado correctamente la contraseña.');
                 }
               },
             ),
-            // TextButton(
-            //     onPressed: () {
-            //       _changePassword(passActual, passNew);
-            //     },
-            //     child: Text('CAMBIAR'))
           ],
         ),
       ),
@@ -303,20 +297,23 @@ class _PerfilUsuarioPageState extends State<PerfilUsuarioPage> {
   Future<bool> _changePassword(
       String currentPassword, String newPassword) async {
     bool success = false;
+    try {
+      final cred = await _auth.signInWithEmailAndPassword(
+          email: prefs.email, password: currentPassword);
+      print(cred);
+      await cred.user!.updatePassword(newPassword).then((_) {
+        success = true;
+        // mostrarAlertaOk1(context, 'Contraseña actualizada con éxito.', 'login',
+        //     'Información');
+      });
+      //}).catchError((err) {
+      //  print(err);
+      // });
 
-    final cred = await _auth.signInWithEmailAndPassword(
-        email: prefs.email, password: currentPassword);
-    print(cred);
-    await cred.user!.updatePassword(newPassword).then((_) {
-      success = true;
-      //usersRef.doc(uid).update({"password": newPassword});
-    }).catchError((error) {
-      print(error);
-    });
-    //}).catchError((err) {
-    //  print(err);
-    // });
-
+    } catch (e) {
+      mostrarAlerta(
+          context, 'Asegúrate de haber ingresado correctamente la contraseña.');
+    }
     return success;
   }
 }
